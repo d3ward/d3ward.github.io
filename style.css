@@ -198,8 +198,8 @@ footer svg {
 
 .col,
 .cols {
-  width: 28%;
-  margin: 1em;
+  width: 29%;
+  margin: 10px;
 }
 
 .cols {
@@ -211,7 +211,8 @@ footer svg {
 
   .col,
   .cols {
-    width: 41%;
+    width: 45%;
+    margin: 8px;
   }
 }
 
