@@ -72,5 +72,11 @@ for (var i = 0; i < flt_btns.length; i++) {
 
 // Play logo animation once
 var wrapper = document.querySelector('.wrapper svg');
-function draw() {wrapper.classList.add('active')}
-setTimeout(draw, 300);
+var wstatus=1;
+function startA() {wrapper.classList.add('startA')}
+wrapper.addEventListener("click",function(){
+  if(wstatus) wrapper.classList.remove('startA');
+  else startA();
+  wstatus=!wstatus;
+});
+setTimeout(startA, 300);
