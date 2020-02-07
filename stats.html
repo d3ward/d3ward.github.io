@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Github Stats</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/d3.png">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Inconsolata:400,700'>
+    <style>
+        body {
+            font-family: 'Inconsolata', monospace;
+            padding: 0;
+            margin: 0;
+            background-color: #252829;
+            color: #dddddd;
+        }
+        .cnt{
+            max-width: 700px;
+            padding: 15px;
+            margin: auto;
+        }
+        .p_title {
+            margin: 25px;
+            text-align: center;
+        }
+        h1{
+            display: inline;
+            font-size: 18px;
+        }
+        .release {
+            background-color: rgba(127, 140, 141, 0.1);
+            border: solid 1px rgba(127, 140, 141, 0.4);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .release h3 .badge {
+            cursor: default;
+            background-color: rgba(66, 139, 202, 1);
+            color: #252829;
+            padding: 5px;
+        }
+    
+        .lat_r,.lat_r hr {
+            background-color: rgba(92, 184, 92, 0.2);
+            border-color: rgba(92, 184, 92, 0.4);
+        }
+        .lat_r h3,
+        .lat_r h3 a {
+            color: rgba(92, 184, 92, 1);
+        }
+        .lat_r h3 .badge {
+            background-color: rgba(92, 184, 92, 1);
+        }
+        .pre_r,.pre_r hr{
+            background-color: rgba(240, 173, 78, 0.05);
+            border-color: rgba(240, 173, 78, 0.4);
+        }
+        .pre_r h3,
+        .pre_r h3 a {
+            color: rgba(240, 173, 78, 1);
+        }
+        .pre_r h3 .badge {
+            background-color: rgba(240, 173, 78, 1);
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="cnt"><div id="stats"></div></div>
+</body>
+<script>
+    function formatNumber(value) {
+        return value.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+    }
+    function showStats(data) {
+        var err = false;
+        var errMessage = '';
+        if (data.status == 404) {err = true;errMessage = "The project does not exist!";        }
+        if (data.status == 403) {err = true; errMessage = "You've exceeded GitHub's rate limiting.<br />Please try again in about an hour.";}
+        if (data.length == 0) {err = true;errMessage = "There are no releases for this project";}
+        var html = "";
+        if (err) {
+            html += "<div>" + errMessage + "</div>";
+        } else {
+            html += "<div>";
+            var isLatestRelease = true;
+            var totalDownloadCount = 0;
+            var releaseName=data[0].name;
+            data.forEach(item => {
+                var releaseTag = item.tag_name;
+                var releaseBadge = "";
+                var releaseClassNames = "release";
+                var releaseURL = item.html_url;
+                var isPreRelease = item.prerelease;
+                var releaseAssets = item.assets;
+                var releaseDownloadCount = 0;
+                var publishDate = item.published_at.split("T")[0];
+                if (isPreRelease) {
+                    releaseBadge = "&nbsp;&nbsp;<span class='badge'>Pre-release</span>";
+                    releaseClassNames += " pre_r";
+                } else if (isLatestRelease) {
+                    releaseBadge = "&nbsp;&nbsp;<span class='badge'>Latest release</span>";
+                    releaseClassNames += " lat_r";
+                    isLatestRelease = false;
+                }
+                html += "<div class='"+ releaseClassNames+ "'>";
+                html += "<h3><a href='"+releaseURL+"' target='_blank'>"+releaseTag+"</a>"+releaseBadge+"</h3>"+"<hr>";
+                html += "<ul>";
+                html += "<li>&nbsp;Published: " + publishDate + "</li>";
+                if (releaseAssets.length) {
+                    releaseAssets.forEach(asset => {
+                        var assetSize = (asset.size / 1048576.0).toFixed(2);
+                        var lastUpdate = asset.updated_at.split("T")[0];
+                        html += "<li>&nbsp;" + asset.name + " ( " + assetSize +
+                            "&nbsp;MiB ) - " +
+                            "downloaded " + formatNumber(asset.download_count) + "&nbsp;times. " +
+                            "Last&nbsp;updated&nbsp;on&nbsp;" + lastUpdate + "</li>";
+                        totalDownloadCount += asset.download_count;
+                        releaseDownloadCount += asset.download_count;
+                    });
+                }
+                html += "</ul>";
+                html += "</div>";
+            });
+            if (totalDownloadCount) {
+                var totalHTML = "<div class='p_title'>";
+                totalHTML += "<h1>"+releaseName+"</h1>";
+                totalHTML += "<span> ( " + formatNumber(totalDownloadCount) + " ) </span>";
+                totalHTML += "</div>";
+                html = totalHTML + html;
+            }
+            html += "</div>";
+        }
+        var resultDiv = document.getElementById("stats");
+        var div = document.createElement("div");
+        div.innerHTML = html;
+        resultDiv.appendChild(div);
+    }
+    function getStats(repository) {
+        var url = "https://api.github.com/repos/d3ward/"+repository+"/releases";
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', url, true);
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4) {
+                if (xmlhttp.status == 200) {
+                    var obj = JSON.parse(xmlhttp.responseText);
+                    showStats(obj);
+                }
+            }
+        };
+        xmlhttp.send(null);
+    }
+    var repos = ["mti", "floatly"];
+    repos.forEach(r => {
+        getStats(r);
+    });
+</script>
+
+</html>
