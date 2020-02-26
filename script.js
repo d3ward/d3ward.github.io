@@ -1,7 +1,7 @@
 // Pages routes
 (function() {
   var pages = {
-    'default': 'home',
+    'default': '',
     'scrollTop': function() {
       document.querySelector('html').scrollTop = 0;
       document.querySelector('body').scrollTop = 0;
