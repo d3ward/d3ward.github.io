@@ -1,30 +1,15 @@
 @-webkit-keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  0% {opacity: 0;}
+  50% {opacity: 0.5;}
+  100% {opacity: 1;}
 }
-
 @keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  0% {opacity: 0;}
+  50% {opacity: 0.5;}
+  100% {opacity: 1;}
 }
+
+
 
 * {
   box-sizing: border-box;
@@ -32,9 +17,7 @@
 
 ::-webkit-scrollbar {
   width: 0px;
-  /* Remove scrollbar space */
   background: transparent;
-  /* Optional: just make scrollbar invisible */
 }
 
 .pages>* {
@@ -62,9 +45,10 @@ body {
 }
 
 body {
+  --c1:#fff;
   background-color: #DDDDDD;
   color: #566B78;
-  font-family: 'Lato', monospace;
+  font-family: 'Trebuchet MS',sans-serif;
   font-size: 18px;
   line-height: 1.5;
   user-select: none;
@@ -141,8 +125,6 @@ section {
   border: 2px solid #FFFFFF;
  color: #FFFFFF;
  border-radius: 4px;
- font-size: 0.9em;
- letter-spacing: 0.1em;
  padding: 0.8em;
  text-decoration: none;
  -webkit-transition: ease-in-out all 200ms;
@@ -150,7 +132,7 @@ section {
  margin: 5px;
 }
 .home a {
-  width: 160px;
+  width: 140px;
 }
 footer a{
   width: 50px;
