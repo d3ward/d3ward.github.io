@@ -64,7 +64,7 @@ body {
 body {
   background-color: #DDDDDD;
   color: #566B78;
-  font-family: 'Inconsolata', monospace;
+  font-family: 'Lato', monospace;
   font-size: 18px;
   line-height: 1.5;
   user-select: none;
@@ -110,9 +110,23 @@ nav a {
 
 header {
   border-radius: 10px;
-  background-color: gray;
+  background: linear-gradient(-45deg,#2c2c2c,#131313,#252829);
+	background-size: 400% 400%;
+	-webkit-animation: gradientBG 2s ease-in;
+	        animation: gradientBG 2s ease-in;
   padding: 2em;
   text-align: center;
+}
+
+@-webkit-keyframes gradientBG {
+  0%{background-position:left top}
+  50%{background-position:right bottom}
+  100%{background-position:left top}
+}
+@keyframes gradientBG {
+  0%{background-position:left top}
+  50%{background-position:right bottom}
+  100%{background-position:left top}
 }
 
 header h1 {
@@ -164,11 +178,6 @@ footer svg {
 .nes-header a:hover {
   background: #A81000;
   border-color: #A81000;
-}
-
-
-.home {
-  background-image: linear-gradient(130deg, #000000, #252829);
 }
 
 .cnt {
@@ -244,7 +253,7 @@ footer svg {
   height: 100%;
   padding: 10px 15px;
   text-decoration: none;
-  color: #232526;
+  color: #dddddd;
 }
 
 .nav-tab:last-child {
@@ -274,7 +283,8 @@ footer svg {
     right: 0;
     width: 280px;
     height: 100%;
-    background: #dddddd;
+    background: #252829;
+    color: #dddddd;
     box-shadow: -1px 0 2px rgba(0, 0, 0, 0.2);
   }
 
@@ -288,7 +298,7 @@ footer svg {
   .nav-tab {
     margin: 0;
     border-right: unset;
-    border-bottom: 2px solid #252829;
+    border-bottom: 2px solid #dddddd;
   }
 
   .menu-btn {
@@ -309,7 +319,7 @@ footer svg {
     width: 100%;
     height: 2px;
     border-radius: 2px;
-    background: #111;
+    background: #fff;
   }
 
   .menu-btn .menu:nth-child(2) {
