@@ -403,11 +403,9 @@ footer svg {
   border-radius: 8px;
 
 }
-
 .show {
   display: block;
 }
-
 .flt_btn:after,
 .flt_btn:before {
   content: "";
