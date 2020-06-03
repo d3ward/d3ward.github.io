@@ -2,17 +2,17 @@
 (function() {
   var pages = {
     'default': '',
-    'scrollTop': function() {
+    'scrollTop':()=> {
       document.querySelector('html').scrollTop = 0;
       document.querySelector('body').scrollTop = 0;
     },
-    'routeChange': function() {
+    'routeChange':()=> {
       pages.routeID = location.hash.slice(1);
       pages.routeElem = document.getElementById(pages.routeID);
       pages.scrollTop();
     },
-    'init': function() {
-      window.addEventListener('hashchange', function() {
+    'init':()=> {
+      window.addEventListener('hashchange',()=> {
         pages.routeChange();
       });
       if (!window.location.hash) {
@@ -27,18 +27,31 @@
 pages.init();
 
 //Gotop button config
-var mybutton = document.getElementById("goTop");
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) mybutton.style.display = "block";
-  else mybutton.style.display = "none";
-}
-function pagesscrollTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+ // Set a variable for our button element.
+ const scrollToTopButton = document.getElementById('go_top');
+ const scrollFunc = () => {
+     let y = window.scrollY;
+     if (y > 0) {
+         scrollToTopButton.className = "go_top show";
+     } else {
+         scrollToTopButton.className = "go_top hide";
+     }
+ };
+ window.addEventListener("scroll", scrollFunc);
+ const scrollToTop = () => {
+     const c = document.documentElement.scrollTop || document.body.scrollTop;
+     if (c > 0) {
+         window.requestAnimationFrame(scrollToTop);
+         window.scrollTo(0, c - c / 10);
+     }
+ };
+ scrollToTopButton.onclick = function (e) {
+     e.preventDefault();
+     scrollToTop();
+ }
 
-//Home projects filter
+ 
+//Projects filter
 flt_selection("all"); 
 function flt_selection(c) {
   var x, i;
