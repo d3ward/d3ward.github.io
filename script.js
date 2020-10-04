@@ -28,12 +28,15 @@ pages.init();
 
 //Gotop button config
  // Set a variable for our button element.
+ const navbar = document.getElementById("nav");
  const scrollToTopButton = document.getElementById('go_top');
  const scrollFunc = () => {
      let y = window.scrollY;
      if (y > 0) {
+        navbar.style.backgroundColor ='#000';
          scrollToTopButton.className = "go_top show";
      } else {
+      navbar.style.backgroundColor ='#000000c4';
          scrollToTopButton.className = "go_top hide";
      }
  };
@@ -51,36 +54,6 @@ pages.init();
  }
 
  
-//Projects filter
-flt_selection("all"); 
-function flt_selection(c) {
-  var x, i;
-  x = document.getElementsByClassName("cols");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {flt_remove(x[i], "show");if (x[i].className.indexOf(c) > -1) flt_add(x[i], "show");}
-}
-function flt_add(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}}
-}
-function flt_remove(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {while (arr1.indexOf(arr2[i]) > -1) {arr1.splice(arr1.indexOf(arr2[i]), 1);}}
-  element.className = arr1.join(" ");
-}
-var flt_btncnt = document.getElementById("flt_tag");
-var flt_btns = flt_btncnt.getElementsByClassName("flt_btn");
-for (var i = 0; i < flt_btns.length; i++) {
-  flt_btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].classList.remove("active");
-    this.className += " active";
-  });
-}
 
 
 // Play logo animation once

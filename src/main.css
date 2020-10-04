@@ -1,0 +1,683 @@
+/* ---------------- Base reset ---------------- */
+
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+:root {
+  --c1: #fff;
+  --c2: #000000c4;
+  --c3: #566B78;
+  --c4: #333;
+}
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+* {
+  box-sizing: border-box;
+  border-spacing: 0;
+}
+html,body{
+  margin:0;
+  padding: 0;
+}
+html {
+  font: 13pt 'Lato', sans-serif;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+body {
+  background: #FC466B;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3F5EFB, #FC466B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: var(--c1);
+  user-select: none;
+}
+
+header,
+footer,
+figure,
+table,
+video,
+blockquote,
+ul,
+ol,
+dl,
+fieldset,
+pre,
+pre > code {
+  display: block;
+  margin: 0.5rem 0rem;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+hr {
+  border: 0;
+  border-top: 0.1rem solid #f4f5f6;
+}
+
+footer {
+  background-color: var(--c2);
+  text-align: center;
+  margin: 0;
+  padding: 1rem 0;
+}
+/* -- Main container - */
+main {
+  margin: auto;
+  width: 100%;
+  max-width: 60rem;
+  padding: 4rem 0.5rem 0rem;
+  overflow-x: hidden;
+}
+.cnt:not(.hm) {
+  margin-top: 20px;
+  padding: 10px;
+  color: var(--c1);
+  background: var(--c2);
+  border-radius: .3rem;
+}
+
+/* ------------------- Waves ------------------- */
+svg.wave {
+  width: 100%;
+  overflow: visible;
+}
+
+.wave{
+  animation: wave 10s linear;
+  animation-iteration-count: infinite;
+  fill: var(--c2);
+}
+
+@keyframes wave {
+  to {
+    transform: translateX(-100%);
+  }
+}
+.waveb{
+  position: absolute;
+  bottom: 0;
+}
+.wavet{
+  margin-top:60px;
+}
+
+/* ------------------ Navbar ------------------ */
+nav {
+  background-color: var(--c2);
+ 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  padding: 0 .5rem;
+}
+
+nav input {
+  display: none !important;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  list-style: none;
+  overflow: hidden;
+  text-align: center;
+  background-color: transparent;
+}
+nav ul li{
+  max-width: 200px;
+  margin: auto;
+  padding: 0px 14px 0px 14px;
+  text-align: center;
+  line-height: 60px;
+}
+
+nav li a {
+  color: var(--c1);
+  position: relative;
+  text-decoration: none;
+}
+
+nav li a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--c1);
+  transform-origin: bottom right;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+nav li a:hover::before {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+nav > a >img {
+  margin-top: 10px;
+}
+nav > a {
+  display: block;
+  float: left;
+  color: var(--c1);
+  /* menu */
+}
+
+nav > ul {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  /* menu icon */
+}
+
+nav > label {
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+nav > label > span {
+  background: #333;
+  display: block;
+  height: 3px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+nav > label > span:before,
+nav > label > span:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+nav > label > span:before {
+  top: 5px;
+}
+
+nav > label > span:after {
+  top: -5px;
+}
+
+nav > input:checked ~ ul {
+  max-height: 400px;
+}
+
+nav > .nav-bg {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -10;
+  display: none;
+}
+
+nav > input:checked ~ .nav-bg {
+  display: inline;
+}
+
+nav > input:checked ~ label > span {
+  background: transparent;
+}
+
+nav > input:checked ~ label > span:before {
+  transform: rotate(-45deg);
+}
+
+nav > input:checked ~ label > span:after {
+  transform: rotate(45deg);
+}
+
+nav > input:checked ~ label:not(.steps) span:before,
+nav > input:checked ~ label:not(.steps) span:after {
+  top: 0;
+  /* 48em = 768px */
+}
+nav li.social>div {
+  width: 50px;
+  text-align: center;
+  padding: 0 13px !important;
+  vertical-align: middle;
+  display: inline-block;
+}
+nav li.social>div a {
+  vertical-align: middle;
+  display: table-cell;
+  height: 50px;
+  width: 50px;
+}
+nav li.social>div a img ,nav li.social>div a svg{
+  display: block;
+  height: 25px;
+  width: 25px;
+  margin: 0 auto;
+}
+
+@media (min-width: 48rem) {
+  nav li {
+    display: inline-block;
+  }
+ 
+  nav ul {
+    clear: none;
+    max-height: none;
+  }
+  nav > label {
+    display: none !important;
+  }
+}
+
+
+/* -------------- Headers & Pages ------------- */ß
+
+
+@-webkit-keyframes gradientBG {
+  0% {background-position: left top}
+  50% {background-position: right bottom}
+  100% {background-position: left top}
+}
+@keyframes gradientBG {
+  0% {background-position: left top}
+  50% {background-position: right bottom}
+  100% {background-position: left top}
+}
+
+
+section {margin: 10px;}
+.pages>* {display: none;}
+.pages>*:last-child {display: block;}
+@-webkit-keyframes fade {
+  0% {opacity: 0;}
+  50% {opacity: 0.5;}
+  100% {opacity: 1;}
+}
+@keyframes fade {
+  0% {opacity: 0;}
+  50% {opacity: 0.5;}
+  100% {opacity: 1;}
+}
+.pages>*:target {
+  display: block;
+  -webkit-animation: fade 300ms linear 1;
+  animation: fade 300ms linear 1;
+}
+.pages>*:target~* {
+  display: none;
+}
+
+
+header{
+  background: var(--c2);
+  text-align: center;
+  border-radius: .3rem;
+  padding: 4rem .5rem;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#0e78ca, #173145,#000000c4);
+  background-size: 400% 400%;
+  -webkit-animation: gradientBG 2s ease-in;
+  animation: gradientBG 2s ease-in;
+  text-align: center;
+}
+header>h1{
+  margin: 0;
+}
+header a {
+  width: 160px;
+}
+
+footer a {
+  width: 50px;
+  height: 50px;
+  padding: 13px !important;
+  border: none !important;
+}
+
+/* ----------- Grid columns and row ----------- */
+.grid {
+  flex-wrap: wrap;
+}
+
+.row,
+.grid {
+  display: flex;
+  margin: 1rem -0.5rem;
+  align-items: stretch;
+}
+
+.row [class*="col"],
+.row>div,
+.grid [class*="col"],
+.grid>div {
+  padding: .5rem;
+}
+
+.row .col,
+.row>div,
+.grid .col,
+.grid>div {
+  flex: 1 1 100%;
+}
+
+.row .col-2,
+.grid .col-2 {
+  flex: 0 0 16.66%;
+}
+
+.row .col-3,
+.grid .col-3 {
+  flex: 0 0 25%;
+}
+
+.row .col-4,
+.grid .col-4 {
+  flex: 0 0 33.33%;
+}
+
+.row .col-6,
+.grid .col-6 {
+  flex: 0 0 50%;
+}
+
+.row [class*="col"]>*,
+.row>div>*,
+.grid [class*="col"]>*,
+.grid>div>* {
+  margin-top: 0;
+}
+main.full, .cnt.full {
+  max-width: 90rem!important;
+}
+@media (max-width: 40em) {
+
+  .row:not(.keep-width),
+  .grid:not(.keep-width) {
+    flex-direction: column !important;
+  }
+  ._g-2{
+    grid-template-columns: unset!important;
+  }
+}
+/* ------------------ Heading ----------------- */
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0 0;
+}
+
+h1 {
+  font-size: 2.6em;
+}
+
+h2 {
+  font-size: 2.0em;
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+h4 {
+  font-size: 1.4em;
+}
+
+h5 {
+  font-size: 1.2em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+p strong, p b {
+  color: #191919;
+}
+
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+  margin: 0.5em 0 0;
+}
+
+
+/* ------------ Aside menu on right ----------- */
+aside {
+  position: absolute;
+  margin-left: 58rem;
+  max-width: 10rem;
+  font-size: smaller;
+  background: #fff;
+  padding: .5rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+aside.fixed {
+  position: fixed;
+  top: 5rem;
+}
+
+@media (max-width: 85rem) {
+  aside {
+    position: relative !important;
+    margin: 1rem 0;
+    top: 0 !important;
+  }
+}
+
+
+/* ---------------- Skills page --------------- */
+
+.skills-prog ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills-prog ul li {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  transition-duration: 0.3s;
+}
+
+.skills-prog ul li:hover {
+  color: #FC466B;
+}
+
+.skills-prog ul li:hover .skills-bar .bar {
+  background: #FC466B;
+  box-shadow: 0 0 0 1px #FC466B;
+}
+
+.skills-prog ul li span {
+  display: block;
+  width: 120px;
+}
+
+.skills-prog ul li .skills-bar {
+  background: #96969693;
+  height: 4px;
+  width: calc(100% - 120px);
+  position: relative;
+  border-radius: 2px;
+}
+
+.skills-prog ul li .skills-bar .bar {
+  position: absolute;
+  top: -2px;
+  height: 8px;
+  background: #3F5EFB;
+  box-shadow: 0 0 0 #3F5EFB;
+  border-radius: 5px;
+}
+
+
+/* -------------- Filter buttons -------------- */
+
+.filter-button-group {
+  padding: 10px;
+  background: var(--c2);
+  border-radius: .3rem;
+}
+
+.filter-button-group>button.active {
+  background-color: #DDDDDD;
+  color: var(--c2);
+}
+
+.filter-button-group>button {
+  color: var(--c2);
+  border:none;
+  border-radius: .3rem;
+  outline: none;
+  margin:5px;
+  padding: 12px 16px;
+  position: relative;
+  background-color: #f5f5f5;
+}
+
+/* --------------- Project cards -------------- */
+.grid-item {
+  width: 25%;
+}
+.card img {
+  width: 100%;
+  border-radius: .3rem;
+}
+
+.card {
+  color: var(--c1);
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--c2);
+  border-radius: .3rem;
+  height: 100%;
+  padding: 10px;
+  margin: 5px;
+}
+
+.card-f a {
+  width: 100%;
+}
+
+/* ------------------- Links ------------------ */
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.links{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.links a {
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  border-radius: 4px;
+  padding: 0.8em;
+  text-decoration: none;
+  -webkit-transition: ease-in-out all 200ms;
+  transition: ease-in-out all 200ms;
+  margin: 5px;
+}
+
+/* ----------------- Utilities ---------------- */
+
+._center {
+  text-align: center !important;
+}
+._flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/***************************************************
+ * Generated by SVG Artista on 2/6/2020, 4:45:15 PM
+ * MIT license (https://opensource.org/licenses/MIT)
+ * W. https://svgartista.net
+ **************************************************/
+
+ svg .svg-elem-1 {
+  stroke-dashoffset: 3391.037353515625px;
+  stroke-dasharray: 3391.037353515625px;
+  -webkit-transition: stroke-dashoffset 6s ease 0s;
+  transition: stroke-dashoffset 6s ease 0s;
+}
+svg.startA .svg-elem-1 {
+  stroke-dashoffset: 0;
+}
+svg .svg-elem-2 {
+  stroke-dashoffset: 3387.7763671875px;
+  stroke-dasharray: 3387.7763671875px;
+  -webkit-transition: stroke-dashoffset 6s ease 0s;
+  transition: stroke-dashoffset 6s ease 0s;
+}
+svg.startA .svg-elem-2 {
+  stroke-dashoffset: 0;
+}
+svg .svg-elem-3 {
+  stroke-dashoffset: 3383.84814453125px;
+  stroke-dasharray: 3383.84814453125px;
+  -webkit-transition: stroke-dashoffset 6s ease 0s;
+  transition: stroke-dashoffset 6s ease 0s;
+}
+svg.startA .svg-elem-3 {
+  stroke-dashoffset: 0;
+}
+svg .svg-elem-4 {
+  stroke-dashoffset: 3380.08642578125px;
+  stroke-dasharray: 3380.08642578125px;
+  -webkit-transition: stroke-dashoffset 6s ease 0s;
+  transition: stroke-dashoffset 6s ease 0s;
+}
+svg.startA .svg-elem-4 {
+  stroke-dashoffset: 0;
+}
+svg .svg-elem-5 {
+  stroke-dashoffset: 3376.909912109375px;
+  stroke-dasharray: 3376.909912109375px;
+  -webkit-transition: stroke-dashoffset 6s ease 0s;
+  transition: stroke-dashoffset 6s ease 0s;
+}
+svg.startA .svg-elem-5 {
+  stroke-dashoffset: 0;
+}
+svg .svg-elem-6 {
+  stroke-dashoffset: 3372.852783203125px;
+  stroke-dasharray: 3372.852783203125px;
+  -webkit-transition: stroke-dashoffset 6s ease 0s;
+  transition: stroke-dashoffset 6s ease 0s;
+}
+svg.startA .svg-elem-6 {
+  stroke-dashoffset: 0;
+}
+svg .svg-elem-7 {
+  stroke-dashoffset: 3369.650634765625px;
+  stroke-dasharray: 3369.650634765625px;
+  -webkit-transition: stroke-dashoffset 6s ease 0s;
+  transition: stroke-dashoffset 6s ease 0s;
+}
+svg.startA .svg-elem-7 {
+  stroke-dashoffset: 0;
+}
+/* End of SVG Artista*/
