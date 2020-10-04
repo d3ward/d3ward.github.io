@@ -681,3 +681,44 @@ svg.startA .svg-elem-7 {
   stroke-dashoffset: 0;
 }
 /* End of SVG Artista*/
+
+
+.hidden {
+  display: none;
+}
+
+
+.go_top {
+  transition: all .25s ease-in-out;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1em 1em 0;
+  text-align: center;
+  text-align: center;
+  border-radius: 8px;
+  padding: .5em;
+  width: 50px;
+  height: 50px;
+  background-color: var(--c2);
+}
+
+.go_top.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.go_top.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.go_top svg {
+  fill: #efefef;
+  width: 24px;
+  height: 30px;
+}
