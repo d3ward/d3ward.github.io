@@ -28,7 +28,7 @@
               src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"></a>
         </div>
         <div>
-          <a href="https://github.com/d3ward" class="git_btn">
+          <a href="https://github.com/d3ward" >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
               class="feather feather-github">
@@ -46,69 +46,7 @@
       d="M 0 0 v 6 C 30 6 30 10 60 10 C 91 10 90 6 120 6 C 150 6 150 10 180 10 C 210 10 210 6 240 6 v -6 h -240 z" />
   </svg>
   <main role="main" class="pages">
-    <section id="floatly">
-      <header class="nes-header">
-        <h1>Floatly</h1>
-      </header>
-      <div class="cnt">
 
-      </div>
-    </section>
-    <section id="apteryx">
-      <header class="apteryx-hd">
-        <h1>Apteryx-Game</h1>
-        <div class="links">
-          <a href="https://github.com/d3ward/Apteryx-Game" target="_blank"><i class="fab fa-github"></i> View on
-            GitHub</a>
-          <a href="https://d3ward.github.io/Apteryx-Game/" target="_blank"> Demo</a>
-        </div>
-      </header>
-      <div class="cnt">
-        A modified version of the t-rex runner game from chrome offline err page. <br>
-        This version instead of t-rex has a kiwi bird , from the genus Apteryx
-
-      </div>
-    </section>
-    <section id="ntp">
-      <header class="ntp-hd">
-        <h1>New Tab Page</h1>
-      </header>
-      <div class="cnt">
-
-      </div>
-    </section>
-    <section id="mti">
-      <header class="nes-header">
-        <h1>Meta Theme Injector</h1>
-      </header>
-      <div class="cnt">
-
-      </div>
-    </section>
-    <section id="dvd">
-      <header class="nes-header">
-        <h1>DVD Bounce</h1>
-      </header>
-      <div class="cnt">
-
-      </div>
-    </section>
-    <section id="toolz">
-      <header class="nes-header">
-        <h1>Toolz</h1>
-      </header>
-      <div class="cnt">
-
-      </div>
-    </section>
-    <section id="mti">
-      <header class="nes-header">
-        <h1>Meta Theme Injector</h1>
-      </header>
-      <div class="cnt">
-
-      </div>
-    </section>
     <section id="about">
       <div class="cnt">
         <h3 class="_center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -214,92 +152,323 @@
           <button data-filter=".oth">Others</button>
         </div>
         <div class="grid_p">
+          <style>
+            .box {
+              position: relative;
+              max-height: 300px;
+              height: 300px;
+              display: flex;
+              align-content: center;
+              justify-content: center;
+              overflow: hidden;
+              color: var(--c1);
+              text-align: center;
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+              background-color: var(--c2);
+              border-radius: .3rem;
+              padding: 10px;
+              margin: 5px;
+            }
+
+            .box .content {
+              display: flex;
+              align-content: center;
+              justify-content: center;
+              flex-flow: column;
+              padding-top: 5em;
+              transition: all 0.4s ease-in-out;
+            }
+
+            .box .content img {
+              width: 140px;
+              border-radius: 15px;
+              margin: auto;
+              transition: all 0.4s ease-in-out;
+              filter: grayscale(100%) brightness(75%);
+            }
+
+            .box .content p {
+              font-size: 1.2em;
+              font-weight: 700;
+              margin-top: 0em;
+              transition: all 0.4s ease-in-out;
+            }
+
+            .box .content .desc {
+              transform: scale(0, 0);
+              transition: all 0.4s ease-in-out;
+            }
+
+            .box .content .desc .line {
+              border-top: 1px solid #fff;
+              width: 0px;
+              margin-top: 0em;
+              margin-bottom: 1em;
+              transition: all 0.4s ease-in-out;
+            }
+
+            .box .content .desc p {
+              font-size: 1em !important;
+              font-weight: 600;
+              text-transform: none;
+              margin-top: 0em;
+            }
+
+            .box:hover .content {
+              padding-top: 0em;
+              cursor: pointer;
+            }
+
+            .box:hover .content img {
+              width: 80px;
+              border-radius: 8px;
+              filter: none;
+            }
+
+            .box:hover .content .desc {
+              display: block !important;
+              transform: scale(1, 1);
+            }
+            .box:hover .content .desc .line {
+              width: 50px;
+            }
+          </style>
           <div class="grid-item kiwi">
-            <a href="#apteryx">
-              <div class="card">
-                <img src="img/apt.jpg" alt="Image">
-                <h5>Apteryx-Game</h5>
+            <div class="box">
+              <div class="content">
+               <img src="img/apt.svg" alt="">
+                <p>Apteryx-Game</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
           <div class="grid-item kiwi">
-            <a href="#ntp">
-              <div class="card ">
-                <img src="img/ntp.jpg" alt="Image">
-                <h5>New Tab Page</h5>
+            <div class="box">
+              <div class="content">
+               <img src="img/ntp.jpg" alt="">
+                <p>New Tab Page</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                  <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
           <div class="grid-item kiwi">
-            <a href="https://kiwibrowser.com" target="_blank">
-              <div class="card ">
-                <img src="img/kiwi.jpg" alt="Image">
-                <h5>Kiwi Browser</h5>
+            <div class="box">
+              <div class="content">
+               <img src="img/kiwi.svg" alt="">
+                <p>Kiwi Browser</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
+          </div>
+          <div class="grid-item kiwi">
+            <div class="box">
+              <div class="content">
+               <img src="img/kiwi.svg" alt="">
+                <p>Kiwi Sync</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="grid-item ext script">
-            <a href="#mti">
-              <div class="card">
-                <img src="img/mti.jpg" alt="Image">
-                <h5>Meta Theme Injector</h5>
+            <div class="box">
+              <div class="content">
+               <img src="img/mti.jpg" alt="">
+                <p>Meta Theme Injector</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
           <div class="grid-item ext">
-            <a href="#floatly">
-              <div class="card">
-                <img src="img/flt.png" alt="Image">
-                <h5>Floatly</h5>
+            <div class="box">
+              <div class="content">
+               <img src="img/floatly.jpg" alt="">
+                <p>WEL</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
+          </div>
+          <div class="grid-item ext">
+            <div class="box">
+              <div class="content">
+               <img src="img/floatly.jpg" alt="">
+                <p>Floatly</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="grid-item rmskin">
-            <a href="#dvd">
-              <div class="card">
-                <img src="img/dvd.png" alt="Image">
-                <h5>Bouncy DVD</h5>
+            <div class="box">
+              <div class="content">
+               <img src="img/dvd.png" alt="">
+                <p>Bouncy DVD</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
-
           <div class="grid-item oth">
-            <a href="#toolz">
-              <div class="card">
-                <img src="img/flt.png" alt="Image">
-                <h5>Toolz</h5>
+            <div class="box">
+              <div class="content">
+               <img src="img/b2ntp.svg" alt="">
+                <p>b2ntp</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
+          </div>
+          <div class="grid-item oth">
+            <div class="box">
+              <div class="content">
+               <img src="img/b2ntp.svg" alt="">
+                <p>TaskM</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid-item oth">
+            <div class="box">
+              <div class="content">
+               <img src="img/b2ntp.svg" alt="">
+                <p>Scriptz</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid-item oth">
+            <div class="box">
+              <div class="content">
+               <img src="img/toolz.svg" alt="">
+                <p>Toolz</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="grid-item rmskin">
-            <a href="#polaroidl">
-              <div class="card">
-                <img src="img/flt.png" alt="Image">
-                <h5>Polaroid Launcher</h5>
+            <div class="box">
+              <div class="content">
+               <img src="img/polaroid.svg" alt="">
+                <p>Polaroid Launcher</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
           <div class="grid-item script">
-            <a href="#MobileCWS">
-              <div class="card">
-                <img src="img/flt.png" alt="Image">
-                <h5>Mobile Friendly CWS</h5>
+            <div class="box">
+              <div class="content">
+               <img src="img/mti.jpg" alt="">
+                <p>Mobile Friendly CWS</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
-          <div class="grid-item rmskin"><a href="#qbios">
-              <div class="card">
-                <img src="img/bios.png" alt="Image">
-                <h5>Quick BIOS</h5>
+          <div class="grid-item rmskin">
+            <div class="box">
+              <div class="content">
+               <img src="img/mti.jpg" alt="">
+                <p>Quick Bios</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
-          <div class="grid-item rmskin"><a href="#w3bars">
-              <div class="card">
-                <img src="img/flt.png" alt="Image">
-                <h5>W3Bars</h5>
+          <div class="grid-item rmskin">
+            <div class="box">
+              <div class="content">
+               <img src="img/mti.jpg" alt="">
+                <p>W3Bars</p>
+                <div class="desc">
+                  <hr>
+                  <p class="links">
+                    <a class="btn" href="">Demo</a>
+                    <a class="btn" href=""> github</a>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
 
         </div>
@@ -307,8 +476,13 @@
     </section>
   </main>
 
-  <a class="go_top hide" href="" id="go_top"><svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 12 6">
-      <path d="M12 6H0l6-6z" /></svg></a>
+  <a class="gt-link hide" href="" id="gt-link">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      
+      <path d="M18 15l-6-6l-6 6h12" />
+    </svg>
+  </a>
   <svg viewBox="0 0 120 12" style="margin-bottom:-7px;margin-top:6rem;">
     <path class="wave"
       d="M 0 0 C 30 0 30 5 60 5 C 90 5 90 0 120 0 C 150 0 150 5 180 5 C 210 5 210 0 240 0 v 12 h -240 z" />

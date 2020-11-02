@@ -109,7 +109,6 @@ svg.wave {
 /* ------------------ Navbar ------------------ */
 nav {
   background-color: var(--c2);
- 
   position: fixed;
   top: 0;
   left: 0;
@@ -250,7 +249,6 @@ nav > input:checked ~ label > span:after {
 nav > input:checked ~ label:not(.steps) span:before,
 nav > input:checked ~ label:not(.steps) span:after {
   top: 0;
-  /* 48em = 768px */
 }
 nav li.social>div {
   width: 50px;
@@ -556,8 +554,36 @@ aside.fixed {
 
 /* --------------- Project cards -------------- */
 .grid-item {
-  width: 25%;
+  width: 25% ;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .grid-item {width: 50%;}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .grid-item {width: 50%;}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .grid-item {width: 33.33%;}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .grid-item {width: 25%;}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .grid-item {width: 25%;}
+}
+
+
+
 .card img {
   width: 100%;
   border-radius: .3rem;
@@ -577,6 +603,7 @@ aside.fixed {
 .card-f a {
   width: 100%;
 }
+
 
 /* ------------------- Links ------------------ */
 a {
@@ -686,9 +713,8 @@ svg.startA .svg-elem-7 {
 .hidden {
   display: none;
 }
-
-
-.go_top {
+/* ---------------- Go Top Link --------------- */
+.gt-link {
   transition: all .25s ease-in-out;
   position: fixed;
   bottom: 0;
@@ -697,28 +723,36 @@ svg.startA .svg-elem-7 {
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  margin: 0 1em 1em 0;
-  text-align: center;
-  text-align: center;
-  border-radius: 8px;
-  padding: .5em;
+  border: 0px ;
+  border-radius: 0.3rem;
+  margin: .5rem;
+  padding: .25em;
   width: 50px;
   height: 50px;
   background-color: var(--c2);
 }
 
-.go_top.show {
+.gt-link.show {
   visibility: visible;
   opacity: 1;
 }
 
-.go_top.hide {
+.gt-link.hide {
   visibility: hidden;
   opacity: 0;
 }
 
-.go_top svg {
-  fill: #efefef;
-  width: 24px;
-  height: 30px;
+.gt-link svg {
+  fill: #fff;
+  width: 32px;
+  height: 32px;
 }
+
+.gt-link:hover {
+  background-color: var(--c2);
+}
+
+.gt-link:hover svg {
+  fill: #fff;
+}
+

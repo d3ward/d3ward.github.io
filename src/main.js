@@ -54,33 +54,30 @@ for (let index = 0; index < cards.length; index++) {
   })
 }
 
-//Gotop button config
- // Set a variable for our button element.
- const navbar = document.getElementById("nav");
- const scrollToTopButton = document.getElementById('go_top');
- const scrollFunc = () => {
-     let y = window.scrollY;
-     if (y > 0) {
-        navbar.style.backgroundColor ='#000';
-         scrollToTopButton.className = "go_top show";
-     } else {
-      navbar.style.backgroundColor ='#000000c4';
-         scrollToTopButton.className = "go_top hide";
-     }
- };
- window.addEventListener("scroll", scrollFunc);
- const scrollToTop = () => {
-     const c = document.documentElement.scrollTop || document.body.scrollTop;
-     if (c > 0) {
-         window.requestAnimationFrame(scrollToTop);
-         window.scrollTo(0, c - c / 10);
-     }
- };
- scrollToTopButton.onclick = function (e) {
-     e.preventDefault();
-     scrollToTop();
- }
 
+
+
+ const gt_btn = document.getElementById('gt-link');
+ // Let's set up a function that shows our scroll-to-top button if we scroll beyond the height of the initial window.
+ window.addEventListener("scroll", () => {
+   let y = window.scrollY;
+   if (y > 0) {
+     gt_btn.className = "gt-link show";
+   } else {
+     gt_btn.className = "gt-link hide";
+   }
+ });
+
+ gt_btn.onclick = function (e) {
+   e.preventDefault();
+   if (document.documentElement.scrollTop || document.body.scrollTop > 0) {
+     window.scroll({
+       top: 0,
+       left: 0,
+       behavior: 'smooth'
+     });
+   }
+ }
  
 
 
