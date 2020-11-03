@@ -559,7 +559,7 @@ aside.fixed {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .grid-item {width: 50%;}
+  .grid-item {width: 100%;}
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
