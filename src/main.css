@@ -481,50 +481,6 @@ aside.fixed {
 }
 
 
-/* ---------------- Skills page --------------- */
-
-.skills-prog ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.skills-prog ul li {
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  transition-duration: 0.3s;
-}
-
-.skills-prog ul li:hover {
-  color: #FC466B;
-}
-
-.skills-prog ul li:hover .skills-bar .bar {
-  background: #FC466B;
-  box-shadow: 0 0 0 1px #FC466B;
-}
-
-.skills-prog ul li span {
-  display: block;
-  width: 120px;
-}
-
-.skills-prog ul li .skills-bar {
-  background: #96969693;
-  height: 4px;
-  width: calc(100% - 120px);
-  position: relative;
-  border-radius: 2px;
-}
-
-.skills-prog ul li .skills-bar .bar {
-  position: absolute;
-  top: -2px;
-  height: 8px;
-  background: #3F5EFB;
-  box-shadow: 0 0 0 #3F5EFB;
-  border-radius: 5px;
-}
 
 
 /* -------------- Filter buttons -------------- */
@@ -755,3 +711,33 @@ svg.startA .svg-elem-7 {
   fill: #fff;
 }
 
+
+.skill ul {
+  list-style: none;
+  padding: 0;
+}
+.skill li {
+  padding: 10px;
+  margin: 0;
+  margin-bottom: 5px;
+  background: #0f0f0f;
+  border-radius: .3rem;
+}
+.skill i{
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.skill img {
+  max-height: 18px;
+}
+
+._mx{
+  margin: auto;
+}
