@@ -410,7 +410,6 @@ nav li img, nav li svg {
   width: 1.4rem;
   fill: var(--cl);
   margin: 0 auto;
-  vertical-align: middle;
   max-height: 1.7rem;
 }
 
@@ -611,8 +610,8 @@ button:not([disabled]):hover,
 button,
 .btn {
   display: inline-flex;
-  display-align-items: center;
-  display-text-align: center;
+  align-items: center;
+  text-align: center;
   border: 2px solid var(--primary);
   outline: none;
   padding: 0.6rem 1rem;
@@ -634,7 +633,6 @@ button > svg,
   width: 1rem;
   fill: var(--cl);
   margin: 0 auto;
-  vertical-align: middle;
   max-height: 1.7rem;
 }
 
@@ -1236,8 +1234,8 @@ tfoot th {
   margin-right: 0.2rem;
   cursor: pointer;
   border-bottom: 0.2rem solid transparent;
-  border-bottom-font-weight: bold;
-  border-bottom-transition: background ease 0.2s;
+  font-weight: bold;
+  transition: background ease 0.2s;
 }
 
 .tabs > div {
