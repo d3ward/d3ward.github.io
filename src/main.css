@@ -2,10 +2,10 @@ html, [data-theme='light'] {
   --black: #060609;
   --white: #f2f4f7;
   --green: #2ECC40;
+  --blue: #0074D8;
   --red: #FF4132;
   --orange: #FF851A;
   --yellow: #ffcd36;
-  --blue: #0074D8;
   --primary: var(--blue);
   --secondary: #536390;
   --cl: #14191f;
