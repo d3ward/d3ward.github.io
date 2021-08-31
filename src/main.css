@@ -1,6 +1,6 @@
 @charset "UTF-8";
 html, [data-theme=light] {
-  --black: #060609;
+  --black: #000;
   --white: #fff;
   --green: #2ECC40;
   --blue: #0074D8;
@@ -8,11 +8,13 @@ html, [data-theme=light] {
   --orange: #FF851A;
   --yellow: #ffcd36;
   --primary: var(--blue);
-  --cl: #14191f;
-  --cl2: var(--white);
+  --accent: #E3F2FD;
+  --active:#ECEFF1;
+  --txt: #14191f;
+  --txt-r: var(--white);
   --bg: #ffffff;
-  --bg2: #f3f4f6;
-  --bg3: #cfd6e1;
+  --bg2: #f9fafb;
+  --bg3: #edf0f2;
   --brd: #C4CDD5;
   --brd2: #a8afb6;
   --bg-nav: var(--bg);
@@ -24,10 +26,12 @@ html, [data-theme=light] {
   --bg-btn-hover: inset 0 0 100px 100px #ffffff20;
   --txt-btn: var(--white);
   --brd-btn: var(--primary);
-  --bg-card: var(--bg2);
+  --bg-card: var(--bg);
   --bg-details: var(--bg2);
-  --bg-details-open: var(--bg3);
+  --bg-details-open: var(--primary);
+  --txt-details-open: var(--txt-r);
   --bg-aside: transparent;
+  --shadow-aside: none;
   --bg-tabs: var(--bg);
   --brd-tabs-l: var(--primary);
   --brd-tabs: var(--bg2);
@@ -35,9 +39,7 @@ html, [data-theme=light] {
   --fake-brd-table: inset 0 0px 0px 1px rgb(0 0 0 / 16%);
   --bg-table-hover: var(--bg3);
   --brd-table: var(--bg3);
-  --shadow-aside: none;
-  --b-shadow: #95abbb;
-  --shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   --radius: .4rem;
 }
 
@@ -49,8 +51,8 @@ html, [data-theme=light] {
   --red: #ff564d;
   --orange: #ff9f4d;
   --yellow: #ffd24d;
-  --cl: #f2f4f7;
-  --cl2: #14191f;
+  --txt: #f2f4f7;
+  --txt-r: #14191f;
   --bg3: #2c3844;
   --bg2: #242e37;
   --bg: #14191f;
@@ -64,7 +66,6 @@ html, [data-theme=light] {
   --bg-card: var(--bg3);
   --bg-details: var(--bg2);
   --bg-details2: var(--bg3);
-  --b-shadow: var(--black);
   --shadow: none;
 }
 
@@ -88,7 +89,7 @@ html {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   font-size: 13pt;
   scroll-behavior: smooth;
-  color: var(--cl);
+  color: var(--txt);
   background: var(--bg);
 }
 
@@ -190,7 +191,7 @@ p {
 }
 
 p strong, p b {
-  color: var(--cl);
+  color: var(--txt);
 }
 
 h1 + h2,
@@ -225,13 +226,13 @@ summary {
 }
 
 time {
-  color: var(--cl);
+  color: var(--txt);
   opacity: 0.7;
 }
 
 mark {
   background-color: var(--primary);
-  color: var(--cl2);
+  color: var(--txt-r);
   padding: 0.1rem 0.2rem;
   font-size: 90%;
 }
@@ -259,6 +260,9 @@ a {
   color: var(--primary);
   text-decoration: none;
   cursor: pointer;
+}
+a:not([class*=btn]) {
+  border-bottom: 2px solid transparent;
 }
 a:not([class*=btn]):hover {
   border-bottom: 2px solid currentColor;
@@ -330,7 +334,7 @@ nav > ul > li {
 nav > ul > li > a, nav > ul > li .nav-item {
   padding: 0.6rem;
   border-radius: var(--radius);
-  color: var(--cl);
+  color: var(--txt);
 }
 nav > ul > li > a:hover, nav > ul > li > a.active, nav > ul > li .nav-item:hover, nav > ul > li .nav-item.active {
   color: var(--primary);
@@ -511,6 +515,7 @@ button,
   border-radius: var(--radius);
   margin: 0.5rem;
   height: 2.6rem;
+  min-width: 100px;
   transition: all 0.2s ease-in-out;
   -webkit-tap-highlight-color: transparent;
 }
@@ -518,9 +523,9 @@ button:focus,
 [class^=btn]:focus {
   outline: none;
 }
-button.mw-100,
-[class^=btn].mw-100 {
-  min-width: 100px;
+button.mw-auto,
+[class^=btn].mw-auto {
+  min-width: unset;
 }
 button[disabled],
 [class^=btn][disabled] {
@@ -535,7 +540,7 @@ button:not([disabled]):hover,
 button.ghost,
 [class^=btn].ghost {
   background: transparent;
-  color: var(--bg-btn);
+  color: var(--txt);
   border: 2px solid var(--bg-btn);
 }
 button.ghost:hover,
@@ -550,23 +555,22 @@ button > svg,
   height: 1.3rem;
   width: 1.3rem;
   fill: currentColor;
-  margin: 0 auto;
   max-height: 1.7rem;
 }
 
 .btn-transparent {
   --bg-btn: transparent;
-  --txt-btn: var(--cl2);
+  --txt-btn: var(--txt-r);
 }
 
 .btn-cl2 {
-  --bg-btn: var(--cl2);
-  --txt-btn: var(--cl);
+  --bg-btn: var(--txt-r);
+  --txt-btn: var(--txt);
 }
 
 .btn-bg2 {
   --bg-btn: var(--bg2);
-  --txt-btn: var(--cl);
+  --txt-btn: var(--txt);
 }
 
 .btn-black {
@@ -576,17 +580,17 @@ button > svg,
 
 .btn-white {
   --bg-btn: var(--white);
-  --txt-btn: var(--cl);
+  --txt-btn: var(--black);
 }
 
 .btn-blue {
   --bg-btn: var(--blue);
-  --txt-btn: var(--cl2);
+  --txt-btn: var(--txt-r);
 }
 
 .btn-red {
   --bg-btn: var(--red);
-  --txt-btn: var(--cl);
+  --txt-btn: var(--txt);
 }
 
 .btn-green {
@@ -619,19 +623,22 @@ button > svg,
   width: 100%;
   margin: 0;
 }
-.card>.img-w {
-  box-shadow: 0 8px 20px -4px var(--b-shadow);
-  max-width: 100%;
-  border-radius: 50%;
-  margin: 15px auto 15px;
-
-  width: 200px;
-    height: 200px;
-}
-.card>.img-w> img {
+.card > img {
   height: auto;
-  border-radius:  50%;
+  border-radius: var(--radius);
   width: 100%;
+}
+.card > img.full {
+  width: calc( 100% + 2rem );
+  max-width: unset;
+}
+.card > img.full:first-child {
+  border-radius: var(--radius) var(--radius) 0 0;
+  margin: -1rem -1rem 0 -1rem;
+}
+.card > img.full:last-child {
+  border-radius: 0 0 var(--radius) var(--radius);
+  margin: 0 -1rem -1rem -1rem;
 }
 
 .field {
@@ -687,7 +694,7 @@ input[type=color]::-webkit-color-swatch {
 textarea,
 input:not([type=color]):not([type=range]):not([type=radio]):not([type=checkbox]),
 select {
-  color: var(--cl);
+  color: var(--txt);
   background: var(--bg-input);
   padding: 0.6rem;
   border-radius: var(--radius);
@@ -906,7 +913,6 @@ input[type=radio]:not(.toggle):checked:after {
   transform-origin: right top;
   position: absolute;
   border-radius: var(--radius);
-  border: 2px solid var(--brd);
   background-color: var(--bg);
   box-shadow: var(--shadow);
   top: 100%;
@@ -993,11 +999,12 @@ input[type=radio]:not(.toggle):checked:after {
   bottom: 0;
   right: 0;
   z-index: 1;
+  min-width: unset;
   cursor: pointer;
   visibility: visible;
   opacity: 1;
 }
-.gt-link.hide {
+.gt-link.hidden {
   visibility: hidden;
   opacity: 0;
 }
@@ -1014,8 +1021,8 @@ pre > code {
 }
 
 kbd {
-  border: 1px solid var(--cl);
-  border-bottom: 3px solid var(--cl);
+  border: 1px solid var(--txt);
+  border-bottom: 3px solid var(--txt);
 }
 
 code {
@@ -1068,7 +1075,6 @@ details {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  transition: height 0.3s ease-in-out;
   background: var(--bg-details);
 }
 details > summary {
@@ -1078,7 +1084,6 @@ details > summary {
   outline: 0;
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.4s ease-in-out;
 }
 details > summary:hover {
   color: var(--primary);
@@ -1089,11 +1094,8 @@ details > div {
 }
 
 details[open] summary {
-  background-color: var(--bg-details-open) !important;
-}
-details[open] > summary:hover {
-  color: var(--primary);
-  background-color: var(--bg-details);
+  background-color: var(--bg-details-open);
+  color: var(--txt-details-open);
 }
 
 details + details {
@@ -1114,7 +1116,7 @@ table caption {
 }
 table thead {
   background: var(--primary);
-  color: var(--cl2);
+  color: var(--txt-r);
 }
 table thead th:first-child {
   border-top-left-radius: var(--radius);
@@ -1236,7 +1238,7 @@ table tfoot {
 
 [data-tooltip]::after {
   background-color: var(--primary);
-  color: var(--cl2);
+  color: var(--txt-r);
   font-size: 14px;
   padding: 8px 12px;
   height: -webkit-fit-content;
@@ -1417,14 +1419,6 @@ svg.wave > path {
   background-color: var(--primary) !important;
 }
 
-._bg-cl2 {
-  background-color: var(--cl2) !important;
-}
-
-._bg-cl {
-  background-color: var(--cl) !important;
-}
-
 ._bg-black {
   background-color: var(--black) !important;
 }
@@ -1435,18 +1429,6 @@ svg.wave > path {
 
 ._bg-blue {
   background-color: var(--blue) !important;
-}
-
-._bg-bg {
-  background-color: var(--bg) !important;
-}
-
-._bg-bg2 {
-  background-color: var(--bg2) !important;
-}
-
-._bg-bg3 {
-  background-color: var(--bg3) !important;
 }
 
 ._bg-red {
@@ -1463,6 +1445,18 @@ svg.wave > path {
 
 ._bg-orange {
   background-color: var(--orange) !important;
+}
+
+._bg {
+  background-color: var(--bg) !important;
+}
+
+._bg2 {
+  background-color: var(--bg2) !important;
+}
+
+._bg3 {
+  background-color: var(--bg3) !important;
 }
 
 /* -------------- Border Utility -------------- */
@@ -1483,12 +1477,12 @@ svg.wave > path {
   border: 2px solid var(--primary) !important;
 }
 
-._brd-cl2 {
-  border: 2px solid var(--cl2) !important;
+._brd-txt-r {
+  border: 2px solid var(--txt-r) !important;
 }
 
-._brd-cl {
-  border: 2px solid var(--cl) !important;
+._brd-txt {
+  border: 2px solid var(--txt) !important;
 }
 
 ._brd-black {
@@ -1676,33 +1670,25 @@ svg.wave > path {
 }
 
 /* -------------- Spacer Utility -------------- */
-[class$="-0"] {
+[class*="-0"] {
   --spacer: 0!important;
 }
 
-[class$="-1"] {
+[class*="-1"] {
   --spacer: 1rem!important;
 }
 
-[class$="-2"] {
+[class*="-2"] {
   --spacer: 2rem!important;
 }
 
-[class$="-3"] {
+[class*="-3"] {
   --spacer: 3rem!important;
 }
 
 /* ------------ Text Color Utility ------------ */
 ._txt-primary {
   color: var(--primary) !important;
-}
-
-._txt-cl2 {
-  color: var(--cl2) !important;
-}
-
-._txt-cl {
-  color: var(--cl) !important;
 }
 
 ._txt-black {
@@ -1715,18 +1701,6 @@ svg.wave > path {
 
 ._txt-blue {
   color: var(--blue) !important;
-}
-
-._txt-bg {
-  color: var(--bg) !important;
-}
-
-._txt-bg2 {
-  color: var(--bg2) !important;
-}
-
-._txt-bg3 {
-  color: var(--bg3) !important;
 }
 
 ._txt-red {
@@ -1745,75 +1719,10 @@ svg.wave > path {
   color: var(--orange) !important;
 }
 
-/*# sourceMappingURL=liquid.css.map */
+._txt {
+  color: var(--txt) !important;
+}
 
-/***************************************************
- * Generated by SVG Artista on 2/6/2020, 4:45:15 PM
- * MIT license (https://opensource.org/licenses/MIT)
- * W. https://svgartista.net
- **************************************************/
-
- svg .svg-elem-1 {
-  stroke-dashoffset: 3391.037353515625px;
-  stroke-dasharray: 3391.037353515625px;
-  -webkit-transition: stroke-dashoffset 6s ease 0s;
-  transition: stroke-dashoffset 6s ease 0s;
+._txt-r {
+  color: var(--txt-r) !important;
 }
-svg.startA .svg-elem-1 {
-  stroke-dashoffset: 0;
-}
-svg .svg-elem-2 {
-  stroke-dashoffset: 3387.7763671875px;
-  stroke-dasharray: 3387.7763671875px;
-  -webkit-transition: stroke-dashoffset 6s ease 0s;
-  transition: stroke-dashoffset 6s ease 0s;
-}
-svg.startA .svg-elem-2 {
-  stroke-dashoffset: 0;
-}
-svg .svg-elem-3 {
-  stroke-dashoffset: 3383.84814453125px;
-  stroke-dasharray: 3383.84814453125px;
-  -webkit-transition: stroke-dashoffset 6s ease 0s;
-  transition: stroke-dashoffset 6s ease 0s;
-}
-svg.startA .svg-elem-3 {
-  stroke-dashoffset: 0;
-}
-svg .svg-elem-4 {
-  stroke-dashoffset: 3380.08642578125px;
-  stroke-dasharray: 3380.08642578125px;
-  -webkit-transition: stroke-dashoffset 6s ease 0s;
-  transition: stroke-dashoffset 6s ease 0s;
-}
-svg.startA .svg-elem-4 {
-  stroke-dashoffset: 0;
-}
-svg .svg-elem-5 {
-  stroke-dashoffset: 3376.909912109375px;
-  stroke-dasharray: 3376.909912109375px;
-  -webkit-transition: stroke-dashoffset 6s ease 0s;
-  transition: stroke-dashoffset 6s ease 0s;
-}
-svg.startA .svg-elem-5 {
-  stroke-dashoffset: 0;
-}
-svg .svg-elem-6 {
-  stroke-dashoffset: 3372.852783203125px;
-  stroke-dasharray: 3372.852783203125px;
-  -webkit-transition: stroke-dashoffset 6s ease 0s;
-  transition: stroke-dashoffset 6s ease 0s;
-}
-svg.startA .svg-elem-6 {
-  stroke-dashoffset: 0;
-}
-svg .svg-elem-7 {
-  stroke-dashoffset: 3369.650634765625px;
-  stroke-dasharray: 3369.650634765625px;
-  -webkit-transition: stroke-dashoffset 6s ease 0s;
-  transition: stroke-dashoffset 6s ease 0s;
-}
-svg.startA .svg-elem-7 {
-  stroke-dashoffset: 0;
-}
-/* End of SVG Artista*/
