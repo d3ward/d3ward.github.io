@@ -623,22 +623,19 @@ button > svg,
   width: 100%;
   margin: 0;
 }
-.card > img {
+.card>.img-w {
+  box-shadow: 0 8px 20px -4px var(--shadow);
+  max-width: 100%;
+  border-radius: 50%;
+  margin: 15px auto 15px;
+
+  width: 200px;
+    height: 200px;
+}
+.card>.img-w> img {
   height: auto;
-  border-radius: var(--radius);
+  border-radius:  50%;
   width: 100%;
-}
-.card > img.full {
-  width: calc( 100% + 2rem );
-  max-width: unset;
-}
-.card > img.full:first-child {
-  border-radius: var(--radius) var(--radius) 0 0;
-  margin: -1rem -1rem 0 -1rem;
-}
-.card > img.full:last-child {
-  border-radius: 0 0 var(--radius) var(--radius);
-  margin: 0 -1rem -1rem -1rem;
 }
 
 .field {
