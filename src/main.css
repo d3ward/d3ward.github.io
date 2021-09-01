@@ -7,18 +7,20 @@ html, [data-theme=light] {
   --red: #FF4132;
   --orange: #FF851A;
   --yellow: #ffcd36;
+  --purple:#7B70F6;
   --primary: var(--blue);
   --accent: #E3F2FD;
   --active:#ECEFF1;
   --txt: #14191f;
   --txt-r: var(--white);
-  --bg: #ffffff;
-  --bg2: #f9fafb;
-  --bg3: #edf0f2;
+  --bg: #fff;
+  --bg2: #F8FAFB;
+  --bg3: #fdfdfe;
+  --b-shadow: #95abbb;
   --brd: #C4CDD5;
   --brd2: #a8afb6;
   --bg-nav: var(--bg);
-  --bg-nav-hover: var(--bg2);
+  --bg-nav-hover: #ECF4FD;
   --bb-nav: var(--primary);
   --bg-input: var(--bg2);
   --brd-input: var(--bg2);
@@ -26,7 +28,7 @@ html, [data-theme=light] {
   --bg-btn-hover: inset 0 0 100px 100px #ffffff20;
   --txt-btn: var(--white);
   --brd-btn: var(--primary);
-  --bg-card: var(--bg);
+  --bg-card: var(--bg2);
   --bg-details: var(--bg2);
   --bg-details-open: var(--primary);
   --txt-details-open: var(--txt-r);
@@ -48,14 +50,15 @@ html, [data-theme=light] {
   --white: #f2f4f7;
   --blue: #4dacff;
   --green: #67e5a8;
-  --red: #ff564d;
+  --red: #DC4658;
   --orange: #ff9f4d;
   --yellow: #ffd24d;
+  --primary: var(--red);
   --txt: #f2f4f7;
   --txt-r: #14191f;
   --bg3: #2c3844;
-  --bg2: #242e37;
-  --bg: #14191f;
+  --bg2: #1A1F2B;
+  --bg: #101422;
   --bg-nav: var(--bg);
   --bg-nav-hover: var(--bg2);
   --bg-form: var(--bg2);
@@ -63,9 +66,10 @@ html, [data-theme=light] {
   --bg-btn-hover: inset 0 0 100px 100px #00000033;
   --brd-btn: var(--primary);
   --txt-btn: var(--black);
-  --bg-card: var(--bg3);
+  --bg-card: var(--bg2);
   --bg-details: var(--bg2);
   --bg-details2: var(--bg3);
+  --b-shadow : var(--bg);
   --shadow: none;
 }
 
@@ -624,7 +628,7 @@ button > svg,
   margin: 0;
 }
 .card>.img-w {
-  box-shadow: 0 8px 20px -4px var(--shadow);
+  box-shadow: 0 8px 20px -4px var(--b-shadow);
   max-width: 100%;
   border-radius: 50%;
   margin: 15px auto 15px;
