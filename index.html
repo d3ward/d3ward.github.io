@@ -12,6 +12,8 @@
 
   <script async defer src="https://aurora-d3.herokuapp.com/public/aurora.js"
     aurora-id="b023d420b3f8c037277ebc18bd5d4825"></script>
+  <script src="./src/gitStats.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
   <link rel="stylesheet" href="./src/main.css" />
   <style>
     /* ------------------- Pages ------------------ */
@@ -51,45 +53,12 @@
       color: var(--white);
     }
 
-    #stats {
+    [gs-user] {
       width: 100%;
+      max-width: unset;
+      padding: 0;
     }
 
-    #stats .row>div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #stats .row>div:nth-child(1) {
-      justify-content: left;
-    }
-
-    /* --------------- Project cards -------------- */
-    .grid-item {
-      width: 25%;
-    }
-
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
-      .grid-item {
-        width: 100% !important;
-      }
-    }
-
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-      .grid-item {
-        width: 50% !important;
-      }
-    }
-
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 830px) {
-      .grid-item {
-        width: 33.33% !important;
-      }
-    }
 
     .logo-wrapper {
       max-width: 500px;
@@ -111,7 +80,67 @@
     }
 
     .filter-container>.show {
-      display: flex;
+      display: inline-flex;
+    }
+
+    /*
+
+
+
+
+    .grid-masonry>div {
+      
+    }
+
+    .grid-masonry div:hover img {
+      filter: grayscale(0);
+    }
+
+    .grid-masonry div:hover {
+      border-color: coral;
+    }
+
+    .grid-masonry div img {
+      width: 100%;
+      filter: grayscale(100%);
+      border-radius: 5px;
+      transition: all 0.25s ease-in-out;
+    }
+
+    */
+    .grid-masonry {
+      margin-top: 1rem;
+    }
+
+    .grid-masonry>* {
+      width: 33%;
+      padding: .5rem .25rem;
+    }
+
+    .grid-masonry>*>.card {
+      width: 100%;
+      border: solid 2px black;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      transition: all 0.25s ease-in-out;
+    }
+
+    @media only screen and (max-width: 480px) {
+      .grid-masonry>* {
+        width: 100%;
+      }
+    }
+
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+      .grid-masonry>* {
+        width: 50%;
+      }
+    }
+
+    @media only screen and (min-width: 769px) {
+      .grid-masonry>* {
+        width: 33.333%;
+      }
     }
   </style>
 </head>
@@ -146,10 +175,14 @@
         </li>
         <li>
           <a href='https://ko-fi.com/T6T360PF4' target='_blank'>
-            <svg role="img" class="_icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Ko-fi</title><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"/></svg>
+            <svg role="img" class="_icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <title>Ko-fi</title>
+              <path
+                d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z" />
+            </svg>
             &nbsp; Buy me a Coffee
           </a>
-          
+
           <a href="https://github.com/d3ward">
             <svg class="_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <title>Github</title>
@@ -192,89 +225,20 @@
     <section id="about" class="_aos-bottom">
       <div class="row">
         <div class="col-4 _f-center">
-          <div id="stats" class="card">
-            <h4 class="_ta-center">Github Stats</h4>
-            <div class="row keep-width">
-              <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="_icon" viewBox="0 0 512 512">
-                  <title>ionicons-v5-p</title>
-                  <path
-                    d="M477.64,38.26a4.75,4.75,0,0,0-3.55-3.66c-58.57-14.32-193.9,36.71-267.22,110a317,317,0,0,0-35.63,42.1c-22.61-2-45.22-.33-64.49,8.07C52.38,218.7,36.55,281.14,32.14,308a9.64,9.64,0,0,0,10.55,11.2L130,309.57a194.1,194.1,0,0,0,1.19,19.7,19.53,19.53,0,0,0,5.7,12L170.7,375a19.59,19.59,0,0,0,12,5.7,193.53,193.53,0,0,0,19.59,1.19l-9.58,87.2a9.65,9.65,0,0,0,11.2,10.55c26.81-4.3,89.36-20.13,113.15-74.5,8.4-19.27,10.12-41.77,8.18-64.27a317.66,317.66,0,0,0,42.21-35.64C441,232.05,491.74,99.74,477.64,38.26ZM294.07,217.93a48,48,0,1,1,67.86,0A47.95,47.95,0,0,1,294.07,217.93Z" />
-                  <path
-                    d="M168.4,399.43c-5.48,5.49-14.27,7.63-24.85,9.46-23.77,4.05-44.76-16.49-40.49-40.52,1.63-9.11,6.45-21.88,9.45-24.88a4.37,4.37,0,0,0-3.65-7.45,60,60,0,0,0-35.13,17.12C50.22,376.69,48,464,48,464s87.36-2.22,110.87-25.75A59.69,59.69,0,0,0,176,403.09C176.37,398.91,171.28,396.42,168.4,399.43Z" />
-                </svg>
-                &nbsp; Repositories</div>
-              <div class="col-2" gs-data="repos"></div>
-            </div>
-            <div class="row keep-width">
-              <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="_icon" viewBox="0 0 512 512">
-                  <title>ionicons-v5-j</title>
-                  <path
-                    d="M336,256c-20.56,0-40.44-9.18-56-25.84-15.13-16.25-24.37-37.92-26-61-1.74-24.62,5.77-47.26,21.14-63.76S312,80,336,80c23.83,0,45.38,9.06,60.7,25.52,15.47,16.62,23,39.22,21.26,63.63h0c-1.67,23.11-10.9,44.77-26,61C376.44,246.82,356.57,256,336,256Zm66-88h0Z" />
-                  <path
-                    d="M467.83,432H204.18a27.71,27.71,0,0,1-22-10.67,30.22,30.22,0,0,1-5.26-25.79c8.42-33.81,29.28-61.85,60.32-81.08C264.79,297.4,299.86,288,336,288c36.85,0,71,9,98.71,26.05,31.11,19.13,52,47.33,60.38,81.55a30.27,30.27,0,0,1-5.32,25.78A27.68,27.68,0,0,1,467.83,432Z" />
-                  <path
-                    d="M147,260c-35.19,0-66.13-32.72-69-72.93C76.58,166.47,83,147.42,96,133.45,108.86,119.62,127,112,147,112s38,7.66,50.93,21.57c13.1,14.08,19.5,33.09,18,53.52C213.06,227.29,182.13,260,147,260Z" />
-                  <path
-                    d="M212.66,291.45c-17.59-8.6-40.42-12.9-65.65-12.9-29.46,0-58.07,7.68-80.57,21.62C40.93,316,23.77,339.05,16.84,366.88a27.39,27.39,0,0,0,4.79,23.36A25.32,25.32,0,0,0,41.72,400h111a8,8,0,0,0,7.87-6.57c.11-.63.25-1.26.41-1.88,8.48-34.06,28.35-62.84,57.71-83.82a8,8,0,0,0-.63-13.39C216.51,293.42,214.71,292.45,212.66,291.45Z" />
-                </svg>
-                &nbsp; Followers</div>
-              <div class="col-2" gs-data="followers"></div>
-            </div>
-            <div class="row keep-width">
-              <div>
-                <svg class="_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                  <title>star</title>
-                  <path
-                    d="M394,480a16,16,0,0,1-9.39-3L256,383.76,127.39,477a16,16,0,0,1-24.55-18.08L153,310.35,23,221.2A16,16,0,0,1,32,192H192.38l48.4-148.95a16,16,0,0,1,30.44,0l48.4,149H480a16,16,0,0,1,9.05,29.2L359,310.35l50.13,148.53A16,16,0,0,1,394,480Z" />
-                </svg>
-                &nbsp; Total Stars</div>
-              <div class="col-2" gs-data="stars"></div>
-            </div>
-            <div class="row keep-width">
-              <div><svg class="_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                  <title>ionicons-v5-d</title>
-                  <path
-                    d="M448,224H380a128,128,0,0,0-247.9,0H64a32,32,0,0,0,0,64h68.05A128,128,0,0,0,380,288H448a32,32,0,0,0,0-64ZM256,320a64,64,0,1,1,64-64A64.07,64.07,0,0,1,256,320Z" />
-                </svg>
-                &nbsp; Total Commits</div>
-              <div class="col-2" gs-data="commits"></div>
-            </div>
-            <div class="row keep-width">
-              <div><svg class="_icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                  <title>ionicons-v5-d</title>
-                  <path
-                    d="M192,96a64,64,0,1,0-96,55.39V360.61a64,64,0,1,0,64,0V151.39A64,64,0,0,0,192,96ZM128,64A32,32,0,1,1,96,96,32,32,0,0,1,128,64Zm0,384a32,32,0,1,1,32-32A32,32,0,0,1,128,448Z" />
-                  <path
-                    d="M416,360.61V156a92.1,92.1,0,0,0-92-92H304V32a16,16,0,0,0-27.31-11.31l-64,64a16,16,0,0,0,0,22.62l64,64A16,16,0,0,0,304,160V128h20a28,28,0,0,1,28,28V360.61a64,64,0,1,0,64,0ZM384,448a32,32,0,1,1,32-32A32,32,0,0,1,384,448Z" />
-                </svg>
-                &nbsp; Pull Requests
-              </div>
-              <div class="col-2" gs-data="pulls_count"></div>
-            </div>
-            <div class="row keep-width">
-              <div><svg class="_icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                  <title>ionicons-v5-a</title>
-                  <path
-                    d="M256,48C141.31,48,48,141.31,48,256s93.31,208,208,208,208-93.31,208-208S370.69,48,256,48Zm0,319.91a20,20,0,1,1,20-20A20,20,0,0,1,256,367.91Zm21.72-201.15-5.74,122a16,16,0,0,1-32,0l-5.74-121.94v-.05a21.74,21.74,0,1,1,43.44,0Z" />
-                </svg>
-                &nbsp; Total Issues </div>
-              <div class="col-2" gs-data="issues_count"></div>
-            </div>
-            <div class="row keep-width">
-              <div><svg class="_icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                  <title>ionicons-v5-m</title>
-                  <circle cx="256" cy="256" r="26" style="stroke:currentColor;stroke-miterlimit:10;stroke-width:10px" />
-                  <circle cx="346" cy="256" r="26" style="stroke:currentColor;stroke-miterlimit:10;stroke-width:10px" />
-                  <circle cx="166" cy="256" r="26" style="stroke:currentColor;stroke-miterlimit:10;stroke-width:10px" />
-                  <polyline points="160 368 32 256 160 144"
-                    style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:42px" />
-                  <polyline points="352 368 480 256 352 144"
-                    style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:42px" />
-                </svg>
-                &nbsp; Contributions </div>
-              <div class="col-2" gs-data="contributions"></div>
+          <div gs-user="d3ward" gs-aos="bottom" class="_shadow">
+            <a class="gs-badge"><i gs-icon="gs-icon"></i> gitStats</a>
+            <img gs-data="avatar" src="" alt="" gs-aos="top">
+            <div gs-aos="top"><b gs-data="username"></b>(<small gs-data="realname"></small>)</div>
+            <div gs-data="bio" gs-aos="top"></div>
+            <div class="gs-column" gs-aos-items="left">
+              <label><i gs-icon="repos"></i>&nbsp; Repositories<div gs-data="repos"></div></label>
+              <label><i gs-icon="followers"></i>&nbsp; Followers<div gs-data="followers"></div></label>
+              <label><i gs-icon="following"></i>&nbsp; Following<div gs-data="following"></div></label>
+              <label><i gs-icon="stars"></i>&nbsp; Total Stars<div gs-data="stars"></div></label>
+              <label><i gs-icon="commits"></i>&nbsp; Total Commits<div gs-data="commits"></div></label>
+              <label><i gs-icon="pulls_count"></i>&nbsp; Pull Requests<div gs-data="pulls_count"></div></label>
+              <label><i gs-icon="issues_count"></i>&nbsp; Total Issues<div gs-data="issues_count"></div></label>
+              <label><i gs-icon="contributions"></i>&nbsp; Contributions<div gs-data="contributions"></div></label>
             </div>
           </div>
         </div>
@@ -315,7 +279,7 @@
           </svg>
         </div>
       </div>
-      <div id="flt_tag" class="flt_btns  _f-center _radius">
+      <div class="flt_btns  _f-center _radius">
         <button data-filter='all' class="ghost active"> Show all</button>
         <button data-filter='cntr' class="ghost"> Contributions</button>
         <button data-filter='kiwi' class="ghost"> Kiwi Browser</button>
@@ -324,16 +288,143 @@
         <button data-filter='rmskin' class="ghost">Rainmeter</button>
         <button data-filter='oth' class="ghost">Others</button>
       </div>
-      <div class="grid filter-container">
-        <div class="col-4 kiwi cntr _aos">
+      <div class="grid-masonry">
+        <div class="oth">
+          <div class="card">
+            <div class="img-w">
+              <img src="src/svg/toolz.svg" alt="Toolz"></div>
+            <div gs-user="d3ward" gs-repo="toolz">
+              <h5 gs-data="name"></h5>
+              <div gs-data="description"></div>
+              <div class="gs-compact">
+                <label><i gs-icon="watchers"></i>
+                  <div gs-data="watchers"></div>
+                </label>
+                <label><i gs-icon="stars"></i>
+                  <div gs-data="stars"></div>
+                </label>
+                <label><i gs-icon="forks"></i>
+                  <div gs-data="forks"></div>
+                </label>
+              </div>
+            </div>
+            <div class="links">
+              <a target="_blank" class="btn" href="https://d3ward.github.io/nextntp">
+                <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z">
+                  </path>
+                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z">
+                  </path>
+                </svg>
+                &nbsp; Try out !</a>
+              <a target="_blank" class="btn git" href="https://github.com/d3ward/toolz">
+                <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>GitHub icon</title>
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
+                &nbsp; Github</a>
+            </div>
+          </div>
+        </div>
+        <div class="ext">
+          <div class="card">
+            <div class="img-w">
+              <img src="src/svg/b2ntp.svg" alt=""></div>
+
+            <div gs-user="d3ward" gs-repo="b2ntp">
+              <h5 gs-data="name"></h5>
+              <div gs-data="description"></div>
+              <div class="gs-compact">
+                <label><i gs-icon="watchers"></i>
+                  <div gs-data="watchers"></div>
+                </label>
+                <label><i gs-icon="stars"></i>
+                  <div gs-data="stars"></div>
+                </label>
+                <label><i gs-icon="forks"></i>
+                  <div gs-data="forks"></div>
+                </label>
+              </div>
+            </div>
+            <div class="links">
+              <a target="_blank" class="btn" href="https://d3ward.github.io/b2ntp/">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z"
+                    clip-rule="evenodd"></path>
+                </svg>&nbsp;Website</a>
+              <a target="_blank" class="btn git" href="https://github.com/d3ward/b2ntp">
+                <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>GitHub icon</title>
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
+                &nbsp; Github</a>
+            </div>
+
+          </div>
+        </div>
+        <div class="kiwi cntr">
+          <div class="card">
+            <div class="img-w">
+              <img src="src/svg/next_ntp.svg" alt="Next NTP" class="_bg-white"></div>
+            <div gs-user="d3ward" gs-repo="nextntp">
+              <h5 gs-data="name"></h5>
+              <div gs-data="description"></div>
+              <div class="gs-compact">
+                <label><i gs-icon="watchers"></i>
+                  <div gs-data="watchers"></div>
+                </label>
+                <label><i gs-icon="stars"></i>
+                  <div gs-data="stars"></div>
+                </label>
+                <label><i gs-icon="forks"></i>
+                  <div gs-data="forks"></div>
+                </label>
+              </div>
+            </div>
+            <div class="links">
+              <a target="_blank" class="btn" href="https://d3ward.github.io/nextntp">
+                <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z">
+                  </path>
+                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z">
+                  </path>
+                </svg>
+                &nbsp; Try out !</a>
+              <a target="_blank" class="btn git" href="https://github.com/d3ward/nextntp">
+                <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>GitHub icon</title>
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="kiwi cntr">
           <div class="card">
             <div class="img-w">
               <img src="src/svg/apt.svg" alt="Apteryx-Game" class="_bg-white">
             </div>
-
-            <p>Apteryx-Game</p>
-            <hr>
-            <div>
+            <div gs-user="d3ward" gs-repo="Apteryx-Game">
+              <h5 gs-data="name"></h5>
+              <div gs-data="description"></div>
+              <div class="gs-compact">
+                <label><i gs-icon="watchers"></i>
+                  <div gs-data="watchers"></div>
+                </label>
+                <label><i gs-icon="stars"></i>
+                  <div gs-data="stars"></div>
+                </label>
+                <label><i gs-icon="forks"></i>
+                  <div gs-data="forks"></div>
+                </label>
+              </div>
+            </div>
+            <div class="links">
               <a target="_blank" class="btn" href="https://d3ward.github.io/Apteryx-Game/">
                 <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -353,61 +444,26 @@
             </div>
           </div>
         </div>
-        <div class="col-4 ext _aos">
-          <div class="card">
-            <div class="img-w">
-              <img src="src/svg/b2ntp.svg" alt=""></div>
-            <p>b2ntp</p>
-            <hr>
-            <div>
-              <a target="_blank" class="btn" href="https://d3ward.github.io/b2ntp/">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd"
-                    d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z"
-                    clip-rule="evenodd"></path>
-                </svg>&nbsp;Website</a>
-              <a target="_blank" class="btn git" href="https://github.com/d3ward/b2ntp">
-                <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <title>GitHub icon</title>
-                  <path
-                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-                &nbsp; Github</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-4 kiwi cntr _aos">
-          <div class="card">
-            <div class="img-w">
-              <img src="src/svg/next_ntp.svg" alt="Next NTP" class="_bg-white"></div>
-            <p>Next NTP</p>
-            <hr>
-            <div>
-              <a target="_blank" class="btn" href="https://d3ward.github.io/nextntp">
-                <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z">
-                  </path>
-                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z">
-                  </path>
-                </svg>
-                &nbsp; Try out !</a>
-              <a target="_blank" class="btn git" href="https://github.com/d3ward/nextntp">
-                <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <title>GitHub icon</title>
-                  <path
-                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-4 kiwi cntr _aos">
+        <div class="kiwi cntr">
           <div class="card">
             <div class="img-w">
               <img src="src/svg/kiwi.svg" alt=""></div>
-            <p>Kiwi Browser</p>
-            <hr>
-            <div>
+            <div gs-user="kiwibrowser" gs-repo="src.next">
+              <h5 gs-data="name"></h5>
+              <div gs-data="description"></div>
+              <div class="gs-compact">
+                <label><i gs-icon="watchers"></i>
+                  <div gs-data="watchers"></div>
+                </label>
+                <label><i gs-icon="stars"></i>
+                  <div gs-data="stars"></div>
+                </label>
+                <label><i gs-icon="forks"></i>
+                  <div gs-data="forks"></div>
+                </label>
+              </div>
+            </div>
+            <div class="links">
               <a target="_blank" class="btn" href="https://kiwibrowser.com/">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
@@ -423,14 +479,27 @@
             </div>
           </div>
         </div>
-        <div class="col-4 kiwi cntr _aos">
-          <div class="card ">
+        <div class="ext">
+          <div class="card">
             <div class="img-w">
-              <img src="src/svg/kiwi.svg" alt=""></div>
-            <p>Kiwi Sync</p>
-            <hr>
-            <div>
-              <a target="_blank" class="btn git" href="https://github.com/kiwibrowser/sync">
+              <img src="src/svg/floatly_r.svg" alt=""></div>
+            <div gs-user="d3ward" gs-repo="floatly">
+              <h5 gs-data="name"></h5>
+              <div gs-data="description"></div>
+              <div class="gs-compact">
+                <label><i gs-icon="watchers"></i>
+                  <div gs-data="watchers"></div>
+                </label>
+                <label><i gs-icon="stars"></i>
+                  <div gs-data="stars"></div>
+                </label>
+                <label><i gs-icon="forks"></i>
+                  <div gs-data="forks"></div>
+                </label>
+              </div>
+            </div>
+            <div class="links">
+              <a target="_blank" class="btn git" href="https://github.com/d3ward/floatly">
                 <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <title>GitHub icon</title>
                   <path
@@ -440,13 +509,26 @@
             </div>
           </div>
         </div>
-        <div class="col-4 ext script _aos">
+        <div class="ext script">
           <div class="card">
             <div class="img-w">
               <img src="./src/svg/mti.svg" alt="MTI" class="_bg-white"></div>
-            <p>Meta Theme Injector</p>
-            <hr>
-            <div>
+            <div gs-user="d3ward" gs-repo="mti">
+              <h5 gs-data="name"></h5>
+              <div gs-data="description"></div>
+              <div class="gs-compact">
+                <label><i gs-icon="watchers"></i>
+                  <div gs-data="watchers"></div>
+                </label>
+                <label><i gs-icon="stars"></i>
+                  <div gs-data="stars"></div>
+                </label>
+                <label><i gs-icon="forks"></i>
+                  <div gs-data="forks"></div>
+                </label>
+              </div>
+            </div>
+            <div class="links">
               <a target="_blank" class="btn git" href="https://github.com/d3ward/mti">
                 <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <title>GitHub icon</title>
@@ -457,13 +539,13 @@
             </div>
           </div>
         </div>
-        <div class="col-4 cntr _aos">
+        <div class="cntr">
           <div class="card">
             <div class="img-w">
               <img src="src/svg/techlore.svg" alt="Techlore Website"></div>
             <p>Techlore Website</p>
-            <hr>
-            <div>
+            
+            <div class="links">
               <a target="_blank" class="btn" href="https://techlore.tech">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
@@ -479,30 +561,26 @@
             </div>
           </div>
         </div>
-        <div class="col-4 ext _aos">
-          <div class="card">
-            <div class="img-w">
-              <img src="src/svg/floatly_r.svg" alt=""></div>
-            <p>Floatly</p>
-            <hr>
-            <div>
-              <a target="_blank" class="btn git" href="https://github.com/d3ward/floatly">
-                <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <title>GitHub icon</title>
-                  <path
-                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-                &nbsp; Github</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-4 rmskin _aos">
+        <div class="rmskin">
           <div class="card">
             <div class="img-w">
               <img src="src/svg/dvd.png" alt=""></div>
-            <p>Bouncy DVD</p>
-            <hr>
-            <div>
+            <div gs-user="d3ward" gs-repo="bouncydvd">
+              <h5 gs-data="name"></h5>
+              <div gs-data="description"></div>
+              <div class="gs-compact">
+                <label><i gs-icon="watchers"></i>
+                  <div gs-data="watchers"></div>
+                </label>
+                <label><i gs-icon="stars"></i>
+                  <div gs-data="stars"></div>
+                </label>
+                <label><i gs-icon="forks"></i>
+                  <div gs-data="forks"></div>
+                </label>
+              </div>
+            </div>
+            <div class="links">
               <a target="_blank" class="btn git" href="https://github.com/d3ward/bouncydvd">
                 <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <title>GitHub icon</title>
@@ -514,13 +592,12 @@
           </div>
         </div>
 
-        <div class="col-4 cntr _aos">
+        <div class="cntr">
           <div class="card">
-            <div class="img-w" >
+            <div class="img-w">
               <img src="src/svg/github.svg" alt="" class="_bg-white"></div>
             <p>Banner Depot</p>
-            <hr>
-            <div>
+            <div class="links">
               <a target="_blank" class="btn" href="https://famicomrade.github.io/">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
@@ -537,31 +614,27 @@
             </div>
           </div>
         </div>
-        <div class="col-4 script _aos">
+        <div class="script">
           <div class="card ">
             <div class="img-w">
               <img src="./src/svg/scriptz.svg" alt="Scriptz" class="_bg-white"></div>
-            <p>Scriptz</p>
-            <hr>
-            <div>
-              <a target="_blank" class="btn git" href="https://github.com/d3ward/scriptz">
-                <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <title>GitHub icon</title>
-                  <path
-                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-                &nbsp; Github</a>
+            <div gs-user="d3ward" gs-repo="scriptz">
+              <h5 gs-data="name"></h5>
+              <div gs-data="description"></div>
+              <div class="gs-compact">
+                <label><i gs-icon="watchers"></i>
+                  <div gs-data="watchers"></div>
+                </label>
+                <label><i gs-icon="stars"></i>
+                  <div gs-data="stars"></div>
+                </label>
+                <label><i gs-icon="forks"></i>
+                  <div gs-data="forks"></div>
+                </label>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col-4 oth _aos">
-          <div class="card">
-            <div class="img-w">
-              <img src="src/svg/toolz.svg" alt="Toolz"></div>
-            <p>Toolz</p>
-            <hr>
-            <div>
-              <a target="_blank" class="btn git" href="https://github.com/d3ward/toolz">
+            <div class="links">
+              <a target="_blank" class="btn git" href="https://github.com/d3ward/scriptz">
                 <svg role="img" id="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <title>GitHub icon</title>
                   <path
@@ -594,33 +667,109 @@
             </svg>&nbsp;Github </a></div>
         <div>
           <a href='https://ko-fi.com/T6T360PF4' target='_blank' class="btn-cl2 ghost">
-            <svg role="img" class="_icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Ko-fi</title><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"/></svg>
+            <svg role="img" class="_icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <title>Ko-fi</title>
+              <path
+                d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z" />
+            </svg>
             &nbsp; Buy me a Coffee
           </a></div>
       </div>
-      <div class="grid">
-        <div>Icons by <b><a class="_txt" href="https://heroicons.dev/">Heroicons</a></b> & <b><a class="_txt" href="https://simpleicons.org/">Simpleicons</a></b>
+      <div class="grid _txt-white">
+        <div>Icons by <b><a class="_txt-white" href="https://heroicons.dev/">Heroicons</a></b> & <b><a
+              class="_txt-white" href="https://simpleicons.org/">Simpleicons</a></b>
         </div>
         <div>
-          Designed by Eduard Ursu(<b><a class="_txt" href="https://d3ward.github.io">d3ward</a></b>) © 2021
+          Designed by Eduard Ursu(<b><a class="_txt-white" href="https://d3ward.github.io">d3ward</a></b>) © 2021
         </div>
         <div>
-          This website use <b><a class="_txt" href="https://www.useaurora.app/">Aurora - Open Web Analytics</a></b>
+          This website use <b><a class="_txt-white" href="https://www.useaurora.app/">Aurora - Open Web
+              Analytics</a></b>
         </div>
         <div>
-          Licensed under <b><a class="_txt" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">[NC-SA-4.0]</a></b>
+          Licensed under <b><a class="_txt"
+              href="https://creativecommons.org/licenses/by-nc-sa/4.0/">[NC-SA-4.0]</a></b>
         </div>
       </div>
     </div>
 
   </footer>
-  
+
 </body>
 
 <script src="./src/main.js"></script>
-<script src="./src/gitStats.js"></script>
+
 <script>
-  var myStats = new gitStats('d3ward', 0);
+  var elem = document.querySelector('.grid-masonry');
+  var iso = new Isotope(elem, {
+    itemSelector: '.grid-masonry>*',
+    percentPosition: true,
+    masonry: {
+      orizontalOrder: true,
+    }
+  });
+
+  function filterGrid() {
+    var t = this;
+    t.items = document.querySelectorAll(".filter-container>div");
+    t.flts = Array.from(document.querySelectorAll("[data-filter]"));
+    t.addF = (element, name) => {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+          element.className += " " + arr2[i];
+        }
+      }
+    }
+    t.listeners = () => {
+      t.flts.forEach((element) => {
+        var c = element.getAttribute("data-filter");
+        element.addEventListener("click", () => {
+          var current = document.querySelector("[data-filter].active");
+          current.classList.remove("active");
+          element.classList.add("active");
+          t.filter(c)
+        });
+      });
+    }
+    t.removeF = (element, name) => {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+    t.filter = (c) => {
+      console.log(c);
+      if (c == "all") c = "";
+      for (let i = 0; i < t.items.length; i++) {
+        t.removeF(t.items[i], "show");
+        if (t.items[i].className.indexOf(c) > -1) t.addF(t.items[i], "show");
+      }
+    }
+    t.filter("all");
+    t.listeners();
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    iso.layout();
+    document.querySelectorAll(".flt_btns>button").forEach((element) => {
+        var c = element.getAttribute("data-filter");
+        element.addEventListener("click", () => {
+          var current = document.querySelector("[data-filter].active");
+          current.classList.remove("active");
+          element.classList.add("active");
+          console.log(c);
+          if(c=="all")iso.arrange( {filter:"*"});
+          else iso.arrange( {filter:"."+c});
+        });
+      });
+  });
 </script>
 
 </html>

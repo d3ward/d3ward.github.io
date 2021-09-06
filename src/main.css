@@ -28,7 +28,7 @@ html, [data-theme=light] {
   --bg-btn-hover: inset 0 0 100px 100px #ffffff20;
   --txt-btn: var(--white);
   --brd-btn: var(--primary);
-  --bg-card: var(--bg2);
+  --bg-card: var(--bg);
   --bg-details: var(--bg2);
   --bg-details-open: var(--primary);
   --txt-details-open: var(--txt-r);
@@ -66,7 +66,7 @@ html, [data-theme=light] {
   --bg-btn-hover: inset 0 0 100px 100px #00000033;
   --brd-btn: var(--primary);
   --txt-btn: var(--black);
-  --bg-card: var(--bg2);
+  --bg-card: var(--bg);
   --bg-details: var(--bg2);
   --bg-details2: var(--bg3);
   --b-shadow : var(--bg);
@@ -617,7 +617,6 @@ button > svg,
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  height: 100%;
   padding: 1rem;
   background: var(--bg-card);
   border-radius: var(--radius);
@@ -632,9 +631,8 @@ button > svg,
   max-width: 100%;
   border-radius: 50%;
   margin: 15px auto 15px;
-
-  width: 200px;
-    height: 200px;
+  width: 160px;
+  height: 160px;
 }
 .card>.img-w> img {
   height: auto;
@@ -642,6 +640,16 @@ button > svg,
   width: 100%;
 }
 
+.card>.links {
+  margin-top: auto ;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.card>.links >*{
+  width: 100%;
+  margin: 0;
+}
 .field {
   display: flex;
   justify-content: center;

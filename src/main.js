@@ -1,4 +1,4 @@
-var iso;
+
 function navbar(){
   var t = this;
   t.n = document.querySelector("nav");
@@ -145,50 +145,7 @@ function pagesRoute(){
     t.listeners();
     }
 }
-function filterGrid(){
-  var t =this;
-  t.items = document.querySelectorAll(".filter-container>div");
-  t.flts = Array.from(document.querySelectorAll("[data-filter]"));
-  t.addF=(element,name)=>{
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-      if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-    }
-  }
-  t.listeners=()=>{
-    t.flts.forEach((element)=>{
-        var c= element.getAttribute("data-filter");
-        element.addEventListener("click",()=>{
-          var current= document.querySelector("[data-filter].active");
-          current.classList.remove("active");
-          element.classList.add("active");
-          t.filter(c)});
-    });
-  }
-  t.removeF=(element,name)=>{
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-      while (arr1.indexOf(arr2[i]) > -1) {
-        arr1.splice(arr1.indexOf(arr2[i]), 1);     
-      }
-    }
-    element.className = arr1.join(" ");
-  }
-  t.filter = (c)=>{
-    console.log(c);
-    if (c == "all") c = "";
-    for (let i = 0; i < t.items.length; i++) {
-      t.removeF(t.items[i], "show");
-      if (t.items[i].className.indexOf(c) > -1) t.addF(t.items[i], "show");
-    }
-  }
-  t.filter("all");
-  t.listeners();
-}
+
 /* Things done once the DOM is loaded */
 function d3ssOnDOMContentLoaded() {
   navbar();
@@ -196,7 +153,6 @@ function d3ssOnDOMContentLoaded() {
   gotop();
   pagesRoute();
   aos();
-  filterGrid();
   // Play logo animation once
   var d3Logo = document.querySelector('#d3Logo');
   var wstatus = 1;
