@@ -34,12 +34,15 @@ class gitStats {
         let u=options.username;
         let r=options.repo;
         this.currDate = new Date();
-        
+        var timeDiff;
         if (r!=null) {
             this.selector = "[gs-user='" + u + "'][gs-repo='" + r + "']";
             this.storageKey="gs_" + u + "_" + r;
             this.stats = JSON.parse(window.localStorage.getItem("gs_" + u + "_" + r));
-            var timeDiff = diff_hours(this.stats["timeElapsed"]);
+            if(this.stats["timeElapsed"] == undefined)
+                timeDiff=61;
+            else
+                timeDiff = diff_hours(this.stats["timeElapsed"]);
             console.log("Time Diff:" + timeDiff);
             if(options.selector){
                 this.selector=options.selector;
@@ -52,7 +55,10 @@ class gitStats {
             this.selector = "[gs-user='" + u+ "']";
             this.storageKey="gs_" + u ;
             this.stats = JSON.parse(window.localStorage.getItem("gs_" + u));
-            var timeDiff = diff_hours(this.stats["timeElapsed"]);
+            if(this.stats["timeElapsed"] == undefined)
+                timeDiff=61;
+            else
+                timeDiff = diff_hours(this.stats["timeElapsed"]);
             console.log("Time Diff:" + timeDiff);
             if(options.selector){
                 this.selector=options.selector;
