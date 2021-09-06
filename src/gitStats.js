@@ -39,34 +39,41 @@ class gitStats {
             this.selector = "[gs-user='" + u + "'][gs-repo='" + r + "']";
             this.storageKey="gs_" + u + "_" + r;
             this.stats = JSON.parse(window.localStorage.getItem("gs_" + u + "_" + r));
-            if(this.stats["timeElapsed"] == undefined)
-                timeDiff=61;
-            else
-                timeDiff = diff_hours(this.stats["timeElapsed"]);
-            console.log("Time Diff:" + timeDiff);
+            
+            
             if(options.selector){
                 this.selector=options.selector;
             }
-            if (this.stats == undefined || timeDiff > 60 || this.stats["timeElapsed"] == undefined)
+            if(this.stats == undefined ){
                 this.fetchStats(u,r);
-            else
-                this.renderStats(true);
+            }else{
+                if(this.stats["timeElapsed"] == undefined)
+                    timeDiff=61;
+                else
+                    timeDiff = diff_hours(this.stats["timeElapsed"]);
+                    console.log("Time Diff:" + timeDiff);
+                if (timeDiff > 60 || this.stats["timeElapsed"] == undefined)
+                    this.fetchStats(u,r);
+                else
+                    this.renderStats(true);
+            } 
         } else {
             this.selector = "[gs-user='" + u+ "']";
             this.storageKey="gs_" + u ;
             this.stats = JSON.parse(window.localStorage.getItem("gs_" + u));
-            if(this.stats["timeElapsed"] == undefined)
-                timeDiff=61;
-            else
-                timeDiff = diff_hours(this.stats["timeElapsed"]);
-            console.log("Time Diff:" + timeDiff);
-            if(options.selector){
-                this.selector=options.selector;
-            }
-            if (this.stats == undefined || timeDiff > 60 || this.stats["timeElapsed"]==undefined )
+            if(this.stats == undefined ){
                 this.fetchStats(u);
-            else
-                this.renderStats();
+            }else{
+                if(this.stats["timeElapsed"] == undefined)
+                    timeDiff=61;
+                else
+                    timeDiff = diff_hours(this.stats["timeElapsed"]);
+                    console.log("Time Diff:" + timeDiff);
+                if (timeDiff > 60 || this.stats["timeElapsed"] == undefined)
+                    this.fetchStats(u);
+                else
+                    this.renderStats(true);
+            } 
         }
         
     }
