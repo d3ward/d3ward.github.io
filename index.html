@@ -517,7 +517,7 @@
         <div class="ext script">
           <div class="card">
             <div class="img-w">
-              <img src="./src/svg/mti.svg" alt="MTI" class="_bg-white"></div>
+              <img src="./src/svg/mti.png" alt="MTI" class="_bg-white"></div>
             <div gs-user="d3ward" gs-repo="mti">
               <h5 gs-data="name"></h5>
               <div gs-data="description"></div>
@@ -548,7 +548,7 @@
           <div class="card">
             <div class="img-w">
               <img src="src/svg/techlore.svg" alt="Techlore Website"></div>
-            <p>Techlore </p>
+            <h5> <b> Techlore </b></h5>
             
             <div class="links">
               <a target="_blank" class="btn" href="https://techlore.tech">
@@ -601,7 +601,7 @@
           <div class="card">
             <div class="img-w">
               <img src="src/svg/github.svg" alt="" class="_bg-white"></div>
-            <p>Banner Depot</p>
+            <h5> <b> Banner Depot</b></h5>
             <div class="links">
               <a target="_blank" class="btn" href="https://famicomrade.github.io/">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -774,6 +774,9 @@
           else iso.arrange( {filter:"."+c});
         });
       });
+    setTimeout(() => {
+      iso.layout();
+    }, 1000);
   });
 </script>
 
