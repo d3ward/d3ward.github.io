@@ -1,0 +1,20 @@
+
+
+/* -------------- Margin Utility ------------- */
+
+$directionsM: ("top": "t", "right": "r", "bottom": "b", "left": "l")
+
+// Cardinal directions
+@each $direction, $suffix in $directionsM
+    [class*="_m#{$suffix}-"]
+        margin-#{$direction}: var(--spacer)!important
+[class*="_m-"]
+    margin: var(--spacer)!important
+// Horizontal axis
+[class*="_mx-"]
+    margin-left: var(--spacer)!important
+    margin-right: var(--spacer)!important
+// Vertical axis
+[class*="_my-"]
+    margin-top: var(--spacer)!important
+    margin-bottom: var(--spacer)!important
