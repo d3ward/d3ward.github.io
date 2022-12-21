@@ -36,7 +36,9 @@
 
 main
 	margin-top: 8rem
-
+@media (max-width: 40em)
+	.row:not(.keep-width) > [class*=col], .row:not(.keep-width) > div, .grid:not(.keep-width) > [class*=col], .grid:not(.keep-width) > div
+		width: 100%
 svg#d3Logo .svg-elem-1
 	stroke-dashoffset: 724.4970703125px
 	stroke-dasharray: 724.4970703125px
