@@ -1,20 +1,18 @@
-
-
 /* -------------- Margin Utility ------------- */
-
-$directionsM: ("top": "t", "right": "r", "bottom": "b", "left": "l")
-
-// Cardinal directions
-@each $direction, $suffix in $directionsM
-    [class*="_m#{$suffix}-"]
-        margin-#{$direction}: var(--spacer)!important
-[class*="_m-"]
-    margin: var(--spacer)!important
-// Horizontal axis
-[class*="_mx-"]
-    margin-left: var(--spacer)!important
-    margin-right: var(--spacer)!important
-// Vertical axis
-[class*="_my-"]
-    margin-top: var(--spacer)!important
-    margin-bottom: var(--spacer)!important
+@each $size, $value in $sizes
+	._m-#{$size}
+		margin: $value
+	._mt-#{$size}
+		margin-top: $value
+	._mr-#{$size}
+		margin-right: $value
+	._mb-#{$size}
+		margin-bottom: $value
+	._ml-#{$size}
+		margin-left: $value
+	._mx-#{$size}
+		margin-left: $value
+		margin-right: $value
+	._my-#{$size}
+		margin-left: $value
+		margin-right: $value

@@ -1,16 +1,19 @@
 /* -------------- Padding Utility ------------- */
-$directionsP: ("top": "t", "right": "r", "bottom": "b", "left": "l")
-// Cardinal directions
-@each $direction, $suffix in $directionsP
-    [class*="_p#{$suffix}-"]
-        padding-#{$direction}: var(--spacer)!important
-[class*="_p-"]
-    padding: var(--spacer)!important
-// Horizontal axis
-[class*="_px-"]
-    padding-left: var(--spacer)!important
-    padding-right: var(--spacer)!important
-// Vertical axis
-[class*="_py-"]
-    padding-top: var(--spacer)!important
-    padding-bottom: var(--spacer)!important
+
+@each $size, $value in $sizes
+	._p-#{$size}
+		padding: $value
+	._pt-#{$size}
+		padding-top: $value
+	._pr-#{$size}
+		padding-right: $value
+	._pb-#{$size}
+		padding-bottom: $value
+	._pl-#{$size}
+		padding-left: $value
+	._px-#{$size}
+		padding-left: $value
+		padding-right: $value
+	._py-#{$size}
+		padding-left: $value
+		padding-right: $value
