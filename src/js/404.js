@@ -1,5 +1,6 @@
 import '../sass/404.sass'
 import { themeManager } from './components/themeManager'
+import { dialog } from './components/dialog'
 import { gotop } from './components/gotop'
 import { aos } from './components/aos'
 
