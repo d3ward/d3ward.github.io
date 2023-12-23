@@ -1,5 +1,4 @@
 import '../sass/index.sass'
-import * as data from './data.json'
 import { navbar } from './components/navbar'
 import Shuffle from 'shufflejs'
 import { dialog } from './components/dialog'
@@ -7,7 +6,6 @@ import { themeManager } from './components/themeManager'
 import { gotop } from './components/gotop'
 import { aos } from './components/aos'
 import { Typer } from './components/typer'
-import { gitStats } from './components/gitStats'
 
 class Demo {
 	constructor(element) {
@@ -228,42 +226,85 @@ async function appendData(data) {
 	}
 	console.log('Loaded data and rendered')
 }
-appendData(data).then(
-	// Call the function when the DOM is loaded
-	document.addEventListener('DOMContentLoaded', () => {
-		new themeManager()
-		new navbar()
-		new gotop()
-		new aos()
-		var elty = document.getElementById('typewriter')
-		if (elty != undefined) {
-			var toRotate = elty.getAttribute('data-type')
-			var period = elty.getAttribute('data-period')
-			if (toRotate) {
-				new Typer(elty, JSON.parse(toRotate), period)
-			}
+
+// Call the function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+	new themeManager()
+	new navbar()
+	new gotop()
+	new aos()
+	var elty = document.getElementById('typewriter')
+	if (elty != undefined) {
+		var toRotate = elty.getAttribute('data-type')
+		var period = elty.getAttribute('data-period')
+		if (toRotate) {
+			new Typer(elty, JSON.parse(toRotate), period)
 		}
+	}
 
-		console.log('create grid')
-		const gridP = new Demo(document.querySelector('.grid-p'))
-		new gitStats()
+	console.log('create grid')
+	const gridP = new Demo(document.querySelector('.grid-p'))
 
-		setTimeout(() => {
-			gridP.update()
-		}, 1000)
-		// Play logo animation once
+	setTimeout(() => {
+		gridP.update()
+	}, 1000)
+	// Play logo animation once
 
-		var d3Logo = document.querySelector('#d3Logo')
-		var wstatus = 1
+	var d3Logo = document.querySelector('#d3Logo')
+	var wstatus = 1
 
-		function startA() {
-			d3Logo.classList.add('startA')
-		}
-		d3Logo.addEventListener('click', function () {
-			if (wstatus) d3Logo.classList.remove('startA')
-			else startA()
-			wstatus = !wstatus
+	function startA() {
+		d3Logo.classList.add('startA')
+
+		const cards_counts = document.querySelectorAll('.count')
+		cards_counts.forEach((card) => {
+			const targetNumber = parseInt(card.dataset.targetNumber, 10)
+			const duration = 2000
+			let currentNumber = 0
+			const interval = targetNumber / duration
+			const timer = setInterval(() => {
+				currentNumber++
+				card.textContent = currentNumber
+				if (currentNumber === targetNumber) {
+					clearInterval(timer)
+				}
+			}, interval)
 		})
-		setTimeout(startA, 300)
+		const ANIMATEDCLASSNAME = 'animated'
+		const cards = document.querySelectorAll('.grid-stats > *')
+		const ELEMENTS_SPAN = []
+		cards.forEach((element, index) => {
+			let addAnimation = false
+			if (!ELEMENTS_SPAN[index])
+				ELEMENTS_SPAN[index] = element.querySelector('.ripple')
+			
+			element.addEventListener('mouseover', (e) => {
+				if (element.classList.contains('gs-avatar')) 
+					element.classList.add("transition-2")
+				ELEMENTS_SPAN[index].style.left =
+					e.pageX - element.offsetLeft + 'px'
+				ELEMENTS_SPAN[index].style.top =
+					e.pageY - element.offsetTop + 'px'
+				if (addAnimation) element.classList.add(ANIMATEDCLASSNAME)
+			})
+			element.addEventListener('mouseout', (e) => {
+				ELEMENTS_SPAN[index].style.left =
+					e.pageX - element.offsetLeft + 'px'
+				ELEMENTS_SPAN[index].style.top =
+					e.pageY - element.offsetTop + 'px'
+			})
+		})
+	}
+	d3Logo.addEventListener('click', function () {
+		d3Logo.classList.add('bounce')
+		d3Logo.addEventListener(
+			'animationend',
+			() => {
+				d3Logo.classList.remove('bounce')
+			},
+			{ once: true }
+		)
 	})
-)
+	setTimeout(startA, 300)
+	
+})

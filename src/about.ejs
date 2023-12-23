@@ -10,98 +10,61 @@
 			<path d="M0 9v6c30 0 30 4 60 4 31 0 30-4 60-4s30 4 60 4 30-4 60-4V0H0z"></path>
 		</svg>
 		<%- include('partials/header.ejs', {page:'index'}) %>
-			<%- include('partials/support_me.ejs') %>
+		<% const gh_data = require('./data/gh_data.json') %>
+		<%- include('partials/support_me.ejs') %>
+			<main>
+				<section>
+					
+				</section>
+				<section>
+					<div class="card">
+						<div class="bio">
+							Hi there!&#128075;<br>
+							I'm Eduard, a passionate front-end developer with a love for open source and
+							building tools that enhance the user experience.
+							With a strong background in web development and a keen eye for design, I've been
+							able to create and contribute to a number of successful open source projects
+							that have been widely adopted by various communities around the world.<br><br>
 				
-				<main>
-					<section>
-						<div class="grid">
-						<div class="col-4">
-							<aside>
-								<div gs-user="d3ward" class="_aos-bottom" style="border:2px solid var(--brd)">
-									<a class="gs-badge"><i gs-icon="gs-icon"></i> gitStats</a>
-									<img gs-data="avatar" alt="GitHub Avatar" gs-aos="top" />
-									<div gs-aos="top"><b gs-data="username"></b>(<small gs-data="realname"></small>)
-									</div>
-									<div gs-aos="top">Bio : <p gs-data="bio"></p>
-									</div>
-									<div class="gs-column">
-										<label><i gs-icon="repos"></i>&nbsp; Repositories<div gs-data="repos"></div>
-										</label>
-										<label><i gs-icon="followers"></i>&nbsp; Followers<div gs-data="followers">
-											</div></label>
-										<label><i gs-icon="following"></i>&nbsp; Following<div gs-data="following">
-											</div></label>
-										<label><i gs-icon="stars"></i>&nbsp; Total Stars<div gs-data="stars"></div>
-										</label>
-										<label><i gs-icon="commits"></i>&nbsp; Total Commits<div gs-data="commits">
-											</div></label>
-										<label><i gs-icon="pulls_count"></i>&nbsp; Pull Requests<div
-												gs-data="pulls_count"></div></label>
-										<label><i gs-icon="issues_count"></i>&nbsp; Total Issues<div
-												gs-data="issues_count"></div></label>
-										<!--
-                    <label><i gs-icon="contributions"></i>&nbsp; Contributions<div gs-data="contributions"></div></label>-->
-									</div>
-								</div>
-							</aside>
-
-						</div>
-						<div class="col-8">
-							<div class="card">
-								<div class="bio">
-									Hi there!&#128075;<br>
-									I'm Eduard, a passionate front-end developer with a love for open source and
-									building tools that enhance the user experience.
-									With a strong background in web development and a keen eye for design, I've been
-									able to create and contribute to a number of successful open source projects
-									that have been widely adopted by various communities around the world.<br><br>
-
-									My passion for open source began at an early age, when I first discovered the
-									power of collaboration and sharing knowledge. Since then, I've dedicated myself
-									to ensuring my work looks amazing and performs well; I love building
-									things from scratch without frameworks! When I started out, I was determined to
-									be successful, and now I have developed some valuable skills and the
-									experience needed to tackle bigger projects.<br><br>
-
-									I started my careeer as a freelancer, and I've worked on many different websites,
-									such as
-									e-commerce stores, blogs, landing pages, and more. I know what it takes to
-									create great-looking sites.<br><br>
-									Currently, I work as a front-end developer at <a href="https://dnsfilter.com"
-										target="_blank">DNSFilter</a>, a cloud-based DNS
-									filtering platform intended to facilitate intelligent web content filtering. I
-									work on a wide range of projects, from app dashboards to platform-specific
-									applications. I am constantly learning and staying up-to-date on the latest
-									technologies and best practices, which allows me to deliver high-quality work
-									that meets the needs of my company.
-									<br><br>
-
-									In addition to my professional work, I am also an active member of the
-									open-source community.
-									In my free time, I regularly contribute to a number of open source projects
-									while maintaining some of my own side-projects. I am passionate about using my
-									skills to make a positive impact and am always looking for ways to give back to
-									the community.
-
-								
-								</div>
-							</div>
-
+							My passion for open source began at an early age, when I first discovered the
+							power of collaboration and sharing knowledge. Since then, I've dedicated myself
+							to ensuring my work looks amazing and performs well; I love building
+							things from scratch without frameworks! When I started out, I was determined to
+							be successful, and now I have developed some valuable skills and the
+							experience needed to tackle bigger projects.<br><br>
+				
+							I started my careeer as a freelancer, and I've worked on many different websites,
+							such as
+							e-commerce stores, blogs, landing pages, and more. I know what it takes to
+							create great-looking sites.<br><br>
+							Currently, I work as a front-end developer at <a href="https://dnsfilter.com" target="_blank">DNSFilter</a>,
+							a cloud-based DNS
+							filtering platform intended to facilitate intelligent web content filtering. I
+							work on a wide range of projects, from app dashboards to platform-specific
+							applications. I am constantly learning and staying up-to-date on the latest
+							technologies and best practices, which allows me to deliver high-quality work
+							that meets the needs of my company.
+							<br><br>
+				
+							In addition to my professional work, I am also an active member of the
+							open-source community.
+							In my free time, I regularly contribute to a number of open source projects
+							while maintaining some of my own side-projects. I am passionate about using my
+							skills to make a positive impact and am always looking for ways to give back to
+							the community.
+				
+				
 						</div>
 					</div>
-					</section>
-					
-
-
-
-				</main>
-				<svg viewBox="0 0 120 12" class="wave" style="margin-bottom:-7px;margin-top:2rem;height:5em;"
-					preserveaspectratio="none">
-					<path
-						d="M 0 0 C 30 0 30 5 60 5 C 90 5 90 0 120 0 C 150 0 150 5 180 5 C 210 5 210 0 240 0 v 12 h -240 z" />
-				</svg>
-				<%- include('partials/footer.ejs') %>
-					<%- include('partials/gotop.ejs') %>
+				</section>
+			</main>
+			<svg viewBox="0 0 120 12" class="wave" style="margin-bottom:-7px;margin-top:2rem;height:5em;"
+				preserveaspectratio="none">
+				<path
+					d="M 0 0 C 30 0 30 5 60 5 C 90 5 90 0 120 0 C 150 0 150 5 180 5 C 210 5 210 0 240 0 v 12 h -240 z" />
+			</svg>
+		<%- include('partials/footer.ejs') %>
+		<%- include('partials/gotop.ejs') %>
 	</body>
 
 </html>

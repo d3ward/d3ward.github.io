@@ -34,6 +34,8 @@
 @import "./utilities/spacer"
 @import "./utilities/text"
 
+@import "./gs"
+
 main
 	margin-top: 8rem
 @media (max-width: 40em)
@@ -44,12 +46,29 @@ svg#d3Logo .svg-elem-1
 	stroke-dasharray: 724.4970703125px
 	fill: transparent
 	stroke: var(--txt)
-	-webkit-transition: stroke-dashoffset 5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s,fill 1s linear 5s,stroke 2s linear 5s
-	transition: stroke-dashoffset 5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s,fill 1s linear 5s,stroke 2s linear 5s
+	-webkit-transition: stroke-dashoffset 10s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,fill 0.2s linear 8s,stroke 2s linear 4s
+	transition: stroke-dashoffset 10s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,fill 0.2s linear 8s,stroke 2s linear 4s
 svg#d3Logo.startA .svg-elem-1
 	stroke-dashoffset: 0
 	fill: var(--primary)
 	stroke: var(--primary)
+
+svg#d3Logo
+	cursor: pointer
+.logo-wrapper
+	z-index: 1
+
+@keyframes bounce
+	0%, 100%, 20%, 50%, 80%
+		transform: translateY(0)
+	40%
+		transform: translateY(-30px)
+	60%
+		transform: translateY(-15px)
+
+.bounce
+	animation: bounce 1s ease
+
 .grid-p>*
 	margin-top: 1rem
 

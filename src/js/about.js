@@ -12,5 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
 	new navbar()
 	new gotop()
 	new aos()
-	new gitStats()
 })
