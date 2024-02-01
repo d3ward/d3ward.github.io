@@ -6,7 +6,7 @@ on:
       - develop
   workflow_dispatch:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 6,18 * * *'
 env:
   GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
 jobs:

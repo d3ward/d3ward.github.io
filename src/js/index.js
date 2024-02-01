@@ -156,8 +156,6 @@ function shuffle(array) {
 	}
 	return array
 }
-
-
 document.addEventListener('DOMContentLoaded', () => {
 	const dialog_support = new A11yDialog(
 		document.querySelector('#dlg_support')
@@ -235,4 +233,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		)
 	})
 	setTimeout(startA, 300)
+
+	const waveH = document
+		.querySelector('.wave._float-top')
+		.getBoundingClientRect()
+	document.addEventListener('scroll', () => {
+		const navbar = document.querySelector('header')
+		if (window.scrollY > waveH.height - 70) {
+			navbar.classList.add('scrolled')
+		} else {
+			navbar.classList.remove('scrolled')
+		}
+	})
 })

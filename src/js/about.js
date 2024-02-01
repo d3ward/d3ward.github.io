@@ -35,8 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	setTimeout(a, 500)
-
+	const waveH = document
+		.querySelector('.wave._float-top')
+		.getBoundingClientRect()
 	document.addEventListener('scroll', () => {
+		const navbar = document.querySelector('header')
+		if (window.scrollY > 50 + waveH.height) {
+			navbar.classList.add('scrolled')
+		} else {
+			navbar.classList.remove('scrolled')
+		}
 		// Get the position of the center dot
 		const dot = document.querySelector('.drop')
 		const dotRect = dot.getBoundingClientRect()
