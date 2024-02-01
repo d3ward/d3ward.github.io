@@ -148,10 +148,10 @@
     margin: auto
     max-width: 40rem
     display: grid
-    grid-template-columns: 1fr 1fr 1fr 1fr
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr
-    gap: 1em 1em
-    grid-template-areas: "gs-avatar gs-avatar .gs-stars " "gs-avatar gs-avatar gs-repos gs-repos " ".gs-followers gs-followers ." "gs-commits gs-issues gs-pr gs-pr "
+    grid-template-columns: repeat(4, 1fr)
+    grid-template-rows: repeat(3, 1fr)
+    gap: 1em
+    grid-template-areas: "gs-avatar gs-avatar . gs-stars " "gs-avatar gs-avatar gs-repos gs-repos " ".gs-followers gs-followers gs-link" "gs-commits gs-issues gs-pr gs-pr "
     .count
         z-index: 1
         font-size: 1.5rem
@@ -172,7 +172,7 @@
     --time: 0.7s
     position: relative
     overflow: hidden
-    transition: color var(--time)
+    transition: color var(--time) , opacity 1s, transform 1.3s
     > img
         z-index: 1
     > label
@@ -198,6 +198,19 @@
     .animated
         --angle: 5deg
         animation: shake 0.3s
+.gs-link
+    grid-area: gs-link
+    background: var(--white)
+    --gs-txt: var(--primary)
+    --gs-h: var(--primary)
+    >svg
+        z-index: 1
+    >svg.external-link
+        position: absolute
+        top: 2px
+        right: 2px
+    &:hover
+        --gs-txt:var(--white)
 .gs-avatar
     aspect-ratio: 1/1
     grid-area: gs-avatar
@@ -214,23 +227,14 @@
 
 
 .gs-stars
+    aspect-ratio: 1/1
     grid-area: gs-stars
-    background: var(--primary-h)
-    --gs-txt: var(--primary)
-    --gs-h: var(--primary)
-    &:hover
-        --gs-txt: var(--white)
-
 .gs-followers
     grid-area: gs-followers
-    background: var(--primary-h)
-    --gs-txt: var(--primary)
-    --gs-h: var(--primary)
-    &:hover
-        --gs-txt: var(--white)
-
 .gs-commits
-    grid-area: gs-commits
+    aspect-ratio: 1/1
+    grid-area: gs-commits  
+.gs-commits,.gs-followers,.gs-stars
     background: var(--primary-h)
     --gs-txt: var(--primary)
     --gs-h: var(--primary)
@@ -238,6 +242,7 @@
         --gs-txt: var(--white)
 
 .gs-issues
+    aspect-ratio: 1/1
     grid-area: gs-issues
     background: var(--primary)
     --gs-txt: var(--white)
@@ -245,16 +250,24 @@
 
 .gs-pr
     grid-area: gs-pr
+.gs-repos
+    grid-area: gs-repos
+.gs-repos,.gs-pr
     background: var(--primary-l)
     --gs-txt: var(--white)
     --gs-h: var(--primary-h)
     &:hover
         --gs-txt: var(--primary)
 
-.gs-repos
-    grid-area: gs-repos
-    background: var(--primary-l)
-    --gs-txt: var(--white)
-    --gs-h: var(--primary-h)
-    &:hover
-        --gs-txt: var(--primary)
+
+[data-theme="dark"]
+    .gs-repos,.gs-pr
+        &:hover
+            --gs-txt: var(--white)
+    .gs-commits,.gs-followers,.gs-stars
+        --gs-txt: var(--white)
+        &:hover
+            --gs-txt: var(--white)
+    .gs-link
+        background: var(--primary-d)
+        --gs-txt: var(--white)

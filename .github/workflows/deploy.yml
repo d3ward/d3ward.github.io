@@ -3,36 +3,48 @@ name: Deploy to gh-pages
 on:
   push:
     branches:
-      - main
+      - develop
   workflow_dispatch:
-
+  schedule:
+    - cron: '*/30 * * * *'
+env:
+  GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
 jobs:
     gh-pages-deploy:
       name: Deploying to gh-pages
       runs-on: ubuntu-latest
       steps:
-        - name: Setup Node.js for use with actions
-          uses: actions/setup-node@v3
-          with:
-            version:  16.x
-          env:
-            ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         - name: Checkout branch
           uses: actions/checkout@v2
-          env:
-           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
         - name: Clean install dependencies
           run: npm install
-          env:
-            ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
-        - name: Build app
+        - name: Files stats /dist
+          run: |
+            echo "Total file count in /dist:"
+            find ./dist -type f | wc -l
+            echo "Total size of files in /dist:"
+            du -sh ./dist
+            echo "Individual file sizes in /dist:"
+            find ./dist -type f -exec du -h {} +
+
+        - name: Data Script
+          env:
+            FETCH_SCRIPT: ${{ secrets.FETCH_SCRIPT }}
+          run: |
+            echo "$FETCH_SCRIPT" > ./src/data/fetch_data.sh
+            chmod +x ./src/data/fetch_data.sh
+            ./src/data/fetch_data.sh
+
+        - name: Build
           run: npm run build
-          env:
-            ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-
+        
+        - name: Purge
+          run: npm run purge
+            
         - name: deploy
+          if: false
           uses: peaceiris/actions-gh-pages@v3
           with:
            github_token: ${{ secrets.GITHUB_TOKEN }}
