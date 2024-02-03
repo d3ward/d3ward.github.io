@@ -36,6 +36,16 @@
 		"groups": "kiwi,contributor"
 	},
 	{
+		"id": "anyproto/anytype-ts",
+		"name": "Anytype",
+		"logo": "anytype.png",
+		"url": "https://anytype.io",
+		"githuburl": "https://github.com/anyproto/anytype-ts",
+		"tags": "l10n,Contributor",
+		"groups": "contributor"
+	},
+	
+	{
 		"id": "d3ward/Apteryx-Game",
 		"name": "Apteryx-Game",
 		"logo": "apt.svg",
@@ -59,7 +69,7 @@
 		"logo": "kiwi.svg",
 		"url": "https://kiwibrowser.com/",
 		"githuburl": "https://github.com/kiwibrowser/src.next",
-		"tags": "Kiwi Browser,Contributor",
+		"tags": "Kiwi Browser,Contributor,l10n",
 		"groups": "kiwi,contributor"
 	},
 	{

@@ -3,7 +3,7 @@ name: Deploy to gh-pages
 on:
   push:
     branches:
-      - develop
+      - main
   workflow_dispatch:
   schedule:
     - cron: '0 6,18 * * *'
@@ -44,7 +44,6 @@ jobs:
           run: npm run purge
             
         - name: deploy
-          if: false
           uses: peaceiris/actions-gh-pages@v3
           with:
            github_token: ${{ secrets.GITHUB_TOKEN }}
