@@ -248,12 +248,12 @@
 										</label></div>
 									<div class="links">
 										<% if (item.url) { %>
-											<a target="_blank" class="btn btn-p" href="<%= item.url %>">
+											<a target="_blank" class="btn btn-p" href="<%= item.url %>" rel="noopener noreferrer">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="prefix__icon prefix__icon-tabler prefix__icon-tabler-external-link"><path stroke="none" d="M0 0h24v24H0z"/><path d="M12 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6M11 13l9-9M15 4h5v5"/></svg>Website
 											</a>
 										<% } %>
 										<% if (gh_data.d3ward.repos[item.id] && gh_data.d3ward.repos[item.id].url) { %>
-											<a target="_blank" class="btn btn-p" href="<%= gh_data.d3ward.repos[item.id].url %>">
+											<a target="_blank" class="btn btn-p" href="<%= gh_data.d3ward.repos[item.id].url %>" rel="noopener noreferrer">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="prefix__icon prefix__icon-tabler prefix__icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
 												Github</a>
 										<% } %>
