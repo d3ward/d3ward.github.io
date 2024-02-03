@@ -1,0 +1,347 @@
+{
+  "d3ward": {
+    "stars_count": 1217,
+    "pulls_count": 23,
+    "issues_count": 45,
+    "commits": 1549,
+    "profile": {
+      "username": "d3ward",
+      "realName": "Eduard Ursu",
+      "bio": null,
+      "avatar": "https://avatars.githubusercontent.com/u/39910418?v=4",
+      "location": "Rome , Italy",
+      "repos": 27,
+      "repos_url": "https://api.github.com/users/d3ward/repos",
+      "followers": 388,
+      "following": 5,
+      "url": "https://github.com/d3ward",
+      "notFound": null,
+      "public_gists": 0,
+      "blog": "https://d3ward.github.io/",
+      "company": null
+    },
+    "repos": {
+      "d3ward/Apteryx-Game": {
+        "full_name": "d3ward/Apteryx-Game",
+        "name": "Apteryx-Game",
+        "stars": 13,
+        "forks": 2,
+        "description": "Modified version of the classic T-Rex Game made for KiwiBrowser",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/Apteryx-Game",
+        "language": "HTML"
+      },
+      "d3ward/awesome-extensions-for-kiwi": {
+        "full_name": "d3ward/awesome-extensions-for-kiwi",
+        "name": "awesome-extensions-for-kiwi",
+        "stars": 38,
+        "forks": 5,
+        "description": "An awesome list of open and privacy-friendly extensions for Kiwi Browser",
+        "fork": false,
+        "open_issues": 2,
+        "url": "https://github.com/d3ward/awesome-extensions-for-kiwi",
+        "language": "CSS"
+      },
+      "d3ward/b2ntp": {
+        "full_name": "d3ward/b2ntp",
+        "name": "b2ntp",
+        "stars": 76,
+        "forks": 7,
+        "description": "Kanban style New Tab Page extension with your bookmarks and powerful search",
+        "fork": false,
+        "open_issues": 5,
+        "url": "https://github.com/d3ward/b2ntp",
+        "language": "JavaScript"
+      },
+      "d3ward/bouncydvd": {
+        "full_name": "d3ward/bouncydvd",
+        "name": "bouncydvd",
+        "stars": 6,
+        "forks": 1,
+        "description": "Classic bouncing DVD logo recreated in Rainmeter",
+        "fork": false,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/bouncydvd",
+        "language": "Lua"
+      },
+      "d3ward/cws-mobile": {
+        "full_name": "d3ward/cws-mobile",
+        "name": "cws-mobile",
+        "stars": 18,
+        "forks": 1,
+        "description": "A script to be injected into the Chrome Web Store to make it mobile friendly ",
+        "fork": false,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/cws-mobile",
+        "language": "JavaScript"
+      },
+      "d3ward/d3ward": {
+        "full_name": "d3ward/d3ward",
+        "name": "d3ward",
+        "stars": 6,
+        "forks": 4,
+        "description": "null",
+        "fork": false,
+        "open_issues": 1,
+        "url": "https://github.com/d3ward/d3ward",
+        "language": "null"
+      },
+      "d3ward/d3ward.github.io": {
+        "full_name": "d3ward/d3ward.github.io",
+        "name": "d3ward.github.io",
+        "stars": 6,
+        "forks": 2,
+        "description": "null",
+        "fork": false,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/d3ward.github.io",
+        "language": "EJS"
+      },
+      "d3ward/discord-open-source": {
+        "full_name": "d3ward/discord-open-source",
+        "name": "discord-open-source",
+        "stars": 4,
+        "forks": 0,
+        "description": "List of open source communities living on Discord",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/discord-open-source",
+        "language": "null"
+      },
+      "d3ward/Famicomrade.github.io": {
+        "full_name": "d3ward/Famicomrade.github.io",
+        "name": "Famicomrade.github.io",
+        "stars": 1,
+        "forks": 0,
+        "description": "null",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/Famicomrade.github.io",
+        "language": "HTML"
+      },
+      "d3ward/floatly": {
+        "full_name": "d3ward/floatly",
+        "name": "floatly",
+        "stars": 74,
+        "forks": 7,
+        "description": "An extension that adds a floating button for browser quick actions ",
+        "fork": false,
+        "open_issues": 11,
+        "url": "https://github.com/d3ward/floatly",
+        "language": "JavaScript"
+      },
+      "d3ward/letsblockit": {
+        "full_name": "d3ward/letsblockit",
+        "name": "letsblockit",
+        "stars": 5,
+        "forks": 1,
+        "description": "A collection of custom uBlock filters to hide low-value content.",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/letsblockit",
+        "language": "null"
+      },
+      "d3ward/letsplaytime": {
+        "full_name": "d3ward/letsplaytime",
+        "name": "letsplaytime",
+        "stars": 3,
+        "forks": 1,
+        "description": "null",
+        "fork": false,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/letsplaytime",
+        "language": "JavaScript"
+      },
+      "d3ward/mti": {
+        "full_name": "d3ward/mti",
+        "name": "mti",
+        "stars": 35,
+        "forks": 6,
+        "description": "Meta Theme Injector let you customize the theme-color meta tag",
+        "fork": false,
+        "open_issues": 1,
+        "url": "https://github.com/d3ward/mti",
+        "language": "JavaScript"
+      },
+      "d3ward/nextntp": {
+        "full_name": "d3ward/nextntp",
+        "name": "nextntp",
+        "stars": 73,
+        "forks": 9,
+        "description": "Higly customizable and mobile friendly startpage",
+        "fork": false,
+        "open_issues": 15,
+        "url": "https://github.com/d3ward/nextntp",
+        "language": "HTML"
+      },
+      "d3ward/ntp": {
+        "full_name": "d3ward/ntp",
+        "name": "ntp",
+        "stars": 16,
+        "forks": 2,
+        "description": "New Tab Page for Kiwi Browser ",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/ntp",
+        "language": "JavaScript"
+      },
+      "d3ward/plexus": {
+        "full_name": "d3ward/plexus",
+        "name": "plexus",
+        "stars": 2,
+        "forks": 0,
+        "description": "Remove the fear of Android app compatibility on de-Googled devices.",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/plexus",
+        "language": "JavaScript"
+      },
+      "d3ward/Save-Tabs": {
+        "full_name": "d3ward/Save-Tabs",
+        "name": "Save-Tabs",
+        "stars": 4,
+        "forks": 0,
+        "description": "Export and Import Tabs with Cross-Browser support.",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/Save-Tabs",
+        "language": "null"
+      },
+      "d3ward/scriptz": {
+        "full_name": "d3ward/scriptz",
+        "name": "scriptz",
+        "stars": 97,
+        "forks": 6,
+        "description": "An awesome collection of userscripts",
+        "fork": false,
+        "open_issues": 3,
+        "url": "https://github.com/d3ward/scriptz",
+        "language": "JavaScript"
+      },
+      "d3ward/simple-icons": {
+        "full_name": "d3ward/simple-icons",
+        "name": "simple-icons",
+        "stars": 2,
+        "forks": 0,
+        "description": "SVG icons for popular brands",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/simple-icons",
+        "language": "null"
+      },
+      "d3ward/spa": {
+        "full_name": "d3ward/spa",
+        "name": "spa",
+        "stars": 2,
+        "forks": 0,
+        "description": "Project it's now moved to Techlore Website",
+        "fork": false,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/spa",
+        "language": "HTML"
+      },
+      "d3ward/src.next": {
+        "full_name": "d3ward/src.next",
+        "name": "src.next",
+        "stars": 15,
+        "forks": 0,
+        "description": "Source-code for Kiwi Next, a Kiwi Browser auto-rebased with latest Chromium",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/src.next",
+        "language": "C++"
+      },
+      "d3ward/taskm": {
+        "full_name": "d3ward/taskm",
+        "name": "taskm",
+        "stars": 5,
+        "forks": 1,
+        "description": "Progetto SIW 2020 - Task Manager",
+        "fork": false,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/taskm",
+        "language": "Java"
+      },
+      "d3ward/toolz": {
+        "full_name": "d3ward/toolz",
+        "name": "toolz",
+        "stars": 708,
+        "forks": 73,
+        "description": " Easy-to-use interface and extensive collection of testing tools for optimizing performance and user experience. Test fonts, viewport units, ad blockers, and more.",
+        "fork": false,
+        "open_issues": 11,
+        "url": "https://github.com/d3ward/toolz",
+        "language": "EJS"
+      },
+      "d3ward/umami-d3": {
+        "full_name": "d3ward/umami-d3",
+        "name": "umami-d3",
+        "stars": 1,
+        "forks": 0,
+        "description": "Umami is a simple, fast, privacy-focused alternative to Google Analytics.",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/umami-d3",
+        "language": "TypeScript"
+      },
+      "d3ward/VPN-reviews": {
+        "full_name": "d3ward/VPN-reviews",
+        "name": "VPN-reviews",
+        "stars": 4,
+        "forks": 0,
+        "description": "Transparent, community-driven VPN reviews. ",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/VPN-reviews",
+        "language": "null"
+      },
+      "d3ward/website": {
+        "full_name": "d3ward/website",
+        "name": "website",
+        "stars": 2,
+        "forks": 0,
+        "description": "Home of Techlore - Spreading privacy & security to the masses.",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/website",
+        "language": "null"
+      },
+      "d3ward/winstall": {
+        "full_name": "d3ward/winstall",
+        "name": "winstall",
+        "stars": 1,
+        "forks": 0,
+        "description": "An intuitive interface for browsing and installing Windows Package Manager apps. ",
+        "fork": true,
+        "open_issues": 0,
+        "url": "https://github.com/d3ward/winstall",
+        "language": "JavaScript"
+      },
+      "kiwibrowser/src.next": {
+        "name": "src.next",
+        "stars": 1779,
+        "forks": 241,
+        "description": "Source-code for Kiwi Next, a Kiwi Browser auto-rebased with latest Chromium",
+        "url": "https://github.com/kiwibrowser/src.next",
+        "language": "C++"
+      },
+      "techlore/website": {
+        "name": "website",
+        "stars": 55,
+        "forks": 15,
+        "description": "Home of Techlore - Spreading privacy & security to the masses.",
+        "url": "https://github.com/techlore/website",
+        "language": "HTML"
+      },
+      "Famicomrade/Famicomrade.github.io": {
+        "name": "Famicomrade.github.io",
+        "stars": 9,
+        "forks": 6,
+        "description": null,
+        "url": "https://github.com/Famicomrade/Famicomrade.github.io",
+        "language": "HTML"
+      }
+    }
+  }
+}
