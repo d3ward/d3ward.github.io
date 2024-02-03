@@ -41,6 +41,7 @@ jobs:
             find ./dist -type f -exec du -h {} +
             
         - name: Purge
+          if: false
           run: npm run purge
             
         - name: deploy
