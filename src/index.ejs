@@ -211,7 +211,7 @@
 										<img src="assets/svg/<%= item.logo %>" alt="Logo <%= item.name %>">
 									</div>
 									<% if (gh_data.d3ward.repos[item.id]) { %>
-									<h5><%= gh_data.d3ward.repos[item.id].name %></h5>
+									<h5><%= item.name %></h5>
 									<% } %>
 									<% if (gh_data.d3ward.repos[item.id]) { %>
 										<div><%= gh_data.d3ward.repos[item.id].description %></div>
