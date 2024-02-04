@@ -22,6 +22,14 @@ module.exports = merge(main, {
 				{
 					from: path.resolve(config.src, 'sitemap.xml'),
 					to: path.resolve(config.build, 'sitemap.xml')
+				},
+				{
+					from: path.resolve(config.src, 'browserconfig.xml'),
+					to: path.resolve(config.build, 'browserconfig.xml')
+				},
+				{
+					from: path.resolve(config.src, 'site.webmanifest'),
+					to: path.resolve(config.build, 'site.webmanifest')
 				}
 			]
 		})
