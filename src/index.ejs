@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('partials/head.ejs', { page: 'home' , title:'d3ward - Home', description:"Hi, I\'m Eduard Ursu, a front-end engineer. Explore my portfolio, where each project blends code, creativity, open source collaboration and a commitment to building a user-friendly, privacy-centric web.",
-	url: 'd3ward.github.io' , preview_thumbnail:'https://d3ward.github.io/toolz/preview_thumbnail.png',
+<%- include('partials/head.ejs', { page: 'home' , title:'d3ward - Home', description:"Explore my portfolio, where each project blends code, creativity, open source collaboration and a commitment to building a user-friendly, privacy-centric web.",
+	url: 'd3ward.github.io' ,
 	keywords:'d3ward,portfolio,projects,github,css,js,kiwi,html,extensions' }) %>
 
 	<body>
@@ -41,7 +41,7 @@
 										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 										<path
 											d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-									</svg>Stars</label>
+									</svg><span class="_d-md-only">Stars</span></label>
 							</div>
 							<div class="gs-followers _aos-top">
 								<span class="ripple"></span>
@@ -71,9 +71,9 @@
 										<path d="M12 3l0 6" />
 										<path d="M12 15l0 6" />
 									</svg>
-									Commits</label>
+									<span class="_d-md-only">Commits</span></label>
 							</div>
-							<div class="gs-issues _aos-bottom">
+							<div class="gs-issues _aos-top">
 								<span class="ripple"></span>
 								<span class="count no-js"><%= gh_data.d3ward.issues_count %></span>
 								<span class="count" data-target-number="<%= gh_data.d3ward.issues_count %>">0</span>
@@ -108,17 +108,7 @@
 								<span class="count no-js"><%= gh_data.d3ward.pulls_count %></span>
 								<span class="count" data-target-number="<%= gh_data.d3ward.pulls_count %>">0</span>
 								<label>
-									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-git-pull-request" width="24"
-										height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-										stroke-linecap="round" stroke-linejoin="round">
-										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-										<path d="M6 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-										<path d="M6 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-										<path d="M18 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-										<path d="M6 8l0 8" />
-										<path d="M11 6h5a2 2 0 0 1 2 2v8" />
-										<path d="M14 9l-3 -3l3 -3" />
-									</svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="prefix__icon prefix__icon-tabler prefix__icon-tabler-git-pull-request"><path stroke="none" d="M0 0h24v24H0z"/><path d="M4 18a2 2 0 1 0 4 0 2 2 0 1 0-4 0M4 6a2 2 0 1 0 4 0 2 2 0 1 0-4 0M16 18a2 2 0 1 0 4 0 2 2 0 1 0-4 0M6 8v8"/><path d="M11 6h5a2 2 0 0 1 2 2v8"/><path d="m14 9-3-3 3-3"/></svg>
 									Pull Requests</label>
 							</div>
 							<div class="gs-repos _aos-right">
@@ -126,14 +116,7 @@
 								<span class="count no-js"><%= gh_data.d3ward.profile.repos %></span>
 								<span class="count" data-target-number="<%= gh_data.d3ward.profile.repos %>">0</span>
 								<label>
-									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book-2" width="24"
-										height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-										stroke-linecap="round" stroke-linejoin="round">
-										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-										<path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z" />
-										<path d="M19 16h-12a2 2 0 0 0 -2 2" />
-										<path d="M9 8h6" />
-									</svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="prefix__icon prefix__icon-tabler prefix__icon-tabler-book-2"><path stroke="none" d="M0 0h24v24H0z"/><path d="M19 4v16H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12z"/><path d="M19 16H7a2 2 0 0 0-2 2M9 8h6"/></svg>
 									Repositories</label>
 							</div>
 						</div>
@@ -228,7 +211,7 @@
 										<img src="assets/svg/<%= item.logo %>" alt="Logo <%= item.name %>">
 									</div>
 									<% if (gh_data.d3ward.repos[item.id]) { %>
-									<h5><%= gh_data.d3ward.repos[item.id].name %></h5>
+									<h5><%= item.name %></h5>
 									<% } %>
 									<% if (gh_data.d3ward.repos[item.id]) { %>
 										<div><%= gh_data.d3ward.repos[item.id].description %></div>

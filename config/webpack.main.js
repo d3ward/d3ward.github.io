@@ -32,6 +32,18 @@ module.exports = {
 						]
 					},
 					noErrorOnMissing: true
+				},
+				{
+					from: 'sitemap.xml',
+					to: 'sitemap.xml'
+				},
+				{
+					from: 'browserconfig.xml',
+					to: 'browserconfig.xml'
+				},
+				{
+					from: 'site.webmanifest',
+					to: 'site.webmanifest'
 				}
 			]
 		}),

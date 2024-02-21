@@ -1,7 +1,7 @@
 import '../sass/404.sass'
 import { themeManager } from './components/themeManager'
 import A11yDialog from 'a11y-dialog'
-import { gotop } from './components/gotop'
+import { navbar } from './components/navbar'
 import { aos } from './components/aos'
 
 // Call the function when the DOM is loaded
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		'hide',
 		() => (document.documentElement.style.overflowY = '')
 	)
+	new navbar()
 	new themeManager()
-	new gotop()
 	new aos()
 })
