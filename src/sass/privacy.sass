@@ -1,0 +1,96 @@
+@charset "utf-8"
+
+@import "./settings/variables"
+@import "./theme/light"
+@import "./theme/dark"
+
+@import "./base/basic"
+@import "./extra/aos"
+@import "./elements/typography"
+
+@import "./layout/navbar"
+@import "./layout/header"
+@import "./layout/container"
+@import "./layout/grid"
+@import "./layout/footer"
+
+@import "./elements/button"
+@import "./components/card"
+@import "./elements/form"
+@import "./components/modal"
+@import "./components/gotop_link"
+@import "./extra/tooltip"
+@import "./extra/alert"
+@import "./extra/wave"
+
+@import "./utilities/alignment"
+@import "./utilities/background"
+@import "./utilities/position"
+@import "./utilities/border"
+@import "./utilities/display"
+@import "./utilities/margin"
+@import "./utilities/general"
+@import "./utilities/padding"
+@import "./utilities/spacer"
+@import "./utilities/text"
+
+@import "./gs"
+
+main
+	margin-top: 8rem
+@media (max-width: 40em)
+	.row:not(.keep-width) > [class*=col], .row:not(.keep-width) > div, .grid:not(.keep-width) > [class*=col], .grid:not(.keep-width) > div
+		width: 100%
+svg#d3Logo .svg-elem-1
+	stroke-dashoffset: 724.4970703125px
+	stroke-dasharray: 724.4970703125px
+	fill: transparent
+	stroke: var(--primary)
+	-webkit-transition: stroke-dashoffset 10s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,fill 0.2s linear 8s,stroke 2s linear 4s
+	transition: stroke-dashoffset 10s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,fill 0.2s linear 8s,stroke 2s linear 4s
+svg#d3Logo.startA .svg-elem-1
+	stroke-dashoffset: 0
+	fill: var(--primary)
+	stroke: var(--primary)
+
+svg#d3Logo
+	cursor: pointer
+.logo-wrapper
+	z-index: 1
+
+@keyframes bounce
+	0%, 100%, 20%, 50%, 80%
+		transform: translateY(0)
+	40%
+		transform: translateY(-30px)
+	60%
+		transform: translateY(-15px)
+
+.bounce
+	animation: bounce 1s ease
+
+.grid-p>*
+	margin-top: 1rem
+
+.badges
+	margin: 0
+	margin-top: -2rem
+	height: 1.8rem
+	z-index: 1
+	position: absolute
+	display: flex
+	gap: .2rem
+	&>*
+		max-width: fit-content
+		display: flex
+		height: 1.8rem
+		align-items: center
+		justify-content: center
+		padding: .5rem
+		color: var(--white)
+		border-radius: var(--radius)
+		background: var(--primary)
+.filter-options button.active
+	--btn-txt: var(--txt-on-blue)
+	--btn-bg: var(--primary)
+	--btn-brd: var(--primary)
