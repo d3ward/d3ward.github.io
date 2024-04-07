@@ -16,7 +16,7 @@ module.exports = {
 		path: config.build,
 		clean: false,
 		assetModuleFilename: '[path][name][ext]',
-		publicPath: '/d3ward.github.io/'
+		publicPath: '/'
 	},
 	plugins: [
 		new CopyWebpackPlugin({
