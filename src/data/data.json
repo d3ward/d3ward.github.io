@@ -55,11 +55,11 @@
 		"groups": "kiwi,game"
 	},
 	{
-		"id": "d3ward/awesome-extensions-for-kiwi",
-		"name": "Awesome Extensions for Kiwi",
-		"logo": "puzzle.svg",
-		"url": "https://d3ward.github.io/awesome-extensions-for-kiwi",
-		"githuburl": "https://github.com/d3ward/awesome-extensions-for-kiwi",
+		"id": "d3ward/kiwihub",
+		"name": "KiwiHub",
+		"logo": "kiwihub.svg",
+		"url": "https://d3ward.github.io/kiwihub",
+		"githuburl": "https://github.com/d3ward/kiwihub",
 		"tags": "Kiwi Browser,Contributor",
 		"groups": "kiwi,contributor"
 	},
