@@ -20,4 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
 	new navbar()
 	new themeManager()
 	new aos()
+	function showComponentBasedOnURL() {
+		const url = window.location.href
+		const componentMap = [
+			{ keyword: 'awesome-extensions-for-kiwi', componentId: 'aek' }
+		]
+		let notFound = true
+		componentMap.forEach(({ keyword, componentId }) => {
+			if (url.includes(keyword)) {
+				notFound = false
+				document.getElementById(componentId).style.display = 'flex' // Show the component if the keyword is found in the URL
+			}
+		})
+		if (notFound) document.getElementById('404').style.display = 'flex'
+	}
+
+	showComponentBasedOnURL()
 })

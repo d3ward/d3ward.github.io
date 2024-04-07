@@ -12,10 +12,11 @@ module.exports = {
 		}, {})
 	},
 	output: {
-		filename: './js/[name].js',
+		filename: 'js/[name].js',
 		path: config.build,
 		clean: false,
-		assetModuleFilename: '[path][name][ext]'
+		assetModuleFilename: '[path][name][ext]',
+		publicPath: '/d3ward.github.io/'
 	},
 	plugins: [
 		new CopyWebpackPlugin({
@@ -48,7 +49,7 @@ module.exports = {
 			]
 		}),
 		new MiniCssExtractPlugin({
-			filename: './css/[name].css',
+			filename: 'css/[name].css',
 			chunkFilename: '[name].css'
 		}),
 		...pages.map(
