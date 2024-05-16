@@ -4,28 +4,28 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <url>
-    <loc>https://d3ward.github.io</loc>
-    <lastmod>2024-02-03T18:13:07+00:00</lastmod>
+    <loc>https://d3ward.github.io/</loc>
+    <lastmod>2024-05-16T18:15:03+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://d3ward.github.io/index.html</loc>
-    <lastmod>2024-02-03T18:13:07+00:00</lastmod>
+    <lastmod>2024-05-16T18:15:03+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://d3ward.github.io/about.html</loc>
-    <lastmod>2024-02-03T18:13:07+00:00</lastmod>
+    <lastmod>2024-05-16T18:15:03+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://d3ward.github.io/toolz/</loc>
-    <lastmod>2023-07-16T23:21:36+00:00</lastmod>
+    <lastmod>2024-05-08T12:13:47+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://d3ward.github.io/nextntp/</loc>
-    <lastmod>2024-11-03T09:16:02+00:00</lastmod>
+    <lastmod>2024-04-27T15:36:42+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
@@ -35,27 +35,52 @@
   </url>
   <url>
     <loc>https://d3ward.github.io/kiwihub/</loc>
-    <lastmod>2023-04-26T11:10:59+00:00</lastmod>
+    <lastmod>2024-04-07T12:32:50+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://d3ward.github.io/toolz/index.html</loc>
-    <lastmod>2023-07-16T23:21:36+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
     <loc>https://d3ward.github.io/toolz/adblock.html</loc>
-    <lastmod>2023-07-16T23:21:36+00:00</lastmod>
+    <lastmod>2024-05-08T12:13:47+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://d3ward.github.io/toolz/fontlist.html</loc>
-    <lastmod>2023-07-16T23:21:36+00:00</lastmod>
+    <lastmod>2024-05-08T12:13:47+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://d3ward.github.io/toolz/units.html</loc>
-    <lastmod>2023-07-16T23:21:36+00:00</lastmod>
+    <lastmod>2024-05-08T12:13:47+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://d3ward.github.io/nextntp/themes.html</loc>
+    <lastmod>2024-04-27T15:36:42+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://d3ward.github.io/kiwihub/index.html</loc>
+    <lastmod>2024-04-07T12:32:50+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://d3ward.github.io/kiwihub/extensions.html</loc>
+    <lastmod>2024-04-07T12:32:50+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://d3ward.github.io/kiwihub/userscripts.html</loc>
+    <lastmod>2024-04-07T12:32:50+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://d3ward.github.io/kiwihub/actions.html</loc>
+    <lastmod>2024-04-07T12:32:50+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://d3ward.github.io/kiwihub/guides.html</loc>
+    <lastmod>2024-04-07T12:35:03+00:00</lastmod>
     <priority>0.64</priority>
   </url>
 </urlset>
