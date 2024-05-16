@@ -25,7 +25,7 @@
   </url>
   <url>
     <loc>https://d3ward.github.io/nextntp/</loc>
-    <lastmod>2022-12-03T09:16:02+00:00</lastmod>
+    <lastmod>2024-11-03T09:16:02+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
@@ -34,7 +34,7 @@
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://d3ward.github.io/awesome-extensions-for-kiwi/</loc>
+    <loc>https://d3ward.github.io/kiwihub/</loc>
     <lastmod>2023-04-26T11:10:59+00:00</lastmod>
     <priority>0.80</priority>
   </url>
@@ -58,11 +58,4 @@
     <lastmod>2023-07-16T23:21:36+00:00</lastmod>
     <priority>0.64</priority>
   </url>
-  <url>
-    <loc>https://d3ward.github.io/awesome-extensions-for-kiwi/index.html</loc>
-    <lastmod>2023-04-26T11:10:59+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-
-
 </urlset>
