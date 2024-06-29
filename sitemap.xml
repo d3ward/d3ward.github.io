@@ -24,7 +24,17 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://d3ward.github.io/toolz/index.html</loc>
+    <lastmod>2024-05-08T12:13:47+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://d3ward.github.io/nextntp/</loc>
+    <lastmod>2024-04-27T15:36:42+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://d3ward.github.io/b2ntp/</loc>
     <lastmod>2024-04-27T15:36:42+00:00</lastmod>
     <priority>0.80</priority>
   </url>
