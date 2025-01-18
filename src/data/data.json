@@ -5,12 +5,12 @@
 		"logo": "toolz.svg",
 		"url": "https://d3ward.github.io/toolz",
 		"githuburl": "https://github.com/d3ward/toolz",
-		"tags": "Web Project",
+		"tags": "Archived,Web Project",
 		"groups": "website"
 	},
 	{
 		"id": "d3ward/scriptz",
-		"name":"Scriptz",
+		"name": "Scriptz",
 		"logo": "scriptz.svg",
 		"url": null,
 		"githuburl": "https://github.com/d3ward/scriptz",
@@ -44,7 +44,7 @@
 		"tags": "l10n,Contributor",
 		"groups": "contributor"
 	},
-	
+
 	{
 		"id": "d3ward/Apteryx-Game",
 		"name": "Apteryx-Game",
@@ -92,7 +92,7 @@
 	},
 	{
 		"id": "d3ward/letsplaytime",
-		"name":"Let's Play Time",
+		"name": "Let's Play Time",
 		"logo": "letsplay.svg",
 		"url": "https://letsplaytime.vercel.app/",
 		"githuburl": "https://github.com/d3ward/letsplaytime",
