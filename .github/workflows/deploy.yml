@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: '0 6,18 * * *'
+    - cron: '0 6 * * *'
 permissions:
   contents: write
 env:
