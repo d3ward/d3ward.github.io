@@ -1,0 +1,119 @@
+---
+import "../assets/app.css";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import GoToTop from "@components/GoToTop.astro";
+import SupportDialog from "@components/SupportDialog.astro";
+import type { SEOMetadata } from "@types/index";
+
+interface Props {
+    seo?: SEOMetadata;
+}
+
+const { seo } = Astro.props;
+
+const defaultSEO: SEOMetadata = {
+    title: "d3ward - Home",
+    description:
+        "Explore my portfolio, where each project blends code, creativity, open source collaboration and a commitment to building a user-friendly, privacy-centric web.",
+    url: "https://d3ward.github.io",
+    keywords: "developer,open source,portfolio,web developer,front-end",
+    image: "https://d3ward.github.io/preview_thumbnail.png",
+    type: "website",
+};
+
+const metadata = { ...defaultSEO, ...seo };
+---
+
+<!doctype html>
+<html lang="en" data-theme="d3ward">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content={Astro.generator} />
+
+        <!-- SEO Meta Tags -->
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={metadata.keywords} />
+        <link rel="canonical" href={metadata.url} />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content={metadata.type} />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:url" content={metadata.url} />
+        <meta property="og:image" content={metadata.image} />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metadata.title} />
+        <meta name="twitter:description" content={metadata.description} />
+        <meta name="twitter:image" content={metadata.image} />
+        <meta name="twitter:creator" content="@d3ward_" />
+
+        <!-- Favicons -->
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="/android-chrome-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="512x512"
+            href="/android-chrome-512x512.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#4a9eff" />
+    </head>
+    <body>
+        <Header />
+        <slot />
+        <Footer />
+        <GoToTop />
+        <SupportDialog />
+
+        <script>
+            import { initAOS } from "@scripts/aos";
+
+            // Initialize AOS when DOM is ready
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", initAOS);
+            } else {
+                initAOS();
+            }
+
+            // Support dialog handler
+            document.addEventListener("DOMContentLoaded", () => {
+                const supportBtn = document.getElementById("support-btn");
+                const dialog = document.getElementById(
+                    "support_dialog",
+                ) as HTMLDialogElement;
+
+                supportBtn?.addEventListener("click", () => {
+                    dialog?.showModal();
+                });
+            });
+        </script>
+    </body>
+</html>

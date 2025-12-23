@@ -1,0 +1,74 @@
+---
+/**
+ * Badge component - Display badges with DaisyUI styling
+ *
+ * Features:
+ * - DaisyUI badge variants (primary, secondary, accent, etc.)
+ * - Multiple styles (outline, dash, soft, ghost)
+ * - Size variants (xs, sm, md, lg, xl)
+ * - Floating mode for positioning badges above elements
+ *
+ * Props:
+ * - variant: Color variant
+ * - style: Badge style
+ * - size: Badge size
+ * - floating: Enable floating position (absolute positioning above parent)
+ * - class: Additional CSS classes
+ */
+
+interface Props {
+    variant?:
+        | "primary"
+        | "secondary"
+        | "accent"
+        | "neutral"
+        | "info"
+        | "success"
+        | "warning"
+        | "error";
+    style?: "outline" | "dash" | "soft" | "ghost";
+    size?: "xs" | "sm" | "md" | "lg" | "xl";
+    floating?: boolean;
+    class?: string;
+}
+
+const {
+    variant,
+    style,
+    size,
+    floating = false,
+    class: className,
+} = Astro.props;
+
+const classes = [
+    "badge",
+    variant && `badge-${variant}`,
+    style && `badge-${style}`,
+    size && `badge-${size}`,
+    floating && "badge-floating",
+    className,
+].filter(Boolean);
+---
+
+<div class:list={classes}>
+    <slot />
+</div>
+
+<style>
+    /* Floating badge - matches original .badges styling */
+    .badge-floating {
+        position: absolute;
+        top: -2rem;
+        left: 0;
+        z-index: 1;
+        margin: 0;
+        max-width: fit-content;
+        display: flex;
+        height: 1.8rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        color: white;
+        background: rgb(59 130 246); /* blue-500 */
+    }
+</style>

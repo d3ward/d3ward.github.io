@@ -1,0 +1,124 @@
+/* ============================================
+   GRID STATS LAYOUT
+   ============================================ */
+
+.grid-stats {
+    margin: auto;
+    max-width: 40rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1em;
+    grid-template-areas:
+        "gs-avatar gs-avatar .          gs-stars"
+        "gs-avatar gs-avatar gs-repos   gs-repos"
+        ".         gs-followers gs-followers gs-link"
+        "gs-commits gs-issues  gs-pr     gs-pr";
+}
+
+/* Grid area assignments */
+.gs-avatar {
+    grid-area: gs-avatar;
+}
+.gs-stars {
+    grid-area: gs-stars;
+}
+.gs-followers {
+    grid-area: gs-followers;
+}
+.gs-commits {
+    grid-area: gs-commits;
+}
+.gs-issues {
+    grid-area: gs-issues;
+}
+.gs-link {
+    grid-area: gs-link;
+}
+.gs-pr {
+    grid-area: gs-pr;
+}
+.gs-repos {
+    grid-area: gs-repos;
+}
+
+/* ============================================
+   LOGO ANIMATION
+   ============================================ */
+svg#d3Logo .svg-elem-1 {
+    stroke-dashoffset: 724.4970703125px;
+    stroke-dasharray: 724.4970703125px;
+    fill: transparent;
+    stroke: rgb(59 130 246); /* blue-500 */
+    transition:
+        stroke-dashoffset 10s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
+        fill 0.2s linear 8s,
+        stroke 2s linear 4s;
+}
+
+svg#d3Logo.startA .svg-elem-1 {
+    stroke-dashoffset: 0;
+    fill: rgb(59 130 246); /* blue-500 */
+    stroke: rgb(59 130 246); /* blue-500 */
+}
+
+svg#d3Logo {
+    cursor: pointer;
+}
+
+.logo-wrapper {
+    z-index: 1;
+}
+
+/* ============================================
+   RIPPLE EFFECT
+   ============================================ */
+
+/* Ripple colors per area */
+.gs-avatar .gs-ripple {
+    background: rgb(59 130 246 / 0.15); /* blue-500 with opacity */
+}
+
+.gs-stars .gs-ripple,
+.gs-followers .gs-ripple,
+.gs-commits .gs-ripple {
+    background: rgb(59 130 246 / 0.2); /* blue-500 with opacity */
+}
+
+.gs-issues .gs-ripple {
+    background: rgb(255 255 255 / 0.15); /* white with opacity */
+}
+
+.gs-link .gs-ripple {
+    background: rgb(59 130 246 / 0.15); /* blue-500 with opacity */
+}
+
+.gs-pr .gs-ripple,
+.gs-repos .gs-ripple {
+    background: rgb(239 246 255 / 0.2); /* blue-50 with opacity */
+}
+
+/* Ripple hover effect */
+.gs-avatar:hover .gs-ripple,
+.gs-stars:hover .gs-ripple,
+.gs-followers:hover .gs-ripple,
+.gs-commits:hover .gs-ripple,
+.gs-issues:hover .gs-ripple,
+.gs-link:hover .gs-ripple,
+.gs-pr:hover .gs-ripple,
+.gs-repos:hover .gs-ripple {
+    width: calc(100% * 2.25);
+    padding-top: calc(100% * 2.25);
+}
+
+/* Avatar hover effect for logo */
+.gs-avatar:hover {
+    color: white;
+}
+
+.gs-avatar:hover svg#d3Logo.startA .svg-elem-1 {
+    transition: all 0.2s;
+    fill: white;
+    stroke: white;
+}

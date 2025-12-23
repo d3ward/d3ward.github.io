@@ -1,0 +1,76 @@
+---
+/**
+ * Drawer component using DaisyUI classes.
+ *
+ * Props:
+ * - id: string (unique identifier for the drawer, required)
+ * - side: "left" | "right" (default: "left")
+ * - width: string (custom width class, e.g., "w-64", "w-80")
+ * - class: string (additional classes for the drawer side)
+ * - overlayClass: string (additional classes for the overlay)
+ *
+ * Slots:
+ * - trigger: Content for the trigger button
+ * - default: Content for the drawer menu
+ *
+ * Usage:
+ * <Drawer id="my-drawer">
+ *   <div slot="trigger">
+ *     <button>Open Drawer</button>
+ *   </div>
+ *   <ul class="menu">
+ *     <li><a>Item 1</a></li>
+ *   </ul>
+ * </Drawer>
+ */
+
+interface Props {
+    id: string;
+    side?: "left" | "right";
+    width?: string;
+    class?: string;
+    overlayClass?: string;
+}
+
+const {
+    id,
+    side = "left",
+    width = "w-64",
+    class: className = "",
+    overlayClass = "",
+} = Astro.props;
+
+const drawerSideClass = side === "right" ? "drawer-end" : "";
+const sideClasses = [
+    "menu",
+    "p-4",
+    width,
+    "min-h-full",
+    "bg-base-100",
+    "text-base-content",
+    className,
+]
+    .filter(Boolean)
+    .join(" ");
+
+const overlayClasses = ["drawer-overlay", overlayClass]
+    .filter(Boolean)
+    .join(" ");
+---
+
+<div class={`drawer ${drawerSideClass}`}>
+    <input id={id} type="checkbox" class="drawer-toggle" />
+
+    <!-- Trigger Content -->
+    <div class="drawer-content flex items-center">
+        <slot name="trigger" />
+    </div>
+
+    <!-- Drawer Side -->
+    <div class="drawer-side z-50">
+        <label for={id} class={overlayClasses}></label>
+        <ul class={sideClasses}>
+            <slot />
+        </ul>
+    </div>
+</div>

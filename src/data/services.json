@@ -1,0 +1,44 @@
+{
+	"services": [
+		{
+			"name": "NextDNS",
+			"description": "A reliable and affordable DNS/firewall service for home users.",
+			"url": "https://nextdns.io"
+		},
+		{
+			"name": "Umami",
+			"description": "An open and privacy-friendly alternative to Google Analytics.",
+			"url": "https://umami.is"
+		},
+		{
+			"name": "Mullvad VPN",
+			"description": "Secure and private VPN service.",
+			"url": "https://mullvad.net"
+		},
+		{
+			"name": "Guardian VPN",
+			"description": "Secure and private VPN service.",
+			"url": "https://guardianapp.com"
+		},
+		{
+			"name": "Have I Been Pwned",
+			"description": "Security monitor for data leaks and passwords.",
+			"url": "https://haveibeenpwned.com"
+		},
+		{
+			"name": "DuckDuckGo",
+			"description": "Privacy-focused search engine.",
+			"url": "https://duckduckgo.com"
+		},
+		{
+			"name": "Startpage",
+			"description": "Privacy-friendly search engine.",
+			"url": "https://startpage.com"
+		},
+		{
+			"name": "Google Search",
+			"description": "Popular search engine for all search contexts.",
+			"url": "https://google.com"
+		}
+	]
+}

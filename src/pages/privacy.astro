@@ -1,0 +1,56 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const privacyContent = `
+This website is built with privacy in mind. Here's what you need to know:
+
+## Data Collection
+
+This website does NOT collect, store, or share any personal information. We do not use:
+- Cookies for tracking
+- Analytics that track individual users
+- Third-party advertising networks
+- Social media tracking pixels
+
+## External Links
+
+This website contains links to external sites. We are not responsible for the privacy practices of other sites.
+
+## Open Source
+
+This website is open source and available on GitHub. You can review the code to verify our privacy practices.
+
+## Contact
+
+If you have any questions about this privacy policy, please contact me through GitHub.
+
+Last updated: December 2024
+`;
+---
+
+<Layout seo={{
+  title: "d3ward - Privacy Policy",
+  description: "Privacy policy for d3ward.github.io",
+  url: "https://d3ward.github.io/privacy",
+}}>
+  <main class="min-h-screen py-20">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h1 class="text-4xl font-bold mb-8 text-center">Privacy Policy</h1>
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body prose max-w-none">
+          <div set:html={privacyContent.split('\n').map(line => {
+            if (line.startsWith('## ')) {
+              return `<h2>${line.substring(3)}</h2>`;
+            } else if (line.startsWith('- ')) {
+              return `<li>${line.substring(2)}</li>`;
+            } else if (line.trim() === '') {
+              return '';
+            } else {
+              return `<p>${line}</p>`;
+            }
+          }).join('')} />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,287 @@
+{
+  "services": [
+    {
+      "id": "nextdns",
+      "name": "NextDNS",
+      "description": "A reliable and affordable DNS/firewall service for home users.",
+      "url": "https://nextdns.io"
+    },
+    {
+      "id": "umami",
+      "name": "Umami",
+      "description": "An open and privacy-friendly alternative to Google Analytics.",
+      "url": "https://umami.is"
+    },
+    {
+      "name": "Mullvad VPN",
+      "description": "Secure and private VPN service.",
+      "url": "https://mullvad.net"
+    },
+    {
+      "name": "Guardian VPN",
+      "description": "Secure and private VPN service.",
+      "url": "https://guardianapp.com"
+    },
+    {
+      "name": "Have I Been Pwned",
+      "description": "Security monitor for data leaks and passwords.",
+      "url": "https://haveibeenpwned.com"
+    },
+    {
+      "name": "DuckDuckGo",
+      "description": "Privacy-focused search engine.",
+      "url": "https://duckduckgo.com"
+    },
+    {
+      "name": "Startpage",
+      "description": "Privacy-friendly search engine.",
+      "url": "https://startpage.com"
+    },
+    {
+      "name": "Google Search",
+      "description": "Popular search engine for all search contexts.",
+      "url": "https://google.com"
+    }
+  ],
+  "apps": {
+    "cross": [
+      {
+        "name": "Chrome",
+        "description": "Browser used for work.",
+        "url": "https://www.google.com/chrome/",
+        "platforms": ["Windows", "MacOS"],
+        "tags": ["desktop", "browser"]
+      },
+      {
+        "name": "Brave",
+        "description": "Browser used for mixed activities.",
+        "url": "https://brave.com",
+        "platforms": ["Windows", "MacOS", "iOS"],
+        "tags": ["desktop", "browser", "mobile"]
+      },
+      {
+        "name": "Firefox",
+        "description": "Browser used for personal activities.",
+        "url": "https://mozilla.org/firefox",
+        "platforms": ["Windows", "MacOS"]
+      },
+      {
+        "name": "Anytype",
+        "description": "A privacy-centric, open-source alternative to Notion.",
+        "url": "https://anytype.io",
+        "platforms": ["Windows", "MacOS"]
+      },
+      {
+        "name": "Bitwarden",
+        "description": "Password manager.",
+        "url": "https://bitwarden.com",
+        "platforms": ["Windows", "MacOS"]
+      },
+      {
+        "name": "VSCode",
+        "description": "Code editor.",
+        "url": "https://code.visualstudio.com",
+        "platforms": ["Windows", "MacOS"]
+      },
+      {
+        "name": "GIMP",
+        "description": "Open-source graphic editor.",
+        "url": "https://gimp.org",
+        "platforms": ["Windows", "MacOS"]
+      },
+      {
+        "name": "Inkscape",
+        "description": "Open-source vector editor.",
+        "url": "https://inkscape.org",
+        "platforms": ["Windows", "MacOS"]
+      },
+      {
+        "name": "Motrix",
+        "description": "Download manager.",
+        "url": "https://motrix.app",
+        "platforms": ["Windows", "MacOS"]
+      }
+    ],
+    "macOS": [
+      {
+        "name": "Ferdium",
+        "description": "Unified messaging app.",
+        "url": "https://ferdium.org",
+        "platform": ["macos", "windows"]
+      },
+      {
+        "name": "Itscal",
+        "description": "Calendar shortcut tool.",
+        "url": "https://itscal.com",
+        "platform": ["macos"]
+      },
+      {
+        "name": "Shottr",
+        "description": "Screenshot tool.",
+        "url": "https://shottr.cc",
+        "platform": ["macos"]
+      },
+      {
+        "name": "MacUpdater",
+        "description": "App updater.",
+        "url": "https://macupdater.net",
+        "platform": ["macos"]
+      },
+      {
+        "name": "Raycast",
+        "description": "Enhanced spotlight tool.",
+        "url": "https://raycast.com",
+        "platform": ["macos"]
+      },
+      {
+        "name": "MiddleClick-Sonoma",
+        "description": "Utility for middle click support.",
+        "url": "https://github.com/artginzburg/MiddleClick-Sonoma",
+        "platform": ["macos"]
+      }
+    ],
+    "windows": [
+      {
+        "name": "Windows 11",
+        "description": "Hardened and debloated using ChrisTitus winutil.",
+        "url": "https://christitus.com"
+      },
+      {
+        "name": "SyMenu",
+        "description": "Portable tool collection.",
+        "url": "https://www.ugmfree.it"
+      },
+      {
+        "name": "Playnite",
+        "description": "Video game library organizer.",
+        "url": "https://playnite.link"
+      }
+    ],
+    "mobile": [
+      {
+        "name": "Anytype",
+        "description": "All-in-one productivity app for notes, bookmarks, journaling, and organization.",
+        "url": "https://anytype.io",
+        "platforms": ["iOS", "Android"]
+      },
+      {
+        "name": "Brave",
+        "description": "Browser with extension support.",
+        "url": "https://brave.com",
+        "platforms": ["iOS", "Android"]
+      },
+      {
+        "name": "Safari",
+        "description": "Stock browser on iOS.",
+        "platforms": ["iOS"]
+      },
+      {
+        "name": "Kiwi Browser",
+        "description": "Open-source browser with extension support.",
+        "url": "https://kiwibrowser.com",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "Florisboard",
+        "description": "Open-source keyboard.",
+        "url": "https://florisboard.app",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "FairEmail",
+        "description": "Open-source email client.",
+        "url": "https://email.faircode.eu",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "Lichess",
+        "description": "Chess platform.",
+        "url": "https://lichess.org",
+        "platforms": ["iOS", "Android"]
+      },
+      {
+        "name": "EnteAuth",
+        "description": "Open-source 2FA manager.",
+        "url": "https://enteauth.com",
+        "platforms": ["iOS", "Android"]
+      },
+      {
+        "name": "NetNewsWire",
+        "description": "Open-source RSS reader.",
+        "url": "https://netnewswire.com",
+        "platforms": ["iOS"]
+      },
+      {
+        "name": "Feeder",
+        "description": "Open-source RSS reader.",
+        "url": "https://play.google.com/store/apps/details?id=com.noinnion.android.greader.reader&hl=en&gl=US",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "Watcht",
+        "description": "TV shows and movies tracker.",
+        "url": "https://watcht.com",
+        "platforms": ["iOS"]
+      },
+      {
+        "name": "Showly",
+        "description": "TV shows and movies tracker.",
+        "url": "https://play.google.com/store/apps/details?id=com.michaldrabik.showly2&hl=en&gl=US",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "Obtanium",
+        "description": "App manager for GitHub projects.",
+        "url": "https://github.com/Obtanium/Obtanium",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "F-droid",
+        "description": "App manager for GitHub projects.",
+        "url": "https://f-droid.org",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "Reddit",
+        "description": "Stock Reddit client.",
+        "platforms": ["iOS"]
+      },
+      {
+        "name": "Infinity",
+        "description": "Open-source Reddit client.",
+        "url": "https://github.com/Docile-Alligator/Infinity-For-Reddit",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "Termux",
+        "description": "Terminal emulator.",
+        "url": "https://termux.com",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "Amaze File Manager",
+        "description": "Open-source file manager.",
+        "url": "https://github.com/TeamAmaze/AmazeFileManager",
+        "platforms": ["Android"]
+      },
+      {
+        "name": "Kickstarter",
+        "description": "Crowdfunding platform.",
+        "url": "https://kickstarter.com",
+        "platforms": ["iOS", "Android"]
+      },
+      {
+        "name": "Spotify",
+        "description": "Music streaming service.",
+        "url": "https://spotify.com",
+        "platforms": ["iOS", "Android"]
+      },
+      {
+        "name": "InnerTune",
+        "description": "YouTube Music alternative.",
+        "url": "https://github.com/ZionDevelopers/InnerTune",
+        "platforms": ["Android"]
+      }
+    ]
+  }
+}

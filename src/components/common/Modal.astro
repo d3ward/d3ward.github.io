@@ -1,0 +1,91 @@
+---
+/**
+ * Modal Component
+ *
+ * DaisyUI modal wrapper using HTML <dialog> element for accessibility.
+ * Can be opened using: document.getElementById('id').showModal()
+ * Can be closed using: Esc key, clicking backdrop, or form method="dialog"
+ *
+ * @prop {string} id - Required unique ID for the modal
+ * @prop {string} class - Additional classes for the modal wrapper
+ * @prop {string} boxClass - Classes for modal-box
+ * @prop {string} actionClass - Classes for modal-action
+ * @prop {boolean} responsive - Add responsive positioning (bottom on mobile, middle on desktop)
+ * @prop {boolean} closeOnBackdrop - Allow closing by clicking outside (default: true)
+ * @prop {boolean} closeButton - Show close button in top-right corner (default: false)
+ * @prop {string} position - Modal position: 'top' | 'middle' | 'bottom' (default: 'middle')
+ *
+ * Slots:
+ * - default: Modal content
+ * - actions: Modal action buttons (uses modal-action class)
+ * - title: Modal title/header
+ */
+
+interface Props {
+    id: string;
+    class?: string;
+    boxClass?: string;
+    actionClass?: string;
+    responsive?: boolean;
+    closeOnBackdrop?: boolean;
+    closeButton?: boolean;
+    position?: 'top' | 'middle' | 'bottom';
+}
+
+const {
+    id,
+    class: className,
+    boxClass,
+    actionClass,
+    responsive = false,
+    closeOnBackdrop = true,
+    closeButton = false,
+    position = 'middle',
+    ...rest
+} = Astro.props;
+
+const modalClasses = [
+    'modal',
+    responsive && 'modal-bottom sm:modal-middle',
+    !responsive && position === 'top' && 'modal-top',
+    !responsive && position === 'middle' && 'modal-middle',
+    !responsive && position === 'bottom' && 'modal-bottom',
+    className,
+].filter(Boolean);
+
+const modalBoxClasses = [
+    'modal-box',
+    boxClass,
+].filter(Boolean);
+
+const modalActionClasses = [
+    'modal-action',
+    actionClass,
+].filter(Boolean);
+---
+
+<dialog id={id} class:list={modalClasses} {...rest}>
+    <div class:list={modalBoxClasses}>
+        {closeButton && (
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+        )}
+
+        <slot name="title" />
+
+        <slot />
+
+        {Astro.slots.has('actions') && (
+            <div class:list={modalActionClasses}>
+                <slot name="actions" />
+            </div>
+        )}
+    </div>
+
+    {closeOnBackdrop && (
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    )}
+</dialog>

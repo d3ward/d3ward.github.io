@@ -1,0 +1,75 @@
+---
+import Button from "./common/Button.astro";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative bg-primary text-primary-content">
+    <div class="container mx-auto max-w-screen-lg px-4 py-12 relative z-10">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center gap-6"
+        >
+            <!-- Social Links & Support -->
+            <div class="flex gap-4 items-center">
+                <Button
+                    href="https://github.com/d3ward"
+                    external={true}
+                    style="ghost"
+                    circle={true}
+                    icon="github"
+                    iconOnly={true}
+                    aria-label="GitHub"
+                    color="neutral"
+                />
+                <Button
+                    href="https://twitter.com/d3ward_"
+                    external={true}
+                    style="ghost"
+                    circle={true}
+                    icon="twitter"
+                    iconOnly={true}
+                    aria-label="Twitter"
+                    color="neutral"
+                />
+                <div class="divider divider-horizontal"></div>
+                <button
+                    id="support-btn"
+                    class="btn btn-ghost btn-sm gap-2"
+                    aria-label="Support me"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"
+                        ></path>
+                        <path
+                            d="M3 14c.83 .642 2.077 1.017 3.5 1c1.423 .017 2.67 -.358 3.5 -1c.83 -.642 2.077 -1.017 3.5 -1c1.423 -.017 2.67 .358 3.5 1"
+                        ></path>
+                        <path d="M8 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2"
+                        ></path>
+                        <path d="M12 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2"
+                        ></path>
+                        <path
+                            d="M3 10h14v5a6 6 0 0 1 -6 6h-2a6 6 0 0 1 -6 -6v-5z"
+                        ></path>
+                        <path d="M16.746 16.726a3 3 0 1 0 .252 -5.555"></path>
+                    </svg>
+                    <span class="hidden sm:inline">Support me</span>
+                </button>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-sm opacity-90">
+                <p>&copy; {currentYear} Eduard Ursu (d3ward)</p>
+                <p class="text-xs mt-1">Licensed under CC BY-NC-SA 4.0</p>
+            </div>
+        </div>
+    </div>
+</footer>

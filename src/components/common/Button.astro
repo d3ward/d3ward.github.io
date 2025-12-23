@@ -1,0 +1,120 @@
+---
+import Icon from "./Icon.astro";
+
+/**
+ * Common Button component for Astro using daisyUI classes and Tabler Icons.
+ *
+ * Props:
+ * - href: string (optional - if provided, renders as <a> tag instead of <button>)
+ * - external: boolean (when href is provided, automatically adds target="_blank" and rel="noopener noreferrer")
+ * - type: "button" | "submit" | "reset" (default: "button")
+ * - color: "neutral" | "primary" | "secondary" | "accent" | "info" | "success" | "warning" | "error"
+ * - style: "filled" | "outline" | "dash" | "soft" | "ghost" | "link"
+ * - size: "xs" | "sm" | "md" | "lg" | "xl"
+ * - icon: string (e.g., "github", "kiwi", "twitter", "external-link", "arrow-left", or any tabler icon name)
+ * - iconPosition: "left" | "right" (default: "left")
+ * - iconOnly: boolean (renders only the icon without text, useful for circle/square buttons)
+ * - iconClass: string (custom classes for the icon, defaults to size-based classes)
+ * - wide: boolean
+ * - block: boolean
+ * - square: boolean
+ * - circle: boolean
+ * - active: boolean
+ * - disabled: boolean
+ * - loading: boolean
+ * - class: string (additional classes)
+ * - ...rest: other attributes (e.g. aria-label, id, etc.)
+ */
+const {
+    href,
+    external = false,
+    type = "button",
+    color = "primary",
+    style: btnStyle,
+    size = "md",
+    icon,
+    iconPosition = "left",
+    iconOnly = false,
+    iconClass,
+    wide = false,
+    block = false,
+    square = false,
+    circle = false,
+    active = false,
+    disabled = false,
+    loading = false,
+    class: className = "",
+    children,
+    ...rest
+} = Astro.props;
+
+// Auto-set external link attributes
+const linkAttrs =
+    href && external ? { target: "_blank", rel: "noopener noreferrer" } : {};
+
+// DaisyUI class mapping
+const colorClass = color ? `btn-${color}` : "";
+// "filled" is the default DaisyUI button style (no extra class needed)
+const styleClass = btnStyle && btnStyle !== "filled" ? `btn-${btnStyle}` : "";
+const sizeClass = size ? `btn-${size}` : "";
+const wideClass = wide ? "btn-wide" : "";
+const blockClass = block ? "btn-block" : "";
+const squareClass = square ? "btn-square" : "";
+const circleClass = circle ? "btn-circle" : "";
+const activeClass = active ? "btn-active" : "";
+const disabledClass = disabled ? "btn-disabled" : "";
+const loadingClass = loading ? "loading" : "";
+
+// Compose all classes
+const btnClass = [
+    "btn",
+    colorClass,
+    styleClass,
+    sizeClass,
+    wideClass,
+    blockClass,
+    squareClass,
+    circleClass,
+    activeClass,
+    disabledClass,
+    loadingClass,
+    className,
+]
+    .filter(Boolean)
+    .join(" ");
+
+// Icon size mapping (passed to Icon component)
+const iconSizePreset = iconClass ? undefined : size;
+---
+
+{
+    href ? (
+        <a href={href} class={btnClass} {...linkAttrs} {...rest}>
+            {loading && <span class="loading loading-spinner" />}
+            {!iconOnly && icon && iconPosition === "left" && (
+                <Icon name={icon} size={iconSizePreset} class={iconClass} />
+            )}
+            {!iconOnly && <slot />}
+            {iconOnly && icon && (
+                <Icon name={icon} size={iconSizePreset} class={iconClass} />
+            )}
+            {!iconOnly && icon && iconPosition === "right" && (
+                <Icon name={icon} size={iconSizePreset} class={iconClass} />
+            )}
+        </a>
+    ) : (
+        <button type={type} class={btnClass} disabled={disabled} {...rest}>
+            {loading && <span class="loading loading-spinner" />}
+            {!iconOnly && icon && iconPosition === "left" && (
+                <Icon name={icon} size={iconSizePreset} class={iconClass} />
+            )}
+            {!iconOnly && <slot />}
+            {iconOnly && icon && (
+                <Icon name={icon} size={iconSizePreset} class={iconClass} />
+            )}
+            {!iconOnly && icon && iconPosition === "right" && (
+                <Icon name={icon} size={iconSizePreset} class={iconClass} />
+            )}
+        </button>
+    )
+}

@@ -1,0 +1,60 @@
+---
+import Layout from "@layouts/Layout.astro";
+import WaveDecoration from "@components/WaveDecoration.astro";
+import StatsGrid from "@components/home/StatsGrid.astro";
+import ProjectFilter from "@components/home/ProjectFilter.astro";
+import ProjectCard from "@components/home/ProjectCard.astro";
+import type { Project, GitHubStats } from "@types/index";
+
+import projects from "@data/projects.json";
+import githubStats from "@data/github-stats.json";
+
+const projectsData = projects as Project[];
+const stats = githubStats as GitHubStats;
+---
+
+<Layout
+    seo={{
+        title: "d3ward - Home",
+        description:
+            "Explore my portfolio, where each project blends code, creativity, open source collaboration and a commitment to building a user-friendly, privacy-centric web.",
+        url: "https://d3ward.github.io",
+        keywords:
+            "contributor,developer,Floatly,NextNTP,Toolz,Techlore,Kiwi Browser",
+    }}
+>
+    <WaveDecoration position="top" className="_float-top" />
+
+    <main class="text-center">
+        <!-- Hero Section with GitHub Stats -->
+        <StatsGrid />
+
+        <!-- Divider -->
+        <hr class="my-12 border-base-300" />
+
+        <!-- Projects Section -->
+        <section class="py-12">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold mb-8">Projects</h2>
+
+                <!-- Filter Buttons -->
+                <ProjectFilter />
+
+                <!-- Projects Grid -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+                >
+                    {
+                        projectsData.map((project) => (
+                            <ProjectCard
+                                project={project}
+                                githubData={stats.d3ward.repos[project.id]}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    </main>
+    <WaveDecoration position="bottom" />
+</Layout>

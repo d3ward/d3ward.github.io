@@ -1,0 +1,139 @@
+---
+import { Icon } from "astro-icon/components";
+
+// Area to Icon mapping - automatic icon assignment based on area
+const AREA_ICON_MAP = {
+    avatar: null,
+    stars: "octicon:star-24",
+    followers: "octicon:people-24",
+    commits: "octicon:commit-24",
+    issues: "octicon:issue-opened-24",
+    link: "octicon:link-external",
+    pr: "octicon:git-pull-request-24",
+    repos: "octicon:repo",
+} as const;
+
+// Area to Tailwind classes mapping
+const AREA_CLASSES = {
+    avatar: "bg-white text-blue-500 border-4 border-blue-500 aspect-square",
+    stars: "bg-blue-50 text-blue-500 hover:bg-blue-100 aspect-square",
+    followers: "bg-blue-50 text-blue-500 hover:bg-blue-100",
+    commits: "bg-blue-50 text-blue-500 hover:bg-blue-100 aspect-square",
+    issues: "bg-blue-600 text-white hover:bg-blue-700 aspect-square",
+    link: "bg-white text-blue-500 hover:bg-slate-50",
+    pr: "bg-blue-500 text-white hover:bg-blue-600",
+    repos: "bg-blue-500 text-white hover:bg-blue-600",
+} as const;
+
+type AreaType = keyof typeof AREA_ICON_MAP;
+
+interface Props {
+    value?: string | number;
+    label?: string;
+    icon?: string;
+    href?: string;
+    area: AreaType;
+    animation?: "left" | "right" | "top" | "bottom";
+    showLabelOnMobile?: boolean;
+    noJsValue?: string | number;
+    tilt?: boolean;
+    tiltMax?: number;
+    tiltSpeed?: number;
+    tiltPerspective?: number;
+}
+
+const {
+    value = "",
+    label = "",
+    icon,
+    href,
+    area,
+    animation = "bottom",
+    showLabelOnMobile = true,
+    noJsValue,
+    tilt = true,
+    tiltMax = 15,
+    tiltSpeed = 400,
+    tiltPerspective = 1000,
+} = Astro.props;
+
+const resolvedIcon = icon || AREA_ICON_MAP[area];
+const isAvatar = area === "avatar";
+const isLink = area === "link";
+
+const Tag = href ? "a" : "div";
+const linkAttrs = href ? { href, target: "_blank", "aria-label": label } : {};
+const tiltAttrs = tilt
+    ? {
+          "data-tilt": "",
+          "data-tilt-max": tiltMax,
+          "data-tilt-speed": tiltSpeed,
+          "data-tilt-perspective": tiltPerspective,
+      }
+    : {};
+---
+
+<Tag
+    class:list={[
+        `gs-${area}`,
+        AREA_CLASSES[area],
+        "flex justify-center items-center flex-col p-4 rounded-lg text-center relative overflow-hidden transition-all duration-700",
+        animation && `_aos-${animation}`,
+    ]}
+    {...linkAttrs}
+    {...tiltAttrs}
+>
+    <span
+        class="gs-ripple absolute block w-0 h-0 rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-700 z-0"
+    ></span>
+
+    {
+        isAvatar ? (
+            <div class="z-10">
+                <slot />
+            </div>
+        ) : isLink ? (
+            <div class="z-10">
+                {resolvedIcon && (
+                    <Icon
+                        name={resolvedIcon}
+                        class="absolute top-2 right-2 w-6 h-6 z-10"
+                    />
+                )}
+                <slot />
+            </div>
+        ) : (
+            <div class="z-10 flex flex-col items-center">
+                {noJsValue && (
+                    <span class="count no-js text-4xl font-bold leading-none mb-2">
+                        {noJsValue}
+                    </span>
+                )}
+                {value && (
+                    <span
+                        class="count text-4xl font-bold leading-none mb-2"
+                        data-target={value}
+                    >
+                        {value}
+                    </span>
+                )}
+                {label && (
+                    <label class="flex justify-center items-center gap-1 text-base font-medium">
+                        {resolvedIcon && (
+                            <Icon
+                                name={resolvedIcon}
+                                class="icon"
+                                width={24}
+                                height={24}
+                                stroke-width={1.75}
+                            />
+                        )}
+                        <span class:list={[!showLabelOnMobile && "_d-md-only"]}>
+                            {label}
+                        </span>
+                    </label>
+                )}
+            </div>
+        )
+    }
+</Tag>

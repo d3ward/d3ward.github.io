@@ -1,0 +1,37 @@
+---
+/**
+ * BadgeGroup component - Container for multiple floating badges
+ *
+ * Matches the original .badges styling for grouped badges
+ * positioned above an element (like project cards)
+ *
+ * Usage:
+ * <BadgeGroup>
+ *   <Badge floating variant="primary">New</Badge>
+ *   <Badge floating variant="secondary">Featured</Badge>
+ * </BadgeGroup>
+ */
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={["badges", className]}>
+    <slot />
+</div>
+
+<style>
+    /* Matches original .badges styling from index.sass */
+    .badges {
+        margin: 0;
+        margin-top: -2rem;
+        height: 1.8rem;
+        z-index: 1;
+        position: absolute;
+        display: flex;
+        gap: 0.2rem;
+    }
+</style>

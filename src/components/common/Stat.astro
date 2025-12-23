@@ -1,0 +1,153 @@
+---
+import { Icon } from "astro-icon/components";
+
+/**
+ * Stat component - Display statistics in a beautiful card using DaisyUI styles
+ *
+ * Features:
+ * - DaisyUI stat classes for styling
+ * - Icon support (Tabler, Octicons, Simple Icons)
+ * - Customizable figure, actions, and content
+ * - Animation counter support
+ * - Tilt effect support
+ *
+ * Props:
+ * - title: string - Title text (stat-title)
+ * - value: string | number - Main value (stat-value)
+ * - desc: string - Description text (stat-desc)
+ * - icon: string - Icon name (e.g., "star", "tabler:heart", "octicon:repo")
+ * - iconColor: string - Tailwind color class for icon (e.g., "text-primary")
+ * - iconSize: number - Icon size (default: 32)
+ * - figure: any - Custom figure content (overrides icon)
+ * - actions: any - Action buttons/content
+ * - class: string - Additional classes
+ * - centered: boolean - Center all items
+ * - valueColor: string - Color class for value (e.g., "text-primary")
+ * - titleColor: string - Color class for title
+ * - descColor: string - Color class for description
+ * - noJsValue: string | number - Fallback value for no-JS
+ * - animateValue: boolean - Enable counter animation
+ * - tilt: boolean - Enable tilt effect
+ * - tiltMax: number - Max tilt angle
+ * - tiltSpeed: number - Tilt speed
+ * - tiltPerspective: number - Tilt perspective
+ */
+
+interface Props {
+    title?: string;
+    value: string | number;
+    desc?: string;
+    icon?: string;
+    iconColor?: string;
+    iconSize?: number;
+    figure?: any;
+    actions?: any;
+    class?: string;
+    centered?: boolean;
+    valueColor?: string;
+    titleColor?: string;
+    descColor?: string;
+    noJsValue?: string | number;
+    animateValue?: boolean;
+    tilt?: boolean;
+    tiltMax?: number;
+    tiltSpeed?: number;
+    tiltPerspective?: number;
+    as?: "div" | "a"; // Custom wrapper tag
+    href?: string; // For anchor tags
+    target?: string; // Link target
+}
+
+const {
+    title,
+    value,
+    desc,
+    icon,
+    iconColor = "text-secondary",
+    iconSize = 32,
+    figure,
+    actions,
+    class: className,
+    centered = false,
+    valueColor,
+    titleColor,
+    descColor,
+    noJsValue,
+    animateValue = false,
+    tilt = false,
+    tiltMax = 50,
+    tiltSpeed = 400,
+    tiltPerspective = 500,
+    as: Tag = "div",
+    href,
+    target,
+    ...rest
+} = Astro.props;
+
+// Tilt attributes
+const tiltAttrs = tilt
+    ? {
+          "data-tilt": "",
+          "data-tilt-max": tiltMax,
+          "data-tilt-speed": tiltSpeed,
+          "data-tilt-perspective": tiltPerspective,
+      }
+    : {};
+
+// Build icon name - auto-detect or use provided prefix
+const iconName = icon ? (icon.includes(":") ? icon : `octicon:${icon}`) : null;
+
+// Link attributes
+const linkAttrs = href ? { href, ...(target && { target }) } : {};
+---
+
+<Tag
+    class:list={["stat", centered && "place-items-center", className]}
+    {...tiltAttrs}
+    {...linkAttrs}
+    {...rest}
+>
+    {
+        (figure || iconName) && (
+            <div class:list={["stat-figure", iconColor]}>
+                {figure ? (
+                    <slot name="figure">{figure}</slot>
+                ) : (
+                    iconName && (
+                        <Icon
+                            name={iconName}
+                            class="inline-block stroke-current"
+                            width={iconSize}
+                            height={iconSize}
+                        />
+                    )
+                )}
+            </div>
+        )
+    }
+
+    {title && <div class:list={["stat-title", titleColor]}>{title}</div>}
+
+    {
+        noJsValue && animateValue && (
+            <div class:list={["stat-value no-js", valueColor]}>{noJsValue}</div>
+        )
+    }
+
+    <div
+        class:list={["stat-value", valueColor]}
+        {...animateValue && { "data-target-number": value }}
+    >
+        {value}
+    </div>
+
+    {desc && <div class:list={["stat-desc", descColor]}>{desc}</div>}
+
+    {
+        actions && (
+            <div class="stat-actions">
+                <slot name="actions">{actions}</slot>
+            </div>
+        )
+    }
+</Tag>

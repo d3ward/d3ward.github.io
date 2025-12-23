@@ -1,0 +1,97 @@
+---
+import { Icon as AstroIcon } from "astro-icon/components";
+
+/**
+ * Icon component wrapper for easy icon usage across the project.
+ *
+ * Props:
+ * - name: string (icon name - can be friendly name like "github", "kiwi", or full path like "tabler:home", "simple-icons:github", or local SVG path)
+ * - class: string (custom classes for styling)
+ * - size: "xs" | "sm" | "md" | "lg" | "xl" | number (preset sizes or custom size)
+ *
+ * Usage:
+ * <Icon name="d3" size="xl" /> <!-- Uses iconMap to resolve to local:d3 -->
+ * <Icon name="github" size="md" /> <!-- Uses iconMap to resolve to simple-icons:github -->
+ * <Icon name="kiwi" size="lg" /> <!-- Uses iconMap to resolve to local:kiwi -->
+ * <Icon name="tabler:home" class="w-6 h-6" /> <!-- Direct icon set reference -->
+ */
+
+interface Props {
+    name: string;
+    class?: string;
+    size?: "xs" | "sm" | "md" | "lg" | "xl" | number;
+}
+
+const { name, class: className, size = "md", ...rest } = Astro.props;
+
+// Map friendly icon names to icon sets
+// Priority: Local SVGs for custom icons, Simple Icons for brands, Octicons for GitHub UI, Tabler for general icons
+const iconMap: Record<string, string> = {
+    // Local custom icons (from src/icons/)
+    d3: "local:d3",
+    kiwi: "local:kiwi",
+    toolz: "local:toolz",
+    scriptz: "local:scriptz",
+    b2ntp: "local:b2ntp",
+    next_ntp: "local:next_ntp",
+    apt: "local:apt",
+    kiwihub: "local:kiwihub",
+    floatly: "local:floatly",
+    techlore: "local:techlore",
+
+    // Brand/Social icons (using Simple Icons for authentic brand colors)
+    github: "simple-icons:github",
+    twitter: "simple-icons:x",
+    discord: "simple-icons:discord",
+    linkedin: "simple-icons:linkedin",
+    youtube: "simple-icons:youtube",
+    facebook: "simple-icons:facebook",
+    instagram: "simple-icons:instagram",
+
+    // UI icons (Tabler)
+    external: "tabler:external-link",
+    "arrow-left": "tabler:arrow-left",
+    "arrow-up": "tabler:arrow-up",
+    moon: "tabler:moon",
+    sun: "tabler:sun",
+    hamburger: "tabler:menu-2",
+    grid: "tabler:grid-4x4",
+    upload: "tabler:upload",
+    puzzle: "tabler:puzzle",
+    gamepad: "tabler:device-gamepad-2",
+    script: "tabler:script",
+    rainmeter: "tabler:droplet",
+    browser: "tabler:browser",
+
+    // GitHub-specific UI (Octicons)
+    "octicon-mark": "octicon:mark-github",
+    "octicon-repo": "octicon:repo",
+    "octicon-star": "octicon:star",
+};
+
+// Get the actual icon name
+// 1. Check if it's a mapped icon
+// 2. If it contains ":", use it directly (e.g., "simple-icons:github")
+// 3. Otherwise, assume it's a Tabler icon
+const iconName = iconMap[name]
+    ? iconMap[name]
+    : name.includes(":")
+      ? name
+      : `tabler:${name}`;
+
+// Size mapping
+const sizeMap: Record<string, string> = {
+    xs: "w-3 h-3",
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
+    xl: "w-8 h-8",
+};
+
+// If size is a preset, use the mapping; otherwise use custom class
+const sizeClass =
+    typeof size === "string" && sizeMap[size] ? sizeMap[size] : "";
+const finalClass = className || sizeClass || "w-5 h-5";
+---
+
+<AstroIcon name={iconName} class={finalClass} {...rest} />

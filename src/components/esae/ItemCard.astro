@@ -1,0 +1,82 @@
+---
+import { Card, Button, Badge, BadgeGroup } from "../common";
+
+interface Props {
+    name: string;
+    description?: string;
+    url?: string;
+    tags?: string[];
+    platforms?: string[];
+    groups?: string;
+}
+
+const {
+    name,
+    description,
+    url,
+    tags = [],
+    platforms = [],
+    groups = "",
+} = Astro.props;
+---
+
+<div class="col-span-12 md:col-span-6 lg:col-span-4" data-groups={groups}>
+    <Card
+        bordered={true}
+        class="bg-base-100 h-full _aos-bottom relative"
+        bodyClass="gap-4"
+    >
+        <!-- Floating Badges -->
+        {
+            tags.length > 0 && (
+                <BadgeGroup>
+                    {tags.map((tag) => (
+                        <Badge variant="primary" size="sm">
+                            {tag}
+                        </Badge>
+                    ))}
+                </BadgeGroup>
+            )
+        }
+
+        <!-- Title -->
+        <h3 slot="title" class="text-lg">{name}</h3>
+
+        <!-- Description -->
+        {
+            description && (
+                <p class="text-sm text-base-content/70">{description}</p>
+            )
+        }
+
+        <!-- Platforms -->
+        {
+            platforms.length > 0 && (
+                <div class="flex flex-wrap gap-1 text-xs text-base-content/60">
+                    {platforms.map((platform, index) => (
+                        <span>
+                            {platform}
+                            {index < platforms.length - 1 ? "," : ""}
+                        </span>
+                    ))}
+                </div>
+            )
+        }
+
+        <!-- Actions -->
+        {
+            url && (
+                <div slot="actions">
+                    <Button
+                        href={url}
+                        external={true}
+                        size="sm"
+                        icon="external-link"
+                    >
+                        Visit
+                    </Button>
+                </div>
+            )
+        }
+    </Card>
+</div>

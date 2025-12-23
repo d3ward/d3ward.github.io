@@ -1,0 +1,77 @@
+---
+/**
+ * Card component - DaisyUI card with flexible slots and styling
+ *
+ * Features:
+ * - Multiple variants (bordered, dashed, side, image-full)
+ * - Flexible slots (figure, badges, title, content, actions)
+ * - Size variants
+ * - Custom styling
+ *
+ * Slots:
+ * - badges: Top badges area
+ * - figure: Image/icon area
+ * - title: Card title (or use title prop)
+ * - default: Main content
+ * - actions: Bottom actions area
+ */
+
+interface Props {
+    title?: string;
+    titleClass?: string;
+    bordered?: boolean;
+    dash?: boolean;
+    side?: boolean;
+    imageFull?: boolean;
+    size?: "xs" | "sm" | "md" | "lg" | "xl";
+    bodyClass?: string;
+    actionsClass?: string;
+    class?: string;
+}
+
+const {
+    title,
+    titleClass,
+    bordered,
+    dash,
+    side,
+    imageFull,
+    size,
+    bodyClass,
+    actionsClass,
+    class: className,
+    ...rest
+} = Astro.props;
+
+const cardClasses = [
+    "card",
+    bordered && "card-bordered",
+    dash && "card-dash",
+    side && "card-side",
+    imageFull && "image-full",
+    size && `card-${size}`,
+    className,
+].filter(Boolean);
+---
+
+<div class:list={cardClasses} {...rest}>
+    <slot name="figure" />
+
+    <div class:list={["card-body", bodyClass]}>
+        <slot name="badges" />
+
+        {
+            title && (
+                <h2 class:list={["card-title", titleClass]}>
+                    <slot name="title">{title}</slot>
+                </h2>
+            )
+        }
+
+        <slot />
+
+        <div class:list={["card-actions", actionsClass]}>
+            <slot name="actions" />
+        </div>
+    </div>
+</div>
