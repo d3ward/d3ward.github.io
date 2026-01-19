@@ -19,7 +19,17 @@ import { Icon as AstroIcon } from "astro-icon/components";
 interface Props {
     name: string;
     class?: string;
-    size?: "xs" | "sm" | "md" | "lg" | "xl" | number;
+    size?:
+        | "xs"
+        | "sm"
+        | "md"
+        | "lg"
+        | "xl"
+        | "2xl"
+        | "3xl"
+        | "4xl"
+        | "5xl"
+        | number;
 }
 
 const { name, class: className, size = "md", ...rest } = Astro.props;
@@ -86,6 +96,10 @@ const sizeMap: Record<string, string> = {
     md: "w-5 h-5",
     lg: "w-6 h-6",
     xl: "w-8 h-8",
+    "2xl": "w-10 h-10",
+    "3xl": "w-12 h-12",
+    "4xl": "w-14 h-14",
+    "5xl": "w-16 h-16",
 };
 
 // If size is a preset, use the mapping; otherwise use custom class
