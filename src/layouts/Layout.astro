@@ -4,7 +4,7 @@ import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
 import GoToTop from "@components/GoToTop.astro";
 import SupportDialog from "@components/SupportDialog.astro";
-import type { SEOMetadata } from "@types/index";
+import type { SEOMetadata } from "@/types/seo";
 
 interface Props {
     seo?: SEOMetadata;
@@ -87,7 +87,7 @@ const metadata = { ...defaultSEO, ...seo };
         <meta name="theme-color" content="#4a9eff" />
     </head>
     <body>
-        <Header />
+        <Navbar />
         <slot />
         <Footer />
         <GoToTop />

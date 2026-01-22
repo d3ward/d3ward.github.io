@@ -1,21 +1,25 @@
 ---
 interface Props {
-  position?: 'top' | 'bottom';
-  className?: string;
+    position?: "top" | "bottom";
+    className?: string;
 }
 
-const { position = 'bottom', className = '' } = Astro.props;
+const { position = "bottom", className = "" } = Astro.props;
 ---
 
-<svg 
-  viewBox="0 0 120 12" 
-  class={`wave ${className}`}
-  style={position === 'top' ? 'margin-top:-7px;margin-bottom:2rem;height:5em;' : 'margin-bottom:-7px;margin-top:2rem;height:5em;'}
-  preserveAspectRatio="none"
+<svg
+    viewBox={position === "top" ? "0 0 120 30" : "0 0 120 12"}
+    class={`wave ${className}`}
+    style={position === "top"
+        ? ""
+        : "margin-bottom:-7px;margin-top:2rem;height:5em;"}
+    preserveAspectRatio="none"
 >
-  {position === 'top' ? (
-    <path d="M0 9v6c30 0 30 4 60 4 31 0 30-4 60-4s30 4 60 4 30-4 60-4V0H0z"></path>
-  ) : (
-    <path d="M 0 0 C 30 0 30 5 60 5 C 90 5 90 0 120 0 C 150 0 150 5 180 5 C 210 5 210 0 240 0 v 12 h -240 z"></path>
-  )}
+    {
+        position === "top" ? (
+            <path d="M0 9v6c30 0 30 4 60 4 31 0 30-4 60-4s30 4 60 4 30-4 60-4V0H0z" />
+        ) : (
+            <path d="M 0 0 C 30 0 30 5 60 5 C 90 5 90 0 120 0 C 150 0 150 5 180 5 C 210 5 210 0 240 0 v 12 h -240 z" />
+        )
+    }
 </svg>

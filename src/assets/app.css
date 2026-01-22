@@ -148,7 +148,7 @@ svg.wave {
 }
 
 svg.wave > path {
-    fill: hsl(var(--color-primary));
+    fill: var(--color-primary);
     animation: wave 10s linear infinite;
 }
 
@@ -165,10 +165,6 @@ svg.wave > path {
 ._float-top {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    opacity: 0.1;
 }
 
 /* ============================================
@@ -331,4 +327,123 @@ svg.wave > path {
     display: flex;
     gap: 0.3rem;
     align-items: center;
+}
+
+/* ============================================
+   ABOUT PAGE STYLES
+   ============================================ */
+
+/* Line decoration animation */
+#line-container,
+#cover-container {
+    position: fixed;
+    height: 50vh;
+    width: 20px;
+    left: calc(50% - 10px);
+    z-index: -10;
+    top: 0;
+}
+
+#cover-container {
+    position: absolute;
+    height: 70vh;
+    top: 0;
+    left: calc(50% - 10px);
+    width: 20px;
+    border-radius: 15px;
+    background: var(--color-base-100);
+    z-index: -9;
+}
+
+.line {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 2px);
+    height: 50vh;
+    width: 4px;
+    background: var(--color-primary);
+    z-index: 5;
+}
+
+.drop {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+/* About cards layout */
+.about_cards {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.card {
+    transition: 0.3s border ease-in;
+}
+
+.card.highlighted {
+    border-color: var(--color-primary);
+}
+
+/* SVG Icon ripple animation */
+#Main:hover #Icons > *,
+#Main.animate-on-load #Icons > *,
+#Main.icon-hover #Icons > * {
+    animation: ripple 3s;
+    transform-origin: center;
+}
+
+#Main:hover #Icons > *:nth-child(1),
+#Main.animate-on-load #Icons > *:nth-child(1),
+#Main.icon-hover #Icons > *:nth-child(1) {
+    animation-delay: 9ms;
+}
+#Main:hover #Icons > *:nth-child(2),
+#Main.animate-on-load #Icons > *:nth-child(2),
+#Main.icon-hover #Icons > *:nth-child(2) {
+    animation-delay: 18ms;
+}
+#Main:hover #Icons > *:nth-child(3),
+#Main.animate-on-load #Icons > *:nth-child(3),
+#Main.icon-hover #Icons > *:nth-child(3) {
+    animation-delay: 27ms;
+}
+#Main:hover #Icons > *:nth-child(4),
+#Main.animate-on-load #Icons > *:nth-child(4),
+#Main.icon-hover #Icons > *:nth-child(4) {
+    animation-delay: 36ms;
+}
+#Main:hover #Icons > *:nth-child(5),
+#Main.animate-on-load #Icons > *:nth-child(5),
+#Main.icon-hover #Icons > *:nth-child(5) {
+    animation-delay: 45ms;
+}
+#Main:hover #Icons > *:nth-child(6),
+#Main.animate-on-load #Icons > *:nth-child(6),
+#Main.icon-hover #Icons > *:nth-child(6) {
+    animation-delay: 54ms;
+}
+
+#Main.animate-on-load #Icons > * {
+    animation-duration: 5s;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(0.7);
+        opacity: 0.4;
+    }
+    40% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
 }

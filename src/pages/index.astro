@@ -1,10 +1,10 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import WaveDecoration from "@components/WaveDecoration.astro";
+import Wave from "@components/Wave.astro";
 import StatsGrid from "@components/home/StatsGrid.astro";
 import ProjectFilter from "@components/home/ProjectFilter.astro";
 import ProjectCard from "@components/home/ProjectCard.astro";
-import type { Project, GitHubStats } from "@types/index";
+import type { Project, GitHubStats } from "@types";
 
 import projects from "@data/projects.json";
 import githubStats from "@data/github-stats.json";
@@ -23,7 +23,7 @@ const stats = githubStats as GitHubStats;
             "contributor,developer,Floatly,NextNTP,Toolz,Techlore,Kiwi Browser",
     }}
 >
-    <WaveDecoration position="top" className="_float-top" />
+    <Wave position="top" />
 
     <main class="text-center">
         <!-- Hero Section with GitHub Stats -->
@@ -56,5 +56,5 @@ const stats = githubStats as GitHubStats;
             </div>
         </section>
     </main>
-    <WaveDecoration position="bottom" />
+    <Wave position="bottom" />
 </Layout>
