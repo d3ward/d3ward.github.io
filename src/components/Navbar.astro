@@ -61,7 +61,7 @@ const navItems = [
                 <!-- Desktop Logo (hidden on mobile) -->
                 <Button
                     href="/"
-                    style="ghost"
+                    style="link"
                     size="xl"
                     class="gap-2 ml-2 hidden lg:flex"
                     icon="d3"
@@ -73,10 +73,10 @@ const navItems = [
                 <ul class="menu menu-horizontal px-1">
                     {
                         navItems.map((item) => (
-                            <li>
+                            <li class="pl-1">
                                 <Button
                                     href={item.href}
-                                    style="ghost"
+                                    style="link-hover"
                                     class={
                                         currentPath === item.href
                                             ? "active"
@@ -88,14 +88,18 @@ const navItems = [
                             </li>
                         ))
                     }
-                    <li>
-                        <Button style="ghost" color="neutral">Support</Button>
-                    </li>
                 </ul>
             </div>
 
             <!-- Right Side Actions -->
             <div class="navbar-end gap-2">
+                <Button
+                    style="ghost"
+                    iconOnly={true}
+                    circle={true}
+                    color="neutral"
+                    icon="tabler:coffee"
+                />
                 <!-- GitHub Link -->
                 <Button
                     href="https://github.com/d3ward"

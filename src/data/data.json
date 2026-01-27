@@ -1,129 +1,129 @@
 [
-	{
-		"id": "d3ward/toolz",
-		"name": "Toolz",
-		"logo": "toolz.svg",
-		"url": "https://d3ward.github.io/toolz",
-		"githuburl": "https://github.com/d3ward/toolz",
-		"tags": "Archived,Web Project",
-		"groups": "website"
-	},
-	{
-		"id": "d3ward/scriptz",
-		"name": "Scriptz",
-		"logo": "scriptz.svg",
-		"url": null,
-		"githuburl": "https://github.com/d3ward/scriptz",
-		"tags": "Script",
-		"groups": "script"
-	},
-	{
-		"id": "d3ward/b2ntp",
-		"name": "b2ntp",
-		"logo": "b2ntp.svg",
-		"url": "https://b2ntp.vercel.app/",
-		"githuburl": "https://github.com/d3ward/b2ntp",
-		"tags": "Extension",
-		"groups": "extension"
-	},
-	{
-		"id": "d3ward/nextntp",
-		"name": "NextNTP",
-		"logo": "next_ntp.svg",
-		"url": "https://d3ward.github.io/nextntp",
-		"githuburl": "https://github.com/d3ward/nextntp",
-		"tags": "Kiwi Browser,Contributor",
-		"groups": "kiwi,contributor"
-	},
-	{
-		"id": "anyproto/anytype-ts",
-		"name": "Anytype",
-		"logo": "anytype.png",
-		"url": "https://anytype.io",
-		"githuburl": "https://github.com/anyproto/anytype-ts",
-		"tags": "l10n,Contributor",
-		"groups": "contributor"
-	},
+  {
+    "id": "d3ward/toolz",
+    "name": "Toolz",
+    "logo": "toolz.svg",
+    "url": "https://d3ward.github.io/toolz",
+    "githuburl": "https://github.com/d3ward/toolz",
+    "tags": "Archived,Web Project",
+    "groups": "website"
+  },
+  {
+    "id": "d3ward/scriptz",
+    "name": "Scriptz",
+    "logo": "scriptz.svg",
+    "url": null,
+    "githuburl": "https://github.com/d3ward/scriptz",
+    "tags": "Script",
+    "groups": "script"
+  },
+  {
+    "id": "d3ward/b2ntp",
+    "name": "b2ntp",
+    "logo": "b2ntp.svg",
+    "url": "https://b2ntp.vercel.app/",
+    "githuburl": "https://github.com/d3ward/b2ntp",
+    "tags": "Extension",
+    "groups": "extension"
+  },
+  {
+    "id": "d3ward/nextntp",
+    "name": "NextNTP",
+    "logo": "next_ntp.svg",
+    "url": "https://d3ward.github.io/nextntp",
+    "githuburl": "https://github.com/d3ward/nextntp",
+    "tags": "Kiwi Browser,Contributor",
+    "groups": "kiwi,contributor"
+  },
+  {
+    "id": "anyproto/anytype-ts",
+    "name": "Anytype",
+    "logo": "anytype.png",
+    "url": "https://anytype.io",
+    "githuburl": "https://github.com/anyproto/anytype-ts",
+    "tags": "l10n,Contributor",
+    "groups": "contributor"
+  },
 
-	{
-		"id": "d3ward/Apteryx-Game",
-		"name": "Apteryx-Game",
-		"logo": "apt.svg",
-		"url": "https://d3ward.github.io/Apteryx-Game",
-		"githuburl": "https://github.com/d3ward/Apteryx-Game",
-		"tags": "Kiwi Browser,Games",
-		"groups": "kiwi,game"
-	},
-	{
-		"id": "d3ward/kiwihub",
-		"name": "KiwiHub",
-		"logo": "kiwihub.svg",
-		"url": "https://d3ward.github.io/kiwihub",
-		"githuburl": "https://github.com/d3ward/kiwihub",
-		"tags": "Kiwi Browser,Contributor",
-		"groups": "kiwi,contributor"
-	},
-	{
-		"id": "kiwibrowser/src.next",
-		"name": "Kiwi Browser",
-		"logo": "kiwi.svg",
-		"url": "https://kiwibrowser.com/",
-		"githuburl": "https://github.com/kiwibrowser/src.next",
-		"tags": "Kiwi Browser,Contributor,l10n",
-		"groups": "kiwi,contributor"
-	},
-	{
-		"id": "d3ward/floatly",
-		"name": "Floatly",
-		"logo": "floatly.svg",
-		"url": null,
-		"githuburl": "https://github.com/d3ward/floatly",
-		"tags": "Extension",
-		"groups": "extension"
-	},
-	{
-		"id": "d3ward/mti",
-		"name": "Meta Theme Injector",
-		"logo": "mti.png",
-		"url": null,
-		"githuburl": "https://github.com/d3ward/mti",
-		"tags": "Extension,Script",
-		"groups": "extension,script"
-	},
-	{
-		"id": "d3ward/letsplaytime",
-		"name": "Let's Play Time",
-		"logo": "letsplay.svg",
-		"url": "https://letsplaytime.vercel.app/",
-		"githuburl": "https://github.com/d3ward/letsplaytime",
-		"tags": "Game",
-		"groups": "game"
-	},
-	{
-		"id": "techlore/website",
-		"name": "Techlore Website",
-		"logo": "techlore.svg",
-		"url": "https://techlore.tech",
-		"githuburl": "https://github.com/techlore/website",
-		"tags": "Contributor,Web Project",
-		"groups": "website,contributor"
-	},
-	{
-		"id": "d3ward/bouncydvd",
-		"name": "Bouncy DVD",
-		"logo": "dvd.png",
-		"url": null,
-		"githuburl": "https://github.com/d3ward/bouncydvd",
-		"tags": "Rainmeter",
-		"groups": "rmskin"
-	},
-	{
-		"id": "Famicomrade/Famicomrade.github.io",
-		"name": "Banner Depot",
-		"logo": "github.svg",
-		"url": "https://famicomrade.github.io/",
-		"githuburl": "https://github.com/Famicomrade/Famicomrade.github.io",
-		"tags": "Contributor,Web Project",
-		"groups": "website,contributor"
-	}
+  {
+    "id": "d3ward/Apteryx-Game",
+    "name": "Apteryx-Game",
+    "logo": "apt.svg",
+    "url": "https://d3ward.github.io/Apteryx-Game",
+    "githuburl": "https://github.com/d3ward/Apteryx-Game",
+    "tags": "Kiwi Browser,Games",
+    "groups": "kiwi,game"
+  },
+  {
+    "id": "d3ward/kiwihub",
+    "name": "KiwiHub",
+    "logo": "kiwihub.svg",
+    "url": "https://d3ward.github.io/kiwihub",
+    "githuburl": "https://github.com/d3ward/kiwihub",
+    "tags": "Kiwi Browser,Contributor",
+    "groups": "kiwi,contributor"
+  },
+  {
+    "id": "kiwibrowser/src.next",
+    "name": "Kiwi Browser",
+    "logo": "kiwi.svg",
+    "url": "https://kiwibrowser.com/",
+    "githuburl": "https://github.com/kiwibrowser/src.next",
+    "tags": "Kiwi Browser,Contributor,l10n",
+    "groups": "kiwi,contributor"
+  },
+  {
+    "id": "d3ward/floatly",
+    "name": "Floatly",
+    "logo": "floatly.svg",
+    "url": null,
+    "githuburl": "https://github.com/d3ward/floatly",
+    "tags": "Extension",
+    "groups": "extension"
+  },
+  {
+    "id": "d3ward/mti",
+    "name": "Meta Theme Injector",
+    "logo": "mti.svg",
+    "url": null,
+    "githuburl": "https://github.com/d3ward/mti",
+    "tags": "Extension,Script",
+    "groups": "extension,script"
+  },
+  {
+    "id": "d3ward/letsplaytime",
+    "name": "Let's Play Time",
+    "logo": "letsplay.svg",
+    "url": "https://letsplaytime.vercel.app/",
+    "githuburl": "https://github.com/d3ward/letsplaytime",
+    "tags": "Game",
+    "groups": "game"
+  },
+  {
+    "id": "techlore/website",
+    "name": "Techlore Website",
+    "logo": "techlore.svg",
+    "url": "https://techlore.tech",
+    "githuburl": "https://github.com/techlore/website",
+    "tags": "Contributor,Web Project",
+    "groups": "website,contributor"
+  },
+  {
+    "id": "d3ward/bouncydvd",
+    "name": "Bouncy DVD",
+    "logo": "dvd.png",
+    "url": null,
+    "githuburl": "https://github.com/d3ward/bouncydvd",
+    "tags": "Rainmeter",
+    "groups": "rmskin"
+  },
+  {
+    "id": "Famicomrade/Famicomrade.github.io",
+    "name": "Banner Depot",
+    "logo": "github.svg",
+    "url": "https://famicomrade.github.io/",
+    "githuburl": "https://github.com/Famicomrade/Famicomrade.github.io",
+    "tags": "Contributor,Web Project",
+    "groups": "website,contributor"
+  }
 ]

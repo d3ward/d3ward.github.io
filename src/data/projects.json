@@ -2,7 +2,7 @@
   {
     "id": "d3ward/toolz",
     "name": "Toolz",
-    "logo": "toolz",
+    "logo": "local:toolz",
     "url": "https://d3ward.github.io/toolz",
     "githuburl": "https://github.com/d3ward/toolz",
     "tags": "Archived,Web Project",
@@ -11,7 +11,7 @@
   {
     "id": "d3ward/scriptz",
     "name": "Scriptz",
-    "logo": "scriptz",
+    "logo": "local:scriptz",
     "url": null,
     "githuburl": "https://github.com/d3ward/scriptz",
     "tags": "Script",
@@ -20,7 +20,7 @@
   {
     "id": "d3ward/b2ntp",
     "name": "b2ntp",
-    "logo": "b2ntp",
+    "logo": "local:b2ntp",
     "url": "https://b2ntp.vercel.app/",
     "githuburl": "https://github.com/d3ward/b2ntp",
     "tags": "Extension",
@@ -29,7 +29,7 @@
   {
     "id": "d3ward/nextntp",
     "name": "NextNTP",
-    "logo": "next_ntp",
+    "logo": "local:next_ntp",
     "url": "https://d3ward.github.io/nextntp",
     "githuburl": "https://github.com/d3ward/nextntp",
     "tags": "Kiwi Browser,Contributor",
@@ -38,7 +38,7 @@
   {
     "id": "anyproto/anytype-ts",
     "name": "Anytype",
-    "logo": "simple-icons:anytype",
+    "logo": "local:anytype",
     "url": "https://anytype.io",
     "githuburl": "https://github.com/anyproto/anytype-ts",
     "tags": "l10n,Contributor",
@@ -48,7 +48,7 @@
   {
     "id": "d3ward/Apteryx-Game",
     "name": "Apteryx-Game",
-    "logo": "apt",
+    "logo": "local:apt",
     "url": "https://d3ward.github.io/Apteryx-Game",
     "githuburl": "https://github.com/d3ward/Apteryx-Game",
     "tags": "Kiwi Browser,Games",
@@ -57,7 +57,7 @@
   {
     "id": "d3ward/kiwihub",
     "name": "KiwiHub",
-    "logo": "kiwihub",
+    "logo": "local:kiwihub",
     "url": "https://d3ward.github.io/kiwihub",
     "githuburl": "https://github.com/d3ward/kiwihub",
     "tags": "Kiwi Browser,Contributor",
@@ -66,16 +66,16 @@
   {
     "id": "kiwibrowser/src.next",
     "name": "Kiwi Browser",
-    "logo": "kiwi",
+    "logo": "local:kiwi_browser",
     "url": "https://kiwibrowser.com/",
     "githuburl": "https://github.com/kiwibrowser/src.next",
-    "tags": "Kiwi Browser,Contributor,l10n",
+    "tags": "Archived,Kiwi Browser,Contributor,l10n",
     "groups": "kiwi,contributor"
   },
   {
     "id": "d3ward/floatly",
     "name": "Floatly",
-    "logo": "floatly",
+    "logo": "local:floatly",
     "url": null,
     "githuburl": "https://github.com/d3ward/floatly",
     "tags": "Extension",
@@ -102,7 +102,7 @@
   {
     "id": "techlore/website",
     "name": "Techlore Website",
-    "logo": "techlore",
+    "logo": "local:techlore",
     "url": "https://techlore.tech",
     "githuburl": "https://github.com/techlore/website",
     "tags": "Contributor,Web Project",

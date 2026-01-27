@@ -383,6 +383,12 @@ svg.wave > path {
     gap: 6rem;
 }
 
+.about_cards .container {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
 .card {
     transition: 0.3s border ease-in;
 }
