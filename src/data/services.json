@@ -1,44 +1,60 @@
 {
-	"services": [
-		{
-			"name": "NextDNS",
-			"description": "A reliable and affordable DNS/firewall service for home users.",
-			"url": "https://nextdns.io"
-		},
-		{
-			"name": "Umami",
-			"description": "An open and privacy-friendly alternative to Google Analytics.",
-			"url": "https://umami.is"
-		},
-		{
-			"name": "Mullvad VPN",
-			"description": "Secure and private VPN service.",
-			"url": "https://mullvad.net"
-		},
-		{
-			"name": "Guardian VPN",
-			"description": "Secure and private VPN service.",
-			"url": "https://guardianapp.com"
-		},
-		{
-			"name": "Have I Been Pwned",
-			"description": "Security monitor for data leaks and passwords.",
-			"url": "https://haveibeenpwned.com"
-		},
-		{
-			"name": "DuckDuckGo",
-			"description": "Privacy-focused search engine.",
-			"url": "https://duckduckgo.com"
-		},
-		{
-			"name": "Startpage",
-			"description": "Privacy-friendly search engine.",
-			"url": "https://startpage.com"
-		},
-		{
-			"name": "Google Search",
-			"description": "Popular search engine for all search contexts.",
-			"url": "https://google.com"
-		}
-	]
+  "services": [
+    {
+      "name": "NextDNS",
+      "description": "A reliable and affordable DNS/firewall service for home users.",
+      "url": "https://nextdns.io",
+      "tags": ["security", "dns"],
+      "icon": "simple-icons:nextdns"
+    },
+    {
+      "name": "Umami",
+      "description": "An open and privacy-friendly alternative to Google Analytics.",
+      "url": "https://umami.is",
+      "tags": ["analytics", "privacy"],
+      "icon": "simple-icons:umami"
+    },
+    {
+      "name": "Mullvad VPN",
+      "description": "Secure and private VPN service.",
+      "url": "https://mullvad.net",
+      "tags": ["security", "vpn"],
+      "icon": "simple-icons:mullvad"
+    },
+    {
+      "name": "Guardian VPN",
+      "description": "Secure and private VPN service.",
+      "url": "https://guardianapp.com",
+      "tags": ["security", "vpn"],
+      "icon": "tabler:shield-lock"
+    },
+    {
+      "name": "Have I Been Pwned",
+      "description": "Security monitor for data leaks and passwords.",
+      "url": "https://haveibeenpwned.com",
+      "tags": ["security", "monitoring"],
+      "icon": "tabler:shield-check"
+    },
+    {
+      "name": "DuckDuckGo",
+      "description": "Privacy-focused search engine.",
+      "url": "https://duckduckgo.com",
+      "tags": ["search", "privacy"],
+      "icon": "simple-icons:duckduckgo"
+    },
+    {
+      "name": "Startpage",
+      "description": "Privacy-friendly search engine.",
+      "url": "https://startpage.com",
+      "tags": ["search", "privacy"],
+      "icon": "simple-icons:startpage"
+    },
+    {
+      "name": "Google Search",
+      "description": "Popular search engine for all search contexts.",
+      "url": "https://google.com",
+      "tags": ["search"],
+      "icon": "simple-icons:google"
+    }
+  ]
 }

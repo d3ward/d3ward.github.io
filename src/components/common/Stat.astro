@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import Icon from "./Icon.astro";
 
 /**
  * Stat component - Display statistics in a beautiful card using DaisyUI styles
@@ -117,8 +117,7 @@ const linkAttrs = href ? { href, ...(target && { target }) } : {};
                         <Icon
                             name={iconName}
                             class="inline-block stroke-current"
-                            width={iconSize}
-                            height={iconSize}
+                            size={iconSize}
                         />
                     )
                 )}

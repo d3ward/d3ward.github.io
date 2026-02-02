@@ -1,0 +1,4 @@
+// .prettierrc
+{
+  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"]
+}

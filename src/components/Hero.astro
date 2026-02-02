@@ -1,0 +1,16 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<section
+    class={`min-h-screen flex items-center justify-center ${className}`}
+    style="min-height: calc(100vh - 30em);"
+>
+    <div class="w-full">
+        <slot />
+    </div>
+</section>

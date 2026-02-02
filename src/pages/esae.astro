@@ -1,8 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import ItemCard from "@components/esae/ItemCard.astro";
-import { Icon } from "astro-icon/components";
-import esaeData from "@data/esae.json";
+import Filter from "@components/common/Filter.astro";
+import appsData from "@data/apps.json";
+import servicesData from "@data/services.json";
 import extensionsData from "@data/extensions.json";
 
 const seo = {
@@ -14,29 +15,29 @@ const seo = {
 
 // Flatten all apps into a single array with groups
 const allApps = [
-    ...esaeData.apps.cross.map((app) => ({
+    ...appsData.cross.map((app: any) => ({
         ...app,
         groups: "app cross desktop",
     })),
-    ...esaeData.apps.macOS.map((app) => ({
+    ...appsData.macOS.map((app: any) => ({
         ...app,
         groups: "app macos desktop",
     })),
-    ...esaeData.apps.windows.map((app) => ({
+    ...appsData.windows.map((app: any) => ({
         ...app,
         groups: "app windows desktop",
     })),
-    ...esaeData.apps.mobile.map((app) => ({ ...app, groups: "app mobile" })),
+    ...appsData.mobile.map((app: any) => ({ ...app, groups: "app mobile" })),
 ];
 
 // Add groups to services
-const allServices = esaeData.services.map((service) => ({
+const allServices = servicesData.services.map((service: any) => ({
     ...service,
     groups: "service",
 }));
 
 // Add groups to extensions
-const allExtensions = extensionsData.extensions.map((ext) => ({
+const allExtensions = extensionsData.extensions.map((ext: any) => ({
     ...ext,
     groups: "extension",
 }));
@@ -82,47 +83,32 @@ const allItems = [...allApps, ...allServices, ...allExtensions];
 
     <!-- Filter Section -->
     <section class="container mx-auto max-w-screen-lg px-4 py-12">
-        <div class="flex flex-wrap gap-3 justify-center mb-12">
-            <button data-group="all" class="btn btn-sm btn-primary gap-2">
-                <Icon name="tabler:layout-grid" class="w-4 h-4" />
-                All
-            </button>
-            <button data-group="app" class="btn btn-sm btn-ghost gap-2">
-                <Icon name="tabler:apps" class="w-4 h-4" />
-                Apps
-            </button>
-            <button data-group="extension" class="btn btn-sm btn-ghost gap-2">
-                <Icon name="tabler:puzzle" class="w-4 h-4" />
-                Extensions
-            </button>
-            <button data-group="service" class="btn btn-sm btn-ghost gap-2">
-                <Icon name="tabler:cloud" class="w-4 h-4" />
-                Services
-            </button>
-            <button data-group="desktop" class="btn btn-sm btn-ghost gap-2">
-                <Icon name="tabler:device-desktop" class="w-4 h-4" />
-                Desktop
-            </button>
-            <button data-group="mobile" class="btn btn-sm btn-ghost gap-2">
-                <Icon name="tabler:device-mobile" class="w-4 h-4" />
-                Mobile
-            </button>
-            <button data-group="macos" class="btn btn-sm btn-ghost gap-2">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
-                    ></path>
-                </svg>
-                macOS
-            </button>
-            <button data-group="windows" class="btn btn-sm btn-ghost gap-2">
-                <Icon name="simple-icons:windows" class="w-4 h-4" />
-                Windows
-            </button>
-        </div>
+        <Filter
+            options={[
+                { id: "all", label: "All", icon: "tabler:layout-grid" },
+                { id: "app", label: "Apps", icon: "tabler:apps" },
+                { id: "extension", label: "Extensions", icon: "tabler:puzzle" },
+                { id: "service", label: "Services", icon: "tabler:cloud" },
+                {
+                    id: "desktop",
+                    label: "Desktop",
+                    icon: "tabler:device-desktop",
+                },
+                { id: "mobile", label: "Mobile", icon: "tabler:device-mobile" },
+                { id: "macos", label: "macOS", icon: "simple-icons:apple" },
+                {
+                    id: "windows",
+                    label: "Windows",
+                    icon: "simple-icons:windows",
+                },
+            ]}
+            activeFilter="all"
+            class="flex flex-wrap gap-3 justify-center mb-12"
+            size="sm"
+        />
 
         <!-- Items Grid -->
-        <div class="grid grid-cols-12 gap-6">
+        <div class="grid gap-6">
             {
                 allItems.map((item) => (
                     <ItemCard
@@ -132,29 +118,10 @@ const allItems = [...allApps, ...allServices, ...allExtensions];
                         platforms={item.platforms || item.platform || []}
                         tags={item.tags}
                         groups={item.groups}
+                        icon={item.icon}
                     />
                 ))
             }
         </div>
     </section>
-
-    <script>
-        import { initFilter } from "@scripts/filter";
-        initFilter();
-
-        // Style active button
-        document.addEventListener("DOMContentLoaded", () => {
-            const filterButtons = document.querySelectorAll("[data-group]");
-            filterButtons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    filterButtons.forEach((btn) => {
-                        btn.classList.remove("btn-primary");
-                        btn.classList.add("btn-ghost");
-                    });
-                    button.classList.remove("btn-ghost");
-                    button.classList.add("btn-primary");
-                });
-            });
-        });
-    </script>
 </Layout>

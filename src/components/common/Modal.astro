@@ -29,7 +29,7 @@ interface Props {
     responsive?: boolean;
     closeOnBackdrop?: boolean;
     closeButton?: boolean;
-    position?: 'top' | 'middle' | 'bottom';
+    position?: "top" | "middle" | "bottom";
 }
 
 const {
@@ -40,52 +40,52 @@ const {
     responsive = false,
     closeOnBackdrop = true,
     closeButton = false,
-    position = 'middle',
+    position = "middle",
     ...rest
 } = Astro.props;
-
-const modalClasses = [
-    'modal',
-    responsive && 'modal-bottom sm:modal-middle',
-    !responsive && position === 'top' && 'modal-top',
-    !responsive && position === 'middle' && 'modal-middle',
-    !responsive && position === 'bottom' && 'modal-bottom',
-    className,
-].filter(Boolean);
-
-const modalBoxClasses = [
-    'modal-box',
-    boxClass,
-].filter(Boolean);
-
-const modalActionClasses = [
-    'modal-action',
-    actionClass,
-].filter(Boolean);
 ---
 
-<dialog id={id} class:list={modalClasses} {...rest}>
-    <div class:list={modalBoxClasses}>
-        {closeButton && (
-            <form method="dialog">
-                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            </form>
-        )}
+<dialog
+    id={id}
+    class:list={[
+        "modal",
+        responsive && "modal-bottom sm:modal-middle",
+        !responsive && position === "top" && "modal-top",
+        !responsive && position === "middle" && "modal-middle",
+        !responsive && position === "bottom" && "modal-bottom",
+        className,
+    ]}
+    {...rest}
+>
+    <div class:list={["modal-box", boxClass]}>
+        {
+            closeButton && (
+                <form method="dialog">
+                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                        ✕
+                    </button>
+                </form>
+            )
+        }
 
         <slot name="title" />
 
         <slot />
 
-        {Astro.slots.has('actions') && (
-            <div class:list={modalActionClasses}>
-                <slot name="actions" />
-            </div>
-        )}
+        {
+            Astro.slots.has("actions") && (
+                <div class:list={["modal-action", actionClass]}>
+                    <slot name="actions" />
+                </div>
+            )
+        }
     </div>
 
-    {closeOnBackdrop && (
-        <form method="dialog" class="modal-backdrop">
-            <button>close</button>
-        </form>
-    )}
+    {
+        closeOnBackdrop && (
+            <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+            </form>
+        )
+    }
 </dialog>

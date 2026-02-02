@@ -11,15 +11,15 @@
     grid-template-rows: repeat(4, 1fr);
     gap: 1em;
     grid-template-areas:
-        "gs-avatar gs-avatar .          gs-stars"
-        "gs-avatar gs-avatar gs-repos   gs-repos"
-        ".         gs-followers gs-followers gs-link"
+        "gs-logo gs-logo .          gs-stars"
+        "gs-logo gs-logo gs-repos   gs-repos"
+        ".         gs-followers gs-followers gs-gh"
         "gs-commits gs-issues  gs-pr     gs-pr";
 }
 
 /* Grid area assignments */
-.gs-avatar {
-    grid-area: gs-avatar;
+.gs-logo {
+    grid-area: gs-logo;
 }
 .gs-stars {
     grid-area: gs-stars;
@@ -33,8 +33,8 @@
 .gs-issues {
     grid-area: gs-issues;
 }
-.gs-link {
-    grid-area: gs-link;
+.gs-gh {
+    grid-area: gs-gh;
 }
 .gs-pr {
     grid-area: gs-pr;
@@ -50,7 +50,7 @@ svg#d3Logo .svg-elem-1 {
     stroke-dashoffset: 724.4970703125px;
     stroke-dasharray: 724.4970703125px;
     fill: transparent;
-    stroke: rgb(59 130 246); /* blue-500 */
+    stroke: #0074d8;
     transition:
         stroke-dashoffset 10s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
         fill 0.2s linear 8s,
@@ -59,8 +59,8 @@ svg#d3Logo .svg-elem-1 {
 
 svg#d3Logo.startA .svg-elem-1 {
     stroke-dashoffset: 0;
-    fill: rgb(59 130 246); /* blue-500 */
-    stroke: rgb(59 130 246); /* blue-500 */
+    fill: #0074d8;
+    stroke: #0074d8;
 }
 
 svg#d3Logo {
@@ -76,36 +76,36 @@ svg#d3Logo {
    ============================================ */
 
 /* Ripple colors per area */
-.gs-avatar .gs-ripple {
-    background: rgb(59 130 246 / 0.15); /* blue-500 with opacity */
+.gs-logo .gs-ripple {
+    background: rgb(0 116 216 / 0.15);
 }
 
 .gs-stars .gs-ripple,
 .gs-followers .gs-ripple,
 .gs-commits .gs-ripple {
-    background: rgb(59 130 246 / 0.2); /* blue-500 with opacity */
+    background: rgb(0 116 216 / 0.2);
 }
 
 .gs-issues .gs-ripple {
-    background: rgb(255 255 255 / 0.15); /* white with opacity */
+    background: rgb(255 255 255 / 0.15);
 }
 
-.gs-link .gs-ripple {
-    background: rgb(59 130 246 / 0.15); /* blue-500 with opacity */
+.gs-gh .gs-ripple {
+    background: rgb(0 116 216 / 0.15);
 }
 
 .gs-pr .gs-ripple,
 .gs-repos .gs-ripple {
-    background: rgb(239 246 255 / 0.2); /* blue-50 with opacity */
+    background: rgb(224 241 255 / 0.2);
 }
 
 /* Ripple hover effect */
-.gs-avatar:hover .gs-ripple,
+.gs-logo:hover .gs-ripple,
 .gs-stars:hover .gs-ripple,
 .gs-followers:hover .gs-ripple,
 .gs-commits:hover .gs-ripple,
 .gs-issues:hover .gs-ripple,
-.gs-link:hover .gs-ripple,
+.gs-gh:hover .gs-ripple,
 .gs-pr:hover .gs-ripple,
 .gs-repos:hover .gs-ripple {
     width: calc(100% * 2.25);
@@ -113,11 +113,11 @@ svg#d3Logo {
 }
 
 /* Avatar hover effect for logo */
-.gs-avatar:hover {
+.gs-logo:hover {
     color: white;
 }
 
-.gs-avatar:hover svg#d3Logo.startA .svg-elem-1 {
+.gs-logo:hover svg#d3Logo.startA .svg-elem-1 {
     transition: all 0.2s;
     fill: white;
     stroke: white;

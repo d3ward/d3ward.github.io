@@ -1,0 +1,320 @@
+{
+  "cross": [
+    {
+      "name": "Chrome",
+      "description": "Browser used for work.",
+      "url": "https://www.google.com/chrome/",
+      "platforms": ["Windows", "MacOS"],
+      "tags": ["desktop", "browser"],
+      "icon": "simple-icons:googlechrome"
+    },
+    {
+      "name": "Brave",
+      "description": "Browser used for mixed activities.",
+      "url": "https://brave.com",
+      "platforms": ["Windows", "MacOS", "iOS", "Android"],
+      "tags": ["desktop", "browser", "mobile"],
+      "icon": "simple-icons:brave"
+    },
+    {
+      "name": "Firefox",
+      "description": "Browser used for personal activities.",
+      "url": "https://mozilla.org/firefox",
+      "platforms": ["Windows", "MacOS"],
+      "tags": ["desktop", "browser"],
+      "icon": "simple-icons:firefox"
+    },
+    {
+      "name": "Anytype",
+      "description": "A privacy-centric, open-source alternative to Notion.",
+      "url": "https://anytype.io",
+      "platforms": ["Windows", "MacOS"],
+      "tags": ["desktop", "productivity"],
+      "icon": "tabler:notes"
+    },
+    {
+      "name": "Bitwarden",
+      "description": "Password manager desktop application.",
+      "url": "https://bitwarden.com",
+      "platforms": ["Windows", "MacOS"],
+      "tags": ["desktop", "security"],
+      "icon": "simple-icons:bitwarden"
+    },
+    {
+      "name": "VSCode",
+      "description": "Code editor.",
+      "url": "https://code.visualstudio.com",
+      "platforms": ["Windows", "MacOS"],
+      "tags": ["desktop", "development"],
+      "icon": "simple-icons:visualstudiocode"
+    },
+    {
+      "name": "GIMP",
+      "description": "Open-source graphic editor.",
+      "url": "https://gimp.org",
+      "platforms": ["Windows", "MacOS"],
+      "tags": ["desktop", "design"],
+      "icon": "simple-icons:gimp"
+    },
+    {
+      "name": "Inkscape",
+      "description": "Open-source vector editor.",
+      "url": "https://inkscape.org",
+      "platforms": ["Windows", "MacOS"],
+      "tags": ["desktop", "design"],
+      "icon": "simple-icons:inkscape"
+    },
+    {
+      "name": "Motrix",
+      "description": "Download manager.",
+      "url": "https://motrix.app",
+      "platforms": ["Windows", "MacOS"],
+      "tags": ["desktop", "utility"],
+      "icon": "tabler:download"
+    }
+  ],
+  "macOS": [
+    {
+      "name": "Ferdium",
+      "description": "Unified messaging app.",
+      "url": "https://ferdium.org",
+      "platforms": ["MacOS"],
+      "tags": ["desktop", "communication"],
+      "icon": "tabler:messages"
+    },
+    {
+      "name": "Itscal",
+      "description": "Calendar shortcut tool.",
+      "url": "https://itscal.com",
+      "platforms": ["MacOS"],
+      "tags": ["desktop", "utility"],
+      "icon": "tabler:calendar"
+    },
+    {
+      "name": "Shottr",
+      "description": "Screenshot tool.",
+      "url": "https://shottr.cc",
+      "platforms": ["MacOS"],
+      "tags": ["desktop", "utility"],
+      "icon": "tabler:screenshot"
+    },
+    {
+      "name": "MacUpdater",
+      "description": "App updater.",
+      "url": "https://macupdater.net",
+      "platforms": ["MacOS"],
+      "tags": ["desktop", "utility"],
+      "icon": "tabler:refresh"
+    },
+    {
+      "name": "Raycast",
+      "description": "Enhanced spotlight tool.",
+      "url": "https://raycast.com",
+      "platforms": ["MacOS"],
+      "tags": ["desktop", "productivity"],
+      "icon": "simple-icons:raycast"
+    },
+    {
+      "name": "MiddleClick-Sonoma",
+      "description": "Utility for middle click support.",
+      "url": "https://github.com/artginzburg/MiddleClick-Sonoma",
+      "platforms": ["MacOS"],
+      "tags": ["desktop", "utility"],
+      "icon": "tabler:click"
+    }
+  ],
+  "windows": [
+    {
+      "name": "Windows 11",
+      "description": "Hardened and debloated using ChrisTitus winutil.",
+      "url": "https://christitus.com",
+      "platforms": ["Windows"],
+      "tags": ["desktop", "os"],
+      "icon": "simple-icons:windows11"
+    },
+    {
+      "name": "SyMenu",
+      "description": "Portable tool collection.",
+      "url": "https://www.ugmfree.it",
+      "platforms": ["Windows"],
+      "tags": ["desktop", "utility"],
+      "icon": "tabler:menu-2"
+    },
+    {
+      "name": "Playnite",
+      "description": "Video game library organizer.",
+      "url": "https://playnite.link",
+      "platforms": ["Windows"],
+      "tags": ["desktop", "gaming"],
+      "icon": "tabler:device-gamepad-2"
+    }
+  ],
+  "mobile": [
+    {
+      "name": "Anytype",
+      "description": "All-in-one productivity app for notes, bookmarks, journaling, and organization.",
+      "url": "https://anytype.io",
+      "platforms": ["iOS", "Android"],
+      "tags": ["mobile", "productivity"],
+      "icon": "tabler:notes"
+    },
+    {
+      "name": "Brave",
+      "description": "Browser with extension support.",
+      "url": "https://brave.com",
+      "platforms": ["iOS", "Android"],
+      "tags": ["mobile", "browser"],
+      "icon": "simple-icons:brave"
+    },
+    {
+      "name": "Safari",
+      "description": "Stock browser on iOS.",
+      "platforms": ["iOS"],
+      "tags": ["mobile", "browser"],
+      "icon": "simple-icons:safari"
+    },
+    {
+      "name": "Kiwi Browser",
+      "description": "Open-source browser with extension support.",
+      "url": "https://kiwibrowser.com",
+      "platforms": ["Android"],
+      "tags": ["mobile", "browser"],
+      "icon": "tabler:browser"
+    },
+    {
+      "name": "Florisboard",
+      "description": "Open-source keyboard.",
+      "url": "https://florisboard.app",
+      "platforms": ["Android"],
+      "tags": ["mobile", "utility"],
+      "icon": "tabler:keyboard"
+    },
+    {
+      "name": "FairEmail",
+      "description": "Open-source email client.",
+      "url": "https://email.faircode.eu",
+      "platforms": ["Android"],
+      "tags": ["mobile", "communication"],
+      "icon": "tabler:mail"
+    },
+    {
+      "name": "Lichess",
+      "description": "Chess platform.",
+      "url": "https://lichess.org",
+      "platforms": ["iOS", "Android"],
+      "tags": ["mobile", "gaming"],
+      "icon": "tabler:chess"
+    },
+    {
+      "name": "EnteAuth",
+      "description": "Open-source 2FA manager.",
+      "url": "https://enteauth.com",
+      "platforms": ["iOS", "Android"],
+      "tags": ["mobile", "security"],
+      "icon": "tabler:lock"
+    },
+    {
+      "name": "NetNewsWire",
+      "description": "Open-source RSS reader.",
+      "url": "https://netnewswire.com",
+      "platforms": ["iOS"],
+      "tags": ["mobile", "productivity"],
+      "icon": "tabler:rss"
+    },
+    {
+      "name": "Feeder",
+      "description": "Open-source RSS reader.",
+      "url": "https://play.google.com/store/apps/details?id=com.noinnion.android.greader.reader&hl=en&gl=US",
+      "platforms": ["Android"],
+      "tags": ["mobile", "productivity"],
+      "icon": "tabler:rss"
+    },
+    {
+      "name": "Watcht",
+      "description": "TV shows and movies tracker.",
+      "url": "https://watcht.com",
+      "platforms": ["iOS"],
+      "tags": ["mobile", "entertainment"],
+      "icon": "tabler:device-tv"
+    },
+    {
+      "name": "Showly",
+      "description": "TV shows and movies tracker.",
+      "url": "https://play.google.com/store/apps/details?id=com.michaldrabik.showly2&hl=en&gl=US",
+      "platforms": ["Android"],
+      "tags": ["mobile", "entertainment"],
+      "icon": "tabler:device-tv"
+    },
+    {
+      "name": "Obtanium",
+      "description": "App manager for GitHub projects.",
+      "url": "https://github.com/Obtanium/Obtanium",
+      "platforms": ["Android"],
+      "tags": ["mobile", "utility"],
+      "icon": "tabler:package"
+    },
+    {
+      "name": "F-droid",
+      "description": "App manager for open-source Android apps.",
+      "url": "https://f-droid.org",
+      "platforms": ["Android"],
+      "tags": ["mobile", "utility"],
+      "icon": "simple-icons:fdroid"
+    },
+    {
+      "name": "Reddit",
+      "description": "Stock Reddit client.",
+      "platforms": ["iOS"],
+      "tags": ["mobile", "social"],
+      "icon": "simple-icons:reddit"
+    },
+    {
+      "name": "Infinity",
+      "description": "Open-source Reddit client.",
+      "url": "https://github.com/Docile-Alligator/Infinity-For-Reddit",
+      "platforms": ["Android"],
+      "tags": ["mobile", "social"],
+      "icon": "tabler:infinity"
+    },
+    {
+      "name": "Termux",
+      "description": "Terminal emulator.",
+      "url": "https://termux.com",
+      "platforms": ["Android"],
+      "tags": ["mobile", "development"],
+      "icon": "simple-icons:gnubash"
+    },
+    {
+      "name": "Amaze File Manager",
+      "description": "Open-source file manager.",
+      "url": "https://github.com/TeamAmaze/AmazeFileManager",
+      "platforms": ["Android"],
+      "tags": ["mobile", "utility"],
+      "icon": "tabler:folders"
+    },
+    {
+      "name": "Kickstarter",
+      "description": "Crowdfunding platform.",
+      "url": "https://kickstarter.com",
+      "platforms": ["iOS", "Android"],
+      "tags": ["mobile", "shopping"],
+      "icon": "simple-icons:kickstarter"
+    },
+    {
+      "name": "Spotify",
+      "description": "Music streaming service.",
+      "url": "https://spotify.com",
+      "platforms": ["iOS", "Android"],
+      "tags": ["mobile", "entertainment"],
+      "icon": "simple-icons:spotify"
+    },
+    {
+      "name": "InnerTune",
+      "description": "YouTube Music alternative.",
+      "url": "https://github.com/ZionDevelopers/InnerTune",
+      "platforms": ["Android"],
+      "tags": ["mobile", "entertainment"],
+      "icon": "tabler:music"
+    }
+  ]
+}

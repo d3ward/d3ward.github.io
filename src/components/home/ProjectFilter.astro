@@ -1,5 +1,5 @@
 ---
-import Button from "../common/Button.astro";
+import Filter from "../common/Filter.astro";
 
 interface Props {
     activeFilter?: string;
@@ -8,62 +8,20 @@ interface Props {
 const { activeFilter = "all" } = Astro.props;
 
 const filters = [
-    { id: "all", label: "All", icon: "layout-grid" },
-    { id: "contributor", label: "Contributions", icon: "book-upload" },
+    { id: "all", label: "All", icon: "tabler:layout-grid" },
+    { id: "contributor", label: "Contributions", icon: "tabler:book-upload" },
     { id: "kiwi", label: "Kiwi Browser", icon: "local:kiwi" },
-    { id: "extension", label: "Extension", icon: "puzzle" },
-    { id: "game", label: "Games", icon: "device-gamepad" },
-    { id: "script", label: "Userscript", icon: "script" },
-    { id: "rmskin", label: "Rainmeter", icon: "droplet" },
-    { id: "website", label: "Web Projects", icon: "browser" },
+    { id: "extension", label: "Extension", icon: "tabler:puzzle" },
+    { id: "game", label: "Games", icon: "tabler:device-gamepad" },
+    { id: "script", label: "Userscript", icon: "tabler:script" },
+    { id: "rmskin", label: "Rainmeter", icon: "tabler:droplet" },
+    { id: "website", label: "Web Projects", icon: "tabler:browser" },
 ];
 ---
 
-<div class="flex flex-wrap justify-center gap-3 mb-12">
-    {
-        filters.map((filter) => (
-            <Button
-                color={filter.id === activeFilter ? "primary" : "outline"}
-                style={filter.id === activeFilter ? "filled" : "outline"}
-                class="md:btn-md"
-                data-filter={filter.id}
-                icon={filter.icon}
-            >
-                <span>{filter.label}</span>
-            </Button>
-        ))
-    }
-</div>
-
-<script>
-    // Project filtering
-    document.addEventListener("DOMContentLoaded", () => {
-        const filterButtons = document.querySelectorAll("[data-filter]");
-        const projectCards = document.querySelectorAll("[data-groups]");
-
-        filterButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const filter = button.getAttribute("data-filter");
-
-                // Update active state
-                filterButtons.forEach((btn) => {
-                    btn.classList.remove("btn-primary");
-                    btn.classList.add("btn-outline");
-                });
-                button.classList.remove("btn-outline");
-                button.classList.add("btn-primary");
-
-                // Filter projects
-                projectCards.forEach((card) => {
-                    const groups = card.getAttribute("data-groups") || "";
-                    if (filter === "all" || groups.includes(filter)) {
-                        card.style.display = "";
-                        card.classList.add("_aos-bottom");
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-            });
-        });
-    });
-</script>
+<Filter
+    options={filters}
+    activeFilter={activeFilter}
+    class="flex flex-wrap justify-center gap-3 mb-12"
+    size="sm"
+/>

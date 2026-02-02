@@ -19,12 +19,12 @@ const navItems = [
         >
             <!-- Mobile Drawer Button & Logo -->
             <div class="navbar-start">
-                <div class="lg:hidden flex items-center">
+                <div class="lg:hidden">
                     <Drawer id="main-drawer">
                         <label
                             slot="trigger"
                             for="main-drawer"
-                            class="btn btn-ghost btn-circle"
+                            class="btn btn-ghost btn-square"
                         >
                             <Icon name="hamburger" />
                         </label>
@@ -45,27 +45,16 @@ const navItems = [
                             ))
                         }
                         <li>
-                            <Button style="ghost" color="neutral"
-                                >Support</Button
-                            >
+                            <Button href="#support" style="ghost" size="sm">
+                                Support
+                            </Button>
                         </li>
                     </Drawer>
-                    <Button
-                        href="/"
-                        style="ghost"
-                        size="xl"
-                        class="gap-2 ml-2"
-                        icon="d3"
-                    />
                 </div>
-                <!-- Desktop Logo (hidden on mobile) -->
-                <Button
-                    href="/"
-                    style="link"
-                    size="xl"
-                    class="gap-2 ml-2 hidden lg:flex"
-                    icon="d3"
-                />
+                <!-- Logo -->
+                <a href="/" class="btn btn-ghost text-xl gap-2 text-primary">
+                    <Icon name="d3" />
+                </a>
             </div>
 
             <!-- Desktop Menu -->
@@ -73,15 +62,15 @@ const navItems = [
                 <ul class="menu menu-horizontal px-1">
                     {
                         navItems.map((item) => (
-                            <li class="pl-1">
+                            <li>
                                 <Button
                                     href={item.href}
-                                    style="link-hover"
-                                    class={
+                                    style="ghost"
+                                    class={`rounded-xl ${
                                         currentPath === item.href
                                             ? "active"
                                             : ""
-                                    }
+                                    }`}
                                 >
                                     {item.label}
                                 </Button>
@@ -93,42 +82,44 @@ const navItems = [
 
             <!-- Right Side Actions -->
             <div class="navbar-end gap-2">
+                <!-- Support Button -->
                 <Button
+                    href="#support"
                     style="ghost"
-                    iconOnly={true}
-                    circle={true}
-                    color="neutral"
+                    size="sm"
+                    square={true}
+                    class="rounded-xl"
                     icon="tabler:coffee"
+                    iconOnly={true}
                 />
+
                 <!-- GitHub Link -->
                 <Button
                     href="https://github.com/d3ward"
                     external={true}
                     style="ghost"
-                    circle={true}
+                    size="sm"
+                    square={true}
+                    class="rounded-xl"
                     icon="github"
                     iconOnly={true}
                     aria-label="GitHub Profile"
-                    color="neutral"
                 />
 
                 <!-- Theme Toggle -->
-                <Button
-                    style="ghost"
-                    circle={true}
-                    class="swap swap-rotate"
+                <label
+                    class="swap swap-rotate btn btn-ghost btn-sm btn-square rounded-xl"
                     id="theme-toggle"
-                    aria-label="Toggle theme"
-                    color="neutral"
                 >
+                    <input type="checkbox" aria-label="Toggle theme" />
+
                     <!-- Moon icon -->
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="swap-on h-5 w-5"
+                        class="swap-on h-5 w-5 fill-none"
                         viewBox="0 0 24 24"
                         stroke-width="1.75"
                         stroke="currentColor"
-                        fill="none"
                     >
                         <path
                             d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
@@ -138,14 +129,14 @@ const navItems = [
                         ></path>
                         <path d="M19 11h2m-1 -1v2"></path>
                     </svg>
+
                     <!-- Sun icon -->
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="swap-off h-5 w-5"
+                        class="swap-off h-5 w-5 fill-none"
                         viewBox="0 0 24 24"
                         stroke-width="1.75"
                         stroke="currentColor"
-                        fill="none"
                     >
                         <path
                             d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"
@@ -159,7 +150,7 @@ const navItems = [
                         <path d="M20 12h2"></path>
                         <path d="M12 20v2"></path>
                     </svg>
-                </Button>
+                </label>
             </div>
         </div>
     </div>
@@ -182,22 +173,23 @@ const navItems = [
 
     // Theme toggle
     const themeToggle = document.getElementById("theme-toggle");
+    const themeInput = themeToggle?.querySelector(
+        'input[type="checkbox"]',
+    ) as HTMLInputElement;
     const html = document.documentElement;
 
     // Load saved theme on page load
     const savedTheme = localStorage.getItem("theme") || "light";
     html.setAttribute("data-theme", savedTheme);
 
-    // Update swap state based on current theme
-    if (savedTheme === "dark") {
-        themeToggle?.classList.add("swap-active");
+    // Update checkbox state based on current theme
+    if (themeInput) {
+        themeInput.checked = savedTheme === "dark";
     }
 
-    themeToggle?.addEventListener("click", () => {
-        const currentTheme = html.getAttribute("data-theme");
-        const newTheme = currentTheme === "light" ? "dark" : "light";
+    themeInput?.addEventListener("change", () => {
+        const newTheme = themeInput.checked ? "dark" : "light";
         html.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
-        themeToggle.classList.toggle("swap-active");
     });
 </script>

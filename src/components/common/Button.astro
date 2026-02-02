@@ -1,6 +1,44 @@
 ---
 import Icon from "./Icon.astro";
 
+interface Props {
+    href?: string;
+    external?: boolean;
+    type?: "button" | "submit" | "reset";
+    color?:
+        | "neutral"
+        | "primary"
+        | "secondary"
+        | "accent"
+        | "info"
+        | "success"
+        | "warning"
+        | "error";
+    style?:
+        | "filled"
+        | "outline"
+        | "dash"
+        | "soft"
+        | "ghost"
+        | "link"
+        | "link-hover";
+    size?: "xs" | "sm" | "md" | "lg" | "xl";
+    icon?: string;
+    iconPosition?: "left" | "right";
+    iconOnly?: boolean;
+    iconClass?: string;
+    wide?: boolean;
+    block?: boolean;
+    square?: boolean;
+    circle?: boolean;
+    active?: boolean;
+    disabled?: boolean;
+    loading?: boolean;
+    class?: string;
+    children?: any;
+    [key: string]: any;
+}
+
 /**
  * Common Button component for Astro using daisyUI classes and Tabler Icons.
  *
@@ -87,22 +125,11 @@ const disabledClass = disabled
 const loadingClass = loading && !isLinkStyle ? "loading" : "";
 
 // Compose all classes
-const btnClass = [
-    baseClass,
-    colorClass,
-    styleClass,
-    sizeClass,
-    wideClass,
-    blockClass,
-    squareClass,
-    circleClass,
-    activeClass,
-    disabledClass,
-    loadingClass,
-    className,
-]
-    .filter(Boolean)
-    .join(" ");
+const allClasses = `${baseClass} ${colorClass} ${styleClass} ${sizeClass} ${wideClass} ${blockClass} ${squareClass} ${circleClass} ${activeClass} ${disabledClass} ${loadingClass} ${className}`;
+// @ts-ignore - TypeScript language server issue with string methods in Astro frontmatter
+const trimmed = allClasses.trim();
+// @ts-ignore
+const btnClass = trimmed.replace(/\s+/g, " ");
 
 // Icon size mapping (passed to Icon component)
 const iconSizePreset = iconClass ? undefined : size;

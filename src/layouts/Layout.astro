@@ -1,6 +1,7 @@
 ---
 import "../assets/app.css";
 import Navbar from "@components/Navbar.astro";
+import Wave from "@components/Wave.astro";
 import Footer from "@components/Footer.astro";
 import GoToTop from "@components/GoToTop.astro";
 import SupportDialog from "@components/SupportDialog.astro";
@@ -88,7 +89,11 @@ const metadata = { ...defaultSEO, ...seo };
     </head>
     <body>
         <Navbar />
-        <slot />
+        <Wave position="top" />
+        <main class="max-w-screen-lg mx-auto">
+            <slot />
+        </main>
+        <Wave position="bottom" />
         <Footer />
         <GoToTop />
         <SupportDialog />

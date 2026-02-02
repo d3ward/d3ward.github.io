@@ -2,6 +2,78 @@
 @plugin "daisyui";
 
 /* ============================================
+   CUSTOM COLOR SCALES
+   Tailwind v4 uses @theme instead of tailwind.config.js
+   ============================================ */
+@theme {
+    --color-blue-50: #e0f1ff;
+    --color-blue-100: #c2e2ff;
+    --color-blue-200: #8ac8ff;
+    --color-blue-300: #4dacff;
+    --color-blue-400: #1492ff;
+    --color-blue-500: #0074d8;
+    --color-blue-600: #005cad;
+    --color-blue-700: #004480;
+    --color-blue-800: #002e57;
+    --color-blue-900: #001629;
+
+    --color-green-50: #e9fbf0;
+    --color-green-100: #cff7de;
+    --color-green-200: #9fefbc;
+    --color-green-300: #6fe69b;
+    --color-green-400: #40de7a;
+    --color-green-500: #22c55e;
+    --color-green-600: #1b9d4b;
+    --color-green-700: #147538;
+    --color-green-800: #0d4e25;
+    --color-green-900: #072713;
+
+    --color-red-50: #ffeceb;
+    --color-red-100: #ffd9d6;
+    --color-red-200: #ffb3ad;
+    --color-red-300: #ff8d85;
+    --color-red-400: #ff675c;
+    --color-red-500: #ff4132;
+    --color-red-600: #f51000;
+    --color-red-700: #b80c00;
+    --color-red-800: #7a0800;
+    --color-red-900: #3d0400;
+
+    --color-orange-50: #fff4eb;
+    --color-orange-100: #ffe7d1;
+    --color-orange-200: #ffcea3;
+    --color-orange-300: #ffb675;
+    --color-orange-400: #ff9d47;
+    --color-orange-500: #ff851b;
+    --color-orange-600: #e06900;
+    --color-orange-700: #a84f00;
+    --color-orange-800: #703400;
+    --color-orange-900: #381a00;
+
+    --color-purple-50: #f7f2fc;
+    --color-purple-100: #dfccf4;
+    --color-purple-200: #c7a6ec;
+    --color-purple-300: #b080e5;
+    --color-purple-400: #985add;
+    --color-purple-500: #8034d5;
+    --color-purple-600: #6b2bb2;
+    --color-purple-700: #55228f;
+    --color-purple-800: #40186b;
+    --color-purple-900: #2a0f48;
+
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+}
+
+/* ============================================
    DAISYUI THEME DEFINITIONS
    ============================================ */
 
@@ -95,10 +167,6 @@ body {
     line-height: 1.6;
 }
 
-main {
-    margin-top: 5rem;
-}
-
 @media (max-width: 40em) {
     .row:not(.keep-width) > [class*="col"],
     .row:not(.keep-width) > div,
@@ -160,11 +228,6 @@ svg.wave > path {
     100% {
         transform: translateX(-100%);
     }
-}
-
-._float-top {
-    position: absolute;
-    top: 0;
 }
 
 /* ============================================

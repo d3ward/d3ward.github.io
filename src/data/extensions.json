@@ -1,63 +1,73 @@
 {
-	"extensions": [
-		{
-			"name": "uBlock Origin",
-			"description": "Adblocker.",
-			"url": "https://github.com/gorhill/uBlock",
-			"platform": ["macos", "windows", "android"]
-		},
-		{
-			"name": "Bitwarden",
-			"description": "Password manager.",
-			"url": "https://bitwarden.com",
-			"platform": ["macos", "windows", "android"]
-		},
-		{
-			"name": "Floccus",
-			"description": "Bookmark sync.",
-			"url": "https://github.com/floccusaddon/floccus"
-		},
-		{
-			"name": "ViolentMonkey",
-			"description": "User scripts manager.",
-			"url": "https://violentmonkey.github.io",
-			"platform": ["macos", "windows", "android"]
-		},
-		{
-			"name": "b2ntp",
-			"description": "Kanban-style homepage with bookmarks.",
-			"url": "https://github.com/cirosantilli/b2ntp",
-			"platform": ["macos", "windows"]
-		},
-		{
-			"name": "Anytype Webclipper",
-			"description": "Save pages and links directly to Anytype.",
-			"url": "https://anytype.io",
-			"platform": ["macos"]
-		},
-		{
-			"name": "React Dev Tools",
-			"description": "Extended console log features for React projects.",
-			"url": "https://react.dev/tools",
-			"platform": ["macos"]
-		},
-		{
-			"name": "NextNTP",
-			"description": "Highly customizable mobile-friendly new tab page.",
-			"url": "https://github.com/d3ward/nextntp",
-			"platform": ["android", "ios"]
-		},
-		{
-			"name": "Floatly",
-			"description": "Custom shortcut actions from any page.",
-			"url": "https://github.com/d3ward/floatly",
-			"platform": ["android"]
-		},
-		{
-			"name": "MTI",
-			"description": "Override website meta theme color.",
-			"url": "https://github.com/d3ward/MTI",
-			"platform": ["android"]
-		}
-	]
+  "extensions": [
+    {
+      "name": "uBlock Origin",
+      "description": "Adblocker.",
+      "url": "https://github.com/gorhill/uBlock",
+      "platform": ["macos", "windows", "android"],
+      "icon": "simple-icons:ublockorigin"
+    },
+    {
+      "name": "Bitwarden",
+      "description": "Password manager.",
+      "url": "https://bitwarden.com",
+      "platform": ["macos", "windows", "android"],
+      "icon": "simple-icons:bitwarden"
+    },
+    {
+      "name": "Floccus",
+      "description": "Bookmark sync.",
+      "url": "https://github.com/floccusaddon/floccus",
+      "icon": "tabler:bookmark"
+    },
+    {
+      "name": "ViolentMonkey",
+      "description": "User scripts manager.",
+      "url": "https://violentmonkey.github.io",
+      "platform": ["macos", "windows", "android"],
+      "icon": "tabler:code"
+    },
+    {
+      "name": "b2ntp",
+      "description": "Kanban-style homepage with bookmarks.",
+      "url": "https://github.com/cirosantilli/b2ntp",
+      "platform": ["macos", "windows"],
+      "icon": "tabler:layout-kanban"
+    },
+    {
+      "name": "Anytype Webclipper",
+      "description": "Save pages and links directly to Anytype.",
+      "url": "https://anytype.io",
+      "platform": ["macos"],
+      "icon": "tabler:clipboard"
+    },
+    {
+      "name": "React Dev Tools",
+      "description": "Extended console log features for React projects.",
+      "url": "https://react.dev/tools",
+      "platform": ["macos"],
+      "icon": "simple-icons:react"
+    },
+    {
+      "name": "NextNTP",
+      "description": "Highly customizable mobile-friendly new tab page.",
+      "url": "https://github.com/d3ward/nextntp",
+      "platform": ["android", "ios"],
+      "icon": "tabler:home"
+    },
+    {
+      "name": "Floatly",
+      "description": "Custom shortcut actions from any page.",
+      "url": "https://github.com/d3ward/floatly",
+      "platform": ["android"],
+      "icon": "tabler:float-center"
+    },
+    {
+      "name": "MTI",
+      "description": "Override website meta theme color.",
+      "url": "https://github.com/d3ward/MTI",
+      "platform": ["android"],
+      "icon": "tabler:palette"
+    }
+  ]
 }

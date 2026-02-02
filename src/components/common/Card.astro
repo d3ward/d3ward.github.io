@@ -42,19 +42,20 @@ const {
     class: className,
     ...rest
 } = Astro.props;
-
-const cardClasses = [
-    "card",
-    bordered && "card-bordered",
-    dash && "card-dash",
-    side && "card-side",
-    imageFull && "image-full",
-    size && `card-${size}`,
-    className,
-].filter(Boolean);
 ---
 
-<div class:list={cardClasses} {...rest}>
+<div
+    class:list={[
+        "card",
+        bordered && "card-bordered",
+        dash && "card-dash",
+        side && "card-side",
+        imageFull && "image-full",
+        size && `card-${size}`,
+        className,
+    ]}
+    {...rest}
+>
     <slot name="figure" />
 
     <div class:list={["card-body", bodyClass]}>

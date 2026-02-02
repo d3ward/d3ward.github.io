@@ -1,0 +1,155 @@
+---
+import Icon from "./Icon.astro";
+
+export interface FilterOption {
+    id: string;
+    label: string;
+    icon?: string;
+}
+
+interface Props {
+    options: FilterOption[];
+    activeFilter?: string;
+    class?: string;
+    size?: "xs" | "sm" | "md" | "lg";
+}
+
+const {
+    options,
+    activeFilter = "all",
+    class: className = "",
+    size = "sm",
+} = Astro.props;
+
+const sizeClass = size ? `btn-${size}` : "";
+---
+
+<div class={`filter ${className}`}>
+    {
+        options.map((option: FilterOption) => (
+            <button
+                type="button"
+                data-filter={option.id}
+                class={`btn ${sizeClass} gap-2 ${
+                    option.id === activeFilter ? "btn-primary" : "btn-ghost"
+                }`}
+                aria-label={option.label}
+                aria-pressed={option.id === activeFilter}
+            >
+                {option.icon && <Icon name={option.icon} class="w-4 h-4" />}
+                <span>{option.label}</span>
+            </button>
+        ))
+    }
+</div>
+
+<script>
+    import Shuffle from "shufflejs";
+
+    let shuffleInstances: Shuffle[] = [];
+
+    function updateButtonStyles(
+        buttons: NodeListOf<Element>,
+        activeFilter: string,
+    ) {
+        buttons.forEach((btn) => {
+            const isActive = btn.getAttribute("data-filter") === activeFilter;
+            btn.classList.toggle("btn-primary", isActive);
+            btn.classList.toggle("btn-ghost", !isActive);
+            btn.setAttribute("aria-pressed", String(isActive));
+        });
+    }
+
+    function applyFilter(filterValue: string) {
+        shuffleInstances.forEach((instance) => {
+            if (filterValue === "all") {
+                instance.filter(Shuffle.ALL_ITEMS);
+            } else {
+                instance.filter((element: Element) => {
+                    const groups = element.getAttribute("data-groups") || "";
+                    return groups.split(/[\s,]+/).includes(filterValue);
+                });
+            }
+        });
+    }
+
+    function cleanup() {
+        shuffleInstances.forEach((instance) => instance.destroy());
+        shuffleInstances = [];
+    }
+
+    function init() {
+        cleanup();
+
+        const filterButtons = document.querySelectorAll("[data-filter]");
+        const gridContainers = document.querySelectorAll(".grid");
+
+        if (filterButtons.length === 0 || gridContainers.length === 0) return;
+
+        gridContainers.forEach((container) => {
+            const items = container.querySelectorAll("[data-groups]");
+            if (items.length === 0) return;
+
+            const instance = new Shuffle(container as HTMLElement, {
+                itemSelector: "[data-groups]",
+                delimiter: ",",
+                speed: 250,
+                easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+            });
+
+            shuffleInstances.push(instance);
+        });
+
+        if (shuffleInstances.length === 0) return;
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                e.preventDefault();
+                const filterValue =
+                    (e.currentTarget as HTMLElement).getAttribute(
+                        "data-filter",
+                    ) || "all";
+                updateButtonStyles(filterButtons, filterValue);
+                applyFilter(filterValue);
+            });
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+    } else {
+        init();
+    }
+
+    document.addEventListener("astro:page-load", init);
+    document.addEventListener("astro:before-preparation", cleanup);
+</script>
+
+<style>
+    :global(.grid [data-groups]) {
+        width: calc(100% / 3);
+        padding: 0.75rem;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 768px) {
+        :global(.grid [data-groups]) {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        :global(.grid [data-groups]) {
+            width: 100%;
+        }
+    }
+
+    :global(.shuffle-item--hidden) {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    :global(.shuffle-item--visible) {
+        opacity: 1;
+    }
+</style>

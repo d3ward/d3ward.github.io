@@ -39,18 +39,18 @@ const {
     floating = false,
     class: className,
 } = Astro.props;
-
-const classes = [
-    "badge",
-    variant && `badge-${variant}`,
-    style && `badge-${style}`,
-    size && `badge-${size}`,
-    floating && "badge-floating",
-    className,
-].filter(Boolean);
 ---
 
-<div class:list={classes}>
+<div
+    class:list={[
+        "badge",
+        variant && `badge-${variant}`,
+        style && `badge-${style}`,
+        size && `badge-${size}`,
+        floating && "badge-floating",
+        className,
+    ]}
+>
     <slot />
 </div>
 
@@ -69,6 +69,6 @@ const classes = [
         justify-content: center;
         padding: 0.5rem;
         color: white;
-        background: rgb(59 130 246); /* blue-500 */
+        background: var(--color-blue-500);
     }
 </style>

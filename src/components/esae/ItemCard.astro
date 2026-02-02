@@ -1,5 +1,6 @@
 ---
 import { Card, Button, Badge, BadgeGroup } from "../common";
+import Icon from "../common/Icon.astro";
 
 interface Props {
     name: string;
@@ -8,6 +9,7 @@ interface Props {
     tags?: string[];
     platforms?: string[];
     groups?: string;
+    icon?: string;
 }
 
 const {
@@ -17,13 +19,14 @@ const {
     tags = [],
     platforms = [],
     groups = "",
+    icon = "tabler:app-window",
 } = Astro.props;
 ---
 
-<div class="col-span-12 md:col-span-6 lg:col-span-4" data-groups={groups}>
+<div data-groups={groups}>
     <Card
         bordered={true}
-        class="bg-base-100 h-full _aos-bottom relative"
+        class="bg-base-100 h-full _aos-bottom relative hover:shadow-lg transition-shadow"
         bodyClass="gap-4"
     >
         <!-- Floating Badges -->
@@ -39,39 +42,51 @@ const {
             )
         }
 
-        <!-- Title -->
-        <h3 slot="title" class="text-lg">{name}</h3>
+        <!-- Icon and Title -->
+        <div class="flex items-start gap-3">
+            <div class="flex-shrink-0">
+                <div
+                    class="w-12 h-12 rounded-lg bg-base-200 flex items-center justify-center"
+                >
+                    <Icon name={icon} class="w-6 h-6 text-primary" />
+                </div>
+            </div>
+            <div class="flex-1 min-w-0">
+                <h3 class="text-lg font-semibold">{name}</h3>
+                {
+                    platforms.length > 0 && (
+                        <div class="flex flex-wrap gap-1 mt-1">
+                            {platforms.map((platform) => (
+                                <span class="text-xs text-base-content/60 bg-base-200 px-2 py-0.5 rounded">
+                                    {platform}
+                                </span>
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
+        </div>
 
         <!-- Description -->
         {
             description && (
-                <p class="text-sm text-base-content/70">{description}</p>
-            )
-        }
-
-        <!-- Platforms -->
-        {
-            platforms.length > 0 && (
-                <div class="flex flex-wrap gap-1 text-xs text-base-content/60">
-                    {platforms.map((platform, index) => (
-                        <span>
-                            {platform}
-                            {index < platforms.length - 1 ? "," : ""}
-                        </span>
-                    ))}
-                </div>
+                <p class="text-sm text-base-content/70 line-clamp-3">
+                    {description}
+                </p>
             )
         }
 
         <!-- Actions -->
         {
             url && (
-                <div slot="actions">
+                <div slot="actions" class="mt-auto">
                     <Button
                         href={url}
                         external={true}
                         size="sm"
+                        style="ghost"
                         icon="external-link"
+                        class="w-full"
                     >
                         Visit
                     </Button>
