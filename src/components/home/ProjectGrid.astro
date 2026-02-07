@@ -1,0 +1,18 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import type { Project, GitHubStats } from "@/types";
+
+import projects from "@data/projects.json";
+import githubStats from "@data/github-stats.json";
+
+const projectsData = projects as Project[];
+const stats = githubStats as GitHubStats;
+---
+
+<div class="grid">
+  {
+    projectsData.map((project) => (
+      <ProjectCard project={project} githubData={stats.d3ward.repos[project.id]} />
+    ))
+  }
+</div>

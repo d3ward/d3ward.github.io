@@ -34,65 +34,65 @@ import Icon from "./Icon.astro";
  */
 
 interface Props {
-    title?: string;
-    value: string | number;
-    desc?: string;
-    icon?: string;
-    iconColor?: string;
-    iconSize?: number;
-    figure?: any;
-    actions?: any;
-    class?: string;
-    centered?: boolean;
-    valueColor?: string;
-    titleColor?: string;
-    descColor?: string;
-    noJsValue?: string | number;
-    animateValue?: boolean;
-    tilt?: boolean;
-    tiltMax?: number;
-    tiltSpeed?: number;
-    tiltPerspective?: number;
-    as?: "div" | "a"; // Custom wrapper tag
-    href?: string; // For anchor tags
-    target?: string; // Link target
+  title?: string;
+  value: string | number;
+  desc?: string;
+  icon?: string;
+  iconColor?: string;
+  iconSize?: number;
+  figure?: any;
+  actions?: any;
+  class?: string;
+  centered?: boolean;
+  valueColor?: string;
+  titleColor?: string;
+  descColor?: string;
+  noJsValue?: string | number;
+  animateValue?: boolean;
+  tilt?: boolean;
+  tiltMax?: number;
+  tiltSpeed?: number;
+  tiltPerspective?: number;
+  as?: "div" | "a"; // Custom wrapper tag
+  href?: string; // For anchor tags
+  target?: string; // Link target
 }
 
 const {
-    title,
-    value,
-    desc,
-    icon,
-    iconColor = "text-secondary",
-    iconSize = 32,
-    figure,
-    actions,
-    class: className,
-    centered = false,
-    valueColor,
-    titleColor,
-    descColor,
-    noJsValue,
-    animateValue = false,
-    tilt = false,
-    tiltMax = 50,
-    tiltSpeed = 400,
-    tiltPerspective = 500,
-    as: Tag = "div",
-    href,
-    target,
-    ...rest
+  title,
+  value,
+  desc,
+  icon,
+  iconColor = "text-secondary",
+  iconSize = 32,
+  figure,
+  actions,
+  class: className,
+  centered = false,
+  valueColor,
+  titleColor,
+  descColor,
+  noJsValue,
+  animateValue = false,
+  tilt = false,
+  tiltMax = 50,
+  tiltSpeed = 400,
+  tiltPerspective = 500,
+  as: Tag = "div",
+  href,
+  target,
+  ...rest
 } = Astro.props;
 
 // Tilt attributes
 const tiltAttrs = tilt
-    ? {
-          "data-tilt": "",
-          "data-tilt-max": tiltMax,
-          "data-tilt-speed": tiltSpeed,
-          "data-tilt-perspective": tiltPerspective,
-      }
-    : {};
+  ? {
+      "data-tilt": "",
+      "data-tilt-max": tiltMax,
+      "data-tilt-speed": tiltSpeed,
+      "data-tilt-perspective": tiltPerspective,
+    }
+  : {};
 
 // Build icon name - auto-detect or use provided prefix
 const iconName = icon ? (icon.includes(":") ? icon : `octicon:${icon}`) : null;
@@ -102,51 +102,42 @@ const linkAttrs = href ? { href, ...(target && { target }) } : {};
 ---
 
 <Tag
-    class:list={["stat", centered && "place-items-center", className]}
-    {...tiltAttrs}
-    {...linkAttrs}
-    {...rest}
+  class:list={["stat", centered && "place-items-center", className]}
+  {...tiltAttrs}
+  {...linkAttrs}
+  {...rest}
 >
-    {
-        (figure || iconName) && (
-            <div class:list={["stat-figure", iconColor]}>
-                {figure ? (
-                    <slot name="figure">{figure}</slot>
-                ) : (
-                    iconName && (
-                        <Icon
-                            name={iconName}
-                            class="inline-block stroke-current"
-                            size={iconSize}
-                        />
-                    )
-                )}
-            </div>
-        )
-    }
+  {
+    (figure || iconName) && (
+      <div class:list={["stat-figure", iconColor]}>
+        {figure ? (
+          <slot name="figure">{figure}</slot>
+        ) : (
+          iconName && <Icon name={iconName} class="inline-block stroke-current" size={iconSize} />
+        )}
+      </div>
+    )
+  }
 
-    {title && <div class:list={["stat-title", titleColor]}>{title}</div>}
+  {title && <div class:list={["stat-title", titleColor]}>{title}</div>}
 
-    {
-        noJsValue && animateValue && (
-            <div class:list={["stat-value no-js", valueColor]}>{noJsValue}</div>
-        )
-    }
+  {
+    noJsValue && animateValue && (
+      <div class:list={["stat-value no-js", valueColor]}>{noJsValue}</div>
+    )
+  }
 
-    <div
-        class:list={["stat-value", valueColor]}
-        {...animateValue && { "data-target-number": value }}
-    >
-        {value}
-    </div>
+  <div class:list={["stat-value", valueColor]} {...animateValue && { "data-target-number": value }}>
+    {value}
+  </div>
 
-    {desc && <div class:list={["stat-desc", descColor]}>{desc}</div>}
+  {desc && <div class:list={["stat-desc", descColor]}>{desc}</div>}
 
-    {
-        actions && (
-            <div class="stat-actions">
-                <slot name="actions">{actions}</slot>
-            </div>
-        )
-    }
+  {
+    actions && (
+      <div class="stat-actions">
+        <slot name="actions">{actions}</slot>
+      </div>
+    )
+  }
 </Tag>

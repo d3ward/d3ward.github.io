@@ -1,50 +1,50 @@
 ---
-import type { Project, GitHubRepo } from "@types";
+import type { Project, GitHubRepo } from "@/types";
 import { Card, Button, Badge, BadgeGroup } from "../common";
 import Icon from "../common/Icon.astro";
 
 interface Props {
-    project: Project;
-    githubData?: GitHubRepo;
+  project: Project;
+  githubData?: GitHubRepo;
 }
 
 const { project, githubData } = Astro.props;
 const tags = project.tags.split(",").map((t) => t.trim());
 ---
 
-<Card
+<div data-groups={project.groups}>
+  <Card
     bordered={true}
-    class="bg-base-100 border-2 border-base-300 transition-all _aos-bottom relative"
+    class="bg-base-100 border-base-300 _aos-bottom relative border-2 transition-all"
     bodyClass="gap-4"
     actionsClass="justify-center"
-    data-groups={project.groups}
->
+  >
     <!-- Floating Badges -->
     {
-        tags.length > 0 && (
-            <BadgeGroup>
-                {tags.map((tag) => (
-                    <Badge
-                        variant={tag === "Archived" ? "warning" : "primary"}
-                        size="md"
-                    >
-                        {tag}
-                    </Badge>
-                ))}
-            </BadgeGroup>
-        )
+      tags.length > 0 && (
+        <BadgeGroup>
+          {tags.map((tag) => (
+            <Badge
+              variant={tag === "Archived" ? "warning" : "primary"}
+              size="md"
+            >
+              {tag}
+            </Badge>
+          ))}
+        </BadgeGroup>
+      )
     }
 
     <!-- Logo -->
 
     <figure class="px-10 pt-4">
-        <div class="avatar">
-            <div
-                class="w-24 rounded-xl bg-white p-4 shadow-md flex items-center justify-center"
-            >
-                <Icon name={project.logo} size="3xl" />
-            </div>
+      <div class="avatar">
+        <div
+          class="flex w-24 items-center justify-center rounded-xl bg-white p-4 shadow-md"
+        >
+          <Icon name={project.logo} size="3xl" />
         </div>
+      </div>
     </figure>
 
     <!-- Title -->
@@ -52,48 +52,55 @@ const tags = project.tags.split(",").map((t) => t.trim());
 
     <!-- Description -->
     {
-        githubData?.description && (
-            <p class="text-center opacity-70">{githubData.description}</p>
-        )
+      githubData?.description && (
+        <p class="text-center opacity-70">{githubData.description}</p>
+      )
     }
 
     <!-- Stats -->
     {
-        githubData && (
-            <div class="flex justify-center gap-4">
-                <div class="flex items-center gap-1">
-                    <Icon name="tabler:star" class="w-4 h-4" />
-                    <span>{githubData.stars}</span>
-                </div>
-                <div class="flex items-center gap-1">
-                    <Icon name="tabler:git-fork" class="w-4 h-4" />
-                    <span>{githubData.forks}</span>
-                </div>
-            </div>
-        )
+      githubData && (
+        <div class="flex justify-center gap-4">
+          <div class="flex items-center gap-1">
+            <Icon name="tabler:star" class="h-4 w-4" />
+            <span>{githubData.stars}</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <Icon name="tabler:git-fork" class="h-4 w-4" />
+            <span>{githubData.forks}</span>
+          </div>
+        </div>
+      )
     }
 
     <!-- Links -->
     <Fragment slot="actions">
-        {
-            project.url && (
-                <Button href={project.url} external={true} icon="external-link">
-                    Website
-                </Button>
-            )
-        }
-        {
-            githubData?.url && (
-                <Button
-                    href={githubData.url}
-                    external={true}
-                    style="outline"
-                    color="neutral"
-                    icon="github"
-                >
-                    GitHub
-                </Button>
-            )
-        }
+      {
+        project.url && (
+          <Button
+            style="outline"
+            color="primary"
+            href={project.url}
+            external={true}
+            icon="external-link"
+          >
+            Website
+          </Button>
+        )
+      }
+      {
+        githubData?.url && (
+          <Button
+            href={githubData.url}
+            external={true}
+            style="outline"
+            color="neutral"
+            icon="github"
+          >
+            GitHub
+          </Button>
+        )
+      }
     </Fragment>
-</Card>
+  </Card>
+</div>

@@ -2,70 +2,68 @@
 import "./styles.css";
 
 interface Props {
-    class?: string;
+  class?: string;
 }
 
 const { class: className } = Astro.props;
 ---
 
 <div class:list={["grid-stats", className]}>
-    <slot />
+  <slot />
 </div>
 
 <script>
-    // Animate counters on page load
-    document.addEventListener("DOMContentLoaded", () => {
-        const counters = document.querySelectorAll(".count[data-target]");
+  // Animate counters on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll(".count[data-target]");
 
-        counters.forEach((counter) => {
-            const target = parseInt(counter.getAttribute("data-target") || "0");
-            const duration = 2000;
-            let currentNumber = 0;
-            const interval = duration / target;
-            const timer = setInterval(() => {
-                currentNumber++;
-                counter.textContent = currentNumber.toString();
-                if (currentNumber === target) {
-                    clearInterval(timer);
-                }
-            }, interval);
-        });
-
-        // Logo animation
-        const logo = document.getElementById("d3Logo");
-        if (logo) {
-            setTimeout(() => {
-                logo.classList.add("startA");
-            }, 100);
+    counters.forEach((counter) => {
+      const target = parseInt(counter.getAttribute("data-target") || "0");
+      const duration = 2000;
+      let currentNumber = 0;
+      const interval = duration / target;
+      const timer = setInterval(() => {
+        currentNumber++;
+        counter.textContent = currentNumber.toString();
+        if (currentNumber === target) {
+          clearInterval(timer);
         }
-
-        // Ripple effect - exact original implementation
-        const cards = document.querySelectorAll(".grid-stats > *");
-        const ELEMENTS_SPAN: HTMLElement[] = [];
-
-        cards.forEach((element, index) => {
-            if (!ELEMENTS_SPAN[index]) {
-                ELEMENTS_SPAN[index] = element.querySelector(
-                    ".gs-ripple",
-                ) as HTMLElement;
-            }
-
-            element.addEventListener("mouseover", (e: MouseEvent) => {
-                if (element.classList.contains("gs-logo")) {
-                    element.classList.add("transition-2");
-                }
-                ELEMENTS_SPAN[index].style.left =
-                    e.pageX - (element as HTMLElement).offsetLeft + "px";
-                ELEMENTS_SPAN[index].style.top =
-                    e.pageY - (element as HTMLElement).offsetTop + "px";
-            });
-
-            element.addEventListener("mouseout", (e: MouseEvent) => {
-                ELEMENTS_SPAN[index].style.left =
-                    e.pageX - (element as HTMLElement).offsetLeft + "px";
-                ELEMENTS_SPAN[index].style.top =
-                    e.pageY - (element as HTMLElement).offsetTop + "px";
-            });
-        });
+      }, interval);
     });
+
+    // Logo animation - 300ms delay so the stroke draw is visible
+    const logo = document.getElementById("d3Logo");
+    if (logo) {
+      setTimeout(() => {
+        logo.classList.add("startA");
+      }, 300);
+    }
+
+    // Ripple effect
+    const cards = document.querySelectorAll(".grid-stats > *");
+    const ELEMENTS_SPAN: HTMLElement[] = [];
+
+    cards.forEach((element, index) => {
+      if (!ELEMENTS_SPAN[index]) {
+        ELEMENTS_SPAN[index] = element.querySelector(".gs-ripple") as HTMLElement;
+      }
+
+      function setRipplePosition(e: MouseEvent) {
+        const rect = (element as HTMLElement).getBoundingClientRect();
+        ELEMENTS_SPAN[index].style.left = e.clientX - rect.left + "px";
+        ELEMENTS_SPAN[index].style.top = e.clientY - rect.top + "px";
+      }
+
+      element.addEventListener("mouseover", (e: MouseEvent) => {
+        if (element.classList.contains("gs-logo")) {
+          element.classList.add("transition-2");
+        }
+        setRipplePosition(e);
+      });
+
+      element.addEventListener("mouseout", (e: MouseEvent) => {
+        setRipplePosition(e);
+      });
+    });
+  });
 </script>

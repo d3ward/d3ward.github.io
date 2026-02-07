@@ -6,71 +6,71 @@
    Tailwind v4 uses @theme instead of tailwind.config.js
    ============================================ */
 @theme {
-    --color-blue-50: #e0f1ff;
-    --color-blue-100: #c2e2ff;
-    --color-blue-200: #8ac8ff;
-    --color-blue-300: #4dacff;
-    --color-blue-400: #1492ff;
-    --color-blue-500: #0074d8;
-    --color-blue-600: #005cad;
-    --color-blue-700: #004480;
-    --color-blue-800: #002e57;
-    --color-blue-900: #001629;
+  --color-blue-50: #e0f1ff;
+  --color-blue-100: #c2e2ff;
+  --color-blue-200: #8ac8ff;
+  --color-blue-300: #4dacff;
+  --color-blue-400: #1492ff;
+  --color-blue-500: #0074d8;
+  --color-blue-600: #005cad;
+  --color-blue-700: #004480;
+  --color-blue-800: #002e57;
+  --color-blue-900: #001629;
 
-    --color-green-50: #e9fbf0;
-    --color-green-100: #cff7de;
-    --color-green-200: #9fefbc;
-    --color-green-300: #6fe69b;
-    --color-green-400: #40de7a;
-    --color-green-500: #22c55e;
-    --color-green-600: #1b9d4b;
-    --color-green-700: #147538;
-    --color-green-800: #0d4e25;
-    --color-green-900: #072713;
+  --color-green-50: #e9fbf0;
+  --color-green-100: #cff7de;
+  --color-green-200: #9fefbc;
+  --color-green-300: #6fe69b;
+  --color-green-400: #40de7a;
+  --color-green-500: #22c55e;
+  --color-green-600: #1b9d4b;
+  --color-green-700: #147538;
+  --color-green-800: #0d4e25;
+  --color-green-900: #072713;
 
-    --color-red-50: #ffeceb;
-    --color-red-100: #ffd9d6;
-    --color-red-200: #ffb3ad;
-    --color-red-300: #ff8d85;
-    --color-red-400: #ff675c;
-    --color-red-500: #ff4132;
-    --color-red-600: #f51000;
-    --color-red-700: #b80c00;
-    --color-red-800: #7a0800;
-    --color-red-900: #3d0400;
+  --color-red-50: #ffeceb;
+  --color-red-100: #ffd9d6;
+  --color-red-200: #ffb3ad;
+  --color-red-300: #ff8d85;
+  --color-red-400: #ff675c;
+  --color-red-500: #ff4132;
+  --color-red-600: #f51000;
+  --color-red-700: #b80c00;
+  --color-red-800: #7a0800;
+  --color-red-900: #3d0400;
 
-    --color-orange-50: #fff4eb;
-    --color-orange-100: #ffe7d1;
-    --color-orange-200: #ffcea3;
-    --color-orange-300: #ffb675;
-    --color-orange-400: #ff9d47;
-    --color-orange-500: #ff851b;
-    --color-orange-600: #e06900;
-    --color-orange-700: #a84f00;
-    --color-orange-800: #703400;
-    --color-orange-900: #381a00;
+  --color-orange-50: #fff4eb;
+  --color-orange-100: #ffe7d1;
+  --color-orange-200: #ffcea3;
+  --color-orange-300: #ffb675;
+  --color-orange-400: #ff9d47;
+  --color-orange-500: #ff851b;
+  --color-orange-600: #e06900;
+  --color-orange-700: #a84f00;
+  --color-orange-800: #703400;
+  --color-orange-900: #381a00;
 
-    --color-purple-50: #f7f2fc;
-    --color-purple-100: #dfccf4;
-    --color-purple-200: #c7a6ec;
-    --color-purple-300: #b080e5;
-    --color-purple-400: #985add;
-    --color-purple-500: #8034d5;
-    --color-purple-600: #6b2bb2;
-    --color-purple-700: #55228f;
-    --color-purple-800: #40186b;
-    --color-purple-900: #2a0f48;
+  --color-purple-50: #f7f2fc;
+  --color-purple-100: #dfccf4;
+  --color-purple-200: #c7a6ec;
+  --color-purple-300: #b080e5;
+  --color-purple-400: #985add;
+  --color-purple-500: #8034d5;
+  --color-purple-600: #6b2bb2;
+  --color-purple-700: #55228f;
+  --color-purple-800: #40186b;
+  --color-purple-900: #2a0f48;
 
-    --color-gray-50: #f9fafb;
-    --color-gray-100: #f3f4f6;
-    --color-gray-200: #e5e7eb;
-    --color-gray-300: #d1d5db;
-    --color-gray-400: #9ca3af;
-    --color-gray-500: #6b7280;
-    --color-gray-600: #4b5563;
-    --color-gray-700: #374151;
-    --color-gray-800: #1f2937;
-    --color-gray-900: #111827;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
 }
 
 /* ============================================
@@ -79,317 +79,288 @@
 
 /* Light Theme */
 @plugin "daisyui/theme" {
-    name: "light";
-    default: true;
-    prefersdark: false;
-    color-scheme: "light";
-    --color-base-100: oklch(100% 0 0);
-    --color-base-200: oklch(97.466% 0.011 259.822);
-    --color-base-300: oklch(93.268% 0.016 262.751);
-    --color-base-content: oklch(41.886% 0.053 255.824);
-    --color-primary: #0074d8;
-    --color-primary-content: oklch(100% 0 0);
-    --color-secondary: oklch(42.551% 0.161 282.339);
-    --color-secondary-content: oklch(88.51% 0.032 282.339);
-    --color-accent: #e3f2fd;
-    --color-accent-content: oklch(11.988% 0.038 335.171);
-    --color-neutral: oklch(19.616% 0.063 257.651);
-    --color-neutral-content: oklch(83.923% 0.012 257.651);
-    --color-info: #1492ff;
-    --color-info-content: oklch(98% 0.003 247.858);
-    --color-success: #22c55e;
-    --color-success-content: oklch(16.098% 0.015 197.823);
-    --color-warning: #ff851b;
-    --color-warning-content: oklch(17.834% 0.009 71.47);
-    --color-error: #ff4132;
-    --color-error-content: oklch(98% 0.003 247.858);
-    --radius-selector: 1rem;
-    --radius-field: 0.5rem;
-    --radius-box: 1rem;
-    --size-selector: 0.25rem;
-    --size-field: 0.25rem;
-    --border: 1.5px;
-    --depth: 0;
-    --noise: 0;
+  name: "light";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(97.466% 0.011 259.822);
+  --color-base-300: oklch(93.268% 0.016 262.751);
+  --color-base-content: oklch(41.886% 0.053 255.824);
+  --color-primary: #0074d8;
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(42.551% 0.161 282.339);
+  --color-secondary-content: oklch(88.51% 0.032 282.339);
+  --color-accent: #e3f2fd;
+  --color-accent-content: oklch(11.988% 0.038 335.171);
+  --color-neutral: oklch(19.616% 0.063 257.651);
+  --color-neutral-content: oklch(83.923% 0.012 257.651);
+  --color-info: #1492ff;
+  --color-info-content: oklch(98% 0.003 247.858);
+  --color-success: #22c55e;
+  --color-success-content: oklch(16.098% 0.015 197.823);
+  --color-warning: #ff851b;
+  --color-warning-content: oklch(17.834% 0.009 71.47);
+  --color-error: #ff4132;
+  --color-error-content: oklch(98% 0.003 247.858);
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0;
+  --noise: 0;
 }
 
 /* Dark Theme */
 @plugin "daisyui/theme" {
-    name: "dark";
-    default: false;
-    prefersdark: true;
-    color-scheme: "dark";
-    --color-base-100: oklch(20% 0.01 240);
-    --color-base-200: oklch(25% 0.01 240);
-    --color-base-300: oklch(30% 0.02 240);
-    --color-base-content: oklch(95% 0.01 240);
-    --color-primary: #0074d8;
-    --color-primary-content: oklch(100% 0 0);
-    --color-secondary: oklch(42.551% 0.161 282.339);
-    --color-secondary-content: oklch(88.51% 0.032 282.339);
-    --color-accent: #e3f2fd;
-    --color-accent-content: oklch(11.988% 0.038 335.171);
-    --color-neutral: oklch(90% 0.01 240);
-    --color-neutral-content: oklch(20% 0.02 240);
-    --color-info: #1492ff;
-    --color-info-content: oklch(98% 0.003 247.858);
-    --color-success: #22c55e;
-    --color-success-content: oklch(16.098% 0.015 197.823);
-    --color-warning: #ff851b;
-    --color-warning-content: oklch(17.834% 0.009 71.47);
-    --color-error: #ff4132;
-    --color-error-content: oklch(98% 0.003 247.858);
-    --radius-selector: 1rem;
-    --radius-field: 0.5rem;
-    --radius-box: 1rem;
-    --size-selector: 0.25rem;
-    --size-field: 0.25rem;
-    --border: 1.5px;
-    --depth: 0;
-    --noise: 0;
+  name: "dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: oklch(20% 0.01 240);
+  --color-base-200: oklch(25% 0.01 240);
+  --color-base-300: oklch(30% 0.02 240);
+  --color-base-content: oklch(95% 0.01 240);
+  --color-primary: #0074d8;
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(42.551% 0.161 282.339);
+  --color-secondary-content: oklch(88.51% 0.032 282.339);
+  --color-accent: #e3f2fd;
+  --color-accent-content: oklch(11.988% 0.038 335.171);
+  --color-neutral: oklch(90% 0.01 240);
+  --color-neutral-content: oklch(20% 0.02 240);
+  --color-info: #1492ff;
+  --color-info-content: oklch(98% 0.003 247.858);
+  --color-success: #22c55e;
+  --color-success-content: oklch(16.098% 0.015 197.823);
+  --color-warning: #ff851b;
+  --color-warning-content: oklch(17.834% 0.009 71.47);
+  --color-error: #ff4132;
+  --color-error-content: oklch(98% 0.003 247.858);
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0;
+  --noise: 0;
 }
 
 /* ============================================
    BASE STYLES
    ============================================ */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-        Cantarell, sans-serif;
-    line-height: 1.6;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
 }
 
 @media (max-width: 40em) {
-    .row:not(.keep-width) > [class*="col"],
-    .row:not(.keep-width) > div,
-    .grid:not(.keep-width) > [class*="col"],
-    .grid:not(.keep-width) > div {
-        width: 100%;
-    }
-}
-
-/* ============================================
-   LOGO ANIMATION
-   ============================================ */
-svg#d3Logo .svg-elem-1 {
-    stroke-dashoffset: 724.4970703125px;
-    stroke-dasharray: 724.4970703125px;
-    fill: transparent;
-    stroke: hsl(var(--p));
-    transition:
-        stroke-dashoffset 10s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
-        fill 0.2s linear 8s,
-        stroke 2s linear 4s;
-}
-
-svg#d3Logo.startA .svg-elem-1 {
-    stroke-dashoffset: 0;
-    fill: hsl(var(--p));
-    stroke: hsl(var(--p));
-}
-
-svg#d3Logo {
-    cursor: pointer;
-}
-
-.logo-wrapper {
-    z-index: 1;
+  .row:not(.keep-width) > [class*="col"],
+  .row:not(.keep-width) > div,
+  .grid:not(.keep-width) > [class*="col"],
+  .grid:not(.keep-width) > div {
+    width: 100%;
+  }
 }
 
 /* ============================================
    WAVE DECORATION
    ============================================ */
 svg.wave {
-    display: block;
-    width: 100%;
-    height: 15em;
-    max-height: 100vh;
-    margin: 0;
+  display: block;
+  width: 100%;
+  height: 15em;
+  max-height: 100vh;
+  margin: 0;
 }
 
 svg.wave > path {
-    fill: var(--color-primary);
-    animation: wave 10s linear infinite;
+  fill: var(--color-primary);
+  animation: wave 10s linear infinite;
 }
 
 @keyframes wave {
-    0% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(0);
+  }
 
-    100% {
-        transform: translateX(-100%);
-    }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* ============================================
    ANIMATIONS
    ============================================ */
 @keyframes bounce {
-    0%,
-    100%,
-    20%,
-    50%,
-    80% {
-        transform: translateY(0);
-    }
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    transform: translateY(0);
+  }
 
-    40% {
-        transform: translateY(-30px);
-    }
+  40% {
+    transform: translateY(-30px);
+  }
 
-    60% {
-        transform: translateY(-15px);
-    }
+  60% {
+    transform: translateY(-15px);
+  }
 }
 
 .bounce {
-    animation: bounce 1s ease;
+  animation: bounce 1s ease;
 }
 
 @keyframes countUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .count {
-    animation: countUp 0.5s ease-out;
+  animation: countUp 0.5s ease-out;
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ------------ Animation On Scroll ----------- */
 [class*="_aos"],
 ._aos {
-    opacity: 0;
-    transition:
-        opacity 1s,
-        transform 1.3s;
+  opacity: 0;
+  transition:
+    opacity 1s,
+    transform 1.3s;
 }
 
 ._aos-zoom {
-    transform: scale(0.4);
+  transform: scale(0.4);
 }
 
 ._aos-left {
-    transform: translate3d(-100px, 0, 0);
+  transform: translate3d(-100px, 0, 0);
 }
 
 ._aos-right {
-    transform: translate3d(100px, 0, 0);
+  transform: translate3d(100px, 0, 0);
 }
 
 ._aos-top {
-    transform: translate3d(0, -100px, 0);
+  transform: translate3d(0, -100px, 0);
 }
 
 ._aos-bottom {
-    transform: translate3d(0, 100px, 0);
+  transform: translate3d(0, 100px, 0);
 }
 
 ._aos-done {
-    opacity: 1;
-    transform: translateZ(0) scale(1);
+  opacity: 1;
+  transform: translateZ(0) scale(1);
 }
 
 @keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ============================================
    UTILITY CLASSES
    ============================================ */
 ._bg-orange {
-    background-color: hsl(var(--wa)) !important;
+  background-color: hsl(var(--wa)) !important;
 }
 
 ._d-md-only {
-    display: none;
+  display: none;
 }
 
 @media (min-width: 768px) {
-    ._d-md-only {
-        display: inline;
-    }
+  ._d-md-only {
+    display: inline;
+  }
 }
 
 .grid-p > * {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 /* ============================================
    COMPACT STATS
    ============================================ */
 .gs-compact {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .gs-compact label {
-    display: flex;
-    gap: 0.3rem;
-    align-items: center;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
 }
 
 /* ============================================
@@ -399,120 +370,120 @@ svg.wave > path {
 /* Line decoration animation */
 #line-container,
 #cover-container {
-    position: fixed;
-    height: 50vh;
-    width: 20px;
-    left: calc(50% - 10px);
-    z-index: -10;
-    top: 0;
+  position: fixed;
+  height: 50vh;
+  width: 20px;
+  left: calc(50% - 10px);
+  z-index: -10;
+  top: 0;
 }
 
 #cover-container {
-    position: absolute;
-    height: 70vh;
-    top: 0;
-    left: calc(50% - 10px);
-    width: 20px;
-    border-radius: 15px;
-    background: var(--color-base-100);
-    z-index: -9;
+  position: absolute;
+  height: 70vh;
+  top: 0;
+  left: calc(50% - 10px);
+  width: 20px;
+  border-radius: 15px;
+  background: var(--color-base-100);
+  z-index: -9;
 }
 
 .line {
-    position: absolute;
-    top: 0;
-    left: calc(50% - 2px);
-    height: 50vh;
-    width: 4px;
-    background: var(--color-primary);
-    z-index: 5;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 2px);
+  height: 50vh;
+  width: 4px;
+  background: var(--color-primary);
+  z-index: 5;
 }
 
 .drop {
-    position: absolute;
-    bottom: 0;
-    left: calc(50% - 10px);
-    width: 20px;
-    height: 20px;
-    background: var(--color-primary);
-    border-radius: 50%;
-    z-index: 5;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  z-index: 5;
 }
 
 /* About cards layout */
 .about_cards {
-    display: flex;
-    flex-direction: column;
-    gap: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
 }
 
 .about_cards .container {
-    display: flex;
-    flex-direction: column;
-    gap: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
 }
 
 .card {
-    transition: 0.3s border ease-in;
+  transition: 0.3s border ease-in;
 }
 
 .card.highlighted {
-    border-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 /* SVG Icon ripple animation */
 #Main:hover #Icons > *,
 #Main.animate-on-load #Icons > *,
 #Main.icon-hover #Icons > * {
-    animation: ripple 3s;
-    transform-origin: center;
+  animation: ripple 3s;
+  transform-origin: center;
 }
 
 #Main:hover #Icons > *:nth-child(1),
 #Main.animate-on-load #Icons > *:nth-child(1),
 #Main.icon-hover #Icons > *:nth-child(1) {
-    animation-delay: 9ms;
+  animation-delay: 9ms;
 }
 #Main:hover #Icons > *:nth-child(2),
 #Main.animate-on-load #Icons > *:nth-child(2),
 #Main.icon-hover #Icons > *:nth-child(2) {
-    animation-delay: 18ms;
+  animation-delay: 18ms;
 }
 #Main:hover #Icons > *:nth-child(3),
 #Main.animate-on-load #Icons > *:nth-child(3),
 #Main.icon-hover #Icons > *:nth-child(3) {
-    animation-delay: 27ms;
+  animation-delay: 27ms;
 }
 #Main:hover #Icons > *:nth-child(4),
 #Main.animate-on-load #Icons > *:nth-child(4),
 #Main.icon-hover #Icons > *:nth-child(4) {
-    animation-delay: 36ms;
+  animation-delay: 36ms;
 }
 #Main:hover #Icons > *:nth-child(5),
 #Main.animate-on-load #Icons > *:nth-child(5),
 #Main.icon-hover #Icons > *:nth-child(5) {
-    animation-delay: 45ms;
+  animation-delay: 45ms;
 }
 #Main:hover #Icons > *:nth-child(6),
 #Main.animate-on-load #Icons > *:nth-child(6),
 #Main.icon-hover #Icons > *:nth-child(6) {
-    animation-delay: 54ms;
+  animation-delay: 54ms;
 }
 
 #Main.animate-on-load #Icons > * {
-    animation-duration: 5s;
+  animation-duration: 5s;
 }
 
 @keyframes ripple {
-    0% {
-        transform: scale(1);
-    }
-    20% {
-        transform: scale(0.7);
-        opacity: 0.4;
-    }
-    40% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(0.7);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
 }

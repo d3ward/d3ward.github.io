@@ -13,26 +13,26 @@
  */
 
 interface Props {
-    class?: string;
+  class?: string;
 }
 
 const { class: className } = Astro.props;
 ---
 
 <div class:list={["badges", className]}>
-    <slot />
+  <slot />
 </div>
 
 <style>
-    /* Matches original .badges styling from index.sass */
-    .badges {
-        margin: 0;
-        margin-top: -2rem;
-        height: 1.8rem;
-        z-index: 1;
-        position: absolute;
-        display: flex;
-        gap: 0.2rem;
-        flex-wrap: wrap;
-    }
+  /* Matches original .badges styling from index.sass */
+  .badges {
+    margin: 0;
+    margin-top: -2rem;
+    height: 1.8rem;
+    z-index: 1;
+    position: absolute;
+    display: flex;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+  }
 </style>

@@ -6,190 +6,178 @@ import Icon from "./common/Icon.astro";
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/esae", label: "ESAE" },
+  { href: "/", label: "Home", icon: "tabler:home" },
+  { href: "/about", label: "About", icon: "tabler:info-circle" },
+  { href: "/esae", label: "ESAE", icon: "tabler:rocket" },
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all" id="main-header">
-    <div class="navbar-wrap px-4 py-3 max-w-screen-lg mx-auto">
-        <div
-            class="navbar min-h-0 h-14 p-1.5 bg-base-100/90 backdrop-blur rounded-2xl border border-base-300/50"
-        >
-            <!-- Mobile Drawer Button & Logo -->
-            <div class="navbar-start">
-                <div class="lg:hidden">
-                    <Drawer id="main-drawer">
-                        <label
-                            slot="trigger"
-                            for="main-drawer"
-                            class="btn btn-ghost btn-square"
-                        >
-                            <Icon name="hamburger" />
-                        </label>
-                        {
-                            navItems.map((item) => (
-                                <li>
-                                    <a
-                                        href={item.href}
-                                        class={
-                                            currentPath === item.href
-                                                ? "active"
-                                                : ""
-                                        }
-                                    >
-                                        {item.label}
-                                    </a>
-                                </li>
-                            ))
-                        }
-                        <li>
-                            <Button href="#support" style="ghost" size="sm">
-                                Support
-                            </Button>
-                        </li>
-                    </Drawer>
-                </div>
-                <!-- Logo -->
-                <a href="/" class="btn btn-ghost text-xl gap-2 text-primary">
-                    <Icon name="d3" />
-                </a>
-            </div>
-
-            <!-- Desktop Menu -->
-            <div class="navbar-center hidden lg:flex">
-                <ul class="menu menu-horizontal px-1">
-                    {
-                        navItems.map((item) => (
-                            <li>
-                                <Button
-                                    href={item.href}
-                                    style="ghost"
-                                    class={`rounded-xl ${
-                                        currentPath === item.href
-                                            ? "active"
-                                            : ""
-                                    }`}
-                                >
-                                    {item.label}
-                                </Button>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </div>
-
-            <!-- Right Side Actions -->
-            <div class="navbar-end gap-2">
-                <!-- Support Button -->
-                <Button
-                    href="#support"
-                    style="ghost"
-                    size="sm"
-                    square={true}
-                    class="rounded-xl"
-                    icon="tabler:coffee"
-                    iconOnly={true}
-                />
-
-                <!-- GitHub Link -->
-                <Button
-                    href="https://github.com/d3ward"
-                    external={true}
-                    style="ghost"
-                    size="sm"
-                    square={true}
-                    class="rounded-xl"
-                    icon="github"
-                    iconOnly={true}
-                    aria-label="GitHub Profile"
-                />
-
-                <!-- Theme Toggle -->
-                <label
-                    class="swap swap-rotate btn btn-ghost btn-sm btn-square rounded-xl"
-                    id="theme-toggle"
-                >
-                    <input type="checkbox" aria-label="Toggle theme" />
-
-                    <!-- Moon icon -->
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="swap-on h-5 w-5 fill-none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.75"
-                        stroke="currentColor"
-                    >
-                        <path
-                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
-                        ></path>
-                        <path
-                            d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"
-                        ></path>
-                        <path d="M19 11h2m-1 -1v2"></path>
-                    </svg>
-
-                    <!-- Sun icon -->
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="swap-off h-5 w-5 fill-none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.75"
-                        stroke="currentColor"
-                    >
-                        <path
-                            d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"
-                        ></path>
-                        <path d="M6.343 17.657l-1.414 1.414"></path>
-                        <path d="M6.343 6.343l-1.414 -1.414"></path>
-                        <path d="M17.657 6.343l1.414 -1.414"></path>
-                        <path d="M17.657 17.657l1.414 1.414"></path>
-                        <path d="M4 12h-2"></path>
-                        <path d="M12 4v-2"></path>
-                        <path d="M20 12h2"></path>
-                        <path d="M12 20v2"></path>
-                    </svg>
-                </label>
-            </div>
+<header class="fixed top-0 right-0 left-0 z-50 transition-all" id="main-header">
+  <div class="navbar-wrap mx-auto max-w-5xl px-4 py-3">
+    <div
+      class="navbar bg-base-100 border-base-300/50 h-14 min-h-0 rounded-2xl border p-1.5"
+    >
+      <!-- Mobile Drawer Button & Logo -->
+      <div class="navbar-start">
+        <div class="lg:hidden">
+          <Drawer id="main-drawer">
+            <label
+              slot="trigger"
+              for="main-drawer"
+              class="btn btn-ghost btn-square"
+            >
+              <Icon name="hamburger" />
+            </label>
+            {
+              navItems.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class={currentPath === item.href && "btn-active"}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+            <li>
+              <Button href="#support" style="ghost" size="sm"> Support </Button>
+            </li>
+          </Drawer>
         </div>
+        <!-- Logo -->
+        <a href="/" class="btn btn-ghost btn-square text-primary gap-2 text-xl">
+          <Icon name="d3" />
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          {
+            navItems.map((item) => (
+              <li class="ml-1.5">
+                <Button
+                  href={item.href}
+                  style="ghost"
+                  class={` ${currentPath === item.href ? "active" : ""}`}
+                  icon={item.icon}
+                >
+                  {item.label}
+                </Button>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Right Side Actions -->
+      <div class="navbar-end gap-2">
+        <!-- Support Button -->
+        <Button
+          href="#support"
+          style="soft"
+          color="primary"
+          square={true}
+          icon="tabler:coffee"
+          iconOnly={true}
+        />
+
+        <!-- GitHub Link -->
+        <Button
+          href="https://github.com/d3ward"
+          external={true}
+          style="soft"
+          square={true}
+          icon="github"
+          iconOnly={true}
+          aria-label="GitHub Profile"
+        />
+
+        <!-- Theme Toggle -->
+        <label
+          class="swap swap-rotate btn btn-ghost btn-square"
+          id="theme-toggle"
+        >
+          <input type="checkbox" aria-label="Toggle theme" />
+
+          <!-- Moon icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="swap-on h-5 w-5 fill-none"
+            viewBox="0 0 24 24"
+            stroke-width="1.75"
+            stroke="currentColor"
+          >
+            <path
+              d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+            ></path>
+            <path
+              d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"
+            ></path>
+            <path d="M19 11h2m-1 -1v2"></path>
+          </svg>
+
+          <!-- Sun icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="swap-off h-5 w-5 fill-none"
+            viewBox="0 0 24 24"
+            stroke-width="1.75"
+            stroke="currentColor"
+          >
+            <path
+              d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"
+            ></path>
+            <path d="M6.343 17.657l-1.414 1.414"></path>
+            <path d="M6.343 6.343l-1.414 -1.414"></path>
+            <path d="M17.657 6.343l1.414 -1.414"></path>
+            <path d="M17.657 17.657l1.414 1.414"></path>
+            <path d="M4 12h-2"></path>
+            <path d="M12 4v-2"></path>
+            <path d="M20 12h2"></path>
+            <path d="M12 20v2"></path>
+          </svg>
+        </label>
+      </div>
     </div>
+  </div>
 </header>
 
 <script>
-    // Scroll detection for header
-    let lastScroll = 0;
-    const header = document.getElementById("main-header");
+  // Scroll detection for header
+  let lastScroll = 0;
+  const header = document.getElementById("main-header");
 
-    window.addEventListener("scroll", () => {
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > 50) {
-            header?.classList.add("scrolled");
-        } else {
-            header?.classList.remove("scrolled");
-        }
-        lastScroll = currentScroll;
-    });
-
-    // Theme toggle
-    const themeToggle = document.getElementById("theme-toggle");
-    const themeInput = themeToggle?.querySelector(
-        'input[type="checkbox"]',
-    ) as HTMLInputElement;
-    const html = document.documentElement;
-
-    // Load saved theme on page load
-    const savedTheme = localStorage.getItem("theme") || "light";
-    html.setAttribute("data-theme", savedTheme);
-
-    // Update checkbox state based on current theme
-    if (themeInput) {
-        themeInput.checked = savedTheme === "dark";
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 50) {
+      header?.classList.add("scrolled");
+    } else {
+      header?.classList.remove("scrolled");
     }
+    lastScroll = currentScroll;
+  });
 
-    themeInput?.addEventListener("change", () => {
-        const newTheme = themeInput.checked ? "dark" : "light";
-        html.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-    });
+  // Theme toggle
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeInput = themeToggle?.querySelector(
+    'input[type="checkbox"]',
+  ) as HTMLInputElement;
+  const html = document.documentElement;
+
+  // Load saved theme on page load
+  const savedTheme = localStorage.getItem("theme") || "light";
+  html.setAttribute("data-theme", savedTheme);
+
+  // Update checkbox state based on current theme
+  if (themeInput) {
+    themeInput.checked = savedTheme === "dark";
+  }
+
+  themeInput?.addEventListener("change", () => {
+    const newTheme = themeInput.checked ? "dark" : "light";
+    html.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  });
 </script>

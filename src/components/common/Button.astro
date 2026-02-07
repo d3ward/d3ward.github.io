@@ -2,41 +2,41 @@
 import Icon from "./Icon.astro";
 
 interface Props {
-    href?: string;
-    external?: boolean;
-    type?: "button" | "submit" | "reset";
-    color?:
-        | "neutral"
-        | "primary"
-        | "secondary"
-        | "accent"
-        | "info"
-        | "success"
-        | "warning"
-        | "error";
-    style?:
-        | "filled"
-        | "outline"
-        | "dash"
-        | "soft"
-        | "ghost"
-        | "link"
-        | "link-hover";
-    size?: "xs" | "sm" | "md" | "lg" | "xl";
-    icon?: string;
-    iconPosition?: "left" | "right";
-    iconOnly?: boolean;
-    iconClass?: string;
-    wide?: boolean;
-    block?: boolean;
-    square?: boolean;
-    circle?: boolean;
-    active?: boolean;
-    disabled?: boolean;
-    loading?: boolean;
-    class?: string;
-    children?: any;
-    [key: string]: any;
+  href?: string;
+  external?: boolean;
+  type?: "button" | "submit" | "reset";
+  color?:
+    | "neutral"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "info"
+    | "success"
+    | "warning"
+    | "error";
+  style?:
+    | "filled"
+    | "outline"
+    | "dash"
+    | "soft"
+    | "ghost"
+    | "link"
+    | "link-hover";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  icon?: string;
+  iconPosition?: "left" | "right";
+  iconOnly?: boolean;
+  iconClass?: string;
+  wide?: boolean;
+  block?: boolean;
+  square?: boolean;
+  circle?: boolean;
+  active?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  class?: string;
+  children?: any;
+  [key: string]: any;
 }
 
 /**
@@ -64,64 +64,99 @@ interface Props {
  * - ...rest: other attributes (e.g. aria-label, id, etc.)
  */
 const {
-    href,
-    external = false,
-    type = "button",
-    color = "primary",
-    style: btnStyle,
-    size = "md",
-    icon,
-    iconPosition = "left",
-    iconOnly = false,
-    iconClass,
-    wide = false,
-    block = false,
-    square = false,
-    circle = false,
-    active = false,
-    disabled = false,
-    loading = false,
-    class: className = "",
-    children,
-    ...rest
+  href,
+  external = false,
+  type = "button",
+  color,
+  style: btnStyle,
+  size = "md",
+  icon,
+  iconPosition = "left",
+  iconOnly = false,
+  iconClass,
+  wide = false,
+  block = false,
+  square = false,
+  circle = false,
+  active = false,
+  disabled = false,
+  loading = false,
+  class: className = "",
+  children,
+  ...rest
 } = Astro.props;
 
 // Auto-set external link attributes
 const linkAttrs =
-    href && external ? { target: "_blank", rel: "noopener noreferrer" } : {};
+  href && external ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
 // Check if using link style (different class pattern)
 const isLinkStyle = btnStyle === "link" || btnStyle === "link-hover";
 
-// DaisyUI class mapping
+// DaisyUI class mapping using literal strings so Tailwind's content scanner can detect them
+const btnColorMap: Record<string, string> = {
+  neutral: "btn-neutral",
+  primary: "btn-primary",
+  secondary: "btn-secondary",
+  accent: "btn-accent",
+  info: "btn-info",
+  success: "btn-success",
+  warning: "btn-warning",
+  error: "btn-error",
+};
+
+const btnStyleMap: Record<string, string> = {
+  outline: "btn-outline",
+  dash: "btn-dash",
+  soft: "btn-soft",
+  ghost: "btn-ghost",
+};
+
+const linkColorMap: Record<string, string> = {
+  neutral: "link-neutral",
+  primary: "link-primary",
+  secondary: "link-secondary",
+  accent: "link-accent",
+  info: "link-info",
+  success: "link-success",
+  warning: "link-warning",
+  error: "link-error",
+};
+
+const btnSizeMap: Record<string, string> = {
+  xs: "btn-xs",
+  sm: "btn-sm",
+  md: "btn-md",
+  lg: "btn-lg",
+  xl: "btn-xl",
+};
+
 let colorClass = "";
 let styleClass = "";
 let baseClass = "";
 
 if (isLinkStyle) {
-    // Link style uses "link" base class and "link-{color}" pattern
-    baseClass = "link";
-    styleClass = btnStyle === "link-hover" ? "link-hover" : "";
-    colorClass = color ? `link-${color}` : "";
+  baseClass = "link";
+  styleClass = btnStyle === "link-hover" ? "link-hover" : "";
+  colorClass = color ? linkColorMap[color] || "" : "";
 } else {
-    // Button style uses "btn" base class and "btn-{color}" pattern
-    baseClass = "btn";
-    colorClass = color ? `btn-${color}` : "";
-    // "filled" is the default DaisyUI button style (no extra class needed)
-    styleClass = btnStyle && btnStyle !== "filled" ? `btn-${btnStyle}` : "";
+  baseClass = "btn";
+  colorClass = color ? btnColorMap[color] || "" : "";
+  styleClass =
+    btnStyle && btnStyle !== "filled" ? btnStyleMap[btnStyle] || "" : "";
 }
 
-const sizeClass = size && !isLinkStyle ? `btn-${size}` : "";
+const sizeClass = size && !isLinkStyle ? btnSizeMap[size] || "" : "";
 const wideClass = wide && !isLinkStyle ? "btn-wide" : "";
 const blockClass = block && !isLinkStyle ? "btn-block" : "";
 const squareClass = square && !isLinkStyle ? "btn-square" : "";
 const circleClass = circle && !isLinkStyle ? "btn-circle" : "";
 const activeClass = active && !isLinkStyle ? "btn-active" : "";
 const disabledClass = disabled
-    ? isLinkStyle
-        ? "disabled"
-        : "btn-disabled"
-    : "";
+  ? isLinkStyle
+    ? "disabled"
+    : "btn-disabled"
+  : "";
 const loadingClass = loading && !isLinkStyle ? "loading" : "";
 
 // Compose all classes
@@ -136,33 +171,33 @@ const iconSizePreset = iconClass ? undefined : size;
 ---
 
 {
-    href ? (
-        <a href={href} class={btnClass} {...linkAttrs} {...rest}>
-            {loading && <span class="loading loading-spinner" />}
-            {!iconOnly && icon && iconPosition === "left" && (
-                <Icon name={icon} size={iconSizePreset} class={iconClass} />
-            )}
-            {!iconOnly && <slot />}
-            {iconOnly && icon && (
-                <Icon name={icon} size={iconSizePreset} class={iconClass} />
-            )}
-            {!iconOnly && icon && iconPosition === "right" && (
-                <Icon name={icon} size={iconSizePreset} class={iconClass} />
-            )}
-        </a>
-    ) : (
-        <button type={type} class={btnClass} disabled={disabled} {...rest}>
-            {loading && <span class="loading loading-spinner" />}
-            {!iconOnly && icon && iconPosition === "left" && (
-                <Icon name={icon} size={iconSizePreset} class={iconClass} />
-            )}
-            {!iconOnly && <slot />}
-            {iconOnly && icon && (
-                <Icon name={icon} size={iconSizePreset} class={iconClass} />
-            )}
-            {!iconOnly && icon && iconPosition === "right" && (
-                <Icon name={icon} size={iconSizePreset} class={iconClass} />
-            )}
-        </button>
-    )
+  href ? (
+    <a href={href} class={btnClass} {...linkAttrs} {...rest}>
+      {loading && <span class="loading loading-spinner" />}
+      {!iconOnly && icon && iconPosition === "left" && (
+        <Icon name={icon} size={iconSizePreset} class={iconClass} />
+      )}
+      {!iconOnly && <slot />}
+      {iconOnly && icon && (
+        <Icon name={icon} size={iconSizePreset} class={iconClass} />
+      )}
+      {!iconOnly && icon && iconPosition === "right" && (
+        <Icon name={icon} size={iconSizePreset} class={iconClass} />
+      )}
+    </a>
+  ) : (
+    <button type={type} class={btnClass} disabled={disabled} {...rest}>
+      {loading && <span class="loading loading-spinner" />}
+      {!iconOnly && icon && iconPosition === "left" && (
+        <Icon name={icon} size={iconSizePreset} class={iconClass} />
+      )}
+      {!iconOnly && <slot />}
+      {iconOnly && icon && (
+        <Icon name={icon} size={iconSizePreset} class={iconClass} />
+      )}
+      {!iconOnly && icon && iconPosition === "right" && (
+        <Icon name={icon} size={iconSizePreset} class={iconClass} />
+      )}
+    </button>
+  )
 }

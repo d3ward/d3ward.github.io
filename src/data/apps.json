@@ -1,20 +1,13 @@
 {
-  "cross": [
-    {
-      "name": "Chrome",
-      "description": "Browser used for work.",
-      "url": "https://www.google.com/chrome/",
-      "platforms": ["Windows", "MacOS"],
-      "tags": ["desktop", "browser"],
-      "icon": "simple-icons:googlechrome"
-    },
+  "apps": [
     {
       "name": "Brave",
       "description": "Browser used for mixed activities.",
       "url": "https://brave.com",
       "platforms": ["Windows", "MacOS", "iOS", "Android"],
       "tags": ["desktop", "browser", "mobile"],
-      "icon": "simple-icons:brave"
+      "icon": "simple-icons:brave",
+      "color": "#FB542B"
     },
     {
       "name": "Firefox",
@@ -28,9 +21,10 @@
       "name": "Anytype",
       "description": "A privacy-centric, open-source alternative to Notion.",
       "url": "https://anytype.io",
-      "platforms": ["Windows", "MacOS"],
-      "tags": ["desktop", "productivity"],
-      "icon": "tabler:notes"
+      "platforms": ["Windows", "MacOS", "iOS", "Android"],
+      "tags": ["desktop", "mobile", "productivity", "open-source"],
+      "icon": "simple-icons:anytype",
+      "color": "#FF6A7B"
     },
     {
       "name": "Bitwarden",
@@ -38,15 +32,17 @@
       "url": "https://bitwarden.com",
       "platforms": ["Windows", "MacOS"],
       "tags": ["desktop", "security"],
-      "icon": "simple-icons:bitwarden"
+      "icon": "simple-icons:bitwarden",
+      "color": "#175DDC"
     },
     {
-      "name": "VSCode",
+      "name": "Zed",
       "description": "Code editor.",
-      "url": "https://code.visualstudio.com",
+      "url": "https://zed.dev/",
       "platforms": ["Windows", "MacOS"],
-      "tags": ["desktop", "development"],
-      "icon": "simple-icons:visualstudiocode"
+      "tags": ["desktop", "development", "open-source"],
+      "icon": "simple-icons:zedindustries",
+      "color": "#084CCF"
     },
     {
       "name": "GIMP",
@@ -54,7 +50,8 @@
       "url": "https://gimp.org",
       "platforms": ["Windows", "MacOS"],
       "tags": ["desktop", "design"],
-      "icon": "simple-icons:gimp"
+      "icon": "simple-icons:gimp",
+      "color": "#8C8073"
     },
     {
       "name": "Inkscape",
@@ -62,7 +59,8 @@
       "url": "https://inkscape.org",
       "platforms": ["Windows", "MacOS"],
       "tags": ["desktop", "design"],
-      "icon": "simple-icons:inkscape"
+      "icon": "simple-icons:inkscape",
+      "color": "#000000"
     },
     {
       "name": "Motrix",
@@ -71,9 +69,7 @@
       "platforms": ["Windows", "MacOS"],
       "tags": ["desktop", "utility"],
       "icon": "tabler:download"
-    }
-  ],
-  "macOS": [
+    },
     {
       "name": "Ferdium",
       "description": "Unified messaging app.",
@@ -99,20 +95,13 @@
       "icon": "tabler:screenshot"
     },
     {
-      "name": "MacUpdater",
-      "description": "App updater.",
-      "url": "https://macupdater.net",
-      "platforms": ["MacOS"],
-      "tags": ["desktop", "utility"],
-      "icon": "tabler:refresh"
-    },
-    {
       "name": "Raycast",
       "description": "Enhanced spotlight tool.",
       "url": "https://raycast.com",
       "platforms": ["MacOS"],
       "tags": ["desktop", "productivity"],
-      "icon": "simple-icons:raycast"
+      "icon": "simple-icons:raycast",
+      "color": "#FF6363"
     },
     {
       "name": "MiddleClick-Sonoma",
@@ -121,9 +110,7 @@
       "platforms": ["MacOS"],
       "tags": ["desktop", "utility"],
       "icon": "tabler:click"
-    }
-  ],
-  "windows": [
+    },
     {
       "name": "Windows 11",
       "description": "Hardened and debloated using ChrisTitus winutil.",
@@ -147,24 +134,6 @@
       "platforms": ["Windows"],
       "tags": ["desktop", "gaming"],
       "icon": "tabler:device-gamepad-2"
-    }
-  ],
-  "mobile": [
-    {
-      "name": "Anytype",
-      "description": "All-in-one productivity app for notes, bookmarks, journaling, and organization.",
-      "url": "https://anytype.io",
-      "platforms": ["iOS", "Android"],
-      "tags": ["mobile", "productivity"],
-      "icon": "tabler:notes"
-    },
-    {
-      "name": "Brave",
-      "description": "Browser with extension support.",
-      "url": "https://brave.com",
-      "platforms": ["iOS", "Android"],
-      "tags": ["mobile", "browser"],
-      "icon": "simple-icons:brave"
     },
     {
       "name": "Safari",
@@ -178,7 +147,7 @@
       "description": "Open-source browser with extension support.",
       "url": "https://kiwibrowser.com",
       "platforms": ["Android"],
-      "tags": ["mobile", "browser"],
+      "tags": ["archived", "mobile", "browser"],
       "icon": "tabler:browser"
     },
     {
@@ -209,9 +178,10 @@
       "name": "EnteAuth",
       "description": "Open-source 2FA manager.",
       "url": "https://enteauth.com",
-      "platforms": ["iOS", "Android"],
-      "tags": ["mobile", "security"],
-      "icon": "tabler:lock"
+      "platforms": ["Windows", "MacOS", "iOS", "Android"],
+      "tags": ["desktop", "mobile", "security"],
+      "icon": "simple-icons:ente",
+      "color": "#00BC45"
     },
     {
       "name": "NetNewsWire",
@@ -230,18 +200,10 @@
       "icon": "tabler:rss"
     },
     {
-      "name": "Watcht",
-      "description": "TV shows and movies tracker.",
-      "url": "https://watcht.com",
-      "platforms": ["iOS"],
-      "tags": ["mobile", "entertainment"],
-      "icon": "tabler:device-tv"
-    },
-    {
       "name": "Showly",
       "description": "TV shows and movies tracker.",
-      "url": "https://play.google.com/store/apps/details?id=com.michaldrabik.showly2&hl=en&gl=US",
-      "platforms": ["Android"],
+      "url": "https://www.showlyapp.com/",
+      "platforms": ["Android", "iOS"],
       "tags": ["mobile", "entertainment"],
       "icon": "tabler:device-tv"
     },

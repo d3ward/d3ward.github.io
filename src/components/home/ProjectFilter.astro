@@ -2,26 +2,26 @@
 import Filter from "../common/Filter.astro";
 
 interface Props {
-    activeFilter?: string;
+  activeFilter?: string;
 }
 
 const { activeFilter = "all" } = Astro.props;
 
 const filters = [
-    { id: "all", label: "All", icon: "tabler:layout-grid" },
-    { id: "contributor", label: "Contributions", icon: "tabler:book-upload" },
-    { id: "kiwi", label: "Kiwi Browser", icon: "local:kiwi" },
-    { id: "extension", label: "Extension", icon: "tabler:puzzle" },
-    { id: "game", label: "Games", icon: "tabler:device-gamepad" },
-    { id: "script", label: "Userscript", icon: "tabler:script" },
-    { id: "rmskin", label: "Rainmeter", icon: "tabler:droplet" },
-    { id: "website", label: "Web Projects", icon: "tabler:browser" },
+  { id: "all", label: "All", icon: "tabler:layout-grid" },
+  { id: "contributor", label: "Contributions", icon: "tabler:book-upload" },
+  { id: "kiwi", label: "Kiwi Browser", icon: "local:kiwi" },
+  { id: "extension", label: "Extension", icon: "tabler:puzzle" },
+  { id: "game", label: "Games", icon: "tabler:device-gamepad" },
+  { id: "script", label: "Userscript", icon: "tabler:script" },
+  { id: "rmskin", label: "Rainmeter", icon: "tabler:droplet" },
+  { id: "website", label: "Web Projects", icon: "tabler:browser" },
 ];
 ---
 
 <Filter
-    options={filters}
-    activeFilter={activeFilter}
-    class="flex flex-wrap justify-center gap-3 mb-12"
-    size="sm"
+  options={filters}
+  activeFilter={activeFilter}
+  class="mb-12 flex flex-wrap justify-center gap-3"
+  size="sm"
 />

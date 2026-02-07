@@ -23,15 +23,9 @@ export function initAOS() {
   const callback: IntersectionObserverCallback = (entries) => {
     entries.forEach((entry) => {
       // If the element is visible, add the _aos-done class
-      if (
-        entry.isIntersecting &&
-        !entry.target.classList.contains("_aos-done")
-      ) {
+      if (entry.isIntersecting && !entry.target.classList.contains("_aos-done")) {
         entry.target.classList.add("_aos-done");
-      } else if (
-        !entry.isIntersecting &&
-        entry.target.classList.contains("_aos-done")
-      ) {
+      } else if (!entry.isIntersecting && entry.target.classList.contains("_aos-done")) {
         // Else the element does reverse animation only if it was already done
         entry.target.classList.remove("_aos-done");
       }

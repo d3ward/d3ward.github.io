@@ -17,58 +17,85 @@
  */
 
 interface Props {
-    variant?:
-        | "primary"
-        | "secondary"
-        | "accent"
-        | "neutral"
-        | "info"
-        | "success"
-        | "warning"
-        | "error";
-    style?: "outline" | "dash" | "soft" | "ghost";
-    size?: "xs" | "sm" | "md" | "lg" | "xl";
-    floating?: boolean;
-    class?: string;
+  variant?:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "neutral"
+    | "info"
+    | "success"
+    | "warning"
+    | "error";
+  style?: "outline" | "dash" | "soft" | "ghost";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  floating?: boolean;
+  class?: string;
 }
 
 const {
-    variant,
-    style,
-    size,
-    floating = false,
-    class: className,
+  variant,
+  style,
+  size,
+  floating = false,
+  class: className,
 } = Astro.props;
+
+// Literal class maps so Tailwind's content scanner can detect them
+const variantMap: Record<string, string> = {
+  primary: "badge-primary",
+  secondary: "badge-secondary",
+  accent: "badge-accent",
+  neutral: "badge-neutral",
+  info: "badge-info",
+  success: "badge-success",
+  warning: "badge-warning",
+  error: "badge-error",
+};
+
+const styleMap: Record<string, string> = {
+  outline: "badge-outline",
+  dash: "badge-dash",
+  soft: "badge-soft",
+  ghost: "badge-ghost",
+};
+
+const sizeMap: Record<string, string> = {
+  xs: "badge-xs",
+  sm: "badge-sm",
+  md: "badge-md",
+  lg: "badge-lg",
+  xl: "badge-xl",
+};
 ---
 
 <div
-    class:list={[
-        "badge",
-        variant && `badge-${variant}`,
-        style && `badge-${style}`,
-        size && `badge-${size}`,
-        floating && "badge-floating",
-        className,
-    ]}
+  class:list={[
+    "badge",
+    variant && variantMap[variant],
+    style && styleMap[style],
+    size && sizeMap[size],
+    floating && "badge-floating",
+    className,
+  ]}
 >
-    <slot />
+  <slot />
 </div>
 
 <style>
-    /* Floating badge - matches original .badges styling */
-    .badge-floating {
-        position: absolute;
-        top: -2rem;
-        left: 0;
-        z-index: 1;
-        margin: 0;
-        max-width: fit-content;
-        display: flex;
-        height: 1.8rem;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem;
-        color: white;
-        background: var(--color-blue-500);
-    }
+  /* Floating badge - matches original .badges styling */
+  .badge-floating {
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    z-index: 1;
+    margin: 0;
+    max-width: fit-content;
+    display: flex;
+    height: 1.8rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: white;
+    background: var(--color-blue-500);
+  }
 </style>

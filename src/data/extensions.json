@@ -5,20 +5,16 @@
       "description": "Adblocker.",
       "url": "https://github.com/gorhill/uBlock",
       "platform": ["macos", "windows", "android"],
-      "icon": "simple-icons:ublockorigin"
+      "icon": "simple-icons:ublockorigin",
+      "color": "#800000"
     },
     {
       "name": "Bitwarden",
       "description": "Password manager.",
       "url": "https://bitwarden.com",
       "platform": ["macos", "windows", "android"],
-      "icon": "simple-icons:bitwarden"
-    },
-    {
-      "name": "Floccus",
-      "description": "Bookmark sync.",
-      "url": "https://github.com/floccusaddon/floccus",
-      "icon": "tabler:bookmark"
+      "icon": "simple-icons:bitwarden",
+      "color": "#175DDC"
     },
     {
       "name": "ViolentMonkey",
@@ -39,14 +35,8 @@
       "description": "Save pages and links directly to Anytype.",
       "url": "https://anytype.io",
       "platform": ["macos"],
-      "icon": "tabler:clipboard"
-    },
-    {
-      "name": "React Dev Tools",
-      "description": "Extended console log features for React projects.",
-      "url": "https://react.dev/tools",
-      "platform": ["macos"],
-      "icon": "simple-icons:react"
+      "icon": "simple-icons:anytype",
+      "color": "#FF6A7B"
     },
     {
       "name": "NextNTP",

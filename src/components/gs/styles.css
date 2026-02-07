@@ -3,103 +3,172 @@
    ============================================ */
 
 .grid-stats {
-    margin: auto;
-    max-width: 40rem;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 1em;
-    grid-template-areas:
-        "gs-logo gs-logo .          gs-stars"
-        "gs-logo gs-logo gs-repos   gs-repos"
-        ".         gs-followers gs-followers gs-gh"
-        "gs-commits gs-issues  gs-pr     gs-pr";
+  margin: auto;
+  max-width: 40rem;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1em;
+  grid-template-areas:
+    "gs-logo gs-logo .          gs-stars"
+    "gs-logo gs-logo gs-repos   gs-repos"
+    ".         gs-followers gs-followers gs-gh"
+    "gs-commits gs-issues  gs-pr     gs-pr";
 }
 
 /* Grid area assignments */
 .gs-logo {
-    grid-area: gs-logo;
+  grid-area: gs-logo;
 }
 .gs-stars {
-    grid-area: gs-stars;
+  grid-area: gs-stars;
 }
 .gs-followers {
-    grid-area: gs-followers;
+  grid-area: gs-followers;
 }
 .gs-commits {
-    grid-area: gs-commits;
+  grid-area: gs-commits;
 }
 .gs-issues {
-    grid-area: gs-issues;
+  grid-area: gs-issues;
 }
 .gs-gh {
-    grid-area: gs-gh;
+  grid-area: gs-gh;
 }
 .gs-pr {
-    grid-area: gs-pr;
+  grid-area: gs-pr;
 }
 .gs-repos {
-    grid-area: gs-repos;
+  grid-area: gs-repos;
 }
 
 /* ============================================
    LOGO ANIMATION
    ============================================ */
 svg#d3Logo .svg-elem-1 {
-    stroke-dashoffset: 724.4970703125px;
-    stroke-dasharray: 724.4970703125px;
-    fill: transparent;
-    stroke: #0074d8;
-    transition:
-        stroke-dashoffset 10s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
-        fill 0.2s linear 8s,
-        stroke 2s linear 4s;
+  stroke-dashoffset: 724.4970703125px;
+  stroke-dasharray: 724.4970703125px;
+  fill: transparent;
+  stroke: var(--color-blue-500);
+  transition:
+    stroke-dashoffset 10s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
+    fill 0.2s linear 8s,
+    stroke 2s linear 4s;
 }
 
 svg#d3Logo.startA .svg-elem-1 {
-    stroke-dashoffset: 0;
-    fill: #0074d8;
-    stroke: #0074d8;
+  stroke-dashoffset: 0;
+  fill: var(--color-blue-500);
+  stroke: var(--color-blue-500);
 }
 
 svg#d3Logo {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .logo-wrapper {
-    z-index: 1;
+  z-index: 1;
 }
 
 /* ============================================
    RIPPLE EFFECT
    ============================================ */
 
-/* Ripple colors per area */
-.gs-logo .gs-ripple {
-    background: rgb(0 116 216 / 0.15);
+/* Ripple base - matches old .ripple exactly */
+.gs-ripple {
+  position: absolute;
+  display: block;
+  z-index: 0;
+  width: 0;
+  height: 0;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.7s,
+    padding-top 0.7s;
 }
 
+/*
+ * Ripple & hover colors per area
+ * Mapped from old gs.sass using CSS variables:
+ *   --gs-h = ripple background color
+ *   --gs-txt on hover = text color change on hover
+ *
+ * Old variable mapping (light):
+ *   --primary   = blue-500 (#0074D8)
+ *   --primary-h = blue-50  (#E0F1FF)
+ *   --primary-l = blue-400 (#1492FF)
+ *   --white     = #fafafa
+ */
+
+/* logo: ripple = --primary, hover text = white */
+.gs-logo .gs-ripple {
+  background: var(--color-blue-500);
+}
+.gs-logo {
+  transition: color 0.7s;
+}
+.gs-logo:hover {
+  color: white;
+}
+/* Once transition-2 is added (on first hover), use fast transitions for fill/stroke */
+.gs-logo.transition-2 svg#d3Logo.startA .svg-elem-1 {
+  transition: all 0.2s !important;
+}
+.gs-logo:hover svg#d3Logo.startA .svg-elem-1 {
+  fill: white;
+  stroke: white;
+}
+
+/* stars, followers, commits: ripple = --primary, hover text = white */
 .gs-stars .gs-ripple,
 .gs-followers .gs-ripple,
 .gs-commits .gs-ripple {
-    background: rgb(0 116 216 / 0.2);
+  background: var(--color-blue-500);
+}
+.gs-stars,
+.gs-followers,
+.gs-commits {
+  transition: color 0.7s;
+}
+.gs-stars:hover,
+.gs-followers:hover,
+.gs-commits:hover {
+  color: white;
 }
 
+/* issues: ripple = --primary-l (blue-400) */
 .gs-issues .gs-ripple {
-    background: rgb(255 255 255 / 0.15);
+  background: var(--color-blue-400);
 }
 
+/* gh: ripple = --primary, hover text = white */
 .gs-gh .gs-ripple {
-    background: rgb(0 116 216 / 0.15);
+  background: var(--color-blue-500);
+}
+.gs-gh {
+  transition: color 0.7s;
+}
+.gs-gh:hover {
+  color: white;
 }
 
+/* pr, repos: ripple = --primary-h (blue-50), hover text = --primary */
 .gs-pr .gs-ripple,
 .gs-repos .gs-ripple {
-    background: rgb(224 241 255 / 0.2);
+  background: var(--color-blue-50);
+}
+.gs-pr,
+.gs-repos {
+  transition: color 0.7s;
+}
+.gs-pr:hover,
+.gs-repos:hover {
+  color: var(--color-blue-500);
 }
 
-/* Ripple hover effect */
+/* Ripple hover expansion */
 .gs-logo:hover .gs-ripple,
 .gs-stars:hover .gs-ripple,
 .gs-followers:hover .gs-ripple,
@@ -108,17 +177,26 @@ svg#d3Logo {
 .gs-gh:hover .gs-ripple,
 .gs-pr:hover .gs-ripple,
 .gs-repos:hover .gs-ripple {
-    width: calc(100% * 2.25);
-    padding-top: calc(100% * 2.25);
+  width: calc(100% * 2.25);
+  padding-top: calc(100% * 2.25);
 }
 
-/* Avatar hover effect for logo */
-.gs-logo:hover {
-    color: white;
+/* ============================================
+   DARK THEME OVERRIDES
+   Matches old [data-theme="dark"] gs.sass
+   In dark: --primary-h swaps to blue-800
+   ============================================ */
+[data-theme="dark"] .gs-stars,
+[data-theme="dark"] .gs-followers,
+[data-theme="dark"] .gs-commits {
+  color: white;
 }
-
-.gs-logo:hover svg#d3Logo.startA .svg-elem-1 {
-    transition: all 0.2s;
-    fill: white;
-    stroke: white;
+[data-theme="dark"] .gs-stars:hover,
+[data-theme="dark"] .gs-followers:hover,
+[data-theme="dark"] .gs-commits:hover {
+  color: white;
+}
+[data-theme="dark"] .gs-pr:hover,
+[data-theme="dark"] .gs-repos:hover {
+  color: white;
 }

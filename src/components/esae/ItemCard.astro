@@ -3,95 +3,99 @@ import { Card, Button, Badge, BadgeGroup } from "../common";
 import Icon from "../common/Icon.astro";
 
 interface Props {
-    name: string;
-    description?: string;
-    url?: string;
-    tags?: string[];
-    platforms?: string[];
-    groups?: string;
-    icon?: string;
+  name: string;
+  description?: string;
+  url?: string;
+  tags?: string[];
+  platforms?: string[];
+  groups?: string;
+  icon?: string;
+  color?: string;
 }
 
 const {
-    name,
-    description,
-    url,
-    tags = [],
-    platforms = [],
-    groups = "",
-    icon = "tabler:app-window",
+  name,
+  description,
+  url,
+  tags = [],
+  platforms = [],
+  groups = "",
+  icon = "tabler:app-window",
+  color,
 } = Astro.props;
 ---
 
 <div data-groups={groups}>
-    <Card
-        bordered={true}
-        class="bg-base-100 h-full _aos-bottom relative hover:shadow-lg transition-shadow"
-        bodyClass="gap-4"
-    >
-        <!-- Floating Badges -->
-        {
-            tags.length > 0 && (
-                <BadgeGroup>
-                    {tags.map((tag) => (
-                        <Badge variant="primary" size="sm">
-                            {tag}
-                        </Badge>
-                    ))}
-                </BadgeGroup>
-            )
-        }
+  <Card
+    bordered={true}
+    class="bg-base-100 border-base-300 _aos-bottom relative h-full border-2 transition-shadow hover:shadow-lg"
+    bodyClass="gap-4"
+  >
+    <!-- Floating Badges -->
+    {
+      tags.length > 0 && (
+        <BadgeGroup>
+          {tags.map((tag) => (
+            <Badge variant="primary" size="sm">
+              {tag}
+            </Badge>
+          ))}
+        </BadgeGroup>
+      )
+    }
 
-        <!-- Icon and Title -->
-        <div class="flex items-start gap-3">
-            <div class="flex-shrink-0">
-                <div
-                    class="w-12 h-12 rounded-lg bg-base-200 flex items-center justify-center"
-                >
-                    <Icon name={icon} class="w-6 h-6 text-primary" />
-                </div>
-            </div>
-            <div class="flex-1 min-w-0">
-                <h3 class="text-lg font-semibold">{name}</h3>
-                {
-                    platforms.length > 0 && (
-                        <div class="flex flex-wrap gap-1 mt-1">
-                            {platforms.map((platform) => (
-                                <span class="text-xs text-base-content/60 bg-base-200 px-2 py-0.5 rounded">
-                                    {platform}
-                                </span>
-                            ))}
-                        </div>
-                    )
-                }
-            </div>
+    <!-- Icon and Title -->
+    <div class="flex items-start gap-3">
+      <div class="shrink-0">
+        <div
+          class="bg-base-200 flex h-12 w-12 items-center justify-center rounded-lg"
+        >
+          <Icon
+            name={icon}
+            class="h-6 w-6"
+            style={color ? `color: ${color}` : undefined}
+          />
         </div>
-
-        <!-- Description -->
+      </div>
+      <div class="min-w-0 flex-1">
+        <h3 class="text-lg font-semibold">{name}</h3>
         {
-            description && (
-                <p class="text-sm text-base-content/70 line-clamp-3">
-                    {description}
-                </p>
-            )
+          platforms.length > 0 && (
+            <div class="mt-1 flex flex-wrap gap-1">
+              {platforms.map((platform) => (
+                <span class="text-base-content/60 bg-base-200 rounded px-2 py-0.5 text-xs">
+                  {platform}
+                </span>
+              ))}
+            </div>
+          )
         }
+      </div>
+    </div>
 
-        <!-- Actions -->
-        {
-            url && (
-                <div slot="actions" class="mt-auto">
-                    <Button
-                        href={url}
-                        external={true}
-                        size="sm"
-                        style="ghost"
-                        icon="external-link"
-                        class="w-full"
-                    >
-                        Visit
-                    </Button>
-                </div>
-            )
-        }
-    </Card>
+    <!-- Description -->
+    {
+      description && (
+        <p class="text-base-content/70 line-clamp-3 text-sm">{description}</p>
+      )
+    }
+
+    <!-- Actions -->
+    {
+      url && (
+        <div slot="actions" class="mt-auto">
+          <Button
+            href={url}
+            external={true}
+            size="sm"
+            style="ghost"
+            icon="external-link"
+            class="w-full"
+          >
+            Visit
+          </Button>
+        </div>
+      )
+    }
+  </Card>
 </div>

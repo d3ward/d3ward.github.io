@@ -5,14 +5,8 @@
       "description": "A reliable and affordable DNS/firewall service for home users.",
       "url": "https://nextdns.io",
       "tags": ["security", "dns"],
-      "icon": "simple-icons:nextdns"
-    },
-    {
-      "name": "Umami",
-      "description": "An open and privacy-friendly alternative to Google Analytics.",
-      "url": "https://umami.is",
-      "tags": ["analytics", "privacy"],
-      "icon": "simple-icons:umami"
+      "icon": "simple-icons:nextdns",
+      "color": "#007BFF"
     },
     {
       "name": "Mullvad VPN",
@@ -40,7 +34,8 @@
       "description": "Privacy-focused search engine.",
       "url": "https://duckduckgo.com",
       "tags": ["search", "privacy"],
-      "icon": "simple-icons:duckduckgo"
+      "icon": "simple-icons:duckduckgo",
+      "color": "#DE5833"
     },
     {
       "name": "Startpage",

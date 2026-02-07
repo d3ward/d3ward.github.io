@@ -3,52 +3,35 @@ import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
 import StatsGrid from "@components/home/StatsGrid.astro";
 import ProjectFilter from "@components/home/ProjectFilter.astro";
-import ProjectCard from "@components/home/ProjectCard.astro";
-import type { Project, GitHubStats } from "@types";
-
-import projects from "@data/projects.json";
-import githubStats from "@data/github-stats.json";
-
-const projectsData = projects as Project[];
-const stats = githubStats as GitHubStats;
+import ProjectGrid from "@components/home/ProjectGrid.astro";
 ---
 
 <Layout
-    seo={{
-        title: "d3ward - Home",
-        description:
-            "Explore my portfolio, where each project blends code, creativity, open source collaboration and a commitment to building a user-friendly, privacy-centric web.",
-        url: "https://d3ward.github.io",
-        keywords:
-            "contributor,developer,Floatly,NextNTP,Toolz,Techlore,Kiwi Browser",
-    }}
+  seo={{
+    title: "d3ward - Home",
+    description:
+      "Explore my portfolio, where each project blends code, creativity, open source collaboration and a commitment to building a user-friendly, privacy-centric web.",
+    url: "https://d3ward.github.io",
+    keywords: "contributor,developer,Floatly,NextNTP,Toolz,Techlore,Kiwi Browser",
+  }}
 >
-    <Hero>
-        <StatsGrid />
-    </Hero>
+  <Hero>
+    <StatsGrid />
+  </Hero>
 
-    <!-- Divider -->
-    <hr class="my-12 border-base-300" />
+  <!-- Divider -->
+  <hr class="border-base-300 my-12" />
 
-    <!-- Projects Section -->
-    <section class="py-12 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-8">Projects</h2>
+  <!-- Projects Section -->
+  <section class="py-12 text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="mb-8 text-4xl font-bold">Projects</h2>
 
-            <!-- Filter Buttons -->
-            <ProjectFilter />
+      <!-- Filter Buttons -->
+      <ProjectFilter />
 
-            <!-- Projects Grid -->
-            <div class="grid gap-6 max-w-7xl mx-auto">
-                {
-                    projectsData.map((project) => (
-                        <ProjectCard
-                            project={project}
-                            githubData={stats.d3ward.repos[project.id]}
-                        />
-                    ))
-                }
-            </div>
-        </div>
-    </section>
+      <!-- Projects Grid -->
+      <ProjectGrid />
+    </div>
+  </section>
 </Layout>

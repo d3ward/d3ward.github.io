@@ -17,62 +17,69 @@
  */
 
 interface Props {
-    title?: string;
-    titleClass?: string;
-    bordered?: boolean;
-    dash?: boolean;
-    side?: boolean;
-    imageFull?: boolean;
-    size?: "xs" | "sm" | "md" | "lg" | "xl";
-    bodyClass?: string;
-    actionsClass?: string;
-    class?: string;
+  title?: string;
+  titleClass?: string;
+  bordered?: boolean;
+  dash?: boolean;
+  side?: boolean;
+  imageFull?: boolean;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  bodyClass?: string;
+  actionsClass?: string;
+  class?: string;
 }
 
 const {
-    title,
-    titleClass,
-    bordered,
-    dash,
-    side,
-    imageFull,
-    size,
-    bodyClass,
-    actionsClass,
-    class: className,
-    ...rest
+  title,
+  titleClass,
+  bordered,
+  dash,
+  side,
+  imageFull,
+  size,
+  bodyClass,
+  actionsClass,
+  class: className,
+  ...rest
 } = Astro.props;
 ---
 
 <div
-    class:list={[
-        "card",
-        bordered && "card-bordered",
-        dash && "card-dash",
-        side && "card-side",
-        imageFull && "image-full",
-        size && `card-${size}`,
-        className,
-    ]}
-    {...rest}
+  class:list={[
+    "card",
+    bordered && "card-bordered",
+    dash && "card-dash",
+    side && "card-side",
+    imageFull && "image-full",
+    size &&
+      {
+        xs: "card-xs",
+        sm: "card-sm",
+        md: "card-md",
+        lg: "card-lg",
+        xl: "card-xl",
+      }[size],
+    className,
+  ]}
+  {...rest}
 >
-    <slot name="figure" />
+  <slot name="figure" />
 
-    <div class:list={["card-body", bodyClass]}>
-        <slot name="badges" />
+  <div class:list={["card-body", bodyClass]}>
+    <slot name="badges" />
 
-        {
-            title && (
-                <h2 class:list={["card-title", titleClass]}>
-                    <slot name="title">{title}</slot>
-                </h2>
-            )
-        }
+    {
+      title && (
+        <h2 class:list={["card-title", titleClass]}>
+          <slot name="title">{title}</slot>
+        </h2>
+      )
+    }
 
-        <slot />
+    <slot />
 
-        <div class:list={["card-actions", actionsClass]}>
-            <slot name="actions" />
-        </div>
+    <div class:list={["card-actions", actionsClass]}>
+      <slot name="actions" />
     </div>
+  </div>
 </div>

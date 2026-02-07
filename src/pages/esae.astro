@@ -7,39 +7,28 @@ import servicesData from "@data/services.json";
 import extensionsData from "@data/extensions.json";
 
 const seo = {
-    title: "d3ward - ESAE",
-    description:
-        "Explore my carefully curated selection of tools that power my digital life every day. Essential Services, Apps & Extensions Collection.",
-    url: "https://d3ward.github.io/esae",
+  title: "d3ward - ESAE",
+  description:
+    "Explore my carefully curated selection of tools that power my digital life every day. Essential Services, Apps & Extensions Collection.",
+  url: "https://d3ward.github.io/esae",
 };
 
 // Flatten all apps into a single array with groups
-const allApps = [
-    ...appsData.cross.map((app: any) => ({
-        ...app,
-        groups: "app cross desktop",
-    })),
-    ...appsData.macOS.map((app: any) => ({
-        ...app,
-        groups: "app macos desktop",
-    })),
-    ...appsData.windows.map((app: any) => ({
-        ...app,
-        groups: "app windows desktop",
-    })),
-    ...appsData.mobile.map((app: any) => ({ ...app, groups: "app mobile" })),
-];
+const allApps = appsData.apps.map((app: any) => ({
+  ...app,
+  groups: "app",
+}));
 
 // Add groups to services
 const allServices = servicesData.services.map((service: any) => ({
-    ...service,
-    groups: "service",
+  ...service,
+  groups: "service",
 }));
 
 // Add groups to extensions
 const allExtensions = extensionsData.extensions.map((ext: any) => ({
-    ...ext,
-    groups: "extension",
+  ...ext,
+  groups: "extension",
 }));
 
 // Combine all items
@@ -47,81 +36,80 @@ const allItems = [...allApps, ...allServices, ...allExtensions];
 ---
 
 <Layout seo={seo}>
-    <!-- Hero Section -->
-    <section class="bg-base-200 py-20">
-        <div class="container mx-auto max-w-screen-lg px-4">
-            <div class="text-center space-y-6">
-                <h1 class="text-4xl md:text-5xl font-bold">
-                    Essential Services, Apps & Extensions
-                </h1>
-                <div
-                    class="max-w-3xl mx-auto text-base-content/80 leading-relaxed space-y-4"
-                >
-                    <p>
-                        Welcome to my carefully curated selection of tools that
-                        power my digital life every day.
-                    </p>
-                    <p>
-                        From enhancing productivity to bolstering online
-                        security, these recommendations reflect my personal
-                        journey in optimizing how I work and interact online.
-                        Whether you're seeking reliable VPN services, powerful
-                        productivity apps, or handy browser extensions, each
-                        recommendation is chosen for its functionality,
-                        reliability, and ability to streamline your digital
-                        experience.
-                    </p>
-                    <p>
-                        Discover tools that I rely on across different platforms
-                        — from desktops to mobile devices — to stay productive,
-                        secure, and organized.
-                    </p>
-                </div>
-            </div>
+  <!-- Hero Section -->
+  <section class="bg-base-200 py-20">
+    <div class="container mx-auto max-w-5xl px-4">
+      <div class="space-y-6 text-center">
+        <h1 class="text-4xl font-bold md:text-5xl">
+          Essential Services, Apps & Extensions
+        </h1>
+        <div
+          class="text-base-content/80 mx-auto max-w-3xl space-y-4 leading-relaxed"
+        >
+          <p>
+            Welcome to my carefully curated selection of tools that power my
+            digital life every day.
+          </p>
+          <p>
+            From enhancing productivity to bolstering online security, these
+            recommendations reflect my personal journey in optimizing how I work
+            and interact online. Whether you're seeking reliable VPN services,
+            powerful productivity apps, or handy browser extensions, each
+            recommendation is chosen for its functionality, reliability, and
+            ability to streamline your digital experience.
+          </p>
+          <p>
+            Discover tools that I rely on across different platforms — from
+            desktops to mobile devices — to stay productive, secure, and
+            organized.
+          </p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Filter Section -->
-    <section class="container mx-auto max-w-screen-lg px-4 py-12">
-        <Filter
-            options={[
-                { id: "all", label: "All", icon: "tabler:layout-grid" },
-                { id: "app", label: "Apps", icon: "tabler:apps" },
-                { id: "extension", label: "Extensions", icon: "tabler:puzzle" },
-                { id: "service", label: "Services", icon: "tabler:cloud" },
-                {
-                    id: "desktop",
-                    label: "Desktop",
-                    icon: "tabler:device-desktop",
-                },
-                { id: "mobile", label: "Mobile", icon: "tabler:device-mobile" },
-                { id: "macos", label: "macOS", icon: "simple-icons:apple" },
-                {
-                    id: "windows",
-                    label: "Windows",
-                    icon: "simple-icons:windows",
-                },
-            ]}
-            activeFilter="all"
-            class="flex flex-wrap gap-3 justify-center mb-12"
-            size="sm"
-        />
+  <!-- Filter Section -->
+  <section class="container mx-auto max-w-5xl px-4 py-12">
+    <Filter
+      options={[
+        { id: "all", label: "All", icon: "tabler:layout-grid" },
+        { id: "app", label: "Apps", icon: "tabler:apps" },
+        { id: "extension", label: "Extensions", icon: "tabler:puzzle" },
+        { id: "service", label: "Services", icon: "tabler:cloud" },
+        {
+          id: "desktop",
+          label: "Desktop",
+          icon: "tabler:device-desktop",
+        },
+        { id: "mobile", label: "Mobile", icon: "tabler:device-mobile" },
+        { id: "macos", label: "macOS", icon: "simple-icons:apple" },
+        {
+          id: "windows",
+          label: "Windows",
+          icon: "simple-icons:windows",
+        },
+      ]}
+      activeFilter="all"
+      class="mb-12 flex flex-wrap justify-center gap-3"
+      size="sm"
+    />
 
-        <!-- Items Grid -->
-        <div class="grid gap-6">
-            {
-                allItems.map((item) => (
-                    <ItemCard
-                        name={item.name}
-                        description={item.description}
-                        url={item.url}
-                        platforms={item.platforms || item.platform || []}
-                        tags={item.tags}
-                        groups={item.groups}
-                        icon={item.icon}
-                    />
-                ))
-            }
-        </div>
-    </section>
+    <!-- Items Grid -->
+    <div class="grid gap-6">
+      {
+        allItems.map((item) => (
+          <ItemCard
+            name={item.name}
+            description={item.description}
+            url={item.url}
+            platforms={item.platforms || item.platform || []}
+            tags={item.tags}
+            groups={item.groups}
+            icon={item.icon}
+            color={item.color}
+          />
+        ))
+      }
+    </div>
+  </section>
 </Layout>
