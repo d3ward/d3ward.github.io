@@ -200,3 +200,21 @@ svg#d3Logo {
 [data-theme="dark"] .gs-repos:hover {
   color: white;
 }
+
+/* ============================================
+   COMPACT STATS
+   ============================================ */
+.gs-compact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.gs-compact label {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}

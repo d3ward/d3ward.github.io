@@ -19,7 +19,17 @@ import { Icon as AstroIcon } from "astro-icon/components";
 interface Props {
   name: string;
   class?: string;
-  size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | number;
+  size?:
+    | "xs"
+    | "sm"
+    | "md"
+    | "lg"
+    | "xl"
+    | "2xl"
+    | "3xl"
+    | "4xl"
+    | "5xl"
+    | number;
 }
 
 const { name, class: className, size = "md", ...rest } = Astro.props;
@@ -65,7 +75,11 @@ const iconMap: Record<string, string> = {
 // 1. Check if it's a mapped icon
 // 2. If it contains ":", use it directly (e.g., "simple-icons:github")
 // 3. Otherwise, assume it's a Tabler icon
-const iconName = iconMap[name] ? iconMap[name] : name.includes(":") ? name : `tabler:${name}`;
+const iconName = iconMap[name]
+  ? iconMap[name]
+  : name.includes(":")
+    ? name
+    : `tabler:${name}`;
 
 // Size mapping (md = 24px default)
 const sizeMap: Record<string, string> = {
@@ -81,7 +95,8 @@ const sizeMap: Record<string, string> = {
 };
 
 // If size is a preset, use the mapping; otherwise use custom class
-const sizeClass = typeof size === "string" && sizeMap[size] ? sizeMap[size] : "";
+const sizeClass =
+  typeof size === "string" && sizeMap[size] ? sizeMap[size] : "";
 const finalClass = className || sizeClass || "w-6 h-6";
 ---
 

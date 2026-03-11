@@ -1,0 +1,36 @@
+---
+/**
+ * Dock Component - daisyUI bottom navigation bar
+ *
+ * A wrapper for daisyUI's dock component. Content (buttons) is passed via slot.
+ * Each button inside should follow daisyUI dock structure:
+ *   <button class="dock-active">
+ *     <Icon name="..." />
+ *     <span class="dock-label">Label</span>
+ *   </button>
+ *
+ * @prop {string} size - Dock size: "xs" | "sm" | "md" | "lg" | "xl"
+ * @prop {string} class - Additional CSS classes
+ */
+
+interface Props {
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  class?: string;
+}
+
+const { size, class: className } = Astro.props;
+
+const sizeMap: Record<string, string> = {
+  "xs": "dock-xs",
+  "sm": "dock-sm",
+  "md": "dock-md",
+  "lg": "dock-lg",
+  "xl": "dock-xl",
+};
+
+const sizeClass = size ? sizeMap[size] : undefined;
+---
+
+<div class:list={["dock", sizeClass, className]}>
+  <slot />
+</div>

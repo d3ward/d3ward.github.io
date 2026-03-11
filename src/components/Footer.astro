@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-primary text-primary-content relative">
-  <div class="relative z-10 container mx-auto max-w-screen-lg px-4 py-12">
+  <div class="relative z-10 container mx-auto max-w-5xl px-4 py-12">
     <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
       <!-- Social Links & Support -->
       <div class="flex items-center gap-4">
@@ -30,7 +30,12 @@ const currentYear = new Date().getFullYear();
           color="neutral"
         />
         <div class="divider divider-horizontal"></div>
-        <button id="support-btn" class="btn btn-ghost btn-sm gap-2" aria-label="Support me">
+        <button
+          type="button"
+          data-a11y-dialog-show="support_dialog"
+          class="btn btn-ghost btn-sm gap-2"
+          aria-label="Support me"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"

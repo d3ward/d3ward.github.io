@@ -2,7 +2,7 @@
   "extensions": [
     {
       "name": "uBlock Origin",
-      "description": "Adblocker.",
+      "description": "Adblocker. The most effective ad and tracker blocker, essential for fast and clean browsing.",
       "url": "https://github.com/gorhill/uBlock",
       "platform": ["macos", "windows", "android"],
       "icon": "simple-icons:ublockorigin",
@@ -10,7 +10,7 @@
     },
     {
       "name": "Bitwarden",
-      "description": "Password manager.",
+      "description": "Password manager. Seamless integration with my vault for auto-filling passwords everywhere.",
       "url": "https://bitwarden.com",
       "platform": ["macos", "windows", "android"],
       "icon": "simple-icons:bitwarden",
@@ -18,21 +18,21 @@
     },
     {
       "name": "ViolentMonkey",
-      "description": "User scripts manager.",
+      "description": "User scripts manager. Lets me customize websites with custom scripts and automations.",
       "url": "https://violentmonkey.github.io",
       "platform": ["macos", "windows", "android"],
       "icon": "tabler:code"
     },
     {
       "name": "b2ntp",
-      "description": "Kanban-style homepage with bookmarks.",
+      "description": "Kanban-style homepage with bookmarks. My organized new tab page with all important links.",
       "url": "https://github.com/cirosantilli/b2ntp",
       "platform": ["macos", "windows"],
       "icon": "tabler:layout-kanban"
     },
     {
       "name": "Anytype Webclipper",
-      "description": "Save pages and links directly to Anytype.",
+      "description": "Save pages and links directly to Anytype. Quick way to capture web content into my knowledge base.",
       "url": "https://anytype.io",
       "platform": ["macos"],
       "icon": "simple-icons:anytype",
@@ -40,21 +40,21 @@
     },
     {
       "name": "NextNTP",
-      "description": "Highly customizable mobile-friendly new tab page.",
+      "description": "Highly customizable mobile-friendly new tab page. My own creation for a beautiful mobile browsing experience.",
       "url": "https://github.com/d3ward/nextntp",
       "platform": ["android", "ios"],
       "icon": "tabler:home"
     },
     {
       "name": "Floatly",
-      "description": "Custom shortcut actions from any page.",
+      "description": "Custom shortcut actions from any page. Another project of mine for adding floating action buttons to mobile browsers.",
       "url": "https://github.com/d3ward/floatly",
       "platform": ["android"],
       "icon": "tabler:float-center"
     },
     {
       "name": "MTI",
-      "description": "Override website meta theme color.",
+      "description": "Override website meta theme color. My extension to customize the Android browser theme color for any site.",
       "url": "https://github.com/d3ward/MTI",
       "platform": ["android"],
       "icon": "tabler:palette"

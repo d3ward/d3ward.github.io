@@ -1,6 +1,5 @@
 ---
 import Button from "./common/Button.astro";
-import Drawer from "./common/Drawer.astro";
 import Icon from "./common/Icon.astro";
 
 const currentPath = Astro.url.pathname;
@@ -12,40 +11,12 @@ const navItems = [
 ];
 ---
 
+<!-- ============ TOP NAVBAR ============ -->
 <header class="fixed top-0 right-0 left-0 z-50 transition-all" id="main-header">
   <div class="navbar-wrap mx-auto max-w-5xl px-4 py-3">
-    <div
-      class="navbar bg-base-100 border-base-300/50 h-14 min-h-0 rounded-2xl border p-1.5"
-    >
-      <!-- Mobile Drawer Button & Logo -->
+    <div class="navbar bg-base-100 h-14 min-h-0 rounded-2xl p-1.5">
+      <!-- Logo -->
       <div class="navbar-start">
-        <div class="lg:hidden">
-          <Drawer id="main-drawer">
-            <label
-              slot="trigger"
-              for="main-drawer"
-              class="btn btn-ghost btn-square"
-            >
-              <Icon name="hamburger" />
-            </label>
-            {
-              navItems.map((item) => (
-                <li>
-                  <a
-                    href={item.href}
-                    class={currentPath === item.href && "btn-active"}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))
-            }
-            <li>
-              <Button href="#support" style="ghost" size="sm"> Support </Button>
-            </li>
-          </Drawer>
-        </div>
-        <!-- Logo -->
         <a href="/" class="btn btn-ghost btn-square text-primary gap-2 text-xl">
           <Icon name="d3" />
         </a>
@@ -59,8 +30,9 @@ const navItems = [
               <li class="ml-1.5">
                 <Button
                   href={item.href}
-                  style="ghost"
-                  class={` ${currentPath === item.href ? "active" : ""}`}
+                  style="link-hover"
+                  color="primary"
+                  class={currentPath === item.href ? "btn-active" : ""}
                   icon={item.icon}
                 >
                   {item.label}
@@ -73,35 +45,37 @@ const navItems = [
 
       <!-- Right Side Actions -->
       <div class="navbar-end gap-2">
-        <!-- Support Button -->
+        <!-- Support Button (desktop only) -->
         <Button
-          href="#support"
-          style="soft"
+          style="ghost"
           color="primary"
           square={true}
           icon="tabler:coffee"
           iconOnly={true}
+          data-a11y-dialog-show="support_dialog"
+          aria-label="Support me"
+          class="hidden lg:inline-flex"
         />
 
-        <!-- GitHub Link -->
+        <!-- GitHub Link (desktop only) -->
         <Button
           href="https://github.com/d3ward"
           external={true}
-          style="soft"
+          style="ghost"
           square={true}
           icon="github"
           iconOnly={true}
           aria-label="GitHub Profile"
+          class="hidden lg:inline-flex"
         />
 
-        <!-- Theme Toggle -->
-        <label
-          class="swap swap-rotate btn btn-ghost btn-square"
-          id="theme-toggle"
-        >
-          <input type="checkbox" aria-label="Toggle theme" />
-
-          <!-- Moon icon -->
+        <!-- Theme Toggle (desktop only) -->
+        <label class="swap swap-rotate btn btn-ghost btn-square hidden lg:grid">
+          <input
+            type="checkbox"
+            class="theme-checkbox"
+            aria-label="Toggle theme"
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="swap-on h-5 w-5 fill-none"
@@ -117,8 +91,6 @@ const navItems = [
             ></path>
             <path d="M19 11h2m-1 -1v2"></path>
           </svg>
-
-          <!-- Sun icon -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="swap-off h-5 w-5 fill-none"
@@ -139,14 +111,122 @@ const navItems = [
             <path d="M12 20v2"></path>
           </svg>
         </label>
+
+        <!-- Mobile hamburger -->
+        <button
+          type="button"
+          id="mobile-menu-toggle"
+          class="btn btn-ghost btn-square lg:hidden"
+          aria-label="Menu"
+          aria-expanded="false"
+        >
+          <span class="swap swap-rotate" id="menu-icon-swap">
+            <Icon name="tabler:menu-2" class="swap-off h-5 w-5" />
+            <Icon name="tabler:x" class="swap-on h-5 w-5" />
+          </span>
+        </button>
       </div>
     </div>
   </div>
 </header>
 
+<!-- ============ MOBILE DRAWER CARD ============ -->
+<div
+  class="mobile-drawer fixed top-22 right-0 left-0 z-50 mx-4 lg:hidden"
+  id="mobile-drawer-card"
+  aria-hidden="true"
+>
+  <div
+    class="bg-base-100/95 border-base-300/50 mx-auto max-w-5xl rounded-2xl border p-2 shadow-lg backdrop-blur"
+  >
+    <!-- Nav links -->
+    <ul class="menu w-full">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[currentPath === item.href && "active"]}
+            >
+              <Icon name={item.icon} />
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="divider my-1"></div>
+
+    <!-- Extra actions -->
+    <div class="flex items-center gap-1 px-1">
+      <button
+        type="button"
+        data-a11y-dialog-show="support_dialog"
+        class="btn btn-ghost btn-sm flex-1 gap-2"
+      >
+        <Icon name="tabler:coffee" />
+        <span>Support</span>
+      </button>
+
+      <a
+        href="https://github.com/d3ward"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-ghost btn-sm flex-1 gap-2"
+      >
+        <Icon name="github" />
+        <span>GitHub</span>
+      </a>
+
+      <!-- Mobile Theme Toggle -->
+      <label class="swap swap-rotate btn btn-ghost btn-sm btn-square">
+        <input
+          type="checkbox"
+          class="theme-checkbox"
+          aria-label="Toggle theme"
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="swap-on h-4 w-4 fill-none"
+          viewBox="0 0 24 24"
+          stroke-width="1.75"
+          stroke="currentColor"
+        >
+          <path
+            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+          ></path>
+          <path
+            d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"
+          ></path>
+          <path d="M19 11h2m-1 -1v2"></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="swap-off h-4 w-4 fill-none"
+          viewBox="0 0 24 24"
+          stroke-width="1.75"
+          stroke="currentColor"
+        >
+          <path
+            d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"
+          ></path>
+          <path d="M6.343 17.657l-1.414 1.414"></path>
+          <path d="M6.343 6.343l-1.414 -1.414"></path>
+          <path d="M17.657 6.343l1.414 -1.414"></path>
+          <path d="M17.657 17.657l1.414 1.414"></path>
+          <path d="M4 12h-2"></path>
+          <path d="M12 4v-2"></path>
+          <path d="M20 12h2"></path>
+          <path d="M12 20v2"></path>
+        </svg>
+      </label>
+    </div>
+  </div>
+</div>
+
 <script>
   // Scroll detection for header
-  let lastScroll = 0;
   const header = document.getElementById("main-header");
 
   window.addEventListener("scroll", () => {
@@ -156,28 +236,88 @@ const navItems = [
     } else {
       header?.classList.remove("scrolled");
     }
-    lastScroll = currentScroll;
   });
 
-  // Theme toggle
-  const themeToggle = document.getElementById("theme-toggle");
-  const themeInput = themeToggle?.querySelector(
-    'input[type="checkbox"]',
-  ) as HTMLInputElement;
+  // Theme toggle — sync all .theme-checkbox inputs
   const html = document.documentElement;
-
-  // Load saved theme on page load
   const savedTheme = localStorage.getItem("theme") || "light";
   html.setAttribute("data-theme", savedTheme);
 
-  // Update checkbox state based on current theme
-  if (themeInput) {
-    themeInput.checked = savedTheme === "dark";
+  const allThemeCheckboxes =
+    document.querySelectorAll<HTMLInputElement>(".theme-checkbox");
+  allThemeCheckboxes.forEach((cb) => {
+    cb.checked = savedTheme === "dark";
+    cb.addEventListener("change", () => {
+      const newTheme = cb.checked ? "dark" : "light";
+      html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+      allThemeCheckboxes.forEach((other) => {
+        if (other !== cb) other.checked = cb.checked;
+      });
+    });
+  });
+
+  // Mobile drawer card toggle
+  const menuToggle = document.getElementById("mobile-menu-toggle");
+  const drawerCard = document.getElementById("mobile-drawer-card");
+  const menuIconSwap = document.getElementById("menu-icon-swap");
+
+  function closeDrawerCard() {
+    drawerCard?.setAttribute("aria-hidden", "true");
+    menuToggle?.setAttribute("aria-expanded", "false");
+    menuIconSwap?.classList.remove("swap-active");
   }
 
-  themeInput?.addEventListener("change", () => {
-    const newTheme = themeInput.checked ? "dark" : "light";
-    html.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
+  function openDrawerCard() {
+    drawerCard?.setAttribute("aria-hidden", "false");
+    menuToggle?.setAttribute("aria-expanded", "true");
+    menuIconSwap?.classList.add("swap-active");
+  }
+
+  menuToggle?.addEventListener("click", () => {
+    const isHidden = drawerCard?.getAttribute("aria-hidden") === "true";
+    if (isHidden) {
+      openDrawerCard();
+    } else {
+      closeDrawerCard();
+    }
   });
+
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const drawer = document.getElementById("mobile-drawer-card");
+    const toggle = document.getElementById("mobile-menu-toggle");
+    if (
+      drawer &&
+      toggle &&
+      !drawer.contains(target) &&
+      !toggle.contains(target)
+    ) {
+      closeDrawerCard();
+    }
+  });
+
+  // Close on navigation
+  document.addEventListener("astro:before-preparation", closeDrawerCard);
 </script>
+
+<style is:global>
+  .mobile-drawer {
+    transition:
+      opacity 0.2s ease-out,
+      translate 0.2s ease-out;
+  }
+
+  .mobile-drawer[aria-hidden="true"] {
+    opacity: 0;
+    translate: 0 -0.5rem;
+    pointer-events: none;
+  }
+
+  .mobile-drawer[aria-hidden="false"] {
+    opacity: 1;
+    translate: 0 0;
+    pointer-events: auto;
+  }
+</style>

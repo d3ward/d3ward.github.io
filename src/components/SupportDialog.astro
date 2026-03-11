@@ -3,7 +3,12 @@ import { Icon } from "astro-icon/components";
 import { Button, Modal } from "./common";
 ---
 
-<Modal id="support_dialog" boxClass="max-w-3xl" closeButton={true} closeOnBackdrop={true}>
+<Modal
+  id="support_dialog"
+  boxClass="max-w-3xl"
+  closeButton={true}
+  closeOnBackdrop={true}
+>
   <!-- Title -->
   <div slot="title" class="mb-6">
     <h3 class="flex items-center gap-2 text-2xl font-bold">
@@ -18,8 +23,9 @@ import { Button, Modal } from "./common";
     <div class="text-center">
       <h2 class="mb-4 text-3xl font-bold">Thank you!</h2>
       <p class="text-base-content/80">
-        Until now, the number of people who got interested in my projects went way beyond my
-        expectations, I'm so happy to see it grow daily! <br /><br />
+        Until now, the number of people who got interested in my projects went
+        way beyond my expectations, I'm so happy to see it grow daily! <br /><br
+        />
         If you use any of them or find them valuable, I'll be grateful for your support!
       </p>
     </div>
@@ -32,12 +38,16 @@ import { Button, Modal } from "./common";
         <Icon name="tabler:currency-dollar" class="h-6 w-6" />
         Free
       </h3>
-      <p class="text-base-content/80">You can support me for free in these ways:</p>
+      <p class="text-base-content/80">
+        You can support me for free in these ways:
+      </p>
 
       <div class="ml-2 space-y-3">
         <p class="flex items-center gap-3">
           <Icon name="tabler:share" class="h-5 w-5 flex-shrink-0" />
-          <span>Share the projects with others (friends, family or community)</span>
+          <span
+            >Share the projects with others (friends, family or community)</span
+          >
         </p>
         <p class="flex items-center gap-3">
           <Icon name="tabler:star" class="h-5 w-5 flex-shrink-0" />
@@ -59,8 +69,9 @@ import { Button, Modal } from "./common";
         Donations
       </h3>
       <p class="text-base-content/80">
-        Some of my projects incur costs to stay online. While I can manage these expenses, your
-        support is greatly appreciated. If you'd like to contribute, you can do so here:
+        Some of my projects incur costs to stay online. While I can manage these
+        expenses, your support is greatly appreciated. If you'd like to
+        contribute, you can do so here:
       </p>
 
       <div class="flex justify-center pt-2">
@@ -71,7 +82,11 @@ import { Button, Modal } from "./common";
           class="btn btn-lg gap-2"
           style="background-color: #FF5872; border-color: #FF5872; color: white;"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            viewBox="0 0 24 24"
+          >
             <path
               fill="currentColor"
               fill-opacity="1"
@@ -93,7 +108,7 @@ import { Button, Modal } from "./common";
   </div>
 
   <!-- Footer Actions -->
-  <form slot="actions" method="dialog">
-    <Button color="neutral">Close</Button>
-  </form>
+  <div slot="actions">
+    <Button type="button" data-a11y-dialog-hide color="neutral">Close</Button>
+  </div>
 </Modal>

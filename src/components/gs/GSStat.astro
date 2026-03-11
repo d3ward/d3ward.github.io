@@ -135,7 +135,7 @@ const tiltAttrs = tilt
         {label && (
           <label class="flex items-center justify-center gap-1 text-base font-medium">
             {resolvedIcon && <Icon name={resolvedIcon} />}
-            <span class:list={[!showLabelOnMobile && "_d-md-only"]}>
+            <span class:list={[!showLabelOnMobile && "hidden md:block"]}>
               {label}
             </span>
           </label>

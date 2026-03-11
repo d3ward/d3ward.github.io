@@ -17,19 +17,41 @@ const seo = {
 const allApps = appsData.apps.map((app: any) => ({
   ...app,
   groups: "app",
+  filters: app.filters || [],
 }));
 
-// Add groups to services
+// Add groups to services (services don't have platform-specific filters)
 const allServices = servicesData.services.map((service: any) => ({
   ...service,
   groups: "service",
+  filters: [],
 }));
 
-// Add groups to extensions
-const allExtensions = extensionsData.extensions.map((ext: any) => ({
-  ...ext,
-  groups: "extension",
-}));
+// Add groups to extensions (convert platform to filters)
+const allExtensions = extensionsData.extensions.map((ext: any) => {
+  const filters = [];
+  const platform = ext.platform || [];
+
+  // Check if extension is available on desktop platforms
+  if (
+    platform.some((p: string) => ["macos", "windows"].includes(p.toLowerCase()))
+  ) {
+    filters.push("desktop");
+  }
+
+  // Check if extension is available on mobile platforms
+  if (
+    platform.some((p: string) => ["android", "ios"].includes(p.toLowerCase()))
+  ) {
+    filters.push("mobile");
+  }
+
+  return {
+    ...ext,
+    groups: "extension",
+    filters,
+  };
+});
 
 // Combine all items
 const allItems = [...allApps, ...allServices, ...allExtensions];
@@ -82,11 +104,10 @@ const allItems = [...allApps, ...allServices, ...allExtensions];
           icon: "tabler:device-desktop",
         },
         { id: "mobile", label: "Mobile", icon: "tabler:device-mobile" },
-        { id: "macos", label: "macOS", icon: "simple-icons:apple" },
         {
-          id: "windows",
-          label: "Windows",
-          icon: "simple-icons:windows",
+          id: "open-source",
+          label: "Open Source",
+          icon: "tabler:brand-open-source",
         },
       ]}
       activeFilter="all"
@@ -104,6 +125,7 @@ const allItems = [...allApps, ...allServices, ...allExtensions];
             url={item.url}
             platforms={item.platforms || item.platform || []}
             tags={item.tags}
+            filters={item.filters}
             groups={item.groups}
             icon={item.icon}
             color={item.color}

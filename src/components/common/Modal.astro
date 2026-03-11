@@ -2,18 +2,16 @@
 /**
  * Modal Component
  *
- * DaisyUI modal wrapper using HTML <dialog> element for accessibility.
- * Can be opened using: document.getElementById('id').showModal()
- * Can be closed using: Esc key, clicking backdrop, or form method="dialog"
+ * Accessible modal using a11y-dialog with daisyUI styling.
+ * Can be opened using: data-a11y-dialog-show="id" on any trigger element
+ * Can be closed using: Esc key, clicking backdrop, or data-a11y-dialog-hide
  *
  * @prop {string} id - Required unique ID for the modal
  * @prop {string} class - Additional classes for the modal wrapper
  * @prop {string} boxClass - Classes for modal-box
  * @prop {string} actionClass - Classes for modal-action
- * @prop {boolean} responsive - Add responsive positioning (bottom on mobile, middle on desktop)
  * @prop {boolean} closeOnBackdrop - Allow closing by clicking outside (default: true)
  * @prop {boolean} closeButton - Show close button in top-right corner (default: false)
- * @prop {string} position - Modal position: 'top' | 'middle' | 'bottom' (default: 'middle')
  *
  * Slots:
  * - default: Modal content
@@ -26,10 +24,8 @@ interface Props {
   class?: string;
   boxClass?: string;
   actionClass?: string;
-  responsive?: boolean;
   closeOnBackdrop?: boolean;
   closeButton?: boolean;
-  position?: "top" | "middle" | "bottom";
 }
 
 const {
@@ -37,36 +33,45 @@ const {
   class: className,
   boxClass,
   actionClass,
-  responsive = false,
   closeOnBackdrop = true,
   closeButton = false,
-  position = "middle",
   ...rest
 } = Astro.props;
+
+const titleId = `${id}-title`;
 ---
 
-<dialog
+<div
   id={id}
-  class:list={[
-    "modal",
-    responsive && "modal-bottom sm:modal-middle",
-    !responsive && position === "top" && "modal-top",
-    !responsive && position === "middle" && "modal-middle",
-    !responsive && position === "bottom" && "modal-bottom",
-    className,
-  ]}
+  aria-labelledby={titleId}
+  aria-hidden="true"
+  data-a11y-dialog
+  class:list={["modal-container", className]}
   {...rest}
 >
-  <div class:list={["modal-box", boxClass]}>
+  <div
+    class="modal-overlay"
+    {...closeOnBackdrop ? { "data-a11y-dialog-hide": true } : {}}
+  >
+  </div>
+
+  <div role="document" class:list={["modal-box", boxClass]}>
     {
       closeButton && (
-        <form method="dialog">
-          <button class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2">✕</button>
-        </form>
+        <button
+          type="button"
+          data-a11y-dialog-hide
+          class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2"
+          aria-label="Close dialog"
+        >
+          ✕
+        </button>
       )
     }
 
-    <slot name="title" />
+    <div id={titleId}>
+      <slot name="title" />
+    </div>
 
     <slot />
 
@@ -78,12 +83,56 @@ const {
       )
     }
   </div>
+</div>
 
-  {
-    closeOnBackdrop && (
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
-    )
+<script>
+  import A11yDialog from "a11y-dialog";
+
+  function initDialogs() {
+    document
+      .querySelectorAll<HTMLElement>("[data-a11y-dialog]")
+      .forEach((el) => {
+        if (!el.dataset.a11yDialogInit) {
+          new A11yDialog(el);
+          el.dataset.a11yDialogInit = "true";
+        }
+      });
   }
-</dialog>
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDialogs);
+  } else {
+    initDialogs();
+  }
+
+  document.addEventListener("astro:page-load", initDialogs);
+</script>
+
+<style is:global>
+  .modal-container {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-container[aria-hidden="true"] {
+    display: none;
+  }
+
+  .modal-container .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: oklch(0% 0 0 / 0.4);
+    backdrop-filter: blur(2px);
+  }
+
+  .modal-container .modal-box {
+    position: relative;
+    z-index: 1;
+    scale: 1;
+    opacity: 1;
+  }
+</style>

@@ -1,8 +1,16 @@
 {
   "services": [
     {
+      "name": "Claude",
+      "description": "Advanced AI assistant by Anthropic. My go-to AI for coding, writing, and problem-solving.",
+      "url": "https://claude.ai",
+      "tags": ["ai", "productivity"],
+      "icon": "simple-icons:claude",
+      "color": "#D97757"
+    },
+    {
       "name": "NextDNS",
-      "description": "A reliable and affordable DNS/firewall service for home users.",
+      "description": "A reliable and affordable DNS/firewall service for home users. Essential for blocking ads and trackers network-wide.",
       "url": "https://nextdns.io",
       "tags": ["security", "dns"],
       "icon": "simple-icons:nextdns",
@@ -10,7 +18,7 @@
     },
     {
       "name": "Mullvad VPN",
-      "description": "Secure and private VPN service.",
+      "description": "Secure and private VPN service. Privacy-focused with no logs and anonymous accounts.",
       "url": "https://mullvad.net",
       "tags": ["security", "vpn"],
       "icon": "simple-icons:mullvad"
@@ -24,14 +32,14 @@
     },
     {
       "name": "Have I Been Pwned",
-      "description": "Security monitor for data leaks and passwords.",
+      "description": "Security monitor for data leaks and passwords. Important for checking if your accounts have been compromised.",
       "url": "https://haveibeenpwned.com",
       "tags": ["security", "monitoring"],
       "icon": "tabler:shield-check"
     },
     {
       "name": "DuckDuckGo",
-      "description": "Privacy-focused search engine.",
+      "description": "Privacy-focused search engine. My default search for everyday queries without tracking.",
       "url": "https://duckduckgo.com",
       "tags": ["search", "privacy"],
       "icon": "simple-icons:duckduckgo",
@@ -42,14 +50,16 @@
       "description": "Privacy-friendly search engine.",
       "url": "https://startpage.com",
       "tags": ["search", "privacy"],
-      "icon": "simple-icons:startpage"
+      "icon": "simple-icons:startpage",
+      "color": "#6563FF"
     },
     {
       "name": "Google Search",
       "description": "Popular search engine for all search contexts.",
       "url": "https://google.com",
       "tags": ["search"],
-      "icon": "simple-icons:google"
+      "icon": "simple-icons:google",
+      "color": "#4285F4"
     }
   ]
 }
