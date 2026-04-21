@@ -84,7 +84,7 @@
   {
     "id": "d3ward/mti",
     "name": "Meta Theme Injector",
-    "logo": "puzzle",
+    "logo": "local:puzzle",
     "url": null,
     "githuburl": "https://github.com/d3ward/mti",
     "tags": "Extension,Script",
@@ -93,7 +93,7 @@
   {
     "id": "d3ward/letsplaytime",
     "name": "Let's Play Time",
-    "logo": "gamepad",
+    "logo": "local:letsplay",
     "url": "https://letsplaytime.vercel.app/",
     "githuburl": "https://github.com/d3ward/letsplaytime",
     "tags": "Game",
@@ -120,7 +120,7 @@
   {
     "id": "Famicomrade/Famicomrade.github.io",
     "name": "Banner Depot",
-    "logo": "github",
+    "logo": "simple-icons:github",
     "url": "https://famicomrade.github.io/",
     "githuburl": "https://github.com/Famicomrade/Famicomrade.github.io",
     "tags": "Contributor,Web Project",

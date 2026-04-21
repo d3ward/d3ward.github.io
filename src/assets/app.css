@@ -167,6 +167,10 @@ body {
   line-height: 1.6;
 }
 
+[data-icon^="tabler:"] * {
+  stroke-width: 1.75;
+}
+
 @media (max-width: 40em) {
   .row:not(.keep-width) > [class*="col"],
   .row:not(.keep-width) > div,

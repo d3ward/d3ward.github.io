@@ -20,6 +20,8 @@
       "@utils/*": ["src/utils/*"],
       "@scripts/*": ["src/scripts/*"],
       "@types/*": ["src/types/*", "src/types/index.ts"],
+      "@common": ["src/components/common/index.ts"],
+      "@common/*": ["src/components/common/*"],
     },
   },
 }
