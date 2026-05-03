@@ -1,6 +1,5 @@
 ---
 import Button from "./common/Button.astro";
-// Go to top button component
 ---
 
 <Button
@@ -14,26 +13,28 @@ import Button from "./common/Button.astro";
 />
 
 <script>
-  const goToTopBtn = document.getElementById("go-to-top");
+  import { withLifecycle } from "@scripts/lifecycle";
 
-  if (goToTopBtn) {
-    // Show/hide button based on scroll position
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        goToTopBtn.style.opacity = "1";
-        goToTopBtn.style.pointerEvents = "auto";
-      } else {
-        goToTopBtn.style.opacity = "0";
-        goToTopBtn.style.pointerEvents = "none";
-      }
-    });
+  withLifecycle(() => {
+    const btn = document.getElementById("go-to-top") as HTMLElement | null;
+    if (!btn) return;
 
-    // Scroll to top on click
-    goToTopBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  }
+    function handleScroll() {
+      const past = window.scrollY > 300;
+      btn!.style.opacity = past ? "1" : "0";
+      btn!.style.pointerEvents = past ? "auto" : "none";
+    }
+
+    function handleClick() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    btn.addEventListener("click", handleClick);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      btn!.removeEventListener("click", handleClick);
+    };
+  });
 </script>

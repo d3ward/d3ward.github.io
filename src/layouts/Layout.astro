@@ -95,14 +95,12 @@ const metadata = { ...defaultSEO, ...seo };
     <SupportDialog />
 
     <script>
+      import { withLifecycle } from "@scripts/lifecycle";
       import { initAOS } from "@scripts/aos";
+      import { initTheme } from "@scripts/theme";
 
-      // Initialize AOS when DOM is ready
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initAOS);
-      } else {
-        initAOS();
-      }
+      withLifecycle(initTheme);
+      withLifecycle(initAOS);
     </script>
   </body>
 </html>

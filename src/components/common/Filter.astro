@@ -49,9 +49,8 @@ const sizeClass = size
 </div>
 
 <script>
-  import Shuffle from "shufflejs";
-
-  let shuffleInstances: Shuffle[] = [];
+  import { withLifecycle } from "@scripts/lifecycle";
+  import { initEngine, destroyEngine, applyFilter } from "@scripts/filter-engine";
 
   function updateButtonStyles(
     buttons: NodeListOf<Element>,
@@ -65,73 +64,24 @@ const sizeClass = size
     });
   }
 
-  function applyFilter(filterValue: string) {
-    shuffleInstances.forEach((instance) => {
-      if (filterValue === "all") {
-        instance.filter(Shuffle.ALL_ITEMS);
-      } else {
-        instance.filter((element: Element) => {
-          const groups = element.getAttribute("data-groups") || "";
-          const filters = element.getAttribute("data-filters") || "";
-          const groupsArray = groups.split(/[\s,]+/);
-          const filtersArray = filters.split(/[\s,]+/);
-          return (
-            groupsArray.includes(filterValue) ||
-            filtersArray.includes(filterValue)
-          );
-        });
-      }
-    });
-  }
+  withLifecycle(() => {
+    initEngine();
 
-  function cleanup() {
-    shuffleInstances.forEach((instance) => instance.destroy());
-    shuffleInstances = [];
-  }
+    const buttons = document.querySelectorAll("[data-filter]");
+    if (buttons.length === 0) return destroyEngine;
 
-  function init() {
-    cleanup();
-
-    const filterButtons = document.querySelectorAll("[data-filter]");
-    const gridContainers = document.querySelectorAll(".grid");
-
-    if (filterButtons.length === 0 || gridContainers.length === 0) return;
-
-    gridContainers.forEach((container) => {
-      const items = container.querySelectorAll("[data-groups], [data-filters]");
-      if (items.length === 0) return;
-
-      const instance = new Shuffle(container as HTMLElement, {
-        itemSelector: "[data-groups], [data-filters]",
-        delimiter: ",",
-        speed: 250,
-        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-      });
-
-      shuffleInstances.push(instance);
-    });
-
-    if (shuffleInstances.length === 0) return;
-
-    filterButtons.forEach((button) => {
+    buttons.forEach((button) => {
       button.addEventListener("click", (e) => {
         e.preventDefault();
-        const filterValue =
+        const value =
           (e.currentTarget as HTMLElement).getAttribute("data-filter") || "all";
-        updateButtonStyles(filterButtons, filterValue);
-        applyFilter(filterValue);
+        updateButtonStyles(buttons, value);
+        applyFilter(value);
       });
     });
-  }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
-
-  document.addEventListener("astro:page-load", init);
-  document.addEventListener("astro:before-preparation", cleanup);
+    return destroyEngine;
+  });
 </script>
 
 <style>

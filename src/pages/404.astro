@@ -1,23 +1,194 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Button from "@components/common/Button.astro";
+import { Icon } from "astro-icy/components";
 ---
 
 <Layout
   seo={{
-    title: "404 - Page Not Found",
-    description: "The page you're looking for doesn't exist.",
+    title: "404 - Lost in the Icy Void",
+    description:
+      "Looks like this route drifted off the map. Let's get you back to the good parts of d3ward's portfolio.",
     url: "https://d3ward.github.io/404",
   }}
 >
-  <main class="flex min-h-screen items-center justify-center">
-    <div class="px-4 text-center">
-      <h1 class="text-primary mb-4 text-9xl font-bold">404</h1>
-      <h2 class="mb-4 text-3xl font-bold">Page Not Found</h2>
-      <p class="mb-8 text-lg opacity-70">
-        The page you're looking for doesn't exist or has been moved.
-      </p>
-      <Button href="/" size="lg" icon="arrow-left"> Back to Home </Button>
+  <main
+    class="relative overflow-hidden px-4"
+    style="height: calc(100dvh - 6.5rem); margin-top: 6.5rem;"
+  >
+    <!-- Repeating tech pattern background (replaces waves) -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+    >
+      <div class="pattern-grid absolute inset-0 opacity-55"></div>
+      <div class="pattern-fade absolute inset-0"></div>
     </div>
+
+    <section
+      class="relative mx-auto flex h-full w-full max-w-5xl items-center justify-center"
+    >
+      <div
+        class="card bg-base-100/88 border-base-300/60 w-full max-w-3xl rounded-3xl border shadow-2xl backdrop-blur"
+      >
+        <div class="card-body p-6 md:p-10">
+          <div class="mb-4 flex items-center justify-center gap-3">
+            <div class="bg-primary/12 text-primary rounded-xl p-2">
+              <Icon name="tabler:satellite-off" class="h-6 w-6" />
+            </div>
+            <p
+              class="text-base-content/70 text-sm font-medium tracking-wide uppercase"
+            >
+              Signal lost
+            </p>
+          </div>
+
+          <div class="text-center">
+            <h1
+              class="from-primary to-secondary mb-2 bg-gradient-to-r bg-clip-text text-7xl font-black tracking-tight text-transparent md:text-8xl"
+            >
+              404
+            </h1>
+
+            <h2 class="mb-3 text-2xl font-bold md:text-4xl">
+              You've reached the edge of this portfolio.
+            </h2>
+
+            <p
+              class="text-base-content/70 mx-auto mb-6 max-w-2xl text-sm md:text-base"
+            >
+              The page you're looking for might have moved, been renamed, or
+              never existed. Use the navbar to jump back to a valid section.
+            </p>
+          </div>
+
+          <!-- Doodle area + arrow links (no button block) -->
+          <div
+            class="relative mx-auto mt-2 h-[290px] w-full max-w-2xl md:h-[320px]"
+          >
+            <svg
+              viewBox="0 0 900 360"
+              class="absolute inset-0 h-full w-full"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <defs>
+                <marker
+                  id="arrowhead"
+                  markerWidth="10"
+                  markerHeight="10"
+                  refX="8"
+                  refY="3"
+                  orient="auto"
+                >
+                  <path d="M0,0 L0,6 L9,3 z" class="fill-primary"></path>
+                </marker>
+              </defs>
+
+              <!-- Doodle 404 text -->
+              <text
+                x="450"
+                y="195"
+                text-anchor="middle"
+                class="fill-base-content/75"
+                style="font-size: 120px; font-weight: 900; letter-spacing: 4px;"
+              >
+                404
+              </text>
+
+              <!-- Hand-drawn arrows -->
+              <path
+                d="M380 180 C290 120, 210 90, 120 85"
+                class="stroke-primary/70"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-dasharray="10 10"
+                marker-end="url(#arrowhead)"></path>
+              <path
+                d="M520 180 C620 120, 700 95, 795 88"
+                class="stroke-secondary/70"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-dasharray="10 10"
+                marker-end="url(#arrowhead)"></path>
+              <path
+                d="M450 215 C450 255, 450 285, 450 325"
+                class="stroke-accent/75"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-dasharray="10 10"
+                marker-end="url(#arrowhead)"></path>
+            </svg>
+
+            <!-- Linked labels -->
+            <a
+              href="/"
+              class="link link-primary absolute top-10 left-4 text-sm font-semibold md:left-8 md:text-base"
+            >
+              ← Home
+            </a>
+            <a
+              href="/#projects"
+              class="link link-secondary absolute top-10 right-4 text-sm font-semibold md:right-8 md:text-base"
+            >
+              Projects →
+            </a>
+            <a
+              href="https://github.com/d3ward"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link link-accent absolute bottom-1 left-1/2 -translate-x-1/2 text-sm font-semibold md:text-base"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
+
+<style>
+  .pattern-grid {
+    background-image:
+      "404", "d3", "astro", "ts", "css", "js", "tailwind", "html";
+    background-size: 220px 80px;
+    background-repeat: repeat;
+  }
+
+  .pattern-grid::before {
+    content: "404   d3   astro   ts   css   js   tailwind   html   404   d3   astro   ts   css   js   tailwind   html   ";
+    position: absolute;
+    inset: 0;
+    display: block;
+    white-space: pre-wrap;
+    word-spacing: 1rem;
+    line-height: 2.8;
+    padding: 1.5rem 1rem;
+    font-size: clamp(0.75rem, 1.2vw, 1rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: color-mix(in oklab, oklch(var(--p)) 22%, oklch(var(--bc)) 14%);
+  }
+
+  .pattern-fade {
+    background:
+      radial-gradient(
+        circle at 50% 50%,
+        transparent 12%,
+        oklch(var(--b1) / 0.62) 70%
+      ),
+      linear-gradient(
+        to bottom,
+        oklch(var(--b1) / 0.3),
+        oklch(var(--b1) / 0.82)
+      );
+  }
+
+  @media (max-width: 768px) {
+    main[style] {
+      height: calc(100dvh - 6rem) !important;
+      margin-top: 6rem !important;
+    }
+  }
+</style>

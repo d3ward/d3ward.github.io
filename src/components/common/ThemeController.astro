@@ -1,47 +1,6 @@
 ---
-/**
- * ThemeController.astro
- * A theme switcher using daisyUI's theme-controller.
- * Supports swap/toggle UI and persists theme in localStorage.
- *
- * Props:
- * - themes: Array of theme names (default: ['light', 'dark'])
- * - defaultTheme: Default theme name (default: 'light')
- * - label: Optional label for accessibility
- */
-const { themes = ["light", "dark"], defaultTheme = "light", label = "Theme" } = Astro.props;
-const themeIds = themes.map((t) => t.replace(/\s+/g, "-").toLowerCase());
+const { themes = ["light", "dark"], label = "Theme" } = Astro.props as { themes?: string[]; label?: string };
 ---
-
-<script type="module" is:inline>
-  // On mount, set theme from localStorage or default
-  document.addEventListener("DOMContentLoaded", () => {
-    const saved = localStorage.getItem("theme");
-    const html = document.documentElement;
-    if (saved && themeIds.includes(saved)) {
-      html.setAttribute("data-theme", saved);
-      setRadio(saved);
-    } else {
-      html.setAttribute("data-theme", defaultTheme);
-      setRadio(defaultTheme);
-    }
-    // Listen for theme changes
-    document.querySelectorAll(".theme-controller").forEach((el) => {
-      el.addEventListener("change", (e) => {
-        let value = e.target.value;
-        html.setAttribute("data-theme", value);
-        localStorage.setItem("theme", value);
-        setRadio(value);
-      });
-    });
-    function setRadio(theme) {
-      document.querySelectorAll(".theme-controller").forEach((el) => {
-        if (el.value === theme) el.checked = true;
-        else el.checked = false;
-      });
-    }
-  });
-</script>
 
 <div class="flex items-center gap-2">
   {
@@ -52,7 +11,7 @@ const themeIds = themes.map((t) => t.replace(/\s+/g, "-").toLowerCase());
           type="checkbox"
           class="theme-controller"
           value={themes[1]}
-          checked={Astro.site?.dataTheme === themes[1] ? true : undefined}
+          checked={undefined}
           aria-label={label}
         />
         {/* Sun icon */}
@@ -75,7 +34,7 @@ const themeIds = themes.map((t) => t.replace(/\s+/g, "-").toLowerCase());
     ) : (
       // Radio group for multiple themes
       <fieldset class="flex gap-2" aria-label={label}>
-        {themes.map((theme, idx) => (
+        {themes.map((theme: string, idx: number) => (
           <label class="flex cursor-pointer items-center gap-1">
             <input
               type="radio"

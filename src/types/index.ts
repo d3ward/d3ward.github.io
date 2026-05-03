@@ -66,5 +66,17 @@ export interface Service {
   icon?: string;
 }
 
+export interface EsaeItem {
+  name: string;
+  description: string;
+  url?: string;
+  icon?: string;
+  color?: string;
+  tags: string[];
+  platforms: string[];
+  filters: string[];
+  groups: "app" | "service" | "extension";
+}
+
 // Re-export SEO types
 export * from "./seo";

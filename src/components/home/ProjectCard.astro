@@ -1,33 +1,46 @@
 ---
-import type { Project, GitHubRepo } from "@/types";
-import { Card, Button, Badge, BadgeGroup } from "../common";
-import Icon from "../common/Icon.astro";
+import Card from "@common/Card.astro";
+import Button from "@common/Button.astro";
+import Badge from "@common/Badge.astro";
+import BadgeGroup from "@common/BadgeGroup.astro";
+import Icon from "@common/Icon.astro";
 
 interface Props {
-  project: Project;
-  githubData?: GitHubRepo;
+  name: string;
+  url?: string | null;
+  logo?: string;
+  tags?: string | string[];
+  groups?: string;
+  githubData?: {
+    url?: string;
+    description?: string | null;
+    stars?: number;
+    forks?: number;
+  };
 }
 
-const { project, githubData } = Astro.props;
-const tags = project.tags.split(",").map((t) => t.trim());
+const { name, url, logo, tags: rawTags, groups = "", githubData } = Astro.props;
+
+const tags = Array.isArray(rawTags)
+  ? rawTags
+  : (rawTags ?? "").split(",").map((t) => t.trim()).filter(Boolean);
+
+const resolvedUrl = url ?? githubData?.url;
+const resolvedDescription = githubData?.description || undefined;
 ---
 
-<div data-groups={project.groups}>
+<div data-groups={groups}>
   <Card
     bordered={true}
     class="bg-base-100 border-base-300 _aos-bottom relative border-2 transition-all"
     bodyClass="gap-4"
     actionsClass="justify-center"
   >
-    <!-- Floating Badges -->
     {
       tags.length > 0 && (
         <BadgeGroup>
           {tags.map((tag) => (
-            <Badge
-              variant={tag === "Archived" ? "warning" : "primary"}
-              size="md"
-            >
+            <Badge variant={tag === "Archived" ? "warning" : "primary"} size="md">
               {tag}
             </Badge>
           ))}
@@ -35,29 +48,17 @@ const tags = project.tags.split(",").map((t) => t.trim());
       )
     }
 
-    <!-- Logo -->
-
     <figure class="px-10 pt-4">
       <div class="avatar">
-        <div
-          class="flex w-24 items-center justify-center rounded-xl bg-white p-4 shadow-md"
-        >
-          <Icon name={project.logo} size="3xl" />
+        <div class="flex w-24 items-center justify-center rounded-xl bg-white p-4 shadow-md">
+          <Icon name={logo ?? ""} size="3xl" />
         </div>
       </div>
     </figure>
-
-    <!-- Title -->
-    {(<h2 class="justify-center text-center">{project.name}</h2>)}
-
-    <!-- Description -->
-    {
-      githubData?.description && (
-        <p class="text-center opacity-70">{githubData.description}</p>
-      )
-    }
-
-    <!-- Stats -->
+    <h2 class="justify-center text-center">{name}</h2>
+    {resolvedDescription && (
+      <p class="text-center opacity-70">{resolvedDescription}</p>
+    )}
     {
       githubData && (
         <div class="flex justify-center gap-4">
@@ -73,14 +74,13 @@ const tags = project.tags.split(",").map((t) => t.trim());
       )
     }
 
-    <!-- Links -->
     <Fragment slot="actions">
       {
-        project.url && (
+        resolvedUrl && (
           <Button
             style="outline"
             color="primary"
-            href={project.url}
+            href={resolvedUrl}
             external={true}
             icon="tabler:external-link"
           >

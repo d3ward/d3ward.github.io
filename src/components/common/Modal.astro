@@ -86,9 +86,10 @@ const titleId = `${id}-title`;
 </div>
 
 <script>
+  import { withLifecycle } from "@scripts/lifecycle";
   import A11yDialog from "a11y-dialog";
 
-  function initDialogs() {
+  withLifecycle(() => {
     document
       .querySelectorAll<HTMLElement>("[data-a11y-dialog]")
       .forEach((el) => {
@@ -97,15 +98,7 @@ const titleId = `${id}-title`;
           el.dataset.a11yDialogInit = "true";
         }
       });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initDialogs);
-  } else {
-    initDialogs();
-  }
-
-  document.addEventListener("astro:page-load", initDialogs);
+  });
 </script>
 
 <style is:global>

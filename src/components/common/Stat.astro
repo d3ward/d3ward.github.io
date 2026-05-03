@@ -39,7 +39,7 @@ interface Props {
   desc?: string;
   icon?: string;
   iconColor?: string;
-  iconSize?: number;
+  iconSize?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
   figure?: any;
   actions?: any;
   class?: string;
@@ -64,7 +64,7 @@ const {
   desc,
   icon,
   iconColor = "text-secondary",
-  iconSize = 32,
+  iconSize = "lg",
   figure,
   actions,
   class: className,
@@ -82,7 +82,7 @@ const {
   href,
   target,
   ...rest
-} = Astro.props;
+} = Astro.props as Props;
 
 // Tilt attributes
 const tiltAttrs = tilt

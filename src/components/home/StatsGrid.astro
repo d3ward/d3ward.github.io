@@ -1,11 +1,9 @@
 ---
-import type { GitHubStats } from "@/types";
-import githubStats from "@data/github-stats.json";
 import GSContainer from "@components/gs/GSContainer.astro";
 import GSStat from "@components/gs/GSStat.astro";
+import { getGitHubStats } from "@utils/data";
 
-const stats = githubStats as GitHubStats;
-const { d3ward } = stats;
+const { d3ward } = getGitHubStats();
 ---
 
 <div id="home" class="w-full px-4">

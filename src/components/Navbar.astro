@@ -1,14 +1,9 @@
 ---
 import Button from "./common/Button.astro";
 import Icon from "./common/Icon.astro";
+import { navItems } from "@data/nav";
 
 const currentPath = Astro.url.pathname;
-
-const navItems = [
-  { href: "/", label: "Home", icon: "tabler:home" },
-  { href: "/about", label: "About", icon: "tabler:info-circle" },
-  { href: "/esae", label: "ESAE", icon: "tabler:rocket" },
-];
 ---
 
 <!-- ============ TOP NAVBAR ============ -->
@@ -17,8 +12,8 @@ const navItems = [
     <div class="navbar bg-base-100 h-14 min-h-0 rounded-2xl p-1.5">
       <!-- Logo -->
       <div class="navbar-start">
-        <a href="/" class="btn btn-ghost btn-square text-primary gap-2 text-xl">
-          <Icon name="local:d3" />
+        <a href="/" class="btn btn-ghost btn-square text-primary gap-2 text-xl" aria-label="Home">
+          <Icon name="local:d3" class="text-primary" />
         </a>
       </div>
 
@@ -73,7 +68,8 @@ const navItems = [
         <label class="swap swap-rotate btn btn-ghost btn-square hidden lg:grid">
           <input
             type="checkbox"
-            class="theme-checkbox"
+            class="theme-controller"
+            value="dark"
             aria-label="Toggle theme"
           />
           <svg
@@ -135,6 +131,7 @@ const navItems = [
   class="mobile-drawer fixed top-22 right-0 left-0 z-50 mx-4 lg:hidden"
   id="mobile-drawer-card"
   aria-hidden="true"
+  inert
 >
   <div
     class="bg-base-100/95 border-base-300/50 mx-auto max-w-5xl rounded-2xl border p-2 shadow-lg backdrop-blur"
@@ -183,7 +180,8 @@ const navItems = [
       <label class="swap swap-rotate btn btn-ghost btn-sm btn-square">
         <input
           type="checkbox"
-          class="theme-checkbox"
+          class="theme-controller"
+          value="dark"
           aria-label="Toggle theme"
         />
         <svg
@@ -226,80 +224,10 @@ const navItems = [
 </div>
 
 <script>
-  // Scroll detection for header
-  const header = document.getElementById("main-header");
+  import { withLifecycle } from "@scripts/lifecycle";
+  import { initNavbar } from "@scripts/navbar";
 
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-    if (currentScroll > 50) {
-      header?.classList.add("scrolled");
-    } else {
-      header?.classList.remove("scrolled");
-    }
-  });
-
-  // Theme toggle — sync all .theme-checkbox inputs
-  const html = document.documentElement;
-  const savedTheme = localStorage.getItem("theme") || "light";
-  html.setAttribute("data-theme", savedTheme);
-
-  const allThemeCheckboxes =
-    document.querySelectorAll<HTMLInputElement>(".theme-checkbox");
-  allThemeCheckboxes.forEach((cb) => {
-    cb.checked = savedTheme === "dark";
-    cb.addEventListener("change", () => {
-      const newTheme = cb.checked ? "dark" : "light";
-      html.setAttribute("data-theme", newTheme);
-      localStorage.setItem("theme", newTheme);
-      allThemeCheckboxes.forEach((other) => {
-        if (other !== cb) other.checked = cb.checked;
-      });
-    });
-  });
-
-  // Mobile drawer card toggle
-  const menuToggle = document.getElementById("mobile-menu-toggle");
-  const drawerCard = document.getElementById("mobile-drawer-card");
-  const menuIconSwap = document.getElementById("menu-icon-swap");
-
-  function closeDrawerCard() {
-    drawerCard?.setAttribute("aria-hidden", "true");
-    menuToggle?.setAttribute("aria-expanded", "false");
-    menuIconSwap?.classList.remove("swap-active");
-  }
-
-  function openDrawerCard() {
-    drawerCard?.setAttribute("aria-hidden", "false");
-    menuToggle?.setAttribute("aria-expanded", "true");
-    menuIconSwap?.classList.add("swap-active");
-  }
-
-  menuToggle?.addEventListener("click", () => {
-    const isHidden = drawerCard?.getAttribute("aria-hidden") === "true";
-    if (isHidden) {
-      openDrawerCard();
-    } else {
-      closeDrawerCard();
-    }
-  });
-
-  // Close when clicking outside
-  document.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement;
-    const drawer = document.getElementById("mobile-drawer-card");
-    const toggle = document.getElementById("mobile-menu-toggle");
-    if (
-      drawer &&
-      toggle &&
-      !drawer.contains(target) &&
-      !toggle.contains(target)
-    ) {
-      closeDrawerCard();
-    }
-  });
-
-  // Close on navigation
-  document.addEventListener("astro:before-preparation", closeDrawerCard);
+  withLifecycle(initNavbar);
 </script>
 
 <style is:global>

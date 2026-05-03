@@ -1,17 +1,20 @@
 ---
-import { Card, Button, Badge, BadgeGroup } from "../common";
-import Icon from "../common/Icon.astro";
+import Card from "@common/Card.astro";
+import Button from "@common/Button.astro";
+import Badge from "@common/Badge.astro";
+import BadgeGroup from "@common/BadgeGroup.astro";
+import Icon from "@common/Icon.astro";
 
 interface Props {
   name: string;
   description?: string;
   url?: string;
   tags?: string[];
-  filters?: string[];
-  platforms?: string[];
   groups?: string;
+  filters?: string[];
   icon?: string;
-  color?: string;
+  iconColor?: string;
+  platforms?: string[];
 }
 
 const {
@@ -19,11 +22,11 @@ const {
   description,
   url,
   tags = [],
-  filters = [],
-  platforms = [],
   groups = "",
+  filters = [],
   icon = "tabler:app-window",
-  color,
+  iconColor,
+  platforms = [],
 } = Astro.props;
 ---
 
@@ -33,7 +36,6 @@ const {
     class="bg-base-100 border-base-300 _aos-bottom relative h-full border-2 transition-shadow hover:shadow-lg"
     bodyClass="gap-4"
   >
-    <!-- Floating Badges -->
     {
       tags.length > 0 && (
         <BadgeGroup>
@@ -46,16 +48,13 @@ const {
       )
     }
 
-    <!-- Icon and Title -->
     <div class="flex items-start gap-3">
       <div class="shrink-0">
-        <div
-          class="bg-base-200 flex h-12 w-12 items-center justify-center rounded-lg"
-        >
+        <div class="bg-base-200 flex h-12 w-12 items-center justify-center rounded-lg">
           <Icon
             name={icon}
             class="h-6 w-6"
-            style={color ? `color: ${color}` : undefined}
+            style={iconColor ? `color: ${iconColor}` : undefined}
           />
         </div>
       </div>
@@ -65,7 +64,7 @@ const {
           platforms.length > 0 && (
             <div class="mt-1 flex flex-wrap gap-1">
               {platforms.map((platform) => (
-                <span class="text-base-content/60 bg-base-200 rounded px-2 py-0.5 text-xs">
+                <span class="text-base-content/80 bg-base-200 rounded px-2 py-0.5 text-xs">
                   {platform}
                 </span>
               ))}
@@ -74,15 +73,8 @@ const {
         }
       </div>
     </div>
+    {description && <p class="text-base-content/80 line-clamp-3 text-sm">{description}</p>}
 
-    <!-- Description -->
-    {
-      description && (
-        <p class="text-base-content/70 line-clamp-3 text-sm">{description}</p>
-      )
-    }
-
-    <!-- Actions -->
     {
       url && (
         <div slot="actions" class="mt-auto">

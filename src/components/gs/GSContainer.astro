@@ -13,57 +13,54 @@ const { class: className } = Astro.props;
 </div>
 
 <script>
-  // Animate counters on page load
-  document.addEventListener("DOMContentLoaded", () => {
-    const counters = document.querySelectorAll(".count[data-target]");
+  import { withLifecycle } from "@scripts/lifecycle";
 
-    counters.forEach((counter) => {
+  withLifecycle(() => {
+    const timers: ReturnType<typeof setInterval>[] = [];
+
+    // Animate counters
+    document.querySelectorAll(".count[data-target]").forEach((counter) => {
       const target = parseInt(counter.getAttribute("data-target") || "0");
-      const duration = 2000;
-      let currentNumber = 0;
-      const interval = duration / target;
+      if (!target) return;
+      let current = 0;
       const timer = setInterval(() => {
-        currentNumber++;
-        counter.textContent = currentNumber.toString();
-        if (currentNumber === target) {
-          clearInterval(timer);
-        }
-      }, interval);
+        current++;
+        counter.textContent = current.toString();
+        if (current === target) clearInterval(timer);
+      }, 2000 / target);
+      timers.push(timer);
     });
 
-    // Logo animation - 300ms delay so the stroke draw is visible
+    // Logo animation — 300ms delay so the stroke draw is visible
     const logo = document.getElementById("d3Logo");
-    if (logo) {
-      setTimeout(() => {
-        logo.classList.add("startA");
-      }, 300);
-    }
+    const logoTimeout = logo
+      ? setTimeout(() => logo.classList.add("startA"), 300)
+      : null;
 
-    // Ripple effect
-    const cards = document.querySelectorAll(".grid-stats > *");
-    const ELEMENTS_SPAN: HTMLElement[] = [];
-
-    cards.forEach((element, index) => {
-      if (!ELEMENTS_SPAN[index]) {
-        ELEMENTS_SPAN[index] = element.querySelector(".gs-ripple") as HTMLElement;
-      }
+    // Ripple effect — listeners are on replaced DOM nodes, no manual cleanup needed
+    document.querySelectorAll(".grid-stats > *").forEach((element) => {
+      const ripple = element.querySelector(".gs-ripple") as HTMLElement | null;
+      if (!ripple) return;
 
       function setRipplePosition(e: MouseEvent) {
         const rect = (element as HTMLElement).getBoundingClientRect();
-        ELEMENTS_SPAN[index].style.left = e.clientX - rect.left + "px";
-        ELEMENTS_SPAN[index].style.top = e.clientY - rect.top + "px";
+        ripple!.style.left = e.clientX - rect.left + "px";
+        ripple!.style.top = e.clientY - rect.top + "px";
       }
 
-      element.addEventListener("mouseover", (e: MouseEvent) => {
-        if (element.classList.contains("gs-logo")) {
-          element.classList.add("transition-2");
-        }
+      element.addEventListener("mouseover", ((e: MouseEvent) => {
+        if (element.classList.contains("gs-logo")) element.classList.add("transition-2");
         setRipplePosition(e);
-      });
+      }) as EventListener);
 
-      element.addEventListener("mouseout", (e: MouseEvent) => {
+      element.addEventListener("mouseout", ((e: MouseEvent) => {
         setRipplePosition(e);
-      });
+      }) as EventListener);
     });
+
+    return () => {
+      timers.forEach(clearInterval);
+      if (logoTimeout !== null) clearTimeout(logoTimeout);
+    };
   });
 </script>

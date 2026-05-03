@@ -1,18 +1,21 @@
 ---
 import ProjectCard from "./ProjectCard.astro";
-import type { Project, GitHubStats } from "@/types";
+import { getProjectGridData } from "@utils/data";
 
-import projects from "@data/projects.json";
-import githubStats from "@data/github-stats.json";
-
-const projectsData = projects as Project[];
-const stats = githubStats as GitHubStats;
+const { projects } = getProjectGridData();
 ---
 
-<div class="grid">
+<div class="grid" data-filter-grid>
   {
-    projectsData.map((project) => (
-      <ProjectCard project={project} githubData={stats.d3ward.repos[project.id]} />
+    projects.map((project) => (
+      <ProjectCard
+        name={project.name}
+        url={project.url}
+        logo={project.logo}
+        tags={project.tags}
+        groups={project.groups}
+        githubData={project.githubData}
+      />
     ))
   }
 </div>
