@@ -83,7 +83,7 @@
   default: true;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: oklch(100% 0 0);
+  --color-base-100: oklch(98.5% 0 0);
   --color-base-200: oklch(97.466% 0.011 259.822);
   --color-base-300: oklch(93.268% 0.016 262.751);
   --color-base-content: oklch(41.886% 0.053 255.824);
@@ -169,6 +169,42 @@ body {
 
 [data-icon^="tabler:"] * {
   stroke-width: 1.75;
+}
+
+/* ============================================
+   BUTTON INTERACTION POLISH
+   ============================================ */
+.btn {
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn:active:not(.btn-disabled):not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* daisyUI's .btn-soft sets `color` to the button's own color, but
+   .btn-active never resets it back to --btn-fg (only :hover/:active
+   pseudo-states do), leaving soft+active buttons with unreadable
+   same-color text on a solid background. */
+.btn-soft.btn-active {
+  color: var(--btn-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition:
+      background-color 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .btn:active:not(.btn-disabled):not(:disabled) {
+    transform: none;
+  }
 }
 
 @media (max-width: 40em) {

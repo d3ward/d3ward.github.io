@@ -63,17 +63,18 @@ const allItems = getEsaeItems();
     <div class="grid gap-6" data-filter-grid>
       {
         allItems.map((item) => (
-          <ItemCard
-            name={item.name}
-            description={item.description}
-            url={item.url}
-            platforms={item.platforms}
-            tags={item.tags}
-            filters={item.filters}
-            groups={item.groups}
-            icon={item.icon}
-            iconColor={item.color}
-          />
+          <div data-groups={item.groups} data-filters={item.filters.join(" ")}>
+            <ItemCard
+              name={item.name}
+              description={item.description}
+              url={item.url}
+              platforms={item.platforms}
+              tags={item.tags}
+              icon={item.icon}
+              iconColor={item.color}
+              type={item.groups}
+            />
+          </div>
         ))
       }
     </div>

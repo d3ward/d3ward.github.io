@@ -4,6 +4,7 @@
       "name": "Claude",
       "description": "Advanced AI assistant by Anthropic. My go-to AI for coding, writing, and problem-solving.",
       "url": "https://claude.ai",
+      "platforms": ["MacOS", "Windows", "iOS", "Android"],
       "tags": ["ai", "productivity"],
       "icon": "simple-icons:claude",
       "color": "#D97757"
@@ -27,6 +28,7 @@
       "name": "Guardian VPN",
       "description": "Secure and private VPN service.",
       "url": "https://guardianapp.com",
+      "platforms": ["MacOS", "iOS"],
       "tags": ["security", "vpn"],
       "icon": "tabler:shield-lock"
     },
@@ -34,6 +36,7 @@
       "name": "Have I Been Pwned",
       "description": "Security monitor for data leaks and passwords. Important for checking if your accounts have been compromised.",
       "url": "https://haveibeenpwned.com",
+      "platforms": ["Web"],
       "tags": ["security", "monitoring"],
       "icon": "tabler:shield-check"
     },
@@ -44,22 +47,6 @@
       "tags": ["search", "privacy"],
       "icon": "simple-icons:duckduckgo",
       "color": "#DE5833"
-    },
-    {
-      "name": "Startpage",
-      "description": "Privacy-friendly search engine.",
-      "url": "https://startpage.com",
-      "tags": ["search", "privacy"],
-      "icon": "simple-icons:startpage",
-      "color": "#6563FF"
-    },
-    {
-      "name": "Google Search",
-      "description": "Popular search engine for all search contexts.",
-      "url": "https://google.com",
-      "tags": ["search"],
-      "icon": "simple-icons:google",
-      "color": "#4285F4"
     }
   ]
 }

@@ -6,7 +6,7 @@ export { default as Card } from "./Card.astro";
 export { default as Dock } from "./Dock.astro";
 export { default as Drawer } from "./Drawer.astro";
 export { default as Filter } from "./Filter.astro";
-export { default as Icon } from "./Icon.astro";
 export { default as Modal } from "./Modal.astro";
 export { default as Stat } from "./Stat.astro";
 export { default as ThemeController } from "./ThemeController.astro";
+export { Icon } from "astro-icy/components";

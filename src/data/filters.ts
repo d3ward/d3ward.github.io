@@ -43,6 +43,22 @@ export const ESAE_FILTER_IDS: readonly string[] = _esaeFilters
 export type ProjectGroupId = Exclude<(typeof _projectFilters)[number]["id"], "all">;
 export type EsaeGroupId = Exclude<(typeof _esaeFilters)[number]["id"], "all">;
 
+const PLATFORM_TO_FILTER: Record<string, string> = {
+  macos:   "desktop",
+  windows: "desktop",
+  android: "mobile",
+  ios:     "mobile",
+};
+
+export function platformsToFilters(platforms: string[]): string[] {
+  const result = new Set<string>();
+  for (const p of platforms) {
+    const filter = PLATFORM_TO_FILTER[p.toLowerCase()];
+    if (filter) result.add(filter);
+  }
+  return [...result];
+}
+
 export function assertValidGroups(
   groups: string | string[],
   validIds: readonly string[],

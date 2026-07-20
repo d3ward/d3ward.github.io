@@ -4,15 +4,49 @@ import GSStat from "@components/gs/GSStat.astro";
 import { getGitHubStats } from "@utils/data";
 
 const { d3ward } = getGitHubStats();
+
+const TILE_CONFIG = {
+  logo:      { icon: undefined,                    colorClass: "bg-white text-blue-500 border-4 border-blue-500 aspect-square" },
+  gh:        { icon: "tabler:brand-github",        colorClass: "bg-white text-blue-500"                                        },
+  stars:     { icon: "tabler:star",                colorClass: "bg-blue-50 text-blue-700 aspect-square"                        },
+  followers: { icon: "tabler:users-group",         colorClass: "bg-blue-50 text-blue-700"                                      },
+  commits:   { icon: "tabler:git-commit",          colorClass: "bg-blue-50 text-blue-700 aspect-square"                        },
+  issues:    { icon: "tabler:circle-dot",          colorClass: "bg-blue-500 text-white aspect-square"                          },
+  pr:        { icon: "tabler:git-pull-request",    colorClass: "bg-blue-600 text-white"                                        },
+  repos:     { icon: "tabler:book-2",              colorClass: "bg-blue-600 text-white"                                        },
+} as const;
 ---
+
+<style is:global>
+  /* Light-bg tiles become dark-bg in dark mode to avoid white-text-on-light-bg */
+  [data-theme="dark"] .gs-logo {
+    background-color: var(--color-blue-900);
+    color: var(--color-blue-300);
+    border-color: var(--color-blue-300);
+  }
+
+  [data-theme="dark"] .gs-gh {
+    background-color: var(--color-blue-900);
+    color: var(--color-blue-300);
+  }
+
+  [data-theme="dark"] .gs-stars,
+  [data-theme="dark"] .gs-followers,
+  [data-theme="dark"] .gs-commits {
+    background-color: var(--color-blue-800);
+    color: var(--color-blue-100);
+  }
+</style>
 
 <div id="home" class="w-full px-4">
   <GSContainer>
     <!-- Logo -->
-    <GSStat area="logo" value="" label="" animation="bottom">
-      <div
-        class="logo-wrapper flex h-full w-full items-center justify-center p-8"
-      >
+    <GSStat
+      area="logo"
+      colorClass={TILE_CONFIG.logo.colorClass}
+      animation="bottom"
+    >
+      <div class="logo-wrapper flex h-full w-full items-center justify-center p-8">
         <svg
           id="d3Logo"
           xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +64,8 @@ const { d3ward } = getGitHubStats();
     <!-- Stars -->
     <GSStat
       area="stars"
+      icon={TILE_CONFIG.stars.icon}
+      colorClass={TILE_CONFIG.stars.colorClass}
       value={d3ward.stars_count}
       label="Stars"
       animation="left"
@@ -39,6 +75,8 @@ const { d3ward } = getGitHubStats();
     <!-- Followers -->
     <GSStat
       area="followers"
+      icon={TILE_CONFIG.followers.icon}
+      colorClass={TILE_CONFIG.followers.colorClass}
       value={d3ward.profile.followers}
       label="Followers"
       animation="top"
@@ -47,6 +85,8 @@ const { d3ward } = getGitHubStats();
     <!-- Commits -->
     <GSStat
       area="commits"
+      icon={TILE_CONFIG.commits.icon}
+      colorClass={TILE_CONFIG.commits.colorClass}
       value={d3ward.commits}
       label="Commits"
       animation="right"
@@ -56,6 +96,8 @@ const { d3ward } = getGitHubStats();
     <!-- Issues -->
     <GSStat
       area="issues"
+      icon={TILE_CONFIG.issues.icon}
+      colorClass={TILE_CONFIG.issues.colorClass}
       value={d3ward.issues_count}
       label="Issues"
       animation="top"
@@ -64,6 +106,8 @@ const { d3ward } = getGitHubStats();
     <!-- GitHub Link -->
     <GSStat
       area="gh"
+      icon={TILE_CONFIG.gh.icon}
+      colorClass={TILE_CONFIG.gh.colorClass}
       label="GitHub Profile"
       href="https://github.com/d3ward"
       animation="left"
@@ -72,6 +116,8 @@ const { d3ward } = getGitHubStats();
     <!-- Pull Requests -->
     <GSStat
       area="pr"
+      icon={TILE_CONFIG.pr.icon}
+      colorClass={TILE_CONFIG.pr.colorClass}
       value={d3ward.pulls_count}
       label="Pull Requests"
       animation="top"
@@ -80,6 +126,8 @@ const { d3ward } = getGitHubStats();
     <!-- Repositories -->
     <GSStat
       area="repos"
+      icon={TILE_CONFIG.repos.icon}
+      colorClass={TILE_CONFIG.repos.colorClass}
       value={d3ward.profile.repos}
       label="Repositories"
       animation="right"

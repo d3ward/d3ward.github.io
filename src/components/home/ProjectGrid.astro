@@ -8,14 +8,15 @@ const { projects } = getProjectGridData();
 <div class="grid" data-filter-grid>
   {
     projects.map((project) => (
-      <ProjectCard
-        name={project.name}
-        url={project.url}
-        logo={project.logo}
-        tags={project.tags}
-        groups={project.groups}
-        githubData={project.githubData}
-      />
+      <div data-groups={project.groups}>
+        <ProjectCard
+          name={project.name}
+          url={project.url}
+          logo={project.logo}
+          tags={project.tags}
+          githubData={project.githubData}
+        />
+      </div>
     ))
   }
 </div>

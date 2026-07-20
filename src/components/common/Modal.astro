@@ -109,17 +109,26 @@ const titleId = `${id}-title`;
     z-index: 999;
     align-items: center;
     justify-content: center;
+    opacity: 1;
+    transition: opacity 200ms ease, display 200ms;
+    transition-behavior: allow-discrete;
   }
 
   .modal-container[aria-hidden="true"] {
     display: none;
+    opacity: 0;
+  }
+
+  @starting-style {
+    .modal-container[aria-hidden="false"] {
+      opacity: 0;
+    }
   }
 
   .modal-container .modal-overlay {
     position: fixed;
     inset: 0;
-    background-color: oklch(0% 0 0 / 0.4);
-    backdrop-filter: blur(2px);
+    background-color: oklch(0% 0 0 / 0.5);
   }
 
   .modal-container .modal-box {
@@ -127,5 +136,18 @@ const titleId = `${id}-title`;
     z-index: 1;
     scale: 1;
     opacity: 1;
+    transition: scale 200ms ease, opacity 200ms ease;
+  }
+
+  .modal-container[aria-hidden="true"] .modal-box {
+    scale: 0.96;
+    opacity: 0;
+  }
+
+  @starting-style {
+    .modal-container[aria-hidden="false"] .modal-box {
+      scale: 0.96;
+      opacity: 0;
+    }
   }
 </style>

@@ -1,6 +1,6 @@
 ---
 import Button from "./common/Button.astro";
-import Icon from "./common/Icon.astro";
+import { Icon } from "astro-icy/components";
 import { navItems } from "@data/nav";
 
 const currentPath = Astro.url.pathname;
@@ -12,7 +12,11 @@ const currentPath = Astro.url.pathname;
     <div class="navbar bg-base-100 h-14 min-h-0 rounded-2xl p-1.5">
       <!-- Logo -->
       <div class="navbar-start">
-        <a href="/" class="btn btn-ghost btn-square text-primary gap-2 text-xl" aria-label="Home">
+        <a
+          href="/"
+          class="btn btn-ghost btn-square text-primary gap-2 text-xl"
+          aria-label="Home"
+        >
           <Icon name="local:d3" class="text-primary" />
         </a>
       </div>
@@ -25,8 +29,7 @@ const currentPath = Astro.url.pathname;
               <li class="ml-1.5">
                 <Button
                   href={item.href}
-                  style="link-hover"
-                  color="primary"
+                  style="ghost"
                   class={currentPath === item.href ? "btn-active" : ""}
                   icon={item.icon}
                 >
@@ -43,7 +46,6 @@ const currentPath = Astro.url.pathname;
         <!-- Support Button (desktop only) -->
         <Button
           style="ghost"
-          color="primary"
           square={true}
           icon="tabler:coffee"
           iconOnly={true}

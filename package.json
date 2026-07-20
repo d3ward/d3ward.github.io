@@ -12,31 +12,31 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/ts-plugin": "^1.10.7",
-    "@iconify-json/octicon": "^1.2.23",
-    "@iconify-json/tabler": "^1.2.33",
-    "@tailwindcss/vite": "^4.2.4",
+    "@astrojs/ts-plugin": "^1.10.9",
+    "@iconify-json/octicon": "^1.2.29",
+    "@iconify-json/tabler": "^1.2.35",
+    "@tailwindcss/vite": "^4.3.2",
     "a11y-dialog": "^8.1.5",
-    "astro": "6.2.1",
+    "astro": "^7.0.5",
     "astro-icy": "file:../astro-icy/core",
-    "daisyui": "^5.5.19",
+    "daisyui": "^5.6.7",
     "shufflejs": "7.0.0",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.3.2"
   },
   "overrides": {
-    "vite": "^7"
+    "vite": "^8"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "@typescript-eslint/eslint-plugin": "^8.59.1",
-    "@typescript-eslint/parser": "^8.59.1",
-    "eslint": "^10.3.0",
-    "eslint-plugin-astro": "^1.7.0",
+    "@typescript-eslint/eslint-plugin": "^8.62.1",
+    "@typescript-eslint/parser": "^8.62.1",
+    "eslint": "^10.6.0",
+    "eslint-plugin-astro": "^2.1.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "prettier": "^3.8.3",
+    "prettier": "^3.9.4",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.1"
+    "typescript-eslint": "^8.62.1"
   }
 }

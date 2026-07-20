@@ -1,5 +1,5 @@
 ---
-import Icon from "./Icon.astro";
+import Button from "./Button.astro";
 
 export interface FilterOption {
   id: string;
@@ -20,37 +20,33 @@ const {
   class: className = "",
   size = "sm",
 } = Astro.props;
-
-const sizeClass = size
-  ? {
-      xs: "btn-xs",
-      sm: "btn-sm",
-      md: "btn-md",
-      lg: "btn-lg",
-    }[size] || ""
-  : "";
 ---
 
 <div class={`filter ${className}`}>
   {
     options.map((option: FilterOption) => (
-      <button
+      <Button
         type="button"
+        color="primary"
+        style="soft"
+        size={size}
+        active={option.id === activeFilter}
+        icon={option.icon}
+        iconClass="h-4 w-4"
+        class="gap-2"
         data-filter={option.id}
-        class={`btn ${sizeClass} btn-soft btn-primary gap-2 ${option.id === activeFilter && "btn-active"}`}
         aria-label={option.label}
         aria-pressed={option.id === activeFilter}
       >
-        {option.icon && <Icon name={option.icon} class="h-4 w-4" />}
-        <span>{option.label}</span>
-      </button>
+        {option.label}
+      </Button>
     ))
   }
 </div>
 
 <script>
   import { withLifecycle } from "@scripts/lifecycle";
-  import { initEngine, destroyEngine, applyFilter } from "@scripts/filter-engine";
+  import { applyFilter } from "@scripts/filter-engine";
 
   function updateButtonStyles(
     buttons: NodeListOf<Element>,
@@ -58,17 +54,14 @@ const sizeClass = size
   ) {
     buttons.forEach((btn) => {
       const isActive = btn.getAttribute("data-filter") === activeFilter;
-      btn.classList.toggle("btn-primary", isActive);
-      btn.classList.toggle("btn-ghost", !isActive);
+      btn.classList.toggle("btn-active", isActive);
       btn.setAttribute("aria-pressed", String(isActive));
     });
   }
 
   withLifecycle(() => {
-    initEngine();
-
     const buttons = document.querySelectorAll("[data-filter]");
-    if (buttons.length === 0) return destroyEngine;
+    if (buttons.length === 0) return;
 
     buttons.forEach((button) => {
       button.addEventListener("click", (e) => {
@@ -79,8 +72,6 @@ const sizeClass = size
         applyFilter(value);
       });
     });
-
-    return destroyEngine;
   });
 </script>
 

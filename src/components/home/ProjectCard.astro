@@ -3,14 +3,13 @@ import Card from "@common/Card.astro";
 import Button from "@common/Button.astro";
 import Badge from "@common/Badge.astro";
 import BadgeGroup from "@common/BadgeGroup.astro";
-import Icon from "@common/Icon.astro";
+import { Icon } from "astro-icy/components";
 
 interface Props {
   name: string;
   url?: string | null;
   logo?: string;
   tags?: string | string[];
-  groups?: string;
   githubData?: {
     url?: string;
     description?: string | null;
@@ -19,7 +18,7 @@ interface Props {
   };
 }
 
-const { name, url, logo, tags: rawTags, groups = "", githubData } = Astro.props;
+const { name, url, logo, tags: rawTags, githubData } = Astro.props;
 
 const tags = Array.isArray(rawTags)
   ? rawTags
@@ -29,8 +28,7 @@ const resolvedUrl = url ?? githubData?.url;
 const resolvedDescription = githubData?.description || undefined;
 ---
 
-<div data-groups={groups}>
-  <Card
+<Card
     bordered={true}
     class="bg-base-100 border-base-300 _aos-bottom relative border-2 transition-all"
     bodyClass="gap-4"
@@ -103,4 +101,3 @@ const resolvedDescription = githubData?.description || undefined;
       }
     </Fragment>
   </Card>
-</div>

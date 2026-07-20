@@ -1,5 +1,5 @@
 ---
-import Icon from "./Icon.astro";
+import { Icon } from "astro-icy/components";
 
 /**
  * Stat component - Display statistics in a beautiful card using DaisyUI styles
@@ -127,7 +127,7 @@ const linkAttrs = href ? { href, ...(target && { target }) } : {};
     )
   }
 
-  <div class:list={["stat-value", valueColor]} {...animateValue && { "data-target-number": value }}>
+  <div class:list={["stat-value", valueColor]} {...animateValue && { "data-count-target": value }}>
     {value}
   </div>
 

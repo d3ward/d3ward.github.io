@@ -11,16 +11,6 @@
       "color": "#FB542B"
     },
     {
-      "name": "Firefox",
-      "description": "Browser used for personal activities. Great for development and privacy-focused browsing.",
-      "url": "https://mozilla.org/firefox",
-      "platforms": ["Windows", "MacOS"],
-      "filters": ["desktop", "open-source"],
-      "tags": ["browser", "development", "open-source"],
-      "icon": "simple-icons:firefox",
-      "color": "#FF7139"
-    },
-    {
       "name": "Anytype",
       "description": "A privacy-centric, open-source alternative to Notion. My go-to for note-taking and personal knowledge management.",
       "url": "https://anytype.io",
@@ -34,8 +24,8 @@
       "name": "Bitwarden",
       "description": "Password manager desktop application. Essential for managing all my passwords securely.",
       "url": "https://bitwarden.com",
-      "platforms": ["Windows", "MacOS"],
-      "filters": ["desktop"],
+      "platforms": ["Windows", "MacOS", "iOS", "Android"],
+      "filters": ["desktop", "mobile"],
       "tags": ["security"],
       "icon": "simple-icons:bitwarden",
       "color": "#175DDC"
@@ -84,10 +74,28 @@
       "name": "Ferdium",
       "description": "Unified messaging app. Keeps all my messaging services in one place.",
       "url": "https://ferdium.org",
-      "platforms": ["MacOS"],
+      "platforms": ["MacOS", "Windows", "Linux"],
       "filters": ["desktop", "open-source"],
       "tags": ["communication"],
       "icon": "tabler:messages"
+    },
+    {
+      "name": "KeepingYouAwake",
+      "description": "Prevents your Mac from going to sleep.",
+      "url": "https://keepingyouawake.app",
+      "platforms": ["MacOS"],
+      "filters": ["desktop", "open-source"],
+      "tags": ["productivity", "open-source"],
+      "icon": "tabler:coffee"
+    },
+    {
+      "name": "Thaw",
+      "description": "Menu bar manager for macOS 26.",
+      "url": "https://github.com/stonerl/Thaw",
+      "platforms": ["MacOS"],
+      "filters": ["desktop", "open-source"],
+      "tags": ["productivity", "open-source"],
+      "icon": "tabler:layout-navbar"
     },
     {
       "name": "Dot",
@@ -111,29 +119,11 @@
       "name": "Raycast",
       "description": "Enhanced spotlight tool. Indispensable for quick access to everything on macOS.",
       "url": "https://raycast.com",
-      "platforms": ["MacOS"],
+      "platforms": ["MacOS", "Windows"],
       "filters": ["desktop"],
       "tags": ["productivity"],
       "icon": "simple-icons:raycast",
       "color": "#FF6363"
-    },
-    {
-      "name": "MiddleClick-Sonoma",
-      "description": "Utility for middle click support. Essential for three-finger trackpad click on macOS.",
-      "url": "https://github.com/artginzburg/MiddleClick-Sonoma",
-      "platforms": ["MacOS"],
-      "filters": ["desktop", "open-source"],
-      "tags": ["utility"],
-      "icon": "tabler:click"
-    },
-    {
-      "name": "Windows 11",
-      "description": "Hardened and debloated using ChrisTitus winutil. Optimized for privacy and performance.",
-      "url": "https://christitus.com",
-      "platforms": ["Windows"],
-      "filters": ["desktop"],
-      "tags": ["os"],
-      "icon": "simple-icons:windows11"
     },
     {
       "name": "SyMenu",
@@ -155,9 +145,9 @@
     },
     {
       "name": "Safari",
-      "description": "Stock browser on iOS.",
-      "platforms": ["iOS"],
-      "filters": ["mobile"],
+      "description": "Stock browser on iOS and macOS.",
+      "platforms": ["MacOS", "iOS"],
+      "filters": ["desktop", "mobile"],
       "tags": ["browser"],
       "icon": "simple-icons:safari"
     },
@@ -169,24 +159,6 @@
       "filters": ["mobile", "open-source"],
       "tags": ["archived", "browser"],
       "icon": "tabler:browser"
-    },
-    {
-      "name": "Florisboard",
-      "description": "Open-source keyboard. Privacy-respecting alternative to stock Android keyboards.",
-      "url": "https://florisboard.app",
-      "platforms": ["Android"],
-      "filters": ["mobile", "open-source"],
-      "tags": ["utility"],
-      "icon": "tabler:keyboard"
-    },
-    {
-      "name": "FairEmail",
-      "description": "Open-source email client. Feature-rich and privacy-focused for Android.",
-      "url": "https://email.faircode.eu",
-      "platforms": ["Android"],
-      "filters": ["mobile", "open-source"],
-      "tags": ["communication"],
-      "icon": "tabler:mail"
     },
     {
       "name": "Lichess",
@@ -283,15 +255,6 @@
       "filters": ["mobile", "open-source"],
       "tags": ["utility"],
       "icon": "tabler:folders"
-    },
-    {
-      "name": "Kickstarter",
-      "description": "Crowdfunding platform.",
-      "url": "https://kickstarter.com",
-      "platforms": ["iOS", "Android"],
-      "filters": ["mobile"],
-      "tags": ["shopping"],
-      "icon": "simple-icons:kickstarter"
     },
     {
       "name": "Spotify",

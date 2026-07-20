@@ -3,18 +3,17 @@ import Card from "@common/Card.astro";
 import Button from "@common/Button.astro";
 import Badge from "@common/Badge.astro";
 import BadgeGroup from "@common/BadgeGroup.astro";
-import Icon from "@common/Icon.astro";
+import { Icon } from "astro-icy/components";
 
 interface Props {
   name: string;
   description?: string;
   url?: string;
   tags?: string[];
-  groups?: string;
-  filters?: string[];
   icon?: string;
   iconColor?: string;
   platforms?: string[];
+  type?: "app" | "service" | "extension";
 }
 
 const {
@@ -22,74 +21,88 @@ const {
   description,
   url,
   tags = [],
-  groups = "",
-  filters = [],
   icon = "tabler:app-window",
   iconColor,
   platforms = [],
+  type,
 } = Astro.props;
+
+const typeConfig = {
+  app:       { icon: "tabler:apps",   label: "App"       },
+  extension: { icon: "tabler:puzzle", label: "Extension" },
+  service:   { icon: "tabler:cloud",  label: "Service"   },
+} as const;
+
+const typeMeta = type ? typeConfig[type] : undefined;
 ---
 
-<div data-groups={groups} data-filters={filters.join(" ")}>
-  <Card
-    bordered={true}
-    class="bg-base-100 border-base-300 _aos-bottom relative h-full border-2 transition-shadow hover:shadow-lg"
-    bodyClass="gap-4"
-  >
-    {
-      tags.length > 0 && (
-        <BadgeGroup>
-          {tags.map((tag) => (
-            <Badge variant="primary" size="sm">
-              {tag}
-            </Badge>
-          ))}
-        </BadgeGroup>
-      )
-    }
+<Card
+  bordered={true}
+  class="bg-base-100 border-base-300 _aos-bottom relative h-full border-2 transition-shadow hover:shadow-lg"
+  bodyClass="gap-4"
+>
+  {typeMeta && (
+    <div class="absolute top-3 right-3 z-10">
+      <span class="bg-base-200 text-base-content/60 flex items-center gap-1 rounded-full px-2 py-0.5 text-xs">
+        <Icon name={typeMeta.icon} class="h-3 w-3" />
+        {typeMeta.label}
+      </span>
+    </div>
+  )}
 
-    <div class="flex items-start gap-3">
-      <div class="shrink-0">
-        <div class="bg-base-200 flex h-12 w-12 items-center justify-center rounded-lg">
-          <Icon
-            name={icon}
-            class="h-6 w-6"
-            style={iconColor ? `color: ${iconColor}` : undefined}
-          />
-        </div>
-      </div>
-      <div class="min-w-0 flex-1">
-        <h3 class="text-lg font-semibold">{name}</h3>
-        {
-          platforms.length > 0 && (
-            <div class="mt-1 flex flex-wrap gap-1">
-              {platforms.map((platform) => (
-                <span class="text-base-content/80 bg-base-200 rounded px-2 py-0.5 text-xs">
-                  {platform}
-                </span>
-              ))}
-            </div>
-          )
-        }
+  {
+    tags.length > 0 && (
+      <BadgeGroup>
+        {tags.map((tag) => (
+          <Badge variant="primary" size="sm">
+            {tag}
+          </Badge>
+        ))}
+      </BadgeGroup>
+    )
+  }
+
+  <div class="flex items-start gap-3">
+    <div class="shrink-0">
+      <div class="bg-base-200 flex h-12 w-12 items-center justify-center rounded-lg">
+        <Icon
+          name={icon}
+          class="h-6 w-6"
+          style={iconColor ? `color: ${iconColor}` : undefined}
+        />
       </div>
     </div>
-    {description && <p class="text-base-content/80 line-clamp-3 text-sm">{description}</p>}
+    <div class="min-w-0 flex-1">
+      <h3 class="text-lg font-semibold">{name}</h3>
+      {
+        platforms.length > 0 && (
+          <div class="mt-1 flex flex-wrap gap-1">
+            {platforms.map((platform) => (
+              <span class="text-base-content/80 bg-base-200 rounded px-2 py-0.5 text-xs">
+                {platform}
+              </span>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+  {description && <p class="text-base-content/80 line-clamp-3 text-sm">{description}</p>}
 
-    {
-      url && (
-        <div slot="actions" class="mt-auto">
-          <Button
-            href={url}
-            external={true}
-            size="sm"
-            style="ghost"
-            icon="tabler:external-link"
-            class="w-full"
-          >
-            Visit
-          </Button>
-        </div>
-      )
-    }
-  </Card>
-</div>
+  {
+    url && (
+      <div slot="actions" class="mt-auto">
+        <Button
+          href={url}
+          external={true}
+          size="sm"
+          style="ghost"
+          icon="tabler:external-link"
+          class="w-full"
+        >
+          Visit
+        </Button>
+      </div>
+    )
+  }
+</Card>

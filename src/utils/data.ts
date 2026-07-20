@@ -1,5 +1,5 @@
 import type { Project, GitHubStats, GitHubRepo, EsaeItem } from "@/types";
-import { assertValidGroups, PROJECT_FILTER_IDS, ESAE_FILTER_IDS } from "@data/filters";
+import { assertValidGroups, platformsToFilters, PROJECT_FILTER_IDS, ESAE_FILTER_IDS } from "@data/filters";
 import projectsRaw    from "@data/projects.json";
 import githubRaw      from "@data/github-stats.json";
 import appsRaw        from "@data/apps.json";
@@ -24,23 +24,16 @@ export function getEsaeItems(): EsaeItem[] {
     ...svc,
     groups:    "service" as const,
     filters:   [],
-    platforms: [],
+    platforms: svc.platforms ?? [],
     tags:      svc.tags ?? [],
   }));
 
   const extensions: EsaeItem[] = (extensionsRaw.extensions as any[]).map((ext) => {
     const platform: string[] = ext.platform ?? [];
-    const filters: string[] = [];
-    if (platform.some((p: string) => ["macos", "windows"].includes(p.toLowerCase()))) {
-      filters.push("desktop");
-    }
-    if (platform.some((p: string) => ["android", "ios"].includes(p.toLowerCase()))) {
-      filters.push("mobile");
-    }
     return {
       ...ext,
       groups:    "extension" as const,
-      filters,
+      filters:   platformsToFilters(platform),
       platforms: platform,
       tags:      ext.tags ?? [],
     };

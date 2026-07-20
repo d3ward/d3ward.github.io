@@ -98,9 +98,16 @@ const metadata = { ...defaultSEO, ...seo };
       import { withLifecycle } from "@scripts/lifecycle";
       import { initAOS } from "@scripts/aos";
       import { initTheme } from "@scripts/theme";
+      import { initEngine, destroyEngine } from "@scripts/filter-engine";
+      import { initCounters } from "@scripts/counters";
 
       withLifecycle(initTheme);
       withLifecycle(initAOS);
+      withLifecycle(initCounters);
+      withLifecycle(() => {
+        initEngine();
+        return destroyEngine;
+      });
     </script>
   </body>
 </html>

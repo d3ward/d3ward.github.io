@@ -1,26 +1,14 @@
 ---
-import Icon from "../common/Icon.astro";
+import { Icon } from "astro-icy/components";
 
-// CSS grid class for each area is `gs-${area}` — must match grid-template-areas in styles.css
-const AREA_CONFIG = {
-  logo:      { icon: null,                      classes: "bg-white text-blue-500 border-4 border-blue-500 aspect-square" },
-  gh:        { icon: "tabler:brand-github",     classes: "bg-white text-blue-500"                                        },
-  stars:     { icon: "tabler:star",             classes: "bg-blue-50 text-blue-700 aspect-square"                        },
-  followers: { icon: "tabler:users-group",      classes: "bg-blue-50 text-blue-700"                                      },
-  commits:   { icon: "tabler:git-commit",       classes: "bg-blue-50 text-blue-700 aspect-square"                        },
-  issues:    { icon: "tabler:circle-dot",       classes: "bg-blue-500 text-white aspect-square"                          },
-  pr:        { icon: "tabler:git-pull-request", classes: "bg-blue-600 text-white"                                        },
-  repos:     { icon: "tabler:book-2",           classes: "bg-blue-600 text-white"                                        },
-} as const;
-
-type AreaType = keyof typeof AREA_CONFIG;
-
+// CSS grid placement class is `gs-${area}` — must match grid-template-areas in styles.css
 interface Props {
+  area: string;
+  colorClass?: string;
   value?: string | number;
   label?: string;
   icon?: string;
   href?: string;
-  area: AreaType;
   animation?: "left" | "right" | "top" | "bottom";
   showLabelOnMobile?: boolean;
   noJsValue?: string | number;
@@ -31,11 +19,12 @@ interface Props {
 }
 
 const {
+  area,
+  colorClass = "",
   value = "",
   label = "",
   icon,
   href,
-  area,
   animation = "bottom",
   showLabelOnMobile = true,
   noJsValue,
@@ -45,9 +34,8 @@ const {
   tiltPerspective = 1000,
 } = Astro.props;
 
-const resolvedIcon = icon || AREA_CONFIG[area].icon;
 const isLogo = area === "logo";
-const isLink = href ? true : false;
+const isLink = !!href;
 
 const Tag = href ? "a" : "div";
 const linkAttrs = href ? { href, target: "_blank", "aria-label": label } : {};
@@ -64,7 +52,7 @@ const tiltAttrs = tilt
 <Tag
   class:list={[
     `gs-${area}`,
-    AREA_CONFIG[area].classes,
+    colorClass,
     "relative flex flex-col items-center justify-center overflow-hidden rounded-lg p-4 text-center transition-all duration-700",
     animation &&
       {
@@ -90,27 +78,27 @@ const tiltAttrs = tilt
           name="tabler:external-link"
           class="absolute top-2 right-2 z-10 h-6 w-6"
         />
-        {resolvedIcon && <Icon name={resolvedIcon} size="xl" />}
+        {icon && <Icon name={icon} size="xl" />}
         <slot />
       </div>
     ) : (
       <div class="z-10 flex flex-col items-center">
         {noJsValue && (
-          <span class="count no-js mb-2 text-3xl leading-none font-medium">
+          <span class="no-js mb-2 text-3xl leading-none font-medium">
             {noJsValue}
           </span>
         )}
         {value && (
           <span
-            class="count mb-2 text-3xl leading-none font-medium"
-            data-target={value}
+            class="mb-2 text-3xl leading-none font-medium"
+            data-count-target={value}
           >
             {value}
           </span>
         )}
         {label && (
           <label class="flex items-center justify-center gap-1 text-base font-medium">
-            {resolvedIcon && <Icon name={resolvedIcon} />}
+            {icon && <Icon name={icon} />}
             <span class:list={[!showLabelOnMobile && "hidden md:block"]}>
               {label}
             </span>

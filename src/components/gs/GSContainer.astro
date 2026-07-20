@@ -16,21 +16,6 @@ const { class: className } = Astro.props;
   import { withLifecycle } from "@scripts/lifecycle";
 
   withLifecycle(() => {
-    const timers: ReturnType<typeof setInterval>[] = [];
-
-    // Animate counters
-    document.querySelectorAll(".count[data-target]").forEach((counter) => {
-      const target = parseInt(counter.getAttribute("data-target") || "0");
-      if (!target) return;
-      let current = 0;
-      const timer = setInterval(() => {
-        current++;
-        counter.textContent = current.toString();
-        if (current === target) clearInterval(timer);
-      }, 2000 / target);
-      timers.push(timer);
-    });
-
     // Logo animation — 300ms delay so the stroke draw is visible
     const logo = document.getElementById("d3Logo");
     const logoTimeout = logo
@@ -59,7 +44,6 @@ const { class: className } = Astro.props;
     });
 
     return () => {
-      timers.forEach(clearInterval);
       if (logoTimeout !== null) clearTimeout(logoTimeout);
     };
   });
