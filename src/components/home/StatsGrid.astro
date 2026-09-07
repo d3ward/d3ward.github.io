@@ -6,14 +6,29 @@ import { getGitHubStats } from "@utils/data";
 const { d3ward } = getGitHubStats();
 
 const TILE_CONFIG = {
-  logo:      { icon: undefined,                    colorClass: "bg-white text-blue-500 border-4 border-blue-500 aspect-square" },
-  gh:        { icon: "tabler:brand-github",        colorClass: "bg-white text-blue-500"                                        },
-  stars:     { icon: "tabler:star",                colorClass: "bg-blue-50 text-blue-700 aspect-square"                        },
-  followers: { icon: "tabler:users-group",         colorClass: "bg-blue-50 text-blue-700"                                      },
-  commits:   { icon: "tabler:git-commit",          colorClass: "bg-blue-50 text-blue-700 aspect-square"                        },
-  issues:    { icon: "tabler:circle-dot",          colorClass: "bg-blue-500 text-white aspect-square"                          },
-  pr:        { icon: "tabler:git-pull-request",    colorClass: "bg-blue-600 text-white"                                        },
-  repos:     { icon: "tabler:book-2",              colorClass: "bg-blue-600 text-white"                                        },
+  logo: {
+    icon: undefined,
+    colorClass: "bg-white text-blue-500 border-4 border-blue-500 aspect-square",
+  },
+  gh: { icon: "tabler:brand-github", colorClass: "bg-white text-blue-500" },
+  stars: {
+    icon: "tabler:star",
+    colorClass: "bg-blue-50 text-blue-700 aspect-square",
+  },
+  followers: {
+    icon: "tabler:users-group",
+    colorClass: "bg-blue-50 text-blue-700",
+  },
+  commits: {
+    icon: "tabler:git-commit",
+    colorClass: "bg-blue-50 text-blue-700 aspect-square",
+  },
+  issues: {
+    icon: "tabler:circle-dot",
+    colorClass: "bg-blue-500 text-white aspect-square",
+  },
+  pr: { icon: "tabler:git-pull-request", colorClass: "bg-blue-600 text-white" },
+  repos: { icon: "tabler:book-2", colorClass: "bg-blue-600 text-white" },
 } as const;
 ---
 
@@ -46,7 +61,9 @@ const TILE_CONFIG = {
       colorClass={TILE_CONFIG.logo.colorClass}
       animation="bottom"
     >
-      <div class="logo-wrapper flex h-full w-full items-center justify-center p-8">
+      <div
+        class="logo-wrapper flex h-full w-full items-center justify-center p-8"
+      >
         <svg
           id="d3Logo"
           xmlns="http://www.w3.org/2000/svg"

@@ -19,9 +19,15 @@ export function initAOS(): () => void {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !entry.target.classList.contains("_aos-done")) {
+        if (
+          entry.isIntersecting &&
+          !entry.target.classList.contains("_aos-done")
+        ) {
           entry.target.classList.add("_aos-done");
-        } else if (!entry.isIntersecting && entry.target.classList.contains("_aos-done")) {
+        } else if (
+          !entry.isIntersecting &&
+          entry.target.classList.contains("_aos-done")
+        ) {
           entry.target.classList.remove("_aos-done");
         }
       });

@@ -6,17 +6,20 @@ export function initEngine(): void {
   instances.forEach((i) => i.destroy());
   instances = [];
 
-  document.querySelectorAll<HTMLElement>("[data-filter-grid]").forEach((grid) => {
-    if (grid.querySelectorAll("[data-groups], [data-filters]").length === 0) return;
-    instances.push(
-      new Shuffle(grid, {
-        itemSelector: "[data-groups], [data-filters]",
-        delimiter: ",",
-        speed: 250,
-        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-      }),
-    );
-  });
+  document
+    .querySelectorAll<HTMLElement>("[data-filter-grid]")
+    .forEach((grid) => {
+      if (grid.querySelectorAll("[data-groups], [data-filters]").length === 0)
+        return;
+      instances.push(
+        new Shuffle(grid, {
+          itemSelector: "[data-groups], [data-filters]",
+          delimiter: ",",
+          speed: 250,
+          easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+        }),
+      );
+    });
 }
 
 export function destroyEngine(): void {

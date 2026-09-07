@@ -1,5 +1,5 @@
 ---
-import Button from "./Button.astro";
+import { Button } from "@icy/ui/components";
 
 export interface FilterOption {
   id: string;
@@ -32,7 +32,6 @@ const {
         size={size}
         active={option.id === activeFilter}
         icon={option.icon}
-        iconClass="h-4 w-4"
         class="gap-2"
         data-filter={option.id}
         aria-label={option.label}

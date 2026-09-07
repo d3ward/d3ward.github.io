@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@icy/ui/styles";
 @plugin "daisyui";
 
 /* ============================================

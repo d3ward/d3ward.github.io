@@ -1,9 +1,5 @@
 ---
-import Card from "@common/Card.astro";
-import Button from "@common/Button.astro";
-import Badge from "@common/Badge.astro";
-import BadgeGroup from "@common/BadgeGroup.astro";
-import { Icon } from "astro-icy/components";
+import { Badge, BadgeGroup, Button, Card, Icon } from "@icy/ui/components";
 
 interface Props {
   name: string;
@@ -22,82 +18,89 @@ const { name, url, logo, tags: rawTags, githubData } = Astro.props;
 
 const tags = Array.isArray(rawTags)
   ? rawTags
-  : (rawTags ?? "").split(",").map((t) => t.trim()).filter(Boolean);
+  : (rawTags ?? "")
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean);
 
 const resolvedUrl = url ?? githubData?.url;
 const resolvedDescription = githubData?.description || undefined;
 ---
 
 <Card
-    bordered={true}
-    class="bg-base-100 border-base-300 _aos-bottom relative border-2 transition-all"
-    bodyClass="gap-4"
-    actionsClass="justify-center"
-  >
-    {
-      tags.length > 0 && (
-        <BadgeGroup>
-          {tags.map((tag) => (
-            <Badge variant={tag === "Archived" ? "warning" : "primary"} size="md">
-              {tag}
-            </Badge>
-          ))}
-        </BadgeGroup>
-      )
-    }
+  border={true}
+  class="bg-base-100 border-base-300 _aos-bottom relative border-2 transition-all"
+  bodyClass="gap-4"
+  actionsClass="justify-center"
+>
+  {
+    tags.length > 0 && (
+      <BadgeGroup>
+        {tags.map((tag) => (
+          <Badge color={tag === "Archived" ? "warning" : "primary"} size="md">
+            {tag}
+          </Badge>
+        ))}
+      </BadgeGroup>
+    )
+  }
 
-    <figure class="px-10 pt-4">
-      <div class="avatar">
-        <div class="flex w-24 items-center justify-center rounded-xl bg-white p-4 shadow-md">
-          <Icon name={logo ?? ""} size="3xl" />
+  <figure class="px-10 pt-4">
+    <div class="avatar">
+      <div
+        class="flex w-24 items-center justify-center rounded-xl bg-white p-4 shadow-md"
+      >
+        <Icon name={logo ?? ""} size="3xl" />
+      </div>
+    </div>
+  </figure>
+  <h2 class="justify-center text-center">{name}</h2>
+  {
+    resolvedDescription && (
+      <p class="text-center opacity-70">{resolvedDescription}</p>
+    )
+  }
+  {
+    githubData && (
+      <div class="flex justify-center gap-4">
+        <div class="flex items-center gap-1">
+          <Icon name="tabler:star" class="h-4 w-4" />
+          <span>{githubData.stars}</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <Icon name="tabler:git-fork" class="h-4 w-4" />
+          <span>{githubData.forks}</span>
         </div>
       </div>
-    </figure>
-    <h2 class="justify-center text-center">{name}</h2>
-    {resolvedDescription && (
-      <p class="text-center opacity-70">{resolvedDescription}</p>
-    )}
+    )
+  }
+
+  <Fragment slot="actions">
     {
-      githubData && (
-        <div class="flex justify-center gap-4">
-          <div class="flex items-center gap-1">
-            <Icon name="tabler:star" class="h-4 w-4" />
-            <span>{githubData.stars}</span>
-          </div>
-          <div class="flex items-center gap-1">
-            <Icon name="tabler:git-fork" class="h-4 w-4" />
-            <span>{githubData.forks}</span>
-          </div>
-        </div>
+      resolvedUrl && (
+        <Button
+          style="outline"
+          color="primary"
+          href={resolvedUrl}
+          external={true}
+          icon="tabler:external-link"
+        >
+          Website
+        </Button>
       )
     }
-
-    <Fragment slot="actions">
-      {
-        resolvedUrl && (
-          <Button
-            style="outline"
-            color="primary"
-            href={resolvedUrl}
-            external={true}
-            icon="tabler:external-link"
-          >
-            Website
-          </Button>
-        )
-      }
-      {
-        githubData?.url && (
-          <Button
-            href={githubData.url}
-            external={true}
-            style="outline"
-            color="neutral"
-            icon="simple-icons:github"
-          >
-            GitHub
-          </Button>
-        )
-      }
-    </Fragment>
-  </Card>
+    {
+      githubData?.url && (
+        <Button
+          href={githubData.url}
+          external={true}
+          style="outline"
+          color="neutral"
+          icon="simple-icons:github"
+        >
+          GitHub
+        </Button>
+      )
+    }
+  </Fragment>
+</Card>

@@ -11,11 +11,6 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
-    resolve: {
-      alias: {
-        "@common": "/src/components/common",
-      },
-    },
   },
   integrations: [
     icon({

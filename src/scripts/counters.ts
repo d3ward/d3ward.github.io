@@ -1,5 +1,7 @@
 export function initCounters(): () => void {
-  const counters = document.querySelectorAll<HTMLElement>("[data-count-target]");
+  const counters = document.querySelectorAll<HTMLElement>(
+    "[data-count-target]",
+  );
   if (!counters.length) return () => {};
 
   const timers: ReturnType<typeof setInterval>[] = [];

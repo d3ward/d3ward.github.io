@@ -1,10 +1,15 @@
 import type { Project, GitHubStats, GitHubRepo, EsaeItem } from "@/types";
-import { assertValidGroups, platformsToFilters, PROJECT_FILTER_IDS, ESAE_FILTER_IDS } from "@data/filters";
-import projectsRaw    from "@data/projects.json";
-import githubRaw      from "@data/github-stats.json";
-import appsRaw        from "@data/apps.json";
-import servicesRaw    from "@data/services.json";
-import extensionsRaw  from "@data/extensions.json";
+import {
+  assertValidGroups,
+  platformsToFilters,
+  PROJECT_FILTER_IDS,
+  ESAE_FILTER_IDS,
+} from "@data/filters";
+import projectsRaw from "@data/projects.json";
+import githubRaw from "@data/github-stats.json";
+import appsRaw from "@data/apps.json";
+import servicesRaw from "@data/services.json";
+import extensionsRaw from "@data/extensions.json";
 
 // ── ESAE ──────────────────────────────────────────────────────────────────────
 
@@ -13,31 +18,33 @@ export function getEsaeItems(): EsaeItem[] {
     assertValidGroups(app.filters ?? [], ESAE_FILTER_IDS, app.name);
     return {
       ...app,
-      groups:    "app"  as const,
-      filters:   app.filters  ?? [],
+      groups: "app" as const,
+      filters: app.filters ?? [],
       platforms: app.platforms ?? [],
-      tags:      app.tags     ?? [],
+      tags: app.tags ?? [],
     };
   });
 
   const services: EsaeItem[] = (servicesRaw.services as any[]).map((svc) => ({
     ...svc,
-    groups:    "service" as const,
-    filters:   [],
+    groups: "service" as const,
+    filters: [],
     platforms: svc.platforms ?? [],
-    tags:      svc.tags ?? [],
+    tags: svc.tags ?? [],
   }));
 
-  const extensions: EsaeItem[] = (extensionsRaw.extensions as any[]).map((ext) => {
-    const platform: string[] = ext.platform ?? [];
-    return {
-      ...ext,
-      groups:    "extension" as const,
-      filters:   platformsToFilters(platform),
-      platforms: platform,
-      tags:      ext.tags ?? [],
-    };
-  });
+  const extensions: EsaeItem[] = (extensionsRaw.extensions as any[]).map(
+    (ext) => {
+      const platform: string[] = ext.platform ?? [];
+      return {
+        ...ext,
+        groups: "extension" as const,
+        filters: platformsToFilters(platform),
+        platforms: platform,
+        tags: ext.tags ?? [],
+      };
+    },
+  );
 
   return [...apps, ...services, ...extensions];
 }

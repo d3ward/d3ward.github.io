@@ -1,5 +1,5 @@
 ---
-import { Icon, Button, Modal } from "@common";
+import { Icon, Button, Modal } from "@icy/ui/components";
 ---
 
 <Modal
@@ -107,7 +107,7 @@ import { Icon, Button, Modal } from "@common";
   </div>
 
   <!-- Footer Actions -->
-  <div slot="actions">
-    <Button type="button" data-a11y-dialog-hide color="neutral">Close</Button>
-  </div>
+  <form method="dialog" slot="actions">
+    <Button type="submit" color="neutral">Close</Button>
+  </form>
 </Modal>

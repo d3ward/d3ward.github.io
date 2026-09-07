@@ -25,8 +25,8 @@
       "description": "Password manager desktop application. Essential for managing all my passwords securely.",
       "url": "https://bitwarden.com",
       "platforms": ["Windows", "MacOS", "iOS", "Android"],
-      "filters": ["desktop", "mobile"],
-      "tags": ["security"],
+      "filters": ["desktop", "mobile","open-source"],
+      "tags": ["security","open-source"],
       "icon": "simple-icons:bitwarden",
       "color": "#175DDC"
     },
@@ -36,7 +36,7 @@
       "url": "https://zed.dev/",
       "github": "https://github.com/zed-industries/zed",
       "platforms": ["Windows", "MacOS"],
-      "filters": ["desktop"],
+      "filters": ["desktop","open-source"],
       "tags": ["development", "open-source"],
       "icon": "simple-icons:zedindustries",
       "color": "#084CCF"
@@ -47,7 +47,7 @@
       "url": "https://gimp.org",
       "platforms": ["Windows", "MacOS"],
       "filters": ["desktop", "open-source"],
-      "tags": ["design"],
+      "tags": ["design","open-source"],
       "icon": "simple-icons:gimp",
       "color": "#8C8073"
     },
@@ -57,7 +57,7 @@
       "url": "https://inkscape.org",
       "platforms": ["Windows", "MacOS"],
       "filters": ["desktop", "open-source"],
-      "tags": ["design"],
+      "tags": ["design","open-source"],
       "icon": "simple-icons:inkscape",
       "color": "#000000"
     },
@@ -67,7 +67,7 @@
       "url": "https://motrix.app",
       "platforms": ["Windows", "MacOS"],
       "filters": ["desktop", "open-source"],
-      "tags": ["utility"],
+      "tags": ["utility","open-source"],
       "icon": "tabler:download"
     },
     {
@@ -76,7 +76,7 @@
       "url": "https://ferdium.org",
       "platforms": ["MacOS", "Windows", "Linux"],
       "filters": ["desktop", "open-source"],
-      "tags": ["communication"],
+      "tags": ["communication","open-source"],
       "icon": "tabler:messages"
     },
     {
@@ -140,7 +140,7 @@
       "url": "https://playnite.link",
       "platforms": ["Windows"],
       "filters": ["desktop", "open-source"],
-      "tags": ["gaming"],
+      "tags": ["gaming","open-source"],
       "icon": "tabler:device-gamepad-2"
     },
     {
@@ -176,7 +176,7 @@
       "url": "https://enteauth.com",
       "platforms": ["Windows", "MacOS", "iOS", "Android"],
       "filters": ["desktop", "mobile", "open-source"],
-      "tags": ["security"],
+      "tags": ["security","open-source"],
       "icon": "simple-icons:ente",
       "color": "#00BC45"
     },
@@ -186,19 +186,9 @@
       "url": "https://netnewswire.com",
       "platforms": ["iOS", "MacOS", "Android"],
       "filters": ["desktop", "mobile", "open-source"],
-      "tags": ["productivity"],
+      "tags": ["productivity","open-source"],
       "icon": "tabler:satellite",
       "color": "#00BC45"
-    },
-    {
-      "name": "Kagi News",
-      "description": "Curated news feed powered by Kagi search. Clean and ad-free news experience.",
-      "url": "https://news.kagi.com/",
-      "platforms": ["iOS", "Android"],
-      "filters": ["mobile"],
-      "tags": ["productivity", "news"],
-      "icon": "simple-icons:kagi",
-      "color": "#FFB319"
     },
     {
       "name": "Showly",
@@ -206,7 +196,7 @@
       "url": "https://www.showlyapp.com/",
       "platforms": ["Android", "iOS"],
       "filters": ["mobile", "open-source"],
-      "tags": ["entertainment"],
+      "tags": ["entertainment","open-source"],
       "icon": "tabler:device-tv"
     },
     {
@@ -215,7 +205,7 @@
       "url": "https://github.com/Obtanium/Obtanium",
       "platforms": ["Android"],
       "filters": ["mobile", "open-source"],
-      "tags": ["utility"],
+      "tags": ["utility","open-source"],
       "icon": "tabler:package"
     },
     {
@@ -224,7 +214,7 @@
       "url": "https://f-droid.org",
       "platforms": ["Android"],
       "filters": ["mobile", "open-source"],
-      "tags": ["utility"],
+      "tags": ["utility","open-source"],
       "icon": "simple-icons:fdroid",
       "color": "#1976D2"
     },
@@ -243,7 +233,7 @@
       "url": "https://termux.com",
       "platforms": ["Android"],
       "filters": ["mobile", "open-source"],
-      "tags": ["development"],
+      "tags": ["development","open-source"],
       "icon": "tabler:terminal-2",
       "color": "#000000"
     },
@@ -253,7 +243,7 @@
       "url": "https://github.com/TeamAmaze/AmazeFileManager",
       "platforms": ["Android"],
       "filters": ["mobile", "open-source"],
-      "tags": ["utility"],
+      "tags": ["utility","open-source"],
       "icon": "tabler:folders"
     },
     {

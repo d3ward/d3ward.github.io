@@ -1,5 +1,5 @@
 ---
-import Button from "./common/Button.astro";
+import { Button } from "@icy/ui/components";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -15,7 +15,6 @@ const currentYear = new Date().getFullYear();
           style="ghost"
           circle={true}
           icon="simple-icons:github"
-          iconOnly={true}
           aria-label="GitHub"
           color="neutral"
         />
@@ -25,14 +24,13 @@ const currentYear = new Date().getFullYear();
           style="ghost"
           circle={true}
           icon="simple-icons:x"
-          iconOnly={true}
           aria-label="Twitter"
           color="neutral"
         />
         <div class="divider divider-horizontal"></div>
         <button
           type="button"
-          data-a11y-dialog-show="support_dialog"
+          data-modal-open="support_dialog"
           class="btn btn-ghost btn-sm gap-2"
           aria-label="Support me"
         >
@@ -62,14 +60,28 @@ const currentYear = new Date().getFullYear();
       <!-- Copyright -->
       <div class="text-center text-sm opacity-80">
         <p class="text-xs">
-          Using <a href="https://tabler.io/icons" target="_blank" rel="noopener noreferrer" class="underline">Tabler Icons</a> (MIT)
-          · <a href="https://simpleicons.org" target="_blank" rel="noopener noreferrer" class="underline">Simple Icons</a> (CC0-1.0)
+          Using <a
+            href="https://tabler.io/icons"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline">Tabler Icons</a
+          > (MIT) · <a
+            href="https://simpleicons.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline">Simple Icons</a
+          > (CC0-1.0)
         </p>
         <p class="mt-1">
           Designed and built with ♥ by Ursu Eduard (d3ward) &copy; {currentYear}
         </p>
         <p class="mt-1 text-xs">
-          Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer" class="underline">NC-SA-4.0</a>
+          Licensed under <a
+            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline">NC-SA-4.0</a
+          >
         </p>
       </div>
     </div>
