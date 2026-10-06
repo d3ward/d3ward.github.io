@@ -1,11 +1,18 @@
 ---
 import "../assets/app.css";
-import { ThemeProvider } from "@icy/ui/components";
-import Navbar from "@components/Navbar.astro";
-import Wave from "@components/Wave.astro";
-import Footer from "@components/Footer.astro";
-import GoToTop from "@components/GoToTop.astro";
-import SupportDialog from "@components/SupportDialog.astro";
+import {
+  Button,
+  Footer,
+  GoToTop,
+  Modal,
+  Navbar,
+  ThemeProvider,
+  Wave,
+} from "@icy/ui/components";
+import { Icon } from "@icy/icon/components";
+import FooterCredits from "@components/FooterCredits.astro";
+import SupportContent from "@components/SupportContent.astro";
+import { navItems } from "@data/nav";
 import { THEMES } from "@data/theme";
 import type { SEOMetadata } from "@/types/seo";
 
@@ -78,15 +85,39 @@ const metadata = { ...defaultSEO, ...seo };
     <meta name="theme-color" content="#4a9eff" />
   </head>
   <body>
-    <Navbar />
-    <Wave position="top" className="text-primary" />
+    <Navbar
+      class="fixed top-0 right-0 left-0 transition-all"
+      items={navItems}
+      themes={THEMES}
+      logo="local:d3"
+      githubHref="https://github.com/d3ward"
+      supportId="support_dialog"
+    />
+    <Wave position="top" class="text-primary" />
     <main class="mx-auto max-w-5xl">
       <slot />
     </main>
-    <Wave position="bottom" className="text-primary" />
-    <Footer />
+    <Wave position="bottom" class="text-primary" />
+    <Footer
+      socials={[
+        { href: "https://github.com/d3ward", label: "GitHub", icon: "simple-icons:github" },
+        { href: "https://twitter.com/d3ward_", label: "Twitter", icon: "simple-icons:x" },
+      ]}
+      supportId="support_dialog"
+    >
+      <FooterCredits />
+    </Footer>
     <GoToTop />
-    <SupportDialog />
+    <Modal id="support_dialog" boxClass="max-w-3xl" closeButton closeOnBackdrop>
+      <span slot="title" class="flex items-center gap-2 text-2xl font-bold">
+        <Icon name="tabler:coffee" class="h-6 w-6" />
+        Support me
+      </span>
+      <SupportContent />
+      <form method="dialog" slot="actions">
+        <Button type="submit" color="neutral">Close</Button>
+      </form>
+    </Modal>
 
     <script>
       import { withLifecycle } from "@scripts/lifecycle";

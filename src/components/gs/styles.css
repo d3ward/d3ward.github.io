@@ -200,6 +200,10 @@ svg#d3Logo {
 [data-theme="dark"] .gs-repos:hover {
   color: white;
 }
+[data-theme="dark"] .gs-pr .gs-ripple,
+[data-theme="dark"] .gs-repos .gs-ripple {
+  background: var(--color-blue-500);
+}
 
 /* ============================================
    COMPACT STATS
