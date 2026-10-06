@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import icon from "astro-icy";
+import icon from "@icy/icon";
 
 export default defineConfig({
   site: "https://d3ward.github.io",

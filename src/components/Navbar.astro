@@ -1,6 +1,6 @@
 ---
 import { Button, ThemeController } from "@icy/ui/components";
-import { Icon } from "astro-icy/components";
+import { Icon } from "@icy/icon/components";
 import { navItems } from "@data/nav";
 import { THEMES } from "@data/theme";
 
@@ -30,7 +30,7 @@ const currentPath = Astro.url.pathname;
               <li class="ml-1.5">
                 <Button
                   href={item.href}
-                  style="ghost"
+                  style="ghostLine"
                   class:list={[
                     "nav-link",
                     currentPath === item.href && "btn-active nav-link-active",
@@ -155,6 +155,13 @@ const currentPath = Astro.url.pathname;
 <style is:global>
   .navbar-center .nav-link {
     position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .navbar-center .nav-link:hover,
+  .navbar-center .nav-link:focus-visible,
+  .navbar-center .nav-link.nav-link-active {
+    color: var(--color-primary);
   }
 
   .navbar-center .nav-link::after {
